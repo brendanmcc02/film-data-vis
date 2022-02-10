@@ -1,5 +1,7 @@
 import Chart from '/chart.js';
 
+console.log("1");
+
 var ctx = document.getElementById('myChart');
 var myChart = new Chart(ctx, {
   type: 'bar',
