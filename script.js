@@ -1,4 +1,4 @@
-import Chart from 'chart.js';
+import Chart from 'https://cdn.jsdelivr.net/npm/chart.js';
 
 console.log("1");
 
