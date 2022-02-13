@@ -12,7 +12,7 @@
   <script>
 
     async function fetchRatingsCSV() {
-      const response = await fetch('ratingsTest.csv');
+      const response = await fetch('data/ratingsTest.csv');
       const ratingsCSV = await response.text();
 
       const table = ratingsCSV.split('\n').slice(1);
