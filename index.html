@@ -6,29 +6,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>filmDataVis</title>
+  <script scr="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
   <script>
 
     async function fetchRatingsCSV() {
-      const response = await fetch('data/ratings.csv');
+      const response = await fetch('data/ratingsTest.csv');
       const ratingsCSV = await response.text();
 
       const table = ratingsCSV.split('\n').slice(1);
-      table.forEach(element => {
-        let column = element.split(',');
-        let filmTitle = column[3];
-        let filmRating = column[1];
-        console.log(filmTitle, filmRating);
+      table.forEach(row => {
+        let column = row.split(',');
+        console.log(column);
+
+        if (column[3].includes(" \" ")) {
+          column[3].replace(" \" ", "");
+          column[3] += ",";
+          console.log(column[3]);
+
+          let searchingEndQuotationMark = true;
+          for (let i = 4; searchingEndQuotationMark, i++;) {
+            if (column[i].includes(" \" ")) {
+              column[i].replace(" \" ", "");
+              searchingEndQuotationMark = false;
+            } else {
+              column[i] += ",";
+            }
+
+            column[3] += column[i];
+            column.splice(i, 1);
+          }
+        }
+
+        console.log(column[3]);
+        console.log(column)
       })
+
+      return filmTitles;
     }
 
     fetchRatingsCSV()
       .catch(error => {
         console.log("Error: \n" + error);
       });
-
   </script>
 </body>
 
