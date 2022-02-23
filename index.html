@@ -18,7 +18,7 @@
         data: {
             labels: getFilmTitles(),
             datasets: [{
-                label: '# of Votes',
+                label: 'brendanmcc02\'s Film Ratings',
                 data: getFilmRatings(),
                 backgroundColor: [
                     'rgba(255, 0, 0, 0.2)',
@@ -26,9 +26,9 @@
                     'rgba(0, 0, 255, 0.2)'
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(86, 206, 255, 1)'
+                    'rgba(255, 100, 100, 1)',
+                    'rgba(100, 255, 100, 1)',
+                    'rgba(100, 100, 255, 1)'
                 ],
                 borderWidth: 1
             }]
@@ -112,7 +112,6 @@
         filmTitles.push(row[3])
       });
 
-      console.log('FILM TITLES:\n', filmTitles);
       return filmTitles;
     }
 
@@ -124,7 +123,6 @@
         filmRatings.push(row[1])
       })
 
-      console.log('FILM RATINGS:\n', filmRatings);
       return filmRatings;
     }
 
