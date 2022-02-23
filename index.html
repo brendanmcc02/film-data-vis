@@ -10,14 +10,14 @@
 </head>
 
 <body>
-  <canvas id="myChart" width="400" height="400"></canvas>
+  <canvas id="myChart" width="400" height="200"></canvas>
   <script>
 
     const ctx = document.getElementById('myChart').getContext('2d');
     const myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Lawrence of Arabia', 'Inception', 'I, Tonya'], // getFilmTitles()
+            labels: getFilmTitles(), // getFilmTitles()
             datasets: [{
                 label: 'brendanmcc02\'s Film Ratings',
                 data: [10, 10, 9], // getFilmRatings()
