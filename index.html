@@ -13,8 +13,8 @@
   <canvas id="myChart" width="400" height="200"></canvas>
   <script>
     
-    const filmTitles = await getFilmTitles();
-    const filmRatings = await getFilmRatings();
+    const filmTitles = getFilmTitles();
+    const filmRatings = getFilmRatings();
     
     const ctx = document.getElementById('myChart').getContext('2d');
     const myChart = new Chart(ctx, {
