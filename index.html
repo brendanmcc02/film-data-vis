@@ -11,37 +11,100 @@
 <body>
   <script>
 
-    fetchRatingsCSV()
+    getFilmTitles()
       .catch(error => {
         console.log("Error: \n" + error);
       });
 
-    async function fetchRatingsCSV() {
+    getFilmRatings()
+      .catch(error => {
+        console.log("Error: \n" + error);
+      });
+
+    async function getData() {
       const response = await fetch('data/ratingsTest.csv');
-      const ratingsCSV = await response.text();
+      const dataRaw = await response.text();
 
-      const table = ratingsCSV.split('\n').slice(1,-1);
-      table.forEach(row => {
-        let column = row.split(',');
+      // splitting data into rows, and removing column headers
+      var data = dataRaw.split('\n').slice(1);
 
+      // removing last row if empty
+      if (data[data.length - 1] === '') {
+        data.pop();
+      }
+
+      // splitting rows into columns
+      for (let i = 0; i < data.length; i++) {
+        let column = data[i];
+        column = column.split(',');
+        // concatenating film title if commas are in it
         if (column[3].includes('"')) {
           column[3] = column[3].replace('"', '');
           column[3] += ",";
 
           let searchingEndQuotationMark = true;
-          for (let i = 4; searchingEndQuotationMark; i++) {
-            if (column[i].includes('"')) {
-              column[i] = column[i].replace('"', '');
+          while (searchingEndQuotationMark) {
+            if (column[4].includes('"')) {
+              column[4] = column[4].replace('"', '');
               searchingEndQuotationMark = false;
             } else {
-              column[i] += ",";
+              column[4] += ",";
             }
 
-            column[3] += column[i];
-            column.splice(i, 1);
+            column[3] += column[4];
+            column.splice(4, 1);
           }
         }
+        data[i] = column;
+      }
+
+      // concatenating film genres into one sub-array
+      for (let i = 0; i < data.length; i++) {
+        let column = data[i];
+        column[9] = [column[9]];
+        if (column[9][0].includes('"')) {
+          column[9][0] = column[9][0].replace('"', '');
+
+          let searchingEndQuotationMark = true;
+          while (searchingEndQuotationMark) {
+            if (column[10].includes('"')) {
+              column[10] = column[10].replace('"', '');
+              searchingEndQuotationMark = false;
+            }
+
+            column[10] = column[10].replace(' ', '');
+            column[9].push(column[10]);
+            column.splice(10, 1);
+          }
+          data[i] = column;
+        }
+      }
+
+      return data;
+    }
+
+    async function getFilmTitles() {
+      let data = await getData();
+      let filmTitles = [];
+
+      data.forEach(row => {
+        filmTitles.push(row[3])
+      });
+
+      console.log('FILM TITLES:\n', filmTitles);
+      return filmTitles;
+    }
+
+    async function getFilmRatings() {
+      let data = await getData();
+      let filmRatings = [];
+
+      data.forEach(row => {
+        filmRatings.push(row[1])
       })
+
+      console.log('FILM RATINGS:\n', filmRatings);
+      return filmRatings;
     }
 
   </script>
