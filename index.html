@@ -13,9 +13,9 @@
   <canvas id="myChart" width="400" height="200"></canvas>
   <script>
     
-    const filmTitles = getFilmTitles();
+    const filmTitles = await getFilmTitles();
     console.log(filmTitles);
-    const filmRatings = getFilmRatings();
+    const filmRatings = await getFilmRatings();
     console.log(filmRatings);
     
     const ctx = document.getElementById('myChart').getContext('2d');
