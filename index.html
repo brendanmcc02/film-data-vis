@@ -12,15 +12,15 @@
 <body>
   <canvas id="myChart" width="400" height="200"></canvas>
   <script>
-
+    
     const ctx = document.getElementById('myChart').getContext('2d');
     const myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['LoA', 'inc', 'I, T'], // getFilmTitles()
+            labels: await getFilmTitles(), // getFilmTitles()
             datasets: [{
                 label: 'brendanmcc02\'s Film Ratings',
-                data: getFilmRatings(), // getFilmRatings()
+                data: await getFilmRatings(), // getFilmRatings()
                 backgroundColor: [
                     'rgba(255, 0, 0, 0.2)',
                     'rgba(0, 255, 0, 0.2)',
