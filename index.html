@@ -17,10 +17,10 @@
     const myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: getFilmTitles(),
+            labels: ['Lawrence of Arabia', 'Inception', 'I, Tonya'], // getFilmTitles()
             datasets: [{
                 label: 'brendanmcc02\'s Film Ratings',
-                data: getFilmRatings(),
+                data: [10, 10, 9], // getFilmRatings()
                 backgroundColor: [
                     'rgba(255, 0, 0, 0.2)',
                     'rgba(0, 255, 0, 0.2)',
