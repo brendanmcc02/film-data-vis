@@ -48,8 +48,7 @@
       const dataRaw = await response.text();
 
       // splitting data into rows, and removing column headers
-      var data = dataRaw.split('\n');
-      data = data.splice(0,1);
+      var data = dataRaw.split('\n').slice(1);
 
       // removing last row if empty
       if (data[data.length - 1] === '') {
