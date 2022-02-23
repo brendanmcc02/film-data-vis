@@ -49,7 +49,7 @@
 
       // splitting data into rows, and removing column headers
       var data = dataRaw.split('\n');
-      data = data.slice(1);
+      data = data.splice(0,1);
 
       // removing last row if empty
       if (data[data.length - 1] === '') {
