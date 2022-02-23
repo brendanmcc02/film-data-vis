@@ -13,14 +13,17 @@
   <canvas id="myChart" width="200" height="100"></canvas>
   <script>
     
+    const filmTitles = await getFilmTitles();
+    const filmRatings = await getFilmRatings();
+    
     const ctx = document.getElementById('myChart').getContext('2d');
     const myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: await getFilmTitles(),
+            labels: filmTitles,
             datasets: [{
                 label: 'brendanmcc02\'s Film Ratings',
-                data: await getFilmRatings(),
+                data: filmRatings,
                 backgroundColor: [
                     'rgba(255, 0, 0, 0.2)',
                     'rgba(0, 255, 0, 0.2)',
