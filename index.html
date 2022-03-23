@@ -129,7 +129,7 @@
         return ratings;
       }
 
-      // returns array of genres [sorted alphabetically] 
+      // returns array of genres [sorted alphabetically]
       async function getGenres() {
         let data = await getData();
         let genres = [];
@@ -147,7 +147,7 @@
         return genres;
       }
 
-      // returns array of mean genre Ratings [genres sorted alphabetically]
+      // returns array of mean genre Ratings [sorted alphabetically]
       async function getMeanGenreRatings() {
         let data = await getData();
         let genres = await getGenres();
@@ -157,9 +157,9 @@
 
         // initialise arrays
         for (let i = 0; i < genres.length; i++) {
-          meanGenreRatings[i] = 0;
-          sumGenres[i] = 0;
-          quantityGenres[i] = 0;
+          meanGenreRatings.push(0);
+          sumGenres.push(0);
+          quantityGenres.push(0);
         }
 
         data.forEach(row => {
