@@ -25,18 +25,19 @@
             label: 'Mean Genre Ratings',
             data: meanGenreRatings,
             backgroundColor: [
-              'rgba(0, 0, 255, 0.2)'
+              'rgba(54, 162, 235, 0.2)'
             ],
             borderColor: [
-              'rgba(0, 0, 0, 1)'
+              'rgb(54, 162, 235)'
             ],
-            borderWidth: 0
+            borderWidth: 1
           }]
         },
         options: {
           scales: {
             y: {
-              beginAtZero: true
+              min: 0,
+              max: 10,
             }
           }
         }
@@ -162,10 +163,6 @@
           sumGenres[i] = 0;
           quantityGenres[i] = 0;
         }
-
-        console.log(meanGenreRatings);
-        console.log(sumGenres);
-        console.log(quantityGenres);
 
         data.forEach(row => {
           let rating = parseInt(row[1]);
