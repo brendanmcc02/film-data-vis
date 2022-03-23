@@ -159,6 +159,10 @@
 
       let quantityGenres = [];
 
+      for (let i = 0; i < genres.length; i++) {
+        quantityGenres[i] = 0;
+      }
+
       data.forEach(row => {
         for (let i = 0; i < row[9].length; i++) {
           let index = genres.indexOf(row[9][i]);
@@ -177,6 +181,12 @@
 
       let meanGenreRatings = [];
       let sumGenres = [];
+
+      // initialise arrays
+      for (let i = 0; i < genres.length; i++) {
+        meanGenreRatings[i] = 0;
+        sumGenres[i] = 0;
+      }
 
       data.forEach(row => {
         let rating = parseInt(row[1]);
