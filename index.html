@@ -107,6 +107,13 @@
         }
       }
 
+      // changing release date to year released (yyyy-mm-dd => yyyy)
+      for (let i = 0; i < data.length; i++) {
+        let column = data[i];
+        column[2] = column[2].substring(0,4);
+        data[i] = column
+      }
+
       return data;
     }
 
@@ -134,7 +141,7 @@
       return ratings;
     }
 
-    // returns array of genres [sorted alphabetically]
+    // returns array of genres (sorted alphabetically)
     async function getGenres() {
       const data = await getData();
       let genres = [];
@@ -152,7 +159,7 @@
       return genres;
     }
 
-    // returns array of quantity of films per genre
+    // returns array of quantity of films per genre (sorted alphabetically)
     async function getQuantityGenres() {
       const data = await getData();
       const genres = await getGenres();
@@ -173,7 +180,7 @@
       return quantityGenres;
     }
 
-    // returns array of mean genre ratings [sorted alphabetically]
+    // returns array of mean genre ratings (sorted alphabetically)
     async function getMeanGenreRatings() {
       const data = await getData();
       const genres = await getGenres();
@@ -198,7 +205,7 @@
       })
 
       for (let i = 0; i < meanGenreRatings.length; i++) {
-        meanGenreRatings[i] = Math.round((sumGenres[i] / quantityGenres[i]) * 100) / 100 ;
+        meanGenreRatings[i] = Math.round((sumGenres[i] / quantityGenres[i]) * 10) / 10 ;
       }
 
       return meanGenreRatings;
