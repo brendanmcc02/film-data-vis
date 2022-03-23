@@ -168,7 +168,7 @@
         console.log(quantityGenres);
 
         data.forEach(row => {
-          let rating = row[1];
+          let rating = parseInt(row[1]);
 
           for (let i = 0; i < row[9].length; i++) {
             let index = genres.indexOf(row[9][i]);
