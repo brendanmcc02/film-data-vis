@@ -178,7 +178,7 @@
         })
 
         for (let i = 0; i < meanGenreRatings.length; i++) {
-          meanGenreRatings[i] = sumGenres[i] / quantityGenres[i];
+          meanGenreRatings[i] = Math.round((sumGenres[i] / quantityGenres[i]) * 100) / 100 ;
         }
 
         return meanGenreRatings;
