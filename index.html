@@ -95,18 +95,6 @@
         }
       }
 
-      // removing dateRated, URL, titleType, releaseDate
-      for (let i = 0; i < data.length; i++) {
-        let column = data[i];
-
-        column.splice(2, 1); // dateRated
-        column.splice(3, 1); // URL
-        column.splice(3, 1); // titleType
-        column.splice(8, 1); // releaseDate
-
-        data[i] = column;
-      }
-
       // concatenating genres into one sub-array
       for (let i = 0; i < data.length; i++) {
         let column = data[i];
@@ -129,6 +117,18 @@
         }
       }
 
+      // removing dateRated, URL, titleType, releaseDate
+      for (let i = 0; i < data.length; i++) {
+        let column = data[i];
+
+        column.splice(2, 1); // dateRated
+        column.splice(3, 1); // URL
+        column.splice(3, 1); // titleType
+        column.splice(8, 1); // releaseDate
+
+        data[i] = column;
+      }
+
       return data;
     }
 
@@ -138,7 +138,7 @@
       let titles = [];
 
       data.forEach(row => {
-        titles.push(row[3])
+        titles.push(row[2])
       });
 
       return titles;
@@ -162,9 +162,9 @@
       let genres = [];
 
       data.forEach(row => {
-        for (let i = 0; i < row[9].length; i++) {
-          if (!genres.includes(row[9][i])) {
-            genres.push(row[9][i]);
+        for (let i = 0; i < row[6].length; i++) {
+          if (!genres.includes(row[6][i])) {
+            genres.push(row[6][i]);
           }
         }
       })
@@ -186,8 +186,8 @@
       }
 
       data.forEach(row => {
-        for (let i = 0; i < row[9].length; i++) {
-          let index = genres.indexOf(row[9][i]);
+        for (let i = 0; i < row[6].length; i++) {
+          let index = genres.indexOf(row[6][i]);
           quantityGenres[index] += 1;
         }
       })
@@ -213,8 +213,8 @@
       data.forEach(row => {
         let rating = parseInt(row[1]);
 
-        for (let i = 0; i < row[9].length; i++) {
-          let index = genres.indexOf(row[9][i]);
+        for (let i = 0; i < row[6].length; i++) {
+          let index = genres.indexOf(row[6][i]);
           sumGenres[index] += rating;
         }
       })
