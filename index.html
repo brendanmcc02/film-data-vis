@@ -12,6 +12,9 @@
 <body>
   <canvas id="myChart" width="200" height="100"></canvas>
   <script>
+
+    main();
+
     async function main() {
       const genres = await getGenres();
       const meanGenreRatings = await getMeanGenreRatings();
@@ -42,147 +45,145 @@
           }
         }
       });
+    }
 
-      // returns array of clean data
-      async function getData() {
-        const response = await fetch('data/ratings.csv');
-        const dataRaw = await response.text();
+    // returns array of clean data
+    async function getData() {
+      const response = await fetch('data/ratings.csv');
+      const dataRaw = await response.text();
 
-        // splitting data into rows, and removing column headers
-        var data = dataRaw.split('\n').slice(1);
+      // splitting data into rows, and removing column headers
+      let data = dataRaw.split('\n').slice(1);
 
-        // removing last row if empty
-        if (data[data.length - 1] === '') {
-          data.pop();
-        }
+      // removing last row if empty
+      if (data[data.length - 1] === '') {
+        data.pop();
+      }
 
-        // splitting rows into columns
-        for (let i = 0; i < data.length; i++) {
-          let column = data[i];
-          column = column.split(',');
-          // concatenating title if commas are in it
-          if (column[3].includes('"')) {
-            column[3] = column[3].replace('"', '');
-            column[3] += ",";
+      // splitting rows into columns
+      for (let i = 0; i < data.length; i++) {
+        let column = data[i];
+        column = column.split(',');
+        // concatenating title if commas are in it
+        if (column[3].includes('"')) {
+          column[3] = column[3].replace('"', '');
+          column[3] += ",";
 
-            let searchingEndQuotationMark = true;
-            while (searchingEndQuotationMark) {
-              if (column[4].includes('"')) {
-                column[4] = column[4].replace('"', '');
-                searchingEndQuotationMark = false;
-              } else {
-                column[4] += ",";
-              }
-
-              column[3] += column[4];
-              column.splice(4, 1);
+          let searchingEndQuotationMark = true;
+          while (searchingEndQuotationMark) {
+            if (column[4].includes('"')) {
+              column[4] = column[4].replace('"', '');
+              searchingEndQuotationMark = false;
+            } else {
+              column[4] += ",";
             }
+
+            column[3] += column[4];
+            column.splice(4, 1);
+          }
+        }
+        data[i] = column;
+      }
+
+      // concatenating genres into one sub-array
+      for (let i = 0; i < data.length; i++) {
+        let column = data[i];
+        column[9] = [column[9]];
+        if (column[9][0].includes('"')) {
+          column[9][0] = column[9][0].replace('"', '');
+
+          let searchingEndQuotationMark = true;
+          while (searchingEndQuotationMark) {
+            if (column[10].includes('"')) {
+              column[10] = column[10].replace('"', '');
+              searchingEndQuotationMark = false;
+            }
+
+            column[10] = column[10].replace(' ', '');
+            column[9].push(column[10]);
+            column.splice(10, 1);
           }
           data[i] = column;
         }
-
-        // concatenating genres into one sub-array
-        for (let i = 0; i < data.length; i++) {
-          let column = data[i];
-          column[9] = [column[9]];
-          if (column[9][0].includes('"')) {
-            column[9][0] = column[9][0].replace('"', '');
-
-            let searchingEndQuotationMark = true;
-            while (searchingEndQuotationMark) {
-              if (column[10].includes('"')) {
-                column[10] = column[10].replace('"', '');
-                searchingEndQuotationMark = false;
-              }
-
-              column[10] = column[10].replace(' ', '');
-              column[9].push(column[10]);
-              column.splice(10, 1);
-            }
-            data[i] = column;
-          }
-        }
-
-        return data;
       }
 
-      // returns array of titles
-      async function getTitles() {
-        const data = await getData();
-        let titles = [];
-
-        data.forEach(row => {
-          titles.push(row[3])
-        });
-
-        return titles;
-      }
-
-      // returns array of ratings
-      async function getRatings() {
-        const data = await getData();
-        let ratings = [];
-
-        data.forEach(row => {
-          ratings.push(row[1])
-        })
-
-        return ratings;
-      }
-
-      // returns array of genres [sorted alphabetically]
-      async function getGenres() {
-        const data = await getData();
-        let genres = [];
-
-        data.forEach(row => {
-          for (let i = 0; i < row[9].length; i++) {
-            if (!genres.includes(row[9][i])) {
-              genres.push(row[9][i]);
-            }
-          }
-        })
-        
-        genres = genres.sort();
-
-        return genres;
-      }
-
-      // returns array of mean genre Ratings [sorted alphabetically]
-      async function getMeanGenreRatings() {
-        const data = await getData();
-        const genres = await getGenres();
-
-        let meanGenreRatings = [];
-        let sumGenres = [];
-        let quantityGenres = [];
-
-        // initialise arrays
-        for (let i = 0; i < genres.length; i++) {
-          meanGenreRatings[i] = 0;
-          sumGenres[i] = 0;
-          quantityGenres[i] = 0;
-        }
-
-        data.forEach(row => {
-          let rating = parseInt(row[1]);
-
-          for (let i = 0; i < row[9].length; i++) {
-            let index = genres.indexOf(row[9][i]);
-            sumGenres[index] += rating;
-            quantityGenres[index] += 1;
-          }
-        })
-
-        for (let i = 0; i < meanGenreRatings.length; i++) {
-          meanGenreRatings[i] = Math.round((sumGenres[i] / quantityGenres[i]) * 100) / 100 ;
-        }
-
-        return meanGenreRatings;
-      }
+      return data;
     }
 
-    main();
+    // returns array of titles
+    async function getTitles() {
+      const data = await getData();
+      let titles = [];
+
+      data.forEach(row => {
+        titles.push(row[3])
+      });
+
+      return titles;
+    }
+
+    // returns array of ratings
+    async function getRatings() {
+      const data = await getData();
+      let ratings = [];
+
+      data.forEach(row => {
+        ratings.push(row[1])
+      })
+
+      return ratings;
+    }
+
+    // returns array of genres [sorted alphabetically]
+    async function getGenres() {
+      const data = await getData();
+      let genres = [];
+
+      data.forEach(row => {
+        for (let i = 0; i < row[9].length; i++) {
+          if (!genres.includes(row[9][i])) {
+            genres.push(row[9][i]);
+          }
+        }
+      })
+      
+      genres = genres.sort();
+
+      return genres;
+    }
+
+    // returns array of mean genre Ratings [sorted alphabetically]
+    async function getMeanGenreRatings() {
+      const data = await getData();
+      const genres = await getGenres();
+
+      let meanGenreRatings = [];
+      let sumGenres = [];
+      let quantityGenres = [];
+
+      // initialise arrays
+      for (let i = 0; i < genres.length; i++) {
+        meanGenreRatings[i] = 0;
+        sumGenres[i] = 0;
+        quantityGenres[i] = 0;
+      }
+
+      data.forEach(row => {
+        let rating = parseInt(row[1]);
+
+        for (let i = 0; i < row[9].length; i++) {
+          let index = genres.indexOf(row[9][i]);
+          sumGenres[index] += rating;
+          quantityGenres[index] += 1;
+        }
+      })
+
+      for (let i = 0; i < meanGenreRatings.length; i++) {
+        meanGenreRatings[i] = Math.round((sumGenres[i] / quantityGenres[i]) * 100) / 100 ;
+      }
+
+      return meanGenreRatings;
+    }
 
   </script>
 </body>
