@@ -107,13 +107,6 @@
         }
       }
 
-      // changing release date to year released (yyyy-mm-dd => yyyy)
-      for (let i = 0; i < data.length; i++) {
-        let column = data[i];
-        column[2] = column[2].substring(0,4);
-        data[i] = column
-      }
-
       return data;
     }
 
