@@ -59,7 +59,7 @@
         for (let i = 0; i < data.length; i++) {
           let column = data[i];
           column = column.split(',');
-          // concatenating film title if commas are in it
+          // concatenating title if commas are in it
           if (column[3].includes('"')) {
             column[3] = column[3].replace('"', '');
             column[3] += ",";
@@ -80,7 +80,7 @@
           data[i] = column;
         }
 
-        // concatenating film genres into one sub-array
+        // concatenating genres into one sub-array
         for (let i = 0; i < data.length; i++) {
           let column = data[i];
           column[9] = [column[9]];
@@ -105,7 +105,7 @@
         return data;
       }
 
-      // returns array of film titles
+      // returns array of titles
       async function getTitles() {
         let data = await getData();
         let titles = [];
@@ -129,7 +129,7 @@
         return ratings;
       }
 
-      // returns array of film genres [sorted alphabetically] 
+      // returns array of genres [sorted alphabetically] 
       async function getGenres() {
         let data = await getData();
         let genres = [];
@@ -147,7 +147,7 @@
         return genres;
       }
 
-      // returns array of mean film Genre Ratings [genres sorted alphabetically]
+      // returns array of mean genre Ratings [genres sorted alphabetically]
       async function getMeanGenreRatings() {
         let data = await getData();
         let genres = await getGenres();
@@ -156,7 +156,7 @@
         let quantityGenres = [];
 
         // initialise arrays
-        for (let i = 0; i < genres.length(); i++) {
+        for (let i = 0; i < genres.length; i++) {
           meanGenreRatings[i] = 0;
           sumGenres[i] = 0;
           quantityGenres[i] = 0;
@@ -165,14 +165,14 @@
         data.forEach(row => {
           let rating = row[1];
 
-          for (let i = 0; i < row[9].length(); i++) {
+          for (let i = 0; i < row[9].length; i++) {
             let index = genres.indexOf(row[9][i]);
             sumGenres[index] += rating;
             quantityGenres[index] += 1;
           }
         })
 
-        for (let i = 0; i < meanGenreRatings.length(); i++) {
+        for (let i = 0; i < meanGenreRatings.length; i++) {
           meanGenreRatings[i] = sumGenres[i] / quantityGenres[i];
         }
 
