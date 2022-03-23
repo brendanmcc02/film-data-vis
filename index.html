@@ -85,6 +85,28 @@
         data[i] = column;
       }
 
+      // removing TV episodes, series, and shorts
+      for (let i = 0; i < data.length; i++) {
+        let column = data[i];
+
+        if (column[5] != "movie") {
+          data.splice(i, 1);
+          i--;
+        }
+      }
+
+      // removing dateRated, URL, titleType, releaseDate
+      for (let i = 0; i < data.length; i++) {
+        let column = data[i];
+
+        column.splice(2, 1); // dateRated
+        column.splice(3, 1); // URL
+        column.splice(3, 1); // titleType
+        column.splice(8, 1); // releaseDate
+
+        data[i] = column;
+      }
+
       // concatenating genres into one sub-array
       for (let i = 0; i < data.length; i++) {
         let column = data[i];
