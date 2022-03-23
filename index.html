@@ -13,17 +13,17 @@
   <canvas id="myChart" width="200" height="100"></canvas>
   <script>
     async function main() {
-      const filmTitles = await getFilmTitles();
-      const filmRatings = await getFilmRatings();
+      const genres = await getGenres();
+      const meanGenreRatings = await getMeanGenreRatings();
 
       const ctx = document.getElementById('myChart').getContext('2d');
       const myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: filmTitles,
+          labels: genres,
           datasets: [{
-            label: 'brendanmcc02\'s Film Ratings',
-            data: filmRatings,
+            label: 'Mean Genre Ratings',
+            data: meanGenreRatings,
             backgroundColor: [
               'rgba(0, 0, 255, 0.2)'
             ],
@@ -42,6 +42,7 @@
         }
       });
 
+      // returns array of clean data
       async function getData() {
         const response = await fetch('data/ratings.csv');
         const dataRaw = await response.text();
@@ -104,26 +105,78 @@
         return data;
       }
 
-      async function getFilmTitles() {
+      // returns array of film titles
+      async function getTitles() {
         let data = await getData();
-        let filmTitles = [];
+        let titles = [];
 
         data.forEach(row => {
-          filmTitles.push(row[3])
+          titles.push(row[3])
         });
 
-        return filmTitles;
+        return titles;
       }
 
-      async function getFilmRatings() {
+      // returns array of ratings
+      async function getRatings() {
         let data = await getData();
-        let filmRatings = [];
+        let ratings = [];
 
         data.forEach(row => {
-          filmRatings.push(row[1])
+          ratings.push(row[1])
         })
 
-        return filmRatings;
+        return ratings;
+      }
+
+      // returns array of film genres [sorted alphabetically] 
+      async function getGenres() {
+        let data = await getData();
+        let genres = [];
+
+        data.forEach(row => {
+          for (let i = 0; i < row[9].length; i++) {
+            if (!genres.includes(row[9][i])) {
+              genres.push(row[9][i]);
+            }
+          }
+        })
+        
+        genres = genres.sort();
+
+        return genres;
+      }
+
+      // returns array of mean film Genre Ratings [genres sorted alphabetically]
+      async function getMeanGenreRatings() {
+        let data = await getData();
+        let genres = await getGenres();
+        let meanGenreRatings = [];
+        let sumGenres = [];
+        let quantityGenres = [];
+
+        // initialise arrays
+        for (let i = 0; i < genres.length(); i++) {
+          meanGenreRatings[i] = 0;
+          sumGenres[i] = 0;
+          quantityGenres[i] = 0;
+        }
+
+        data.forEach(row => {
+          let rating = row[1];
+
+          for (let i = 0; i < row[9].length(); i++) {
+            let index = genres.indexOf(row[9][i]);
+            sumGenres[index] += rating;
+            quantityGenres[index] += 1;
+          }
+        })
+
+        for (let i = 0; i < meanGenreRatings.length(); i++) {
+          meanGenreRatings[i] = sumGenres[i] / quantityGenres[i];
+        }
+
+        return meanGenreRatings;
       }
     }
 
