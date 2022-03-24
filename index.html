@@ -117,6 +117,14 @@
         }
       }
 
+      // removing documentaries
+      for (let i = 0; i < data.length; i++) {
+        let column = data[i];
+        if (column[9].includes("Documentary")) {
+          data.splice(i, 1);
+        }
+      } 
+
       // removing dateRated, URL, titleType, releaseDate
       for (let i = 0; i < data.length; i++) {
         let column = data[i];
@@ -225,6 +233,80 @@
 
       return meanGenreRatings;
     }
+
+    // returns array of top 3 rated genres (sorted descending)
+    async function getTop3Genres() {
+      const meanGenreRatings = await getMeanGenreRatings();
+      let genres = await getGenres();
+
+      let top3RatedGenres = [];
+
+      for (let i = 0; i < top3RatedGenres.length; i++) {
+        let highestRating = meanGenreRatings[0];
+        let highestRatingIndex = 0;
+
+        for (let j = 1; j < meanGenreRatings.length; j++) {
+          if (highestRating < meanGenreRatings[j]) {
+            highestRating = meanGenreRatings[j];
+            highestRatingIndex = j;
+          }
+        }
+        top3RatedGenres.push(highestRating);
+        meanGenreRatings.splice(highestRatingIndex, 1);
+      }
+
+      return top3RatedGenres;
+    }
+
+    // returns array of runtimes
+    async function getRuntimes() {
+      const data = await getData();
+      let runtimes = [];
+
+      data.forEach(row => {
+        runtimes.push(row[4]);
+      });
+
+      return runtimes;
+    }
+
+    // returns array of number of imdb votes
+    async function getImdbVotes() {
+      const data = await getData();
+      let imdbVotes = [];
+
+      data.forEach(row => {
+        imdbVotes.push(row[7]);
+      });
+
+      return imdbVotes;
+    }
+
+    // returns array of release years
+    async function getYears() {
+      const data = await getData();
+      let years = [];
+
+      data.forEach(row => {
+        years.push(row[5]);
+      });
+
+      return years;
+    }
+
+    // returns array of imdb ratings
+    async function getImdbRatings() {
+      const data = await getData();
+      let imdbRatings = [];
+
+      data.forEach(row => {
+        imdbRatings.push(row[3]);
+      });
+
+      return imdbRatings;
+    }
+
+    // 
 
   </script>
 </body>
