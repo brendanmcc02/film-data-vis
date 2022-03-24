@@ -16,17 +16,17 @@
     main();
 
     async function main() {
-      const top3Genres = await getTop3Genres();
-      const top3GenreRatings = await getTop3GenreRatings();
+      const bottom3Genres = await getBottom3Genres();
+      const bottom3GenreRatings = await getBottom3GenreRatings();
 
       const ctx = document.getElementById('myChart').getContext('2d');
       const myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: top3Genres,
+          labels: bottom3Genres,
           datasets: [{
             label: 'Top 3 Rated Genres',
-            data: top3GenreRatings,
+            data: bottom3GenreRatings,
             backgroundColor: [
               'rgba(54, 162, 235, 0.2)'
             ],
@@ -276,6 +276,50 @@
       }
 
       return top3Genres
+    }
+
+    // returns array of bottom 3 genre ratings (sorted descending)
+    async function getBottom3GenreRatings() {
+      let meanGenreRatings = await getMeanGenreRatings();
+
+      let bottom3GenreRatings = [];
+
+      for (let i = 0; i < 3; i++) {
+        let lowestRating = meanGenreRatings[0];
+        let lowestRatingIndex = 0;
+
+        for (let j = 1; j < meanGenreRatings.length; j++) {
+          if (lowestRating > meanGenreRatings[j]) {
+            lowestRating = meanGenreRatings[j];
+            lowestRatingIndex = j;
+          }
+        }
+        bottom3GenreRatings.push(lowestRating);
+        meanGenreRatings.splice(lowestRatingIndex, 1);
+      }
+
+      return bottom3GenreRatings;
+    }
+
+    // returns array of bottom 3 genres (sorted descending)
+    async function getBottom3Genres() {
+      const bottom3GenreRatings = await getBottom3GenreRatings();
+      let genres = await getGenres();
+      let meanGenreRatings = await getMeanGenreRatings();
+
+      let bottom3Genres = [];
+      let ratingIndex = 0;
+
+      for (let i = 0; i < bottom3GenreRatings.length; i++) {
+        let rating = bottom3GenreRatings[i];
+
+        ratingIndex = meanGenreRatings.indexOf(rating);
+        bottom3Genres.push(genres[ratingIndex]);
+        genres.splice(ratingIndex, 1);
+        meanGenreRatings.splice(ratingIndex, 1);
+      }
+
+      return bottom3Genres
     }
 
     // returns array of runtimes
