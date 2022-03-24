@@ -16,17 +16,17 @@
     main();
 
     async function main() {
-      const genres = await getGenres();
-      const meanGenreRatings = await getMeanGenreRatings();
+      const top3Genres = await getTop3Genres();
+      const top3GenreRatings = await getTop3GenreRatings();
 
       const ctx = document.getElementById('myChart').getContext('2d');
       const myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: genres,
+          labels: top3Genres,
           datasets: [{
-            label: 'Mean Genre Ratings',
-            data: meanGenreRatings,
+            label: 'Top 3 Rated Genres',
+            data: top3GenreRatings,
             backgroundColor: [
               'rgba(54, 162, 235, 0.2)'
             ],
@@ -234,14 +234,13 @@
       return meanGenreRatings;
     }
 
-    // returns array of top 3 rated genres (sorted descending)
-    async function getTop3Genres() {
-      const meanGenreRatings = await getMeanGenreRatings();
-      let genres = await getGenres();
+    // returns array of top 3 genre ratings (sorted descending)
+    async function getTop3GenreRatings() {
+      let meanGenreRatings = await getMeanGenreRatings();
 
-      let top3RatedGenres = [];
+      let top3GenreRatings = [];
 
-      for (let i = 0; i < top3RatedGenres.length; i++) {
+      for (let i = 0; i < 3; i++) {
         let highestRating = meanGenreRatings[0];
         let highestRatingIndex = 0;
 
@@ -251,11 +250,32 @@
             highestRatingIndex = j;
           }
         }
-        top3RatedGenres.push(highestRating);
+        top3GenreRatings.push(highestRating);
         meanGenreRatings.splice(highestRatingIndex, 1);
       }
 
-      return top3RatedGenres;
+      return top3GenreRatings;
+    }
+
+    // returns array of top 3 genres (sorted descending)
+    async function getTop3Genres() {
+      const top3GenreRatings = await getTop3GenreRatings();
+      let genres = await getGenres();
+      let meanGenreRatings = await getMeanGenreRatings();
+
+      let top3Genres = [];
+      let ratingIndex = 0;
+
+      for (let i = 0; i < top3GenreRatings.length; i++) {
+        let rating = top3GenreRatings[i];
+
+        ratingIndex = meanGenreRatings.indexOf(rating);
+        top3Genres.push(genres[ratingIndex]);
+        genres.splice(ratingIndex, 1);
+        meanGenreRatings.splice(ratingIndex, 1);
+      }
+
+      return top3Genres
     }
 
     // returns array of runtimes
