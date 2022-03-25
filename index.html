@@ -45,6 +45,8 @@
           }
         }
       });
+      console.log(getDirectors);
+      console.log(getQuantityDirectors);
     }
 
     // returns array of clean data
@@ -62,34 +64,34 @@
 
       // splitting rows into columns
       for (let i = 0; i < data.length; i++) {
-        let column = data[i];
-        column = column.split(',');
+        let row = data[i];
+        row = row.split(',');
         // concatenating title if commas are in it
-        if (column[3].includes('"')) {
-          column[3] = column[3].replace('"', '');
-          column[3] += ",";
+        if (row[3].includes('"')) {
+          row[3] = row[3].replace('"', '');
+          row[3] += ",";
 
           let searchingEndQuotationMark = true;
           while (searchingEndQuotationMark) {
-            if (column[4].includes('"')) {
-              column[4] = column[4].replace('"', '');
+            if (row[4].includes('"')) {
+              row[4] = row[4].replace('"', '');
               searchingEndQuotationMark = false;
             } else {
-              column[4] += ",";
+              row[4] += ",";
             }
 
-            column[3] += column[4];
-            column.splice(4, 1);
+            row[3] += row[4];
+            row.splice(4, 1);
           }
         }
-        data[i] = column;
+        data[i] = row;
       }
 
       // removing TV episodes, series, and shorts
       for (let i = 0; i < data.length; i++) {
-        let column = data[i];
+        let row = data[i];
 
-        if (column[5] != "movie") {
+        if (row[5] != "movie") {
           data.splice(i, 1);
           i--;
         }
@@ -97,44 +99,44 @@
 
       // concatenating genres into one sub-array
       for (let i = 0; i < data.length; i++) {
-        let column = data[i];
-        column[9] = [column[9]];
-        if (column[9][0].includes('"')) {
-          column[9][0] = column[9][0].replace('"', '');
+        let row = data[i];
+        row[9] = [row[9]];
+        if (row[9][0].includes('"')) {
+          row[9][0] = row[9][0].replace('"', '');
 
           let searchingEndQuotationMark = true;
           while (searchingEndQuotationMark) {
-            if (column[10].includes('"')) {
-              column[10] = column[10].replace('"', '');
+            if (row[10].includes('"')) {
+              row[10] = row[10].replace('"', '');
               searchingEndQuotationMark = false;
             }
 
-            column[10] = column[10].replace(' ', '');
-            column[9].push(column[10]);
-            column.splice(10, 1);
+            row[10] = row[10].replace(' ', '');
+            row[9].push(row[10]);
+            row.splice(10, 1);
           }
-          data[i] = column;
+          data[i] = row;
         }
       }
 
       // removing documentaries
       for (let i = 0; i < data.length; i++) {
-        let column = data[i];
-        if (column[9].includes("Documentary")) {
+        let row = data[i];
+        if (row[9].includes("Documentary")) {
           data.splice(i, 1);
         }
-      } 
+      }
 
       // removing dateRated, URL, titleType, releaseDate
       for (let i = 0; i < data.length; i++) {
-        let column = data[i];
+        let row = data[i];
 
-        column.splice(2, 1); // dateRated
-        column.splice(3, 1); // URL
-        column.splice(3, 1); // titleType
-        column.splice(8, 1); // releaseDate
+        row.splice(2, 1); // dateRated
+        row.splice(3, 1); // URL
+        row.splice(3, 1); // titleType
+        row.splice(8, 1); // releaseDate
 
-        data[i] = column;
+        data[i] = row;
       }
 
       return data;
@@ -176,7 +178,7 @@
           }
         }
       })
-      
+
       genres = genres.sort();
 
       return genres;
@@ -228,7 +230,7 @@
       })
 
       for (let i = 0; i < meanGenreRatings.length; i++) {
-        meanGenreRatings[i] = Math.round((sumGenres[i] / quantityGenres[i]) * 10) / 10 ;
+        meanGenreRatings[i] = Math.round((sumGenres[i] / quantityGenres[i]) * 10) / 10;
       }
 
       return meanGenreRatings;
@@ -370,7 +372,40 @@
       return imdbRatings;
     }
 
-    // 
+    // returns array of directors (sorted alphabetically)
+    async function getDirectors() {
+      const data = await getData();
+      let directors = [];
+
+      data.forEach(row => {
+        if (!directors.includes(row[8])) {
+          directors.push(row[8]);
+        }
+      })
+
+      directors = directors.sort();
+
+      return directors;
+    }
+
+    // returns array of quantity of films per director (sorted alphabetically)
+    async function getQuantityDirectors() {
+      const data = await getData();
+      const directors = await getDirectors();
+
+      let quantityDirectors = [];
+
+      for (let i = 0; i < directors.length; i++) {
+        quantityDirectors[i] = 0;
+      }
+
+      data.forEach(row => {
+        let index = directors.indexOf(row[8]);
+        quantityDirectors[index] += 1;
+      })
+
+      return quantityDirectors;
+    }
 
   </script>
 </body>
