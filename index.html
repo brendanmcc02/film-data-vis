@@ -18,6 +18,8 @@
     async function main() {
       const bottom3Genres = await getBottom3Genres();
       const bottom3GenreRatings = await getBottom3GenreRatings();
+      const directors = await getDirectors();
+      const quantityDirectors = await getQuantityDirectors();
 
       const ctx = document.getElementById('myChart').getContext('2d');
       const myChart = new Chart(ctx, {
@@ -45,8 +47,8 @@
           }
         }
       });
-      console.log(getDirectors());
-      console.log(getQuantityDirectors());
+      console.log(directors);
+      console.log(quantityDirectors);
     }
 
     // returns array of clean data
