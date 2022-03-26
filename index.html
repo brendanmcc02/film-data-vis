@@ -16,19 +16,17 @@
     main();
 
     async function main() {
-      const bottom3Genres = await getBottom3Genres();
-      const bottom3GenreRatings = await getBottom3GenreRatings();
-      const directors = await getDirectors();
-      const quantityDirectors = await getQuantityDirectors();
+      const top3Directors = await getTop3Directors();
+      const top3DirectorRatings = await getTop3DirectorRatings();
 
       const ctx = document.getElementById('myChart').getContext('2d');
       const myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: bottom3Genres,
+          labels: top3Directors,
           datasets: [{
-            label: 'Bottom 3 Rated Genres',
-            data: bottom3GenreRatings,
+            label: 'Top 3 Rated Directors',
+            data: top3DirectorRatings,
             backgroundColor: [
               'rgba(54, 162, 235, 0.2)'
             ],
@@ -47,8 +45,6 @@
           }
         }
       });
-      console.log(directors);
-      console.log(quantityDirectors);
     }
 
     // returns array of clean data
@@ -116,6 +112,28 @@
             row[10] = row[10].replace(' ', '');
             row[9].push(row[10]);
             row.splice(10, 1);
+          }
+          data[i] = row;
+        }
+      }
+
+      // concatenating directors into one sub-array
+      for (let i = 0; i < data.length; i++) {
+        let row = data[i];
+        row[12] = [row[12]];
+        if (row[12][0].includes('"')) {
+          row[12][0] = row[12][0].replace('"', '');
+
+          let searchingEndQuotationMark = true;
+          while (searchingEndQuotationMark) {
+            if (row[13].includes('"')) {
+              row[13] = row[13].replace('"', '');
+              searchingEndQuotationMark = false;
+            }
+
+            row[13] = row[13].replace(' ', '');
+            row[12].push(row[13]);
+            row.splice(13, 1);
           }
           data[i] = row;
         }
@@ -279,7 +297,7 @@
         meanGenreRatings.splice(ratingIndex, 1);
       }
 
-      return top3Genres
+      return top3Genres;
     }
 
     // returns array of bottom 3 genre ratings (sorted descending)
@@ -323,7 +341,7 @@
         meanGenreRatings.splice(ratingIndex, 1);
       }
 
-      return bottom3Genres
+      return bottom3Genres;
     }
 
     // returns array of runtimes
@@ -380,8 +398,10 @@
       let directors = [];
 
       data.forEach(row => {
-        if (!directors.includes(row[8])) {
-          directors.push(row[8]);
+        for (let i = 0; i < row[8].length; i++) {
+          if (!directors.includes(row[8][i])) {
+            directors.push(row[8][i]);
+          }
         }
       })
 
@@ -402,11 +422,88 @@
       }
 
       data.forEach(row => {
-        let index = directors.indexOf(row[8]);
-        quantityDirectors[index] += 1;
+        for (let i = 0; i < row[8].length; i++) {
+          let index = directors.indexOf(row[8][i]);
+          quantityDirectors[index] += 1;
+        }
       })
 
       return quantityDirectors;
+    }
+
+    // returns array of mean director ratings (sorted alphabetically)
+    async function getMeanDirectorRatings() {
+      const data = await getData();
+      const directors = await getDirectors();
+      const quantityDirectors = await getQuantityDirectors();
+
+      let meanDirectorRatings = [];
+      let sumDirectors = [];
+
+      // initialise arrays
+      for (let i = 0; i < directors.length; i++) {
+        meanDirectorRatings[i] = 0;
+        sumDirectors[i] = 0;
+      }
+
+      data.forEach(row => {
+        let rating = parseInt(row[1]);
+
+        for (let i = 0; i < row[8].length; i++) {
+          let index = directors.indexOf(row[8][i]);
+          sumDirectors[index] += rating;
+        }
+      })
+
+      for (let i = 0; i < meanDirectorRatings.length; i++) {
+        meanDirectorRatings[i] = Math.round((sumDirectors[i] / quantityDirectors[i]) * 10) / 10;
+      }
+
+      return meanDirectorRatings;
+    }
+
+    // returns array of top 3 director ratings (sorted descending)
+    async function getTop3DirectorRatings() {
+      let meanDirectorRatings = await getMeanDirectorRatings();
+
+      let top3DirectorRatings = [];
+
+      for (let i = 0; i < 3; i++) {
+        let highestRating = meanDirectorRatings[0];
+        let highestRatingIndex = 0;
+
+        for (let j = 1; j < meanDirectorRatings.length; j++) {
+          if (highestRating < meanDirectorRatings[j]) {
+            highestRating = meanDirectorRatings[j];
+            highestRatingIndex = j;
+          }
+        }
+        top3DirectorRatings.push(highestRating);
+        meanDirectorRatings.splice(highestRatingIndex, 1);
+      }
+
+      return top3DirectorRatings;
+    }
+    
+    // returns array of top 3 directors (sorted descending)
+    async function getTop3Directors() {
+      const top3DirectorRatings = await getTop3DirectorRatings();
+      let directors = await getDirectors();
+      let meanDirectorRatings = await getMeanDirectorRatings();
+
+      let top3Directors = [];
+      let ratingIndex = 0;
+
+      for (let i = 0; i < top3DirectorRatings.length; i++) {
+        let rating = top3DirectorRatings[i];
+
+        ratingIndex = meanDirectorRatings.indexOf(rating);
+        top3Directors.push(directors[ratingIndex]);
+        directors.splice(ratingIndex, 1);
+        meanDirectorRatings.splice(ratingIndex, 1);
+      }
+
+      return top3Directors;
     }
 
   </script>
