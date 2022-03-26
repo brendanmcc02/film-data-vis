@@ -16,17 +16,17 @@
     main();
 
     async function main() {
-      const top3Directors = await getTop3Directors();
-      const top3DirectorRatings = await getTop3DirectorRatings();
+      const directors = await getDirectors();
+      const meanDirectorRatings = await getMeanDirectorRatings();
 
       const ctx = document.getElementById('myChart').getContext('2d');
       const myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: top3Directors,
+          labels: directors,
           datasets: [{
             label: 'Top 3 Rated Directors',
-            data: top3DirectorRatings,
+            data: meanDirectorRatings,
             backgroundColor: [
               'rgba(54, 162, 235, 0.2)'
             ],
