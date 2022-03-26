@@ -16,17 +16,17 @@
     main();
 
     async function main() {
-      const directors = await getDirectors();
-      const meanDirectorRatings = await getMeanDirectorRatings();
+      const top5Directors = await getTop5Directors();
+      const top5DirectorRatings = await getTop5DirectorRatings();
 
       const ctx = document.getElementById('myChart').getContext('2d');
       const myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: directors,
+          labels: top5Directors,
           datasets: [{
-            label: 'Top 3 Rated Directors',
-            data: meanDirectorRatings,
+            label: 'Top 5 Rated Directors',
+            data: top5DirectorRatings,
             backgroundColor: [
               'rgba(54, 162, 235, 0.2)'
             ],
@@ -256,13 +256,13 @@
       return meanGenreRatings;
     }
 
-    // returns array of top 3 genre ratings (sorted descending)
-    async function getTop3GenreRatings() {
+    // returns array of top 5 genre ratings (sorted descending)
+    async function getTop5GenreRatings() {
       let meanGenreRatings = await getMeanGenreRatings();
 
-      let top3GenreRatings = [];
+      let top5GenreRatings = [];
 
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < 5; i++) {
         let highestRating = meanGenreRatings[0];
         let highestRatingIndex = 0;
 
@@ -272,41 +272,41 @@
             highestRatingIndex = j;
           }
         }
-        top3GenreRatings.push(highestRating);
+        top5GenreRatings.push(highestRating);
         meanGenreRatings.splice(highestRatingIndex, 1);
       }
 
-      return top3GenreRatings;
+      return top5GenreRatings;
     }
 
-    // returns array of top 3 genres (sorted descending)
-    async function getTop3Genres() {
-      const top3GenreRatings = await getTop3GenreRatings();
+    // returns array of top 5 genres (sorted descending)
+    async function getTop5Genres() {
+      const top5GenreRatings = await getTop3GenreRatings();
       let genres = await getGenres();
       let meanGenreRatings = await getMeanGenreRatings();
 
-      let top3Genres = [];
+      let top5Genres = [];
       let ratingIndex = 0;
 
-      for (let i = 0; i < top3GenreRatings.length; i++) {
-        let rating = top3GenreRatings[i];
+      for (let i = 0; i < top5GenreRatings.length; i++) {
+        let rating = top5GenreRatings[i];
 
         ratingIndex = meanGenreRatings.indexOf(rating);
-        top3Genres.push(genres[ratingIndex]);
+        top5Genres.push(genres[ratingIndex]);
         genres.splice(ratingIndex, 1);
         meanGenreRatings.splice(ratingIndex, 1);
       }
 
-      return top3Genres;
+      return top5Genres;
     }
 
-    // returns array of bottom 3 genre ratings (sorted descending)
-    async function getBottom3GenreRatings() {
+    // returns array of bottom 5 genre ratings (sorted descending)
+    async function getBottom5GenreRatings() {
       let meanGenreRatings = await getMeanGenreRatings();
 
-      let bottom3GenreRatings = [];
+      let bottom5GenreRatings = [];
 
-      for (let i = 0; i < 3; i++) {
+      for (let i = 0; i < 5; i++) {
         let lowestRating = meanGenreRatings[0];
         let lowestRatingIndex = 0;
 
@@ -316,32 +316,32 @@
             lowestRatingIndex = j;
           }
         }
-        bottom3GenreRatings.push(lowestRating);
+        bottom5GenreRatings.push(lowestRating);
         meanGenreRatings.splice(lowestRatingIndex, 1);
       }
 
-      return bottom3GenreRatings;
+      return bottom5GenreRatings;
     }
 
-    // returns array of bottom 3 genres (sorted descending)
-    async function getBottom3Genres() {
-      const bottom3GenreRatings = await getBottom3GenreRatings();
+    // returns array of bottom 5 genres (sorted descending)
+    async function getBottom5Genres() {
+      const bottom5GenreRatings = await getBottom5GenreRatings();
       let genres = await getGenres();
       let meanGenreRatings = await getMeanGenreRatings();
 
-      let bottom3Genres = [];
+      let bottom5Genres = [];
       let ratingIndex = 0;
 
-      for (let i = 0; i < bottom3GenreRatings.length; i++) {
-        let rating = bottom3GenreRatings[i];
+      for (let i = 0; i < bottom5GenreRatings.length; i++) {
+        let rating = bottom5GenreRatings[i];
 
         ratingIndex = meanGenreRatings.indexOf(rating);
-        bottom3Genres.push(genres[ratingIndex]);
+        bottom5Genres.push(genres[ratingIndex]);
         genres.splice(ratingIndex, 1);
         meanGenreRatings.splice(ratingIndex, 1);
       }
 
-      return bottom3Genres;
+      return bottom5Genres;
     }
 
     // returns array of runtimes
@@ -462,13 +462,25 @@
       return meanDirectorRatings;
     }
 
-    // returns array of top 3 director ratings (sorted descending)
-    async function getTop3DirectorRatings() {
+    // returns array of top 5 director ratings (with at least 3 films; sorted descending)
+    async function getTop5DirectorRatings() {
+      let directors = await getDirectors();
+      let quantityDirectors = await getQuantityDirectors();
       let meanDirectorRatings = await getMeanDirectorRatings();
 
-      let top3DirectorRatings = [];
+      let top5DirectorRatings = [];
 
-      for (let i = 0; i < 3; i++) {
+      // remove directors with less than 3 films
+      for (let i = 0; i < directors.length; i++) {
+        if (quantityDirectors[i] < 3) {
+          directors.splice(i, 1);
+          meanDirectorRatings.splice(i, 1);
+          quantityDirectors.splice(i, 1);
+          i--;
+        }
+      }
+      
+      for (let i = 0; i < 5; i++) {
         let highestRating = meanDirectorRatings[0];
         let highestRatingIndex = 0;
 
@@ -478,32 +490,44 @@
             highestRatingIndex = j;
           }
         }
-        top3DirectorRatings.push(highestRating);
+        top5DirectorRatings.push(highestRating);
         meanDirectorRatings.splice(highestRatingIndex, 1);
       }
 
-      return top3DirectorRatings;
+      return top5DirectorRatings;
     }
     
-    // returns array of top 3 directors (sorted descending)
-    async function getTop3Directors() {
-      const top3DirectorRatings = await getTop3DirectorRatings();
+    // returns array of top 5 directors (with at least 3 films; sorted descending)
+    async function getTop5Directors() {
+      const top5DirectorRatings = await getTop5DirectorRatings();
       let directors = await getDirectors();
+      let quantityDirectors = await getQuantityDirectors();
       let meanDirectorRatings = await getMeanDirectorRatings();
 
-      let top3Directors = [];
+      let top5Directors = [];
+
+      // remove directors with less than 3 films
+      for (let i = 0; i < directors.length; i++) {
+        if (quantityDirectors[i] < 3) {
+          directors.splice(i, 1);
+          meanDirectorRatings.splice(i, 1);
+          quantityDirectors.splice(i, 1);
+          i--;
+        }
+      }
+
       let ratingIndex = 0;
 
-      for (let i = 0; i < top3DirectorRatings.length; i++) {
-        let rating = top3DirectorRatings[i];
+      for (let i = 0; i < top5DirectorRatings.length; i++) {
+        let rating = top5DirectorRatings[i];
 
         ratingIndex = meanDirectorRatings.indexOf(rating);
-        top3Directors.push(directors[ratingIndex]);
+        top5Directors.push(directors[ratingIndex]);
         directors.splice(ratingIndex, 1);
         meanDirectorRatings.splice(ratingIndex, 1);
       }
 
-      return top3Directors;
+      return top5Directors;
     }
 
   </script>
