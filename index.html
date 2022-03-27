@@ -180,7 +180,7 @@
       let myRatings = [];
 
       data.forEach(row => {
-        myRatings.push(row[1])
+        myRatings.push(parseInt(row[1]))
       })
 
       return myRatings;
@@ -204,7 +204,7 @@
       return genres;
     }
 
-    // [NOT USED] returns array of quantity of films per genre (sorted alphabetically)
+    // returns array of quantity of films per genre (sorted alphabetically)
     async function getQuantityGenres() {
       const data = await getData();
       const genres = await getGenres();
@@ -350,7 +350,7 @@
       let runtimes = [];
 
       data.forEach(row => {
-        runtimes.push(row[4]);
+        runtimes.push(parseInt(row[4]));
       });
 
       return runtimes;
@@ -362,7 +362,7 @@
       let imdbVotes = [];
 
       data.forEach(row => {
-        imdbVotes.push(row[7]);
+        imdbVotes.push(parseInt(row[7]));
       });
 
       return imdbVotes;
@@ -374,7 +374,7 @@
       let years = [];
 
       data.forEach(row => {
-        years.push(row[5]);
+        years.push(parseInt(row[5]));
       });
 
       return years;
@@ -522,7 +522,7 @@
       let imdbRatings = [];
 
       data.forEach(row => {
-        imdbRatings.push(row[3]);
+        imdbRatings.push(parseInt(row[3]));
       });
 
       return imdbRatings;
