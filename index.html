@@ -638,7 +638,7 @@
     async function getImdbRatingMyTop25() {
       const myTop25Titles = await getMyTop25Titles();
       const titles = await getTitles();
-      const imdbRatings = await getMyRatings();
+      const imdbRatings = await getImdbRatings();
 
       let imdbRatingMyTop25 = [];
 
