@@ -16,33 +16,25 @@
     main();
 
     async function main() {
-      const top5Directors = await getTop5Directors();
-      const top5DirectorRatings = await getTop5DirectorRatings();
+      const genres = await getGenres();
+      const quantityGenres = await getQuantityGenres();
 
       const ctx = document.getElementById('myChart').getContext('2d');
       const myChart = new Chart(ctx, {
-        type: 'bar',
+        type: 'doughnut',
         data: {
-          labels: top5Directors,
+          labels: genres,
           datasets: [{
-            label: 'Top 5 Rated Directors',
-            data: top5DirectorRatings,
+            label: 'Proportion of Genres',
+            data: quantityGenres,
             backgroundColor: [
               'rgba(54, 162, 235, 0.2)'
             ],
             borderColor: [
               'rgb(54, 162, 235)'
             ],
-            borderWidth: 1
+            hoverOffset: 4
           }]
-        },
-        options: {
-          scales: {
-            y: {
-              min: 0,
-              max: 10,
-            }
-          }
         }
       });
     }
@@ -162,18 +154,6 @@
       return data;
     }
 
-    // returns array of titles
-    async function getTitles() {
-      const data = await getData();
-      let titles = [];
-
-      data.forEach(row => {
-        titles.push(row[2])
-      });
-
-      return titles;
-    }
-
     // returns array of ratings
     async function getRatings() {
       const data = await getData();
@@ -204,7 +184,7 @@
       return genres;
     }
 
-    // returns array of quantity of films per genre (sorted alphabetically)
+    // [NOT USED] returns array of quantity of films per genre (sorted alphabetically)
     async function getQuantityGenres() {
       const data = await getData();
       const genres = await getGenres();
