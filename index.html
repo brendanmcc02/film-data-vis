@@ -174,7 +174,7 @@
       return titles;
     }
 
-    // returns array of my ratings
+    // returns array of my ratings (type: int)
     async function getMyRatings() {
       const data = await getData();
       let myRatings = [];
@@ -225,7 +225,7 @@
       return quantityGenres;
     }
 
-    // returns array of mean genre ratings (sorted alphabetically)
+    // returns array of mean genre ratings (type: int; sorted alphabetically)
     async function getMeanGenreRatings() {
       const data = await getData();
       const genres = await getGenres();
@@ -344,7 +344,7 @@
       return bottom5Genres;
     }
 
-    // returns array of runtimes
+    // returns array of runtimes (type: int)
     async function getRuntimes() {
       const data = await getData();
       let runtimes = [];
@@ -356,7 +356,7 @@
       return runtimes;
     }
 
-    // returns array of number of imdb votes
+    // returns array of number of imdb votes (type: int)
     async function getImdbVotes() {
       const data = await getData();
       let imdbVotes = [];
@@ -368,7 +368,7 @@
       return imdbVotes;
     }
 
-    // returns array of release years
+    // returns array of release years (type: int)
     async function getYears() {
       const data = await getData();
       let years = [];
@@ -419,7 +419,7 @@
       return quantityDirectors;
     }
 
-    // returns array of mean director ratings (sorted alphabetically)
+    // returns array of mean director ratings (type: int; sorted alphabetically)
     async function getMeanDirectorRatings() {
       const data = await getData();
       const directors = await getDirectors();
@@ -516,7 +516,7 @@
       return top5Directors;
     }
 
-    // returns array of imdb ratings
+    // returns array of imdb ratings (type: int)
     async function getImdbRatings() {
       const data = await getData();
       let imdbRatings = [];
@@ -636,12 +636,13 @@
 
     // returns array of imdb rating of my top 25 films
     async function getImdbRatingMyTop25() {
+      const myTop25Titles = await getMyTop25Titles();
       const titles = await getTitles();
       const imdbRatings = await getMyRatings();
 
       let imdbRatingMyTop25 = [];
 
-      top25ImdbTitles.forEach(title => {
+      myTop25Titles.forEach(title => {
         let index = titles.indexOf(title);
         imdbRatingMyTop25.push(imdbRatings[index]);
       })
