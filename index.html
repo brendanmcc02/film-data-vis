@@ -16,23 +16,33 @@
     main();
 
     async function main() {
-      const genres = await getGenres();
-      const quantityGenres = await getQuantityGenres();
+      const top25ImdbTitles = await getTop25ImdbTitles();
+      const top25ImdbRatings = await getTop25ImdbRatings();
 
       const ctx = document.getElementById('myChart').getContext('2d');
       const myChart = new Chart(ctx, {
-        type: 'doughnut',
+        type: 'bar',
         data: {
-          labels: genres,
+          labels: top25ImdbTitles,
           datasets: [{
-            label: 'Proportion of Genres',
-            data: quantityGenres,
+            label: 'Top 5 Rated Directors',
+            data: top25ImdbRatings,
             backgroundColor: [
-              'rgba(54, 162, 235, 0.8)'
+              'rgba(54, 162, 235, 0.2)'
             ],
-            hoverOffset: 10,
-            radius: 500
+            borderColor: [
+              'rgb(54, 162, 235)'
+            ],
+            borderWidth: 1
           }]
+        },
+        options: {
+          scales: {
+            y: {
+              min: 0,
+              max: 10,
+            }
+          }
         }
       });
     }
@@ -150,6 +160,18 @@
       }
 
       return data;
+    }
+
+    // returns array of titles
+    async function getTitles() {
+      const data = await getData();
+      let titles = [];
+
+      data.forEach(row => {
+        titles.push(row[2])
+      });
+
+      return titles;
     }
 
     // returns array of ratings
@@ -358,18 +380,6 @@
       return years;
     }
 
-    // returns array of imdb ratings
-    async function getImdbRatings() {
-      const data = await getData();
-      let imdbRatings = [];
-
-      data.forEach(row => {
-        imdbRatings.push(row[3]);
-      });
-
-      return imdbRatings;
-    }
-
     // returns array of directors (sorted alphabetically)
     async function getDirectors() {
       const data = await getData();
@@ -442,16 +452,14 @@
 
     // returns array of top 5 director ratings (with at least 3 films; sorted descending)
     async function getTop5DirectorRatings() {
-      let directors = await getDirectors();
       let quantityDirectors = await getQuantityDirectors();
       let meanDirectorRatings = await getMeanDirectorRatings();
 
       let top5DirectorRatings = [];
 
       // remove directors with less than 3 films
-      for (let i = 0; i < directors.length; i++) {
+      for (let i = 0; i < quantityDirectors.length; i++) {
         if (quantityDirectors[i] < 3) {
-          directors.splice(i, 1);
           meanDirectorRatings.splice(i, 1);
           quantityDirectors.splice(i, 1);
           i--;
@@ -508,6 +516,61 @@
       return top5Directors;
     }
 
+    // returns array of imdb ratings
+    async function getImdbRatings() {
+      const data = await getData();
+      let imdbRatings = [];
+
+      data.forEach(row => {
+        imdbRatings.push(row[3]);
+      });
+
+      return imdbRatings;
+    }
+
+    // returns array of top 25 imdb ratings
+    async function getTop25ImdbRatings() {
+      let imdbRatings = await getImdbRatings();
+
+      let top25ImdbRatings = [];
+
+      for (let i = 0; i < 25; i++) {
+        let highestRating = imdbRatings[0];
+        let highestRatingIndex = 0;
+
+        for (let j = 1; j < imdbRatings.length; j++) {
+          if (highestRating < imdbRatings[j]) {
+            highestRating = imdbRatings[j];
+            highestRatingIndex = j;
+          }
+        }
+        top25ImdbRatings.push(highestRating);
+        imdbRatings.splice(highestRatingIndex, 1);
+      }
+
+      return top25ImdbRatings;
+    }
+
+    async function getTop25ImdbTitles() {
+      let titles = await getTitles();
+      let imdbRatings = await getImdbRatings();
+      let top25ImdbRatings = await getTop25ImdbRatings();
+
+      let top25ImdbTitles = [];
+
+      let ratingIndex = 0;
+
+      for (let i = 0; i < top25ImdbRatings.length; i++) {
+        let rating = top25ImdbRatings[i];
+
+        ratingIndex = imdbRatings.indexOf(rating);
+        top25ImdbTitles.push(titles[ratingIndex]);
+        titles.splice(ratingIndex, 1);
+        imdbRatings.splice(ratingIndex, 1);
+      }
+
+      return top25ImdbTitles;
+    }
   </script>
 </body>
 
