@@ -225,7 +225,7 @@
       return quantityGenres;
     }
 
-    // returns array of mean genre ratings (type: int; sorted alphabetically)
+    // returns array of mean genre ratings (type: float; sorted alphabetically)
     async function getMeanGenreRatings() {
       const data = await getData();
       const genres = await getGenres();
@@ -516,13 +516,13 @@
       return top5Directors;
     }
 
-    // returns array of imdb ratings (type: int)
+    // returns array of imdb ratings (type: float)
     async function getImdbRatings() {
       const data = await getData();
       let imdbRatings = [];
 
       data.forEach(row => {
-        imdbRatings.push(parseInt(row[3]));
+        imdbRatings.push(parseFloat(row[3]));
       });
 
       return imdbRatings;
