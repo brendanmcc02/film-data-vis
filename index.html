@@ -17,7 +17,7 @@
 
     async function main() {
       const top25ImdbTitles = await getTop25ImdbTitles();
-      const top25ImdbRatings = await getTop25ImdbRatings();
+      const myRatingTop25Imdb = await getMyRatingTop25Imdb();
 
       const ctx = document.getElementById('myChart').getContext('2d');
       const myChart = new Chart(ctx, {
@@ -25,13 +25,13 @@
         data: {
           labels: top25ImdbTitles,
           datasets: [{
-            label: 'Top 5 Rated Directors',
-            data: top25ImdbRatings,
+            label: 'Title',
+            data: myRatingTop25Imdb,
             backgroundColor: [
               'rgba(54, 162, 235, 0.2)'
             ],
             borderColor: [
-              'rgb(54, 162, 235)'
+              'rgba(54, 162, 235, 1)'
             ],
             borderWidth: 1
           }]
@@ -174,16 +174,16 @@
       return titles;
     }
 
-    // returns array of ratings
-    async function getRatings() {
+    // returns array of my ratings
+    async function getMyRatings() {
       const data = await getData();
-      let ratings = [];
+      let myRatings = [];
 
       data.forEach(row => {
-        ratings.push(row[1])
+        myRatings.push(row[1])
       })
 
-      return ratings;
+      return myRatings;
     }
 
     // returns array of genres (sorted alphabetically)
@@ -551,6 +551,7 @@
       return top25ImdbRatings;
     }
 
+    // returns array of top 25 imdb titles
     async function getTop25ImdbTitles() {
       let titles = await getTitles();
       let imdbRatings = await getImdbRatings();
@@ -571,6 +572,23 @@
 
       return top25ImdbTitles;
     }
+
+    // returns array of my rating of top 25 imdb films
+    async function getMyRatingTop25Imdb() {
+      const top25ImdbTitles = await getTop25ImdbTitles();
+      const titles = await getTitles();
+      const myRatings = await getMyRatings();
+
+      let myRatingTop25Imdb = [];
+
+      top25ImdbTitles.forEach(title => {
+        let index = titles.indexOf(title);
+        myRatingTop25Imdb.push(myRatings[index]);
+      })
+
+      return myRatingTop25Imdb;
+    }
+
   </script>
 </body>
 
