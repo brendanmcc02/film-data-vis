@@ -16,17 +16,17 @@
     main();
 
     async function main() {
-      const top25ImdbTitles = await getTop25ImdbTitles();
-      const myRatingTop25Imdb = await getMyRatingTop25Imdb();
+      const myTop25Titles = await getMyTop25Titles();
+      const myTop25Ratings = await getMyTop25Ratings();
 
       const ctx = document.getElementById('myChart').getContext('2d');
       const myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: top25ImdbTitles,
+          labels: myTop25Titles,
           datasets: [{
             label: 'Title',
-            data: myRatingTop25Imdb,
+            data: myTop25Ratings,
             backgroundColor: [
               'rgba(54, 162, 235, 0.2)'
             ],
@@ -553,9 +553,9 @@
 
     // returns array of top 25 imdb titles
     async function getTop25ImdbTitles() {
+      const top25ImdbRatings = await getTop25ImdbRatings();
       let titles = await getTitles();
       let imdbRatings = await getImdbRatings();
-      let top25ImdbRatings = await getTop25ImdbRatings();
 
       let top25ImdbTitles = [];
 
@@ -587,6 +587,67 @@
       })
 
       return myRatingTop25Imdb;
+    }
+
+    // returns array of my top 25 ratings
+    async function getMyTop25Ratings() {
+      let myRatings = await getMyRatings();
+
+      let myTop25Ratings = [];
+
+      for (let i = 0; i < 25; i++) {
+        let highestRating = myRatings[0];
+        let highestRatingIndex = 0;
+
+        for (let j = 1; j < myRatings.length; j++) {
+          if (highestRating < myRatings[j]) {
+            highestRating = myRatings[j];
+            highestRatingIndex = j;
+          }
+        }
+        myTop25Ratings.push(highestRating);
+        myRatings.splice(highestRatingIndex, 1);
+      }
+
+      return myTop25Ratings;
+    }
+
+    // returns array of my top 25 titles
+    async function getMyTop25Titles() {
+      const myTop25Ratings = await getMyTop25Ratings();
+      let titles = await getTitles();
+      let myRatings = await getMyRatings();
+
+      let myTop25Titles = [];
+
+      let ratingIndex = 0;
+
+      for (let i = 0; i < myTop25Ratings.length; i++) {
+        let rating = myTop25Ratings[i];
+
+        ratingIndex = myRatings.indexOf(rating);
+        myTop25Titles.push(titles[ratingIndex]);
+        titles.splice(ratingIndex, 1);
+        myRatings.splice(ratingIndex, 1);
+      }
+
+      return myTop25Titles;
+    }
+
+    // returns array of imdb rating of my top 25 films
+    async function getImdbRatingMyTop25() {
+      const myTop25Titles = await getMyTop25Titles();
+      const titles = await getTitles();
+      const imdbRatings = await getMyRatings();
+
+      let imdbRatingMyTop25 = [];
+
+      top25ImdbTitles.forEach(title => {
+        let index = titles.indexOf(title);
+        imdbRatingMyTop25.push(imdbRatings[index]);
+      })
+
+      return imdbRatingMyTop25;
     }
 
   </script>
