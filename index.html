@@ -17,7 +17,7 @@
 
     async function main() {
       const myTop25Titles = await getMyTop25Titles();
-      const myTop25Ratings = await getMyTop25Ratings();
+      const imdbRatingMyTop25 = await getImdbRatingMyTop25();
 
       const ctx = document.getElementById('myChart').getContext('2d');
       const myChart = new Chart(ctx, {
@@ -636,7 +636,6 @@
 
     // returns array of imdb rating of my top 25 films
     async function getImdbRatingMyTop25() {
-      const myTop25Titles = await getMyTop25Titles();
       const titles = await getTitles();
       const imdbRatings = await getMyRatings();
 
