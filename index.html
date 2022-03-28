@@ -17,7 +17,7 @@
 
     async function main() {
       const decades = await getDecades();
-      const meanDecadeRatings = await getMeanDecadeRatings();
+      const quantityDecades = await getQuantityDecades();
 
       const ctx = document.getElementById('myChart').getContext('2d');
       const myChart = new Chart(ctx, {
@@ -26,7 +26,7 @@
           labels: decades,
           datasets: [{
             label: 'Title',
-            data: meanDecadeRatings,
+            data: quantityDecades,
             backgroundColor: [
               'rgba(54, 162, 235, 0.2)'
             ],
@@ -39,8 +39,9 @@
         options: {
           scales: {
             y: {
-              min: 0,
-              max: 10,
+              // min: 0,
+              // max: 10,
+              beginAtZero: true
             }
           }
         }
