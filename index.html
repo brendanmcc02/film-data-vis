@@ -17,7 +17,7 @@
 
     async function main() {
       const decades = await getDecades();
-      const quantityDecades = await getQuantityDecades();
+      const meanDecadeRatings = await getMeanDecadeRatings();
 
       const ctx = document.getElementById('myChart').getContext('2d');
       const myChart = new Chart(ctx, {
@@ -26,7 +26,7 @@
           labels: decades,
           datasets: [{
             label: 'Title',
-            data: quantityDecades,
+            data: meanDecadeRatings,
             backgroundColor: [
               'rgba(54, 162, 235, 0.2)'
             ],
@@ -46,7 +46,6 @@
           }
         }
       });
-      console.log("Quantity Decades:", quantityDecades);
     }
 
     // returns array of clean data
