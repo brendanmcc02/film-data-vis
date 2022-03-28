@@ -677,15 +677,15 @@
 
     // returns array of decades (with at least 10 films)
     async function getDecades() {
-      const quantityDecades = await getQuantityDecades();
+      let quantityDecades = await getQuantityDecades();
 
       let decades = [];
 
-      quantityDecades.forEach(decade => {
-        if (decade > 9) {
-          decades.push(decade);
+      for (let i = 0; i < quantityDecades.length; i++) {
+        if (quantityDecades[i] > 9) {
+          decades.push(1880 + (i * 10));
         }
-      });
+      }
 
       return decades;
     }
