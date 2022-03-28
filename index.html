@@ -16,17 +16,17 @@
     main();
 
     async function main() {
-      const decades = await getDecades();
-      const meanDecadeRatings = await getMeanDecadeRatings();
+      const runtimeIntervals = getRuntimeIntervals();
+      const meanRuntimeRatings = await getMeanRuntimeRatings();
 
       const ctx = document.getElementById('myChart').getContext('2d');
       const myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: decades,
+          labels: runtimeIntervals,
           datasets: [{
             label: 'Title',
-            data: meanDecadeRatings,
+            data: meanRuntimeRatings,
             backgroundColor: [
               'rgba(54, 162, 235, 0.2)'
             ],
@@ -637,18 +637,6 @@
       return imdbRatingMyTop25;
     }
 
-    // returns array of runtimes (type: int)
-    async function getRuntimes() {
-      const data = await getData();
-      let runtimes = [];
-
-      data.forEach(row => {
-        runtimes.push(parseInt(row[4]));
-      });
-
-      return runtimes;
-    }
-
     // returns array of quantity of films per decade
     async function getQuantityDecades() {
       const data = await getData();
@@ -656,7 +644,7 @@
       let quantityDecades = [];
       let decades = [];
 
-      for (year = 1880; year < 2030; year+=10) {
+      for (year = 1880; year < 2030; year += 10) {
         decades.push(year);
       }
 
@@ -665,7 +653,7 @@
       }
 
       data.forEach(row => {
-        for (let year = 1880; year < 2030; year+=10) {
+        for (let year = 1880; year < 2030; year += 10) {
           if (row[5] < year + 10) {
             let index = decades.indexOf(year);
             quantityDecades[index]++;
@@ -725,6 +713,86 @@
 
       for (let i = 0; i < meanDecadeRatings.length; i++) {
         meanDecadeRatings[i] = Math.round((sumDecades[i] / quantityDecades[i]) * 10) / 10;
+      }
+
+      return meanDecadeRatings;
+    }
+
+    // returns array of runtimes (type: int)
+    async function getRuntimes() {
+      const data = await getData();
+      let runtimes = [];
+
+      data.forEach(row => {
+        runtimes.push(parseInt(row[4]));
+      });
+
+      return runtimes;
+    }
+
+    // returns array of runtime intervals [<90, <120, ..., <210, <240]
+    function getRuntimeIntervals() {
+      let runtimeIntervals = [];
+
+      for (let runtimeInterval = 90; runtimeInterval < 270; runtimeInterval += 30) {
+        runtimeInterval.push(runtimeIntervals);
+      }
+
+      return runtimeIntervals;
+    }
+
+    // returns array of quantity of films per runtime interval
+    async function getQuantityRuntimes() {
+      const runtimes = await getRuntimes();
+
+      let quantityRuntimes = [];
+      let runtimeIntervals = getRuntimeIntervals();
+
+      for (let i = 0; i < runtimeIntervals.length; i++) {
+        quantityRuntimes[i] = 0;
+      }
+
+      runtimes.forEach(runtime => {
+        for (let runtimeInterval = 90; year < 270; runtimeInterval += 30) {
+          if (runtime < runtimeInterval) {
+            let index = runtimeIntervals.indexOf(runtimeInterval);
+            quantityRuntimes[index]++;
+            year = 270;
+          }
+        }
+      });
+
+      return quantityRuntimes;
+    }
+
+    // returns array of mean runtime ratings (type: float)
+    async function getMeanRuntimeRatings() {
+      const data = await getData();
+      const runtimeIntervals = getRuntimeIntervals();
+      const quantityRuntimes = await getQuantityRuntimes();
+
+      let meanRuntimeRatings = [];
+      let sumRuntimes = [];
+
+      // initialise arrays
+      for (let i = 0; i < runtimeIntervals.length; i++) {
+        meanRuntimeRatings[i] = 0;
+        sumRuntimes[i] = 0;
+      }
+
+      data.forEach(row => {
+        let rating = parseInt(row[1]);
+        for (let runtime = 90; runtime < 270; runtime += 30) {
+          if (row[4] < runtime) {
+            let index = runtimeIntervals.indexOf(runtime);
+            sumRuntimes[index] += rating;
+            year = 270;
+          }
+        }
+      });
+
+      for (let i = 0; i < meanRuntimeRatings.length; i++) {
+        meanRuntimeRatings[i] = Math.round((sumRuntimes[i] / quantityRuntimes[i]) * 10) / 10;
       }
 
       return meanDecadeRatings;
