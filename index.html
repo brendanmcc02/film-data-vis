@@ -45,6 +45,7 @@
           }
         }
       });
+      console.log(getQuantityRuntimes());
     }
 
     // returns array of clean data
@@ -743,10 +744,11 @@
     // returns array of quantity of films per runtime interval
     async function getQuantityRuntimes() {
       const runtimes = await getRuntimes();
+      const runtimeIntervals = getRuntimeIntervals();
 
-      let quantityRuntimes = [];
-      let runtimeIntervals = getRuntimeIntervals();
+      let quantityRuntimes = [];      
 
+      // initialising array
       for (let i = 0; i < runtimeIntervals.length; i++) {
         quantityRuntimes[i] = 0;
       }
