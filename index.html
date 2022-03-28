@@ -709,7 +709,7 @@
         let rating = parseInt(row[1]);
         let decade = parseInt(row[5] / 10) * 10;
         let index = decades.indexOf(decade);
-        if (index != -1) {
+        if (index !== -1) {
           sumDecades[index] += rating;
         }
       });
