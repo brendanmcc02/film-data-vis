@@ -45,7 +45,6 @@
           }
         }
       });
-      console.log(getQuantityDecades());
     }
 
     // returns array of clean data
@@ -753,7 +752,7 @@
       }
 
       runtimes.forEach(runtime => {
-        for (let runtimeInterval = 90; year < 270; runtimeInterval += 30) {
+        for (let runtimeInterval = 90; runtimeInterval < 270; runtimeInterval += 30) {
           if (runtime < runtimeInterval) {
             let index = runtimeIntervals.indexOf(runtimeInterval);
             quantityRuntimes[index]++;
