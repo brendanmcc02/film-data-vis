@@ -45,7 +45,6 @@
           }
         }
       });
-      console.log(decades);
     }
 
     // returns array of clean data
@@ -714,6 +713,13 @@
           sumDecades[index] += rating;
         }
       });
+
+      for (let i = 0; i < quantityDecades.length; i++) {
+        if (quantityDecades[i] < 10) {
+          quantityDecades.splice(i, 1);
+          i--;
+        }
+      }
 
       for (let i = 0; i < meanDecadeRatings.length; i++) {
         meanDecadeRatings[i] = Math.round((sumDecades[i] / quantityDecades[i]) * 10) / 10;
