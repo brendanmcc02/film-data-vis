@@ -768,7 +768,8 @@
 
     // returns array of mean runtime ratings (type: float)
     async function getMeanRuntimeRatings() {
-      const data = await getData();
+      const myRatings = await getMyRatings();
+      const runtimes = await getRuntimes();
       const runtimeIntervals = getRuntimeIntervals();
       const quantityRuntimes = await getQuantityRuntimes();
 
@@ -781,16 +782,16 @@
         sumRuntimes[i] = 0;
       }
 
-      data.forEach(row => {
-        let rating = parseInt(row[1]);
+      for (let i = 0; i < runtimes.length; i++) {
+        let myRating = myRatings[i];
         for (let runtime = 90; runtime < 270; runtime += 30) {
-          if (row[4] < runtime) {
+          if (runtimes[i] < runtime) {
             let index = runtimeIntervals.indexOf(runtime);
-            sumRuntimes[index] += rating;
+            sumRuntimes[index] += myRating;
             year = 270;
           }
         }
-      });
+      }
 
       for (let i = 0; i < meanRuntimeRatings.length; i++) {
         meanRuntimeRatings[i] = Math.round((sumRuntimes[i] / quantityRuntimes[i]) * 10) / 10;
