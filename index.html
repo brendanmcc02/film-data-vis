@@ -731,23 +731,16 @@
       return runtimes;
     }
 
-    // returns array of runtime intervals [<90, <120, ..., <210, <240]
-    function getRuntimeIntervals() {
+    // returns array of quantity of films per runtime interval
+    async function getQuantityRuntimes() {
+      const runtimes = await getRuntimes();
+
+      let quantityRuntimes = [];
       let runtimeIntervals = [];
 
       for (let runtimeInterval = 90; runtimeInterval < 270; runtimeInterval += 30) {
         runtimeIntervals.push(runtimeInterval);
       }
-
-      return runtimeIntervals;
-    }
-
-    // returns array of quantity of films per runtime interval
-    async function getQuantityRuntimes() {
-      const runtimes = await getRuntimes();
-      const runtimeIntervals = getRuntimeIntervals();
-
-      let quantityRuntimes = [];      
 
       // initialising array
       for (let i = 0; i < runtimeIntervals.length; i++) {
@@ -766,6 +759,22 @@
 
       return quantityRuntimes;
     }
+
+    // returns array of runtime intervals (with at least 10 films)
+    async function getRuntimeIntervals() {
+      const quantityRuntimes = await getQuantityRuntimes();
+      let runtimeIntervals = [];
+
+      for (let i = 0; i < quantityRuntimes.length; i++) {
+        if (quantityRuntimes[i] > 9) {
+          runtimeIntervals.push(runtimeInterval);
+        }
+      }
+
+      return runtimeIntervals;
+    }
+
+    
 
     // returns array of mean runtime ratings (type: float)
     async function getMeanRuntimeRatings() {
@@ -791,6 +800,13 @@
             sumRuntimes[index] += myRating;
             runtime = 270;
           }
+        }
+      }
+
+      for (let i = 0; i < quantityRuntimes.length; i++) {
+        if (quantityRuntimes[i] < 10) {
+          quantityRuntimes.splice(i, 1);
+          i--;
         }
       }
 
