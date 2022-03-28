@@ -16,17 +16,17 @@
     main();
 
     async function main() {
-      const myTop25Titles = await getMyTop25Titles();
-      const imdbRatingMyTop25 = await getImdbRatingMyTop25();
+      const decades = await getDecades();
+      const meanDecadeRatings = await getMeanDecadeRatings();
 
       const ctx = document.getElementById('myChart').getContext('2d');
       const myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: myTop25Titles,
+          labels: decades,
           datasets: [{
             label: 'Title',
-            data: imdbRatingMyTop25,
+            data: meanDecadeRatings,
             backgroundColor: [
               'rgba(54, 162, 235, 0.2)'
             ],
@@ -181,7 +181,7 @@
 
       data.forEach(row => {
         myRatings.push(parseInt(row[1]))
-      })
+      });
 
       return myRatings;
     }
@@ -197,11 +197,9 @@
             genres.push(row[6][i]);
           }
         }
-      })
+      });
 
-      genres = genres.sort();
-
-      return genres;
+      return genres.sort();
     }
 
     // returns array of quantity of films per genre (sorted alphabetically)
@@ -220,7 +218,7 @@
           let index = genres.indexOf(row[6][i]);
           quantityGenres[index] += 1;
         }
-      })
+      });
 
       return quantityGenres;
     }
@@ -247,7 +245,7 @@
           let index = genres.indexOf(row[6][i]);
           sumGenres[index] += rating;
         }
-      })
+      });
 
       for (let i = 0; i < meanGenreRatings.length; i++) {
         meanGenreRatings[i] = Math.round((sumGenres[i] / quantityGenres[i]) * 10) / 10;
@@ -344,18 +342,6 @@
       return bottom5Genres;
     }
 
-    // returns array of runtimes (type: int)
-    async function getRuntimes() {
-      const data = await getData();
-      let runtimes = [];
-
-      data.forEach(row => {
-        runtimes.push(parseInt(row[4]));
-      });
-
-      return runtimes;
-    }
-
     // returns array of number of imdb votes (type: int)
     async function getImdbVotes() {
       const data = await getData();
@@ -391,7 +377,7 @@
             directors.push(row[8][i]);
           }
         }
-      })
+      });
 
       directors = directors.sort();
 
@@ -414,7 +400,7 @@
           let index = directors.indexOf(row[8][i]);
           quantityDirectors[index] += 1;
         }
-      })
+      });
 
       return quantityDirectors;
     }
@@ -441,7 +427,7 @@
           let index = directors.indexOf(row[8][i]);
           sumDirectors[index] += rating;
         }
-      })
+      });
 
       for (let i = 0; i < meanDirectorRatings.length; i++) {
         meanDirectorRatings[i] = Math.round((sumDirectors[i] / quantityDirectors[i]) * 10) / 10;
@@ -450,16 +436,16 @@
       return meanDirectorRatings;
     }
 
-    // returns array of top 5 director ratings (with at least 3 films; sorted descending)
+    // returns array of top 5 director ratings (with at least 5 films; sorted descending)
     async function getTop5DirectorRatings() {
       let quantityDirectors = await getQuantityDirectors();
       let meanDirectorRatings = await getMeanDirectorRatings();
 
       let top5DirectorRatings = [];
 
-      // remove directors with less than 3 films
+      // remove directors with less than 5 films
       for (let i = 0; i < quantityDirectors.length; i++) {
-        if (quantityDirectors[i] < 3) {
+        if (quantityDirectors[i] < 5) {
           meanDirectorRatings.splice(i, 1);
           quantityDirectors.splice(i, 1);
           i--;
@@ -483,7 +469,7 @@
       return top5DirectorRatings;
     }
 
-    // returns array of top 5 directors (with at least 3 films; sorted descending)
+    // returns array of top 5 directors (with at least 5 films; sorted descending)
     async function getTop5Directors() {
       const top5DirectorRatings = await getTop5DirectorRatings();
       let directors = await getDirectors();
@@ -492,9 +478,9 @@
 
       let top5Directors = [];
 
-      // remove directors with less than 3 films
+      // remove directors with less than 5 films
       for (let i = 0; i < directors.length; i++) {
-        if (quantityDirectors[i] < 3) {
+        if (quantityDirectors[i] < 5) {
           directors.splice(i, 1);
           meanDirectorRatings.splice(i, 1);
           quantityDirectors.splice(i, 1);
@@ -584,7 +570,7 @@
       top25ImdbTitles.forEach(title => {
         let index = titles.indexOf(title);
         myRatingTop25Imdb.push(myRatings[index]);
-      })
+      });
 
       return myRatingTop25Imdb;
     }
@@ -645,9 +631,94 @@
       myTop25Titles.forEach(title => {
         let index = titles.indexOf(title);
         imdbRatingMyTop25.push(imdbRatings[index]);
-      })
+      });
 
       return imdbRatingMyTop25;
+    }
+
+    // returns array of runtimes (type: int)
+    async function getRuntimes() {
+      const data = await getData();
+      let runtimes = [];
+
+      data.forEach(row => {
+        runtimes.push(parseInt(row[4]));
+      });
+
+      return runtimes;
+    }
+
+    // returns array of quantity of films per decade
+    async function getQuantityDecades() {
+      const data = await getData();
+
+      let quantityDecades = [];
+      let decades = [];
+
+      for (year = 1880; year < 2030; year+=10) {
+        decades.push(parseInt(year));
+      }
+
+      for (let i = 0; i < decades.length; i++) {
+        quantityDecades[i] = 0;
+      }
+
+      data.forEach(row => {
+        for (let year = 1880; year < 2030; year+=10) {
+          if (row[5] < year + 10) {
+            let index = decades.indexOf(year);
+            quantityDecades[index]++;
+          }
+        }
+      });
+
+      return quantityDecades;
+    }
+
+    // returns array of decades (with at least 10 films)
+    async function getDecades() {
+      const quantityDecades = await getQuantityDecades();
+
+      let decades = [];
+
+      quantityDecades.forEach(decade => {
+        if (decade > 9) {
+          decades.push(decade);
+        }
+      });
+
+      return decades;
+    }
+
+    // returns array of mean decade ratings (type: float)
+    async function getMeanDecadeRatings() {
+      const data = await getData();
+      const decades = await getDecades();
+      const quantityDecades = await getQuantityDecades();
+
+      let meanDecadeRatings = [];
+      let sumDecades = [];
+
+      // initialise arrays
+      for (let i = 0; i < decades.length; i++) {
+        meanDecadeRatings[i] = 0;
+        sumDecades[i] = 0;
+      }
+
+      data.forEach(row => {
+        let rating = parseInt(row[1]);
+        let decade = parseInt(row[5] / 10) * 10;
+        let index = decades.indexOf(decade);
+        if (index != -1) {
+          sumDecades[index] += rating;
+        }
+      });
+
+      for (let i = 0; i < meanDecadeRatings.length; i++) {
+        meanDecadeRatings[i] = Math.round((sumDecades[i] / quantityDecades[i]) * 10) / 10;
+      }
+
+      return meanDecadeRatings;
     }
 
   </script>
