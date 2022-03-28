@@ -694,7 +694,7 @@
     async function getMeanDecadeRatings() {
       const data = await getData();
       const decades = await getDecades();
-      const quantityDecades = await getQuantityDecades();
+      let quantityDecades = await getQuantityDecades();
 
       let meanDecadeRatings = [];
       let sumDecades = [];
