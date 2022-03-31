@@ -791,14 +791,14 @@
         sumRuntimes[i] = 0;
       }
 
-      for (let i = 0; i < quantityRuntimes.length; i++) {
-        if (quantityRuntimes[i] < 10) {
-          quantityRuntimes.splice(i, 1);
-          meanRuntimeRatings.splice(i, 1);
-          sumRuntimes.splice(i, 1);
-          i--;
-        }
-      }
+      // for (let i = 0; i < quantityRuntimes.length; i++) {
+      //   if (quantityRuntimes[i] < 10) {
+      //     quantityRuntimes.splice(i, 1);
+      //     meanRuntimeRatings.splice(i, 1);
+      //     sumRuntimes.splice(i, 1);
+      //     i--;
+      //   }
+      // }
 
       for (let i = 0; i < runtimes.length; i++) {
         let myRating = myRatings[i];
