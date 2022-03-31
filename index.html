@@ -802,9 +802,9 @@
       // }
 
       data.forEach(row => {
-        let myRating = row[1];
+        let myRating = parseInt(row[1]);
         for (let runtime = 90; runtime < 270; runtime += 30) {
-          if (row[4] < runtime) {
+          if (parseInt(row[4]) < runtime) {
             let index = runtimeIntervals.indexOf(runtime);
             sumRuntimes[index] += myRating;
             runtime = 270;
