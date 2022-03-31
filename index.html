@@ -786,7 +786,7 @@
       let sumRuntimes = [];
 
       // initialise arrays
-      for (let i = 0; i < runtimeIntervals.length; i++) {
+      for (let i = 0; i < quantityRuntimes.length; i++) {
         meanRuntimeRatings[i] = 0;
         sumRuntimes[i] = 0;
       }
@@ -794,8 +794,8 @@
       for (let i = 0; i < quantityRuntimes.length; i++) {
         if (quantityRuntimes[i] < 10) {
           quantityRuntimes.splice(i, 1);
-          sumRuntimes.splice(i, 1);
           meanRuntimeRatings.splice(i, 1);
+          sumRuntimes.splice(i, 1);
           i--;
         }
       }
