@@ -767,9 +767,9 @@
       let runtimeIntervals = [];
 
       for (let i = 0; i < quantityRuntimes.length; i++) {
-        if (quantityRuntimes[i] > 9) {
+        // if (quantityRuntimes[i] > 9) {
           runtimeIntervals.push(90 + (i * 30));
-        }
+        // }
       }
 
       return runtimeIntervals;
@@ -777,9 +777,8 @@
 
     // returns array of mean runtime ratings (with at least 10 films; type: float)
     async function getMeanRuntimeRatings() {
-      // const myRatings = await getMyRatings();
-      // const runtimes = await getRuntimes();
-      const data = await getData();
+      const myRatings = await getMyRatings();
+      const runtimes = await getRuntimes();
       const runtimeIntervals = await getRuntimeIntervals();
       const quantityRuntimes = await getQuantityRuntimes();
 
@@ -801,17 +800,17 @@
       //   }
       // }
 
-      data.forEach(row => {
-        let myRating = parseInt(row[1]);
+      for (let i = 0; i < runtimes.length; i++) {
+        let myRating = myRatings[i];
         for (let runtime = 90; runtime < 270; runtime += 30) {
-          if (parseInt(row[4]) < runtime) {
+          if (runtimes[i] < runtime) {
             let index = runtimeIntervals.indexOf(runtime);
             sumRuntimes[index] += myRating;
             runtime = 270;
           }
         }
-      });
-        
+      }
+
       for (let i = 0; i < meanRuntimeRatings.length; i++) {
         meanRuntimeRatings[i] = Math.round((sumRuntimes[i] / quantityRuntimes[i]) * 10) / 10;
       }
