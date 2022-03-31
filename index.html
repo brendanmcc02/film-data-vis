@@ -774,9 +774,7 @@
       return runtimeIntervals;
     }
 
-    
-
-    // returns array of mean runtime ratings (type: float)
+    // returns array of mean runtime ratings (with at least 10 films; type: float)
     async function getMeanRuntimeRatings() {
       const myRatings = await getMyRatings();
       const runtimes = await getRuntimes();
