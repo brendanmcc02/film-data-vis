@@ -16,7 +16,7 @@
     main();
 
     async function main() {
-      const runtimeIntervals = getRuntimeIntervals();
+      const runtimeIntervals = await getRuntimeIntervals();
       const meanRuntimeRatings = await getMeanRuntimeRatings();
 
       const ctx = document.getElementById('myChart').getContext('2d');
@@ -763,6 +763,7 @@
     // returns array of runtime intervals (with at least 10 films)
     async function getRuntimeIntervals() {
       const quantityRuntimes = await getQuantityRuntimes();
+      
       let runtimeIntervals = [];
 
       for (let i = 0; i < quantityRuntimes.length; i++) {
@@ -794,7 +795,7 @@
         let myRating = myRatings[i];
         for (let runtime = 90; runtime < 270; runtime += 30) {
           if (runtimes[i] < runtime) {
-            let index = runtimeIntervals.indexOf(runtime); // runtimeIntervals.indexOf is not a function
+            let index = runtimeIntervals.indexOf(runtime);
             sumRuntimes[index] += myRating;
             runtime = 270;
           }
