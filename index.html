@@ -763,7 +763,7 @@
     // returns array of runtime intervals (with at least 10 films)
     async function getRuntimeIntervals() {
       const quantityRuntimes = await getQuantityRuntimes();
-      
+
       let runtimeIntervals = [];
 
       for (let i = 0; i < quantityRuntimes.length; i++) {
@@ -805,6 +805,7 @@
       for (let i = 0; i < quantityRuntimes.length; i++) {
         if (quantityRuntimes[i] < 10) {
           quantityRuntimes.splice(i, 1);
+          sumRuntimes.splice(i, 1);
           i--;
         }
       }
