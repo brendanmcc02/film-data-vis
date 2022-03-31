@@ -778,7 +778,7 @@
     async function getMeanRuntimeRatings() {
       const myRatings = await getMyRatings();
       const runtimes = await getRuntimes();
-      const runtimeIntervals = getRuntimeIntervals();
+      const runtimeIntervals = await getRuntimeIntervals();
       const quantityRuntimes = await getQuantityRuntimes();
 
       let meanRuntimeRatings = [];
@@ -794,7 +794,7 @@
         let myRating = myRatings[i];
         for (let runtime = 90; runtime < 270; runtime += 30) {
           if (runtimes[i] < runtime) {
-            let index = runtimeIntervals.indexOf(runtime);
+            let index = runtimeIntervals.indexOf(runtime); // runtimeIntervals.indexOf is not a function
             sumRuntimes[index] += myRating;
             runtime = 270;
           }
