@@ -16,17 +16,17 @@
     main();
 
     async function main() {
-      const runtimeIntervals = await getRuntimeIntervals();
-      const meanRuntimeRatings = await getMeanRuntimeRatings();
+      const genresSorted = await getGenresSorted();
+      const meanGenreRatings = await getMeanGenreRatings();
 
       const ctx = document.getElementById('myChart').getContext('2d');
       const myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: runtimeIntervals,
+          labels: genresSorted,
           datasets: [{
             label: 'Title',
-            data: meanRuntimeRatings,
+            data: meanGenreRatings,
             backgroundColor: [
               'rgba(54, 162, 235, 0.2)'
             ],
@@ -45,8 +45,6 @@
           }
         }
       });
-      let quantityRuntimes = await getQuantityRuntimes();
-      console.log(quantityRuntimes);
     }
 
     // returns array of clean data
@@ -119,6 +117,14 @@
         }
       }
 
+      // removing documentaries
+      for (let i = 0; i < data.length; i++) {
+        let row = data[i];
+        if (row[9].includes("Documentary")) {
+          data.splice(i, 1);
+        }
+      }
+
       // concatenating directors into one sub-array
       for (let i = 0; i < data.length; i++) {
         let row = data[i];
@@ -141,22 +147,15 @@
         }
       }
 
-      // removing documentaries
-      for (let i = 0; i < data.length; i++) {
-        let row = data[i];
-        if (row[9].includes("Documentary")) {
-          data.splice(i, 1);
-        }
-      }
-
       // removing dateRated, URL, titleType, releaseDate
       for (let i = 0; i < data.length; i++) {
         let row = data[i];
-
-        row.splice(2, 1); // dateRated
-        row.splice(3, 1); // URL
-        row.splice(3, 1); // titleType
-        row.splice(8, 1); // releaseDate
+        
+        row.splice(11, 1); // releaseDate
+        row.splice(10, 1); // imdbVotes
+        row.splice(5, 1);  // titleType
+        row.splice(4, 1);  // URL
+        row.splice(2, 1);  // dateRated
 
         data[i] = row;
       }
@@ -188,66 +187,79 @@
       return myRatings;
     }
 
-    // returns array of genres (sorted alphabetically)
+    // returns 2D-array of genres of each film
     async function getGenres() {
       const data = await getData();
       let genres = [];
 
       data.forEach(row => {
-        for (let i = 0; i < row[6].length; i++) {
-          if (!genres.includes(row[6][i])) {
-            genres.push(row[6][i]);
-          }
-        }
+        genres.push(row[6]);
       });
 
-      return genres.sort();
+      return genres;
+    }
+
+    // returns array of genres (sorted alphabetically)
+    async function getGenresSorted() {
+      const genres = await getGenres();
+      let genresSorted = [];
+
+      for (let i = 0; i < genres.length; i++) {
+        for (let j = 0; j < genres[i].length; j++) {
+          if (!genresSorted.includes(genres[i][j])) {
+            genresSorted.push(genres[i][j]);
+          }
+        }
+      }
+
+      return genresSorted.sort();
     }
 
     // returns array of quantity of films per genre (sorted alphabetically)
     async function getQuantityGenres() {
-      const data = await getData();
       const genres = await getGenres();
+      const genresSorted = await getGenresSorted();
 
       let quantityGenres = [];
 
-      for (let i = 0; i < genres.length; i++) {
+      for (let i = 0; i < genresSorted.length; i++) {
         quantityGenres[i] = 0;
       }
 
-      data.forEach(row => {
-        for (let i = 0; i < row[6].length; i++) {
-          let index = genres.indexOf(row[6][i]);
+      for (let i = 0; i < genres.length; i++) {
+        for (let j = 0; j < genres[i].length; j++) {
+          let index = genresSorted.indexOf(genres[i][j]);
           quantityGenres[index] += 1;
         }
-      });
+      }
 
       return quantityGenres;
     }
 
     // returns array of mean genre ratings (type: float; sorted alphabetically)
     async function getMeanGenreRatings() {
-      const data = await getData();
       const genres = await getGenres();
+      const myRatings = await getMyRatings();
+      const genresSorted = await getGenresSorted();
       const quantityGenres = await getQuantityGenres();
 
       let meanGenreRatings = [];
       let sumGenres = [];
 
       // initialise arrays
-      for (let i = 0; i < genres.length; i++) {
+      for (let i = 0; i < genresSorted.length; i++) {
         meanGenreRatings[i] = 0;
         sumGenres[i] = 0;
       }
 
-      data.forEach(row => {
-        let rating = parseInt(row[1]);
+      for (let i = 0; i < genres.length; i++) {
+        let myRating = parseInt(myRatings[i]);
 
-        for (let i = 0; i < row[6].length; i++) {
-          let index = genres.indexOf(row[6][i]);
-          sumGenres[index] += rating;
+        for (let j = 0; j < genres[i].length; j++) {
+          let index = genresSorted.indexOf(genres[i][j]);
+          sumGenres[index] += myRating;
         }
-      });
+      }
 
       for (let i = 0; i < meanGenreRatings.length; i++) {
         meanGenreRatings[i] = Math.round((sumGenres[i] / quantityGenres[i]) * 10) / 10;
@@ -282,7 +294,7 @@
     // returns array of top 5 genres (sorted descending)
     async function getTop5Genres() {
       const top5GenreRatings = await getTop3GenreRatings();
-      let genres = await getGenres();
+      let genresSorted = await getGenresSorted();
       let meanGenreRatings = await getMeanGenreRatings();
 
       let top5Genres = [];
@@ -292,8 +304,8 @@
         let rating = top5GenreRatings[i];
 
         ratingIndex = meanGenreRatings.indexOf(rating);
-        top5Genres.push(genres[ratingIndex]);
-        genres.splice(ratingIndex, 1);
+        top5Genres.push(genresSorted[ratingIndex]);
+        genresSorted.splice(ratingIndex, 1);
         meanGenreRatings.splice(ratingIndex, 1);
       }
 
@@ -326,7 +338,7 @@
     // returns array of bottom 5 genres (sorted descending)
     async function getBottom5Genres() {
       const bottom5GenreRatings = await getBottom5GenreRatings();
-      let genres = await getGenres();
+      let genresSorted = await getGenresSorted();
       let meanGenreRatings = await getMeanGenreRatings();
 
       let bottom5Genres = [];
@@ -336,24 +348,12 @@
         let rating = bottom5GenreRatings[i];
 
         ratingIndex = meanGenreRatings.indexOf(rating);
-        bottom5Genres.push(genres[ratingIndex]);
-        genres.splice(ratingIndex, 1);
+        bottom5Genres.push(genresSorted[ratingIndex]);
+        genresSorted.splice(ratingIndex, 1);
         meanGenreRatings.splice(ratingIndex, 1);
       }
 
       return bottom5Genres;
-    }
-
-    // returns array of number of imdb votes (type: int)
-    async function getImdbVotes() {
-      const data = await getData();
-      let imdbVotes = [];
-
-      data.forEach(row => {
-        imdbVotes.push(parseInt(row[7]));
-      });
-
-      return imdbVotes;
     }
 
     // returns array of release years (type: int)
@@ -374,9 +374,9 @@
       let directors = [];
 
       data.forEach(row => {
-        for (let i = 0; i < row[8].length; i++) {
-          if (!directors.includes(row[8][i])) {
-            directors.push(row[8][i]);
+        for (let i = 0; i < row[7].length; i++) {
+          if (!directors.includes(row[7][i])) {
+            directors.push(row[7][i]);
           }
         }
       });
@@ -398,8 +398,8 @@
       }
 
       data.forEach(row => {
-        for (let i = 0; i < row[8].length; i++) {
-          let index = directors.indexOf(row[8][i]);
+        for (let i = 0; i < row[7].length; i++) {
+          let index = directors.indexOf(row[7][i]);
           quantityDirectors[index] += 1;
         }
       });
@@ -425,8 +425,8 @@
       data.forEach(row => {
         let rating = parseInt(row[1]);
 
-        for (let i = 0; i < row[8].length; i++) {
-          let index = directors.indexOf(row[8][i]);
+        for (let i = 0; i < row[7].length; i++) {
+          let index = directors.indexOf(row[7][i]);
           sumDirectors[index] += rating;
         }
       });
