@@ -45,6 +45,10 @@
           }
         }
       });
+      
+      const quantityGenres = await getQuantityGenres();
+      const genresSorted = await getGenresSorted();
+      console.log(quantityGenres, genresSorted);
     }
 
     // returns array of clean data
