@@ -293,7 +293,7 @@
 
     // returns array of top 5 genres (sorted descending)
     async function getTop5Genres() {
-      const top5GenreRatings = await getTop3GenreRatings();
+      const top5GenreRatings = await getTop5GenreRatings();
       let genresSorted = await getGenresSorted();
       let meanGenreRatings = await getMeanGenreRatings();
 
