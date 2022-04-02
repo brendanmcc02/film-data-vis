@@ -16,17 +16,17 @@
     main();
 
     async function main() {
-      const genresSorted = await getGenresSorted();
-      const meanGenreRatings = await getMeanGenreRatings();
+      const top5Genres = await getTop5Genres();
+      const top5GenreRatings = await getTop5GenreRatings();
 
       const ctx = document.getElementById('myChart').getContext('2d');
       const myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: genresSorted,
+          labels: top5Genres,
           datasets: [{
             label: 'Title',
-            data: meanGenreRatings,
+            data: top5GenreRatings,
             backgroundColor: [
               'rgba(54, 162, 235, 0.2)'
             ],
