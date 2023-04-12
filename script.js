@@ -1,6 +1,7 @@
 // imports
 import fetch from "node-fetch";
 import * as cheerio from "cheerio";
+import * as fs from "fs";
 
 // global constants
 const myRatingsURL = "https://www.imdb.com/user/ur95934592/ratings";
@@ -13,16 +14,42 @@ const apiRequestOptions = {
 
 main();
 
+// main
 async function main() {
-    const filmIDsAndMyRatings = await getfilmIDsAndMyRatings();
-    console.log(filmIDsAndMyRatings);
+    const startTime = Date.now();
+    /////////////////////////////
+
+    // const preFilmObjects = await getPreFilmObjects();
+    // const rawFilms = await getRawFilms(preFilmObjects);
+
+    let preFilmObjects = [];
+    let rawFilms = [];
+
+    preFilmObjects.push({"filmID" : "tt6718170", "myRating" : 6, "watchedInCinema" : true});
+    rawFilms.push(await getRawFilm(preFilmObjects[0]));
+
+    const stringRawFilm = JSON.stringify(rawFilms[0]);
+
+    fs.writeFileSync("data/rawFilms.json", stringRawFilm, (error) => {
+        if (error) {
+            console.log(error);
+            throw error;
+        }
+    })
+
+    ///////////////////////////
+    const endTime = Date.now();
+    const runTime = (endTime - startTime) / 1000.0;
+    console.log("\nRuntime: " + runTime.toFixed(2) + " seconds");
 }
 
-// returns array of objects: {filmID, myRating}
-async function getfilmIDsAndMyRatings() {
-    let filmIDsAndMyRatings = [];
+// web scrapes my imdb ratings page
+// returns array of pre film objects: {filmID, myRating, watchedInCinema}
+// ~30 sec runtime
+async function getPreFilmObjects() {
+    let preFilmObjects = [];
 
-    var numberOfFilms = await getNumberOfRatedFilms();
+    const numberOfFilms = await getNumberOfRatedFilms();
     let url = myRatingsURL;
     let filmIDs = [];
 
@@ -44,7 +71,7 @@ async function getfilmIDsAndMyRatings() {
         for (let i = f; i < min; i++) {
             let myRating = c('span.ipl-rating-star__rating').eq(1 + 24 * (i-f)).text();
             myRating = parseInt(myRating);
-            filmIDsAndMyRatings.push({"filmID" : filmIDs[i], "myRating" : myRating, "watchedInCinema" : false});
+            preFilmObjects.push({"filmID" : filmIDs[i], "myRating" : myRating, "watchedInCinema" : false});
         }
 
         // get url for next iteration
@@ -65,7 +92,7 @@ async function getfilmIDsAndMyRatings() {
             filmsWatchedInCinemas.push(c(this).attr('data-tconst'));
         })
 
-        filmIDsAndMyRatings.forEach(film => {
+        preFilmObjects.forEach(film => {
             if (filmsWatchedInCinemas.includes(film.filmID)) {
                 film.watchedInCinema = true;
             }
@@ -74,10 +101,11 @@ async function getfilmIDsAndMyRatings() {
         url = await getNextURL(url);
     }
 
-    return filmIDsAndMyRatings;
+    return preFilmObjects;
 }
 
-// given current URL, returns the URL of the next page (Returns "" if no next page)
+// given current URL, returns the URL of the next page
+// returns "" if no next page
 async function getNextURL(currentURL) {
     let response = await fetch(currentURL);
     let body = await response.text();
@@ -107,31 +135,35 @@ async function getNumberOfRatedFilms() {
     return parseInt(numberOfRatedFilms);
 }
 
-// iterate through each film ID using imdb-API
-// and returns array of full (raw) film objects
-async function getRawFilms(filmIDsAndMyRatings) {
+// iterate through all pre film objects {filmID, myRating, watchedInCinema},
+// return an array of raw film objects
+async function getRawFilms(preFilmObjects) {
     let rawFilms = [];
 
-    filmIDsAndMyRatings.forEach((f) => {
-        let filmURL = apiURL.concat(f.filmID);
-
-        var filmObject;
-        fetch(filmURL, apiRequestOptions)
-            .then(response => response.json())
-            .then(data => {
-                filmObject = data;
-                console.log(filmObject);
-            })
-            .catch(error => console.log('error', error));
-        console.log(filmObject)
-    });
+    for (const preFilmObject of preFilmObjects) {
+        rawFilms.push(await getRawFilm(preFilmObject));
+    }
 
     return rawFilms;
 }
 
-// NOTES
-// tvSpecial (e.g. HP reunion) is recognised as type: "movie" in imdb API
-// should be fine anyway because it has "documentary" as it's genre
+// given a pre film object {filmID, myRating, watchedInCinema},
+// fetch the full raw film object using the imdb-api
+// api is limited to 100 calls every 24 hours
+// ~150 secs for all films
+async function getRawFilm(preFilmObject) {
+    try {
+        const filmURL = apiURL.concat(preFilmObject.filmID);
+        const response = await fetch(filmURL, apiRequestOptions);
+        const rawFilm = await response.json();
+        return rawFilm;
+    }
+    // if there's an error, recursively try again until non-error
+    // not sure if smart, if a consistent error persists then stack overflow
+    catch (error) {
+        console.error(error);
+        return getRawFilm(preFilmObject);
+    }
+}
 
-
-// test push
+// preFilmObjects.push({"filmID" : "tt6718170", "myRating" : 6, "watchedInCinema" : true});
