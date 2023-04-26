@@ -4,14 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ef846bed-8e9c-4ff6-8d71-3af1ac93134b" name="Changes" comment="fixed forEach async bug">
-      <change afterPath="$PROJECT_DIR$/initDB.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes.txt" afterDir="false" />
+    <list default="true" id="ef846bed-8e9c-4ff6-8d71-3af1ac93134b" name="Changes" comment="added gitignore">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/filmData.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/rawFilms.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/script.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,13 +15,10 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="initDB" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/initDB.js" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -42,11 +33,10 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/brendanmcc02/Desktop/filmDataVis&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/brendanmcc02/Desktop/personalProjects/filmDataApp&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -69,16 +59,7 @@
       <option name="presentableId" value="Default" />
       <updated>1679437479573</updated>
       <workItem from="1679437481051" duration="5208000" />
-      <workItem from="1679670420374" duration="926000" />
-      <workItem from="1681244283662" duration="2614000" />
-      <workItem from="1681337030527" duration="1204000" />
-      <workItem from="1681340096287" duration="6850000" />
-      <workItem from="1681479923393" duration="444000" />
-      <workItem from="1682444986865" duration="422000" />
-      <workItem from="1682445420118" duration="2752000" />
-      <workItem from="1682453162532" duration="1474000" />
-      <workItem from="1682524523065" duration="501000" />
-      <workItem from="1682538935976" duration="787000" />
+      <workItem from="1679670420374" duration="977000" />
     </task>
     <task id="LOCAL-00001" summary="iterates through &quot;films watched in cinema list&quot; and added boolean &quot;watchedInCinemaType&quot; attribute to film object.">
       <created>1679442650840</created>
@@ -87,19 +68,19 @@
       <option name="project" value="LOCAL" />
       <updated>1679442650840</updated>
     </task>
-    <task id="LOCAL-00002" summary="test push for new branch">
-      <created>1680124695790</created>
+    <task id="LOCAL-00002" summary="updated README">
+      <created>1679671365872</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1680124695791</updated>
+      <updated>1679671365872</updated>
     </task>
-    <task id="LOCAL-00003" summary="fixed forEach async bug">
-      <created>1681341249579</created>
+    <task id="LOCAL-00003" summary="added gitignore">
+      <created>1682541961867</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1681341249579</updated>
+      <updated>1682541961867</updated>
     </task>
     <option name="localTasksCounter" value="4" />
     <servers />
@@ -107,12 +88,22 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="iterates through &quot;films watched in cinema list&quot; and added boolean &quot;watchedInCinemaType&quot; attribute to film object." />
-    <MESSAGE value="test push for new branch" />
-    <MESSAGE value="fixed forEach async bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed forEach async bug" />
+    <MESSAGE value="updated README" />
+    <MESSAGE value="added gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="added gitignore" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -120,25 +111,21 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/initDB.js</url>
           <line>29</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/initDB.js</url>
           <line>31</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/initDB.js</url>
           <line>32</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/initDB.js</url>
           <line>30</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
