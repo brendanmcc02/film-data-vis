@@ -28,8 +28,8 @@ async function main() {
     const numberOfFilms = await getNumberOfRatedFilms();
 
     const preFilmObjects = await getPreFilmObjects(numberOfFilms);
-    const rawFilms = await getRawFilms(preFilmObjects, startIndex);
-    const filmData = await getFilmData(rawFilms, preFilmObjects, numberOfFilms);
+    const rawFilms = await getRawFilms(preFilmObjects, startIndex, numberOfFilms);
+    const filmData = await getFilmData(rawFilms, startIndex, preFilmObjects, numberOfFilms);
     writeFilmsToJson(filmData);
 
     ///////////////////////////
@@ -142,10 +142,11 @@ async function getNumberOfRatedFilms() {
 // iterates through 100 pre film objects {filmID, myRating, watchedInCinema},
 // return an array of 100 raw film objects
 // (only does 100 films because api is limited to 100/24hrs)
-async function getRawFilms(preFilmObjects, startIndex) {
+async function getRawFilms(preFilmObjects, startIndex, numberOfFilms) {
     let rawFilms = [];
 
-    for (let i = startIndex; i < startIndex + 100; i++) {
+    const min = Math.min(startIndex + 100, numberOfFilms);
+    for (let i = startIndex; i < min; i++) {
         rawFilms.push(await getRawFilm(preFilmObjects[i]));
     }
 
@@ -171,12 +172,15 @@ async function getRawFilm(preFilmObject) {
 }
 
 // returns clean array of filmData objects
-function getFilmData(rawFilms, preFilmObjects, numberOfFilms) {
+function getFilmData(rawFilms, startIndex, preFilmObjects, numberOfFilms) {
     let filmData = [];
 
-    for (let i = 0; i < numberOfFilms; i++) {
+    const min = Math.min(numberOfFilms - startIndex, 100);
+    for (let i = 0; i < min; i++) {
+        // if the film is a movie and not a short
         if (rawFilms[i].type === "movie" && !arrayObjectContains(rawFilms[i].genreList, "short")) {
-            filmData.push(getFilteredFilm(rawFilms[i], preFilmObjects[i]));
+            // filter unnecessary data and push that to filmData[]
+            filmData.push(getFilteredFilm(rawFilms[i], preFilmObjects[i + startIndex]));
         }
     }
 
