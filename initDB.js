@@ -64,7 +64,7 @@ async function getPreFilmObjects(numberOfFilms) {
         // the rating attribute of each film, so i had to get all the span tags
         // with a certain name ("ipl-rating-star__rating"), - there are 24 of these for
         // each film, and the 2nd one (index 1, hence the + 1 you see below) is my rating
-        // of the film. i hope future Brendan understands this, I apologise for the awful
+        // of the film. I hope future Brendan understands this, I apologise for the awful
         // solution but it works =)
         let min = Math.min(f + 100, numberOfFilms);
         for (let i = f; i < min; i++) {
@@ -160,14 +160,11 @@ async function getRawFilm(preFilmObject) {
     try {
         const filmURL = apiURL.concat(preFilmObject.filmID);
         const response = await fetch(filmURL, apiRequestOptions);
-        let rawFilm = await response.json();
+        const rawFilm = await response.json();
         return rawFilm;
     }
-    // if there's an error, recursively try again until non-error.
-    // maybe terrible idea, if a consistent error persists then stack overflow
     catch (error) {
         console.error(error);
-        return getRawFilm(preFilmObject);
     }
 }
 
