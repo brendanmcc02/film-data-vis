@@ -1,0 +1,24 @@
+{
+  "name": "filmdataapp",
+  "version": "1.0.0",
+  "description": "My first project focusing on visualising my film data from my IMDb account.",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brendanmcc02/filmDataVis.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brendanmcc02/filmDataVis/issues"
+  },
+  "homepage": "https://github.com/brendanmcc02/filmDataVis#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "node-fetch": "^3.3.0"
+  }
+}

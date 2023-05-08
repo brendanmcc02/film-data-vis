@@ -1,0 +1,21 @@
+initialising db must be done in 5+ increments
+why? api is limited to 100 requests/24hrs
+
+assume we have a full db, how to maintain it?
+
+cron job (runs once every 24 hours)
+
+web scrape just first page of my ratings (if I rate over 100 films in 24 hours then it breaks)
+(but this is exceptionally unlikely to happen)
+
+for each of these 100 films:
+- if film is already in db:
+    update myRating, watchedInCinema
+- else:
+    append film to db using the api
+
+create a webscraper function that for each film:
+- gets number of votes
+- gets imdb rating
+
+iterate through db and update imdbRating and numberOfVotes
