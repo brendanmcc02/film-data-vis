@@ -160,8 +160,7 @@ async function getRawFilm(preFilmObject) {
     try {
         const filmURL = apiURL.concat(preFilmObject.filmID);
         const response = await fetch(filmURL, apiRequestOptions);
-        const rawFilm = await response.json();
-        return rawFilm;
+        return await response.json();
     }
     catch (error) {
         console.error(error);
