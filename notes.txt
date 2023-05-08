@@ -5,8 +5,8 @@ assume we have a full db, how to maintain it?
 
 cron job (runs once every 24 hours)
 
-web scrape just first page of my ratings (if I rate over 100 films in 24 hours then it breaks)
-(but this is exceptionally unlikely to happen)
+web scrape just first page of my ratings (if I rate over 100 films in 24 hours then it breaks,
+but this is exceptionally unlikely to happen)
 
 for each of these 100 films:
 - if film is already in db:
@@ -17,8 +17,9 @@ for each of these 100 films:
 create a webscraper function that for each film:
 - gets number of votes
 - gets imdb rating
+- gets metascore
 
-iterate through db and update imdbRating and numberOfVotes
+iterate through db and update imdbRating, numberOfVotes, metascore
 
 
 
@@ -45,3 +46,13 @@ iterate through db and update imdbRating and numberOfVotes
 2. Top 5/10 Actors (>= 5 films)
 3.
 5. Rating
+
+
+////////////////////////////////////////////////////
+
+DYNAMIC DATA ABOUT FILMS:
+
+1. my rating
+2. imdb rating
+3. numOfImdbVotes
+4. metascore
