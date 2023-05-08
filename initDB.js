@@ -109,11 +109,11 @@ async function getPreFilmObjects(numberOfFilms) {
 }
 
 // given current URL, returns the URL of the next page
-// returns "" if no next page
+// returns "" if there is no next page
 async function getNextURL(currentURL) {
-    let response = await fetch(currentURL);
-    let body = await response.text();
-    let c = cheerio.load(body);
+    const response = await fetch(currentURL);
+    const body = await response.text();
+    const c = cheerio.load(body);
 
     let nextURL = c('.flat-button.lister-page-next.next-page').attr('href');
 
@@ -122,7 +122,7 @@ async function getNextURL(currentURL) {
         return "";
     }
 
-    let imdbURL = "https://www.imdb.com"
+    const imdbURL = "https://www.imdb.com"
     nextURL = imdbURL.concat(nextURL);
 
     return nextURL.toString();
@@ -196,7 +196,7 @@ function arrayObjectContains(arrayOfObjects, target) {
 }
 
 // filters unnecessary data of rawFilm object
-// adds
+// adds myRating and watchedInCinema attribute
 function getFilteredFilm(rawFilm, preFilmObject) {
     // deletions
     delete rawFilm.id;

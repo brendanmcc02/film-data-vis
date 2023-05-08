@@ -12,12 +12,7 @@ for each of these 100 films:
 - if film is already in db:
     update myRating, watchedInCinema
 - else:
-    append film to db using the api
-
-create a webscraper function that for each film:
-- gets number of votes
-- gets imdb rating
-- gets metascore
+    append film to db using the api, update myRating & watchedInCinema
 
 iterate through db and update imdbRating, numberOfVotes, metascore
 
@@ -56,3 +51,4 @@ DYNAMIC DATA ABOUT FILMS:
 2. imdb rating
 3. numOfImdbVotes
 4. metascore
+5. watchedInCinema
