@@ -3,6 +3,9 @@ import fetch from "node-fetch";
 import * as cheerio from "cheerio";
 import * as fs from "fs";
 
+// exports for updateDB.js
+export {writeFilmsToJson, getFilteredFilm, getRawFilm, getNextURL, getNumberOfRatedFilms};
+
 // global constants
 const myRatingsURL = "https://www.imdb.com/user/ur95934592/ratings";
 const watchedInCinemaURL = "https://www.imdb.com/list/ls081360952/";
@@ -15,10 +18,10 @@ const apiRequestOptions = {
 main();
 
 // api is limited to 100 calls/24hrs,
-// so this function creates a films.json with 100 films
-// this has to be called multiple times (manually appending the films.json together),
-// until all films have been added to the database
-// the startIndex is the index of the array at which the api calls start
+// so this function creates a filmData.json with 100 films.
+// this has to be called multiple times (manually appending the filmData.json together),
+// until all my rated films have been added to the database.
+// the startIndex is the index of the array at which the api calls start.
 // the getRawFilms() method will only call 100 films
 async function main() {
     const startTime = Date.now();
@@ -26,7 +29,6 @@ async function main() {
 
     const startIndex = 0;
     const numberOfFilms = await getNumberOfRatedFilms();
-
     const preFilmObjects = await getPreFilmObjects(numberOfFilms);
     const rawFilms = await getRawFilms(preFilmObjects, startIndex, numberOfFilms);
     const filmData = await getFilmData(rawFilms, startIndex, preFilmObjects, numberOfFilms);
@@ -47,9 +49,9 @@ async function getPreFilmObjects(numberOfFilms) {
     let url = myRatingsURL;
     let filmIDs = [];
 
-    // iterate through each ratings' webpage; url is initialised to myRatingsURL
+    // continuously iterate through each ratings web page
     for (let f = 0; url !== ""; f+=100) {
-
+        // get the html
         let response = await fetch(url);
         let body = await response.text();
         let c = cheerio.load(body);
@@ -60,12 +62,12 @@ async function getPreFilmObjects(numberOfFilms) {
         });
 
         // get corresponding myRating of each film
-        // ok this was an ugly solution but for some reason i can't get direct access to
-        // the rating attribute of each film, so i had to get all the span tags
+        // ok this was an ugly solution but for some reason I can't get direct access to
+        // the rating attribute of each film, so I had to get all the span tags
         // with a certain name ("ipl-rating-star__rating"), - there are 24 of these for
         // each film, and the 2nd one (index 1, hence the + 1 you see below) is my rating
         // of the film. I hope future Brendan understands this, I apologise for the awful
-        // solution but it works =)
+        // solution, but it works =)
         let min = Math.min(f + 100, numberOfFilms);
         for (let i = f; i < min; i++) {
             let myRating = c('span.ipl-rating-star__rating').eq(1 + 24 * (i-f)).text();
@@ -77,13 +79,15 @@ async function getPreFilmObjects(numberOfFilms) {
         url = await getNextURL(url);
     }
 
-    // iterate through films watched in cinemas, change 'watchedInCinema' attribute
-    // of relevant films
+    // iterate through films watched in cinemas and
+    // change 'watchedInCinema' attribute of relevant films
 
     let filmsWatchedInCinemas = [];
     url = watchedInCinemaURL;
 
+    // continuously iterate through each web page of the list
     while (url !== "") {
+        // get the html
         let response = await fetch(watchedInCinemaURL);
         let body = await response.text();
         let c = cheerio.load(body);
@@ -108,9 +112,10 @@ async function getPreFilmObjects(numberOfFilms) {
     return preFilmObjects;
 }
 
-// given current URL, returns the URL of the next page
+// given a current URL, returns the URL of the next web page
 // returns "" if there is no next page
 async function getNextURL(currentURL) {
+    // get html of page
     const response = await fetch(currentURL);
     const body = await response.text();
     const c = cheerio.load(body);
@@ -130,6 +135,7 @@ async function getNextURL(currentURL) {
 
 // returns number of films rated on my account
 async function getNumberOfRatedFilms() {
+    // get html
     const response = await fetch(myRatingsURL);
     const body = await response.text();
     const c = cheerio.load(body);
@@ -140,8 +146,11 @@ async function getNumberOfRatedFilms() {
 }
 
 // iterates through 100 pre film objects {filmID, myRating, watchedInCinema},
-// return an array of 100 raw film objects
+// and returns an array of 100 raw film objects.
 // (only does 100 films because api is limited to 100/24hrs)
+// a raw film is the initial return value from the imdb api, it is called
+// 'raw' because it has a lot of junk/unnecessary data that will go through
+// a filter function
 async function getRawFilms(preFilmObjects, startIndex, numberOfFilms) {
     let rawFilms = [];
 
@@ -174,7 +183,7 @@ function getFilmData(rawFilms, startIndex, preFilmObjects, numberOfFilms) {
     const min = Math.min(numberOfFilms - startIndex, 100);
     for (let i = 0; i < min; i++) {
         // if the film is a movie and not a short
-        if (rawFilms[i].type === "movie" && !arrayObjectContains(rawFilms[i].genreList, "short")) {
+        if (rawFilms[i].type === "Movie" && !arrayObjectContains(rawFilms[i].genreList, "short")) {
             // filter unnecessary data and push that to filmData[]
             filmData.push(getFilteredFilm(rawFilms[i], preFilmObjects[i + startIndex]));
         }

@@ -1,24 +1,3 @@
-initialising db must be done in 5+ increments
-why? api is limited to 100 requests/24hrs
-
-assume we have a full db, how to maintain it?
-
-cron job (runs once every 24 hours)
-
-web scrape just first page of my ratings (if I rate over 100 films in 24 hours then it breaks,
-but this is exceptionally unlikely to happen)
-
-for each of these 100 films:
-- if film is already in db:
-    update myRating, watchedInCinema
-- else:
-    append film to db using the api, update myRating & watchedInCinema
-
-iterate through db and update imdbRating, numberOfVotes, metascore
-
-
-
-
 ## Graphs I'm interested in:
 
 1. Mean Genre Rating
@@ -43,12 +22,3 @@ iterate through db and update imdbRating, numberOfVotes, metascore
 5. Rating
 
 
-////////////////////////////////////////////////////
-
-DYNAMIC DATA ABOUT FILMS:
-
-1. my rating
-2. imdb rating
-3. numOfImdbVotes
-4. metascore
-5. watchedInCinema
