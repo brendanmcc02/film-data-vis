@@ -27,7 +27,7 @@ async function main() {
     const startTime = Date.now();
     /////////////////////////////
 
-    const startIndex = 0;
+    const startIndex = 100; // *** // ~16:30 12th May
     const numberOfFilms = await getNumberOfRatedFilms();
     const preFilmObjects = await getPreFilmObjects(numberOfFilms);
     const rawFilms = await getRawFilms(preFilmObjects, startIndex, numberOfFilms);
@@ -206,11 +206,14 @@ function arrayObjectContains(arrayOfObjects, target) {
 
 // filters unnecessary data of rawFilm object
 // adds myRating and watchedInCinema attribute
+
+
 function getFilteredFilm(rawFilm, preFilmObject) {
     // deletions
     delete rawFilm.id;
     delete rawFilm.originalTitle;
     delete rawFilm.fullTitle;
+    delete rawFilm.type;
     delete rawFilm.image;
     delete rawFilm.releaseDate;
     delete rawFilm.runtimeStr;
@@ -242,9 +245,8 @@ function getFilteredFilm(rawFilm, preFilmObject) {
     delete rawFilm.tvSeriesInfo;
     delete rawFilm.tvEpisodeInfo;
     delete rawFilm.errorMessage;
-    delete rawFilm.boxOffice.openingWeekendUSA;
-    delete rawFilm.boxOffice.grossUSA;
-    delete rawFilm.boxOffice.budget;
+    delete rawFilm.boxOffice;
+    delete rawFilm.countryList;
 
     rawFilm.directorList.forEach(director => {
        delete director.id;
@@ -258,10 +260,6 @@ function getFilteredFilm(rawFilm, preFilmObject) {
 
     rawFilm.genreList.forEach(genre => {
         delete genre.value;
-    });
-
-    rawFilm.countryList.forEach(country => {
-        delete country.value;
     });
 
     rawFilm.languageList.forEach(language => {
