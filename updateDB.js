@@ -4,6 +4,9 @@ import * as cheerio from "cheerio";
 import * as fs from "fs";
 import {writeFilmsToJson, getFilteredFilm, getRawFilm, getNextURL, getNumberOfRatedFilms} from './initDB.js'
 
+// exports for main.js
+export {readFilmData};
+
 // global constants
 const myRatingsURL = "https://www.imdb.com/user/ur95934592/ratings";
 const watchedInCinemaURL = "https://www.imdb.com/list/ls081360952/";
