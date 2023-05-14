@@ -1,7 +1,12 @@
-// imports
-import fetch from "node-fetch";
+// this file is intended to run in node.js
+// as opposed to a web browser
+
+// module imports
+import nodeFetch from "node-fetch";
 import * as cheerio from "cheerio";
 import * as fs from "fs";
+
+// function imports
 import {writeFilmsToJson, getFilteredFilm, getRawFilm, getNextURL, getNumberOfRatedFilms} from './initDB.js'
 
 // exports for main.js
@@ -64,7 +69,7 @@ async function getRatedFilms(numberOfFilms, cinemaFilms) {
     // url is initialised to myRatingsURL
     for (let f = 0; url !== ""; f+=100) {
         // get html of web page
-        let response = await fetch(url);
+        let response = await nodeFetch(url);
         let body = await response.text();
         let c = cheerio.load(body);
 
@@ -115,7 +120,7 @@ async function getCinemaFilms() {
     // continuously iterate through each web page
     while (url !== "") {
         // get html
-        let response = await fetch(watchedInCinemaURL);
+        let response = await nodeFetch(watchedInCinemaURL);
         let body = await response.text();
         let c = cheerio.load(body);
 
@@ -138,7 +143,7 @@ async function getMetascore(filmID) {
     const url = imdbURL.concat(filmID);
 
     // get html
-    const response = await fetch(url);
+    const response = await nodeFetch(url);
     const body = await response.text();
     const c = cheerio.load(body);
 
@@ -154,7 +159,7 @@ async function getImdbRating(filmID) {
     const url = imdbURL.concat(filmID);
 
     // get html
-    const response = await fetch(url);
+    const response = await nodeFetch(url);
     const body = await response.text();
     const c = cheerio.load(body);
 

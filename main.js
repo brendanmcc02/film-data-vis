@@ -1,10 +1,8 @@
-// imports
-import {readFilmData} from "./updateDB.js";
-
 main();
 
 async function main() {
-    const filmData = readFilmData();
-
-    console.log(filmData[98].title);
+    const response = await fetch('data/filmDataCombined.json');
+    const filmData = await response.json();
+    console.log(filmData);
 }
+

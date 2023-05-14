@@ -1,9 +1,16 @@
-// imports
-import fetch from "node-fetch";
+// this file is intended to run in node.js
+// as opposed to a web browser
+
+// api keys:
+// k_xg3u88nc tcd
+// k_795p7sp0 outlook
+
+// module imports
+import nodeFetch from "node-fetch";
 import * as cheerio from "cheerio";
 import * as fs from "fs";
 
-// exports for updateDB.js
+// function exports for updateDB.js
 export {writeFilmsToJson, getFilteredFilm, getRawFilm, getNextURL, getNumberOfRatedFilms};
 
 // global constants
@@ -27,7 +34,9 @@ async function main() {
     const startTime = Date.now();
     /////////////////////////////
 
-    const startIndex = 100; // *** // ~16:30 12th May
+    // ~18:30 14th May k_795p7sp0
+    // ~20:15 14th May k_xg3u88nc
+    const startIndex = 300; // ~18:30 13th May
     const numberOfFilms = await getNumberOfRatedFilms();
     const preFilmObjects = await getPreFilmObjects(numberOfFilms);
     const rawFilms = await getRawFilms(preFilmObjects, startIndex, numberOfFilms);
@@ -52,7 +61,7 @@ async function getPreFilmObjects(numberOfFilms) {
     // continuously iterate through each ratings web page
     for (let f = 0; url !== ""; f+=100) {
         // get the html
-        let response = await fetch(url);
+        let response = await nodeFetch(url);
         let body = await response.text();
         let c = cheerio.load(body);
 
@@ -88,7 +97,7 @@ async function getPreFilmObjects(numberOfFilms) {
     // continuously iterate through each web page of the list
     while (url !== "") {
         // get the html
-        let response = await fetch(watchedInCinemaURL);
+        let response = await nodeFetch(watchedInCinemaURL);
         let body = await response.text();
         let c = cheerio.load(body);
 
@@ -116,7 +125,7 @@ async function getPreFilmObjects(numberOfFilms) {
 // returns "" if there is no next page
 async function getNextURL(currentURL) {
     // get html of page
-    const response = await fetch(currentURL);
+    const response = await nodeFetch(currentURL);
     const body = await response.text();
     const c = cheerio.load(body);
 
@@ -136,7 +145,7 @@ async function getNextURL(currentURL) {
 // returns number of films rated on my account
 async function getNumberOfRatedFilms() {
     // get html
-    const response = await fetch(myRatingsURL);
+    const response = await nodeFetch(myRatingsURL);
     const body = await response.text();
     const c = cheerio.load(body);
 
@@ -168,7 +177,7 @@ async function getRawFilms(preFilmObjects, startIndex, numberOfFilms) {
 async function getRawFilm(preFilmObject) {
     try {
         const filmURL = apiURL.concat(preFilmObject.filmID);
-        const response = await fetch(filmURL, apiRequestOptions);
+        const response = await nodeFetch(filmURL, apiRequestOptions);
         return await response.json();
     }
     catch (error) {

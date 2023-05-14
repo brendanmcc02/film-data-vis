@@ -11,14 +11,30 @@
 7. Quantity of films watched per runtime interval (Piechart)
 8. Quantity of films watched per genre (Piechart)
 9. numOfVotes vs. Mean Rating (Scatterplot)
-10. Ratings of franchises (Star Wars, Harry Potter, Marvel) Line chart
+10. Top 5/10 Actors (>= 5 films)
+11. English-spoken films vs international films 
+	a. Mean Rating (Bar chart)
+   	b. Proportion (Pie chart)
 
-## Challenging Graph ideas
-1. English-spoken films vs foreign films
-   a. Mean Rating (Bar chart)
-   b. Proportion (Pie chart)
-2. Top 5/10 Actors (>= 5 films)
-3.
-5. Rating
+## Challenging ideas Graph
+1. Ratings of franchises (Star Wars, Harry Potter, Marvel) Line chart
 
+
+
+Approach:
+
+js can be run in 1 of 2 environments:
+
+1. nodeJS
+2. web browser
+
+in nodeJS, read/write of files is easy.
+however, in the web browser, it is not basically
+not possible to write files on the fly for security reasons.
+
+My idea is to run updateDB.js in nodeJS regularly (once/twice 24 hours).
+The website will (naturally) run js in a web environment,
+and it only needs to read the file.
+
+updateDB.JS is responsible for writing updates to the file.
 
