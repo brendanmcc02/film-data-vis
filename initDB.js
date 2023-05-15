@@ -16,7 +16,7 @@ export {writeFilmsToJson, getFilteredFilm, getRawFilm, getNextURL, getNumberOfRa
 // global constants
 const myRatingsURL = "https://www.imdb.com/user/ur95934592/ratings";
 const watchedInCinemaURL = "https://www.imdb.com/list/ls081360952/";
-const apiURL = "https://imdb-api.com/en/API/Title/k_795p7sp0/";
+const apiURL = "https://imdb-api.com/en/API/Title/k_xg3u88nc/";
 const apiRequestOptions = {
     method: 'GET',
     redirect: 'follow'
@@ -34,9 +34,9 @@ async function main() {
     const startTime = Date.now();
     /////////////////////////////
 
-    // ~18:30 14th May k_795p7sp0
-    // ~20:15 14th May k_xg3u88nc
-    const startIndex = 300; // ~18:30 13th May
+    // ~20:30 15th May k_795p7sp0
+    // ~20:30 15th May k_xg3u88nc
+    const startIndex = 500;
     const numberOfFilms = await getNumberOfRatedFilms();
     const preFilmObjects = await getPreFilmObjects(numberOfFilms);
     const rawFilms = await getRawFilms(preFilmObjects, startIndex, numberOfFilms);
