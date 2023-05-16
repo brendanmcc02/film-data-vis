@@ -4,7 +4,6 @@
 // isn't perfect)
 
 // module imports
-import * as fs from "fs";
 import {readFilmData} from "./updateDB.js";
 import {writeFilmsToJson} from "./initDB.js";
 
