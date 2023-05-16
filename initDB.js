@@ -16,7 +16,7 @@ export {writeFilmsToJson, getFilteredFilm, getRawFilm, getNextURL, getNumberOfRa
 // global constants
 const myRatingsURL = "https://www.imdb.com/user/ur95934592/ratings";
 const watchedInCinemaURL = "https://www.imdb.com/list/ls081360952/";
-const apiURL = "https://imdb-api.com/en/API/Title/k_xg3u88nc/";
+const apiURL = "https://imdb-api.com/en/API/Title/k_blah/";
 const apiRequestOptions = {
     method: 'GET',
     redirect: 'follow'
@@ -192,7 +192,7 @@ function getFilmData(rawFilms, startIndex, preFilmObjects, numberOfFilms) {
     const min = Math.min(numberOfFilms - startIndex, 100);
     for (let i = 0; i < min; i++) {
         // if the film is a movie and not a short
-        if (rawFilms[i].type === "Movie" && !arrayObjectContains(rawFilms[i].genreList, "short")) {
+        if (rawFilms[i].type === "Movie" && !arrayObjectContains(rawFilms[i].genreList, "Short")) {
             // filter unnecessary data and push that to filmData[]
             filmData.push(getFilteredFilm(rawFilms[i], preFilmObjects[i + startIndex]));
         }
