@@ -11,35 +11,41 @@ main();
 
 async function main() {
     const filmData = readFilmData();
-    filmData.forEach(film => {
-        delete film.type;
-        delete film.boxOffice;
-        delete film.countryList;
+    // filmData.forEach(film => {
+        // delete film.type;
+        // delete film.boxOffice;
+        // delete film.countryList;
+        //
+        // let directors = [];
+        // film.directorList.forEach(director => {
+        //     directors.push(director.name);
+        // });
+        // film.directorList = directors;
+        //
+        // let genres = [];
+        // film.genreList.forEach(genre => {
+        //     genres.push(genre.key);
+        // });
+        // film.genreList = genres;
+        //
+        // let actors = [];
+        // film.actorList.forEach(actor => {
+        //     actors.push(actor.name);
+        // });
+        // film.actorList = actors;
+        //
+        // let languages = [];
+        // film.languageList.forEach(language => {
+        //     languages.push(language.key);
+        // });
+        // film.languageList = languages;
 
-        let directors = [];
-        film.directorList.forEach(director => {
-            directors.push(director.name);
-        });
-        film.directorList = directors;
-
-        let genres = [];
-        film.genreList.forEach(genre => {
-            genres.push(genre.key);
-        });
-        film.genreList = genres;
-
-        let actors = [];
-        film.actorList.forEach(actor => {
-            actors.push(actor.name);
-        });
-        film.actorList = actors;
-
-        let languages = [];
-        film.languageList.forEach(language => {
-            languages.push(language.key);
-        });
-        film.languageList = languages;
-    });
+        // film.year = parseInt(film.year);
+        // film.runtimeMins = parseInt(film.runtimeMins);
+        // film.imDbRating = parseFloat(film.imDbRating);
+        // film.imDbRatingVotes = parseInt(film.imDbRatingVotes);
+        // film.metacriticRating = parseInt(film.metacriticRating);
+    // });
 
     writeFilmsToJson(filmData);
 }

@@ -1,7 +1,8 @@
 ## Graphs I'm interested in:
 
-1. Mean Genre Rating
-2. Top 5/10 Directors (>= 5 films)
+1. Mean Genre Rating [DONE]
+    -> atm its all genres, further customisation can be done for top 5, bottom 5
+2. Top k Directors w/ atleast n films [DONE]
 3. Ratings of directors' films (Nolan, Villeneuve, etc.) Line chart
 4. My Rating of IMDB Top 25
 5. IMDB's rating of my Top 25

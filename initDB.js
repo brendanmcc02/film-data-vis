@@ -16,7 +16,7 @@ export {writeFilmsToJson, getFilteredFilm, getRawFilm, getNextURL, getNumberOfRa
 // global constants
 const myRatingsURL = "https://www.imdb.com/user/ur95934592/ratings";
 const watchedInCinemaURL = "https://www.imdb.com/list/ls081360952/";
-const apiURL = "https://imdb-api.com/en/API/Title/k_blah/";
+const apiURL = "https://imdb-api.com/en/API/Title/k_xg3u88nc/";
 const apiRequestOptions = {
     method: 'GET',
     redirect: 'follow'
