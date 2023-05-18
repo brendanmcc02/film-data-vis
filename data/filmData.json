@@ -1,1 +1,122 @@
-[]
+[
+    {
+        "title": "Tigertail",
+        "year": "2020",
+        "runtimeMins": "91",
+        "directorList": [
+            "Alan Yang"
+        ],
+        "actorList": [
+            "Tzi Ma",
+            "Christine Ko",
+            "Hong-Chi Lee",
+            "Queenie Yu-Hsin Fang",
+            "Fiona Fu",
+            "Joan Chen",
+            "Kuei-Mei Yang",
+            "James Saito",
+            "Hayden Szeto",
+            "Cindera Che",
+            "Muyi Chen",
+            "Zhi-Hao Yang",
+            "Hai-Yin Tsai",
+            "Lynn Masako Cheng",
+            "Li Li Pang",
+            "Che-Hao Chang",
+            "Chen-Che Lai",
+            "Chung-Jui Chang"
+        ],
+        "genreList": [
+            "Drama"
+        ],
+        "languageList": [
+            "English",
+            "Min Nan",
+            "Mandarin"
+        ],
+        "imDbRating": "6.6",
+        "imDbRatingVotes": "3735",
+        "metacriticRating": "65",
+        "myRating": 6,
+        "watchedInCinema": false
+    },
+    {
+        "title": "Jodorowsky's Dune",
+        "year": "2013",
+        "runtimeMins": "90",
+        "directorList": [
+            "Frank Pavich"
+        ],
+        "actorList": [
+            "Alejandro Jodorowsky",
+            "Michel Seydoux",
+            "H.R. Giger",
+            "Chris Foss",
+            "Amanda Lear",
+            "Brontis Jodorowsky",
+            "Christian Vander",
+            "Devin Faraci",
+            "Diane O'Bannon",
+            "Drew McWeeny",
+            "Gary Kurtz",
+            "Jean-Paul Gibon",
+            "Jean-Pierre Vignau",
+            "Nicolas Winding Refn",
+            "Richard Stanley",
+            "Salvador Dalí",
+            "Jean 'Moebius' Giraud",
+            "Magma"
+        ],
+        "genreList": [
+            "Documentary"
+        ],
+        "languageList": [
+            "English",
+            "Spanish",
+            "French",
+            "German"
+        ],
+        "imDbRating": "8",
+        "imDbRatingVotes": "25865",
+        "metacriticRating": "79",
+        "myRating": 8,
+        "watchedInCinema": false
+    },
+    {
+        "title": "Free Solo",
+        "year": "2018",
+        "runtimeMins": "100",
+        "directorList": [
+            "Jimmy Chin",
+            "Elizabeth Chai Vasarhelyi"
+        ],
+        "actorList": [
+            "Alex Honnold",
+            "Tommy Caldwell",
+            "Jimmy Chin",
+            "Cheyne Lempe",
+            "Mikey Schaefer",
+            "Sanni McCandless",
+            "Dierdre Wolownick",
+            "Peter Croft",
+            "John Bachar",
+            "Derek Hersey",
+            "Sean Leary",
+            "Dan Osman",
+            "Dean Potter"
+        ],
+        "genreList": [
+            "Documentary",
+            "Adventure",
+            "Sport"
+        ],
+        "languageList": [
+            "English"
+        ],
+        "imDbRating": "8.1",
+        "imDbRatingVotes": "71812",
+        "metacriticRating": "83",
+        "myRating": 8,
+        "watchedInCinema": false
+    }
+]
