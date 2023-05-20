@@ -16,7 +16,7 @@ export {writeFilmsToJson, getFilteredFilm, getRawFilm, getNextURL, getNumberOfRa
 // global constants
 const myRatingsURL = "https://www.imdb.com/user/ur95934592/ratings";
 const watchedInCinemaURL = "https://www.imdb.com/list/ls081360952/";
-const apiURL = "https://imdb-api.com/en/API/Title/k_xg3u88nc/";
+const apiURL = "https://imdb-api.com/en/API/Title/k_795p7sp0/";
 const apiRequestOptions = {
     method: 'GET',
     redirect: 'follow'
@@ -34,9 +34,9 @@ async function main() {
     const startTime = Date.now();
     /////////////////////////////
 
-    // ~20:30 15th May k_795p7sp0
-    // ~20:30 15th May k_xg3u88nc
-    const startIndex = 500;
+    // ~00:20 21st May k_795p7sp0
+    // ~23:45 20th May k_xg3u88nc
+    const startIndex = 0;
     const numberOfFilms = await getNumberOfRatedFilms();
     const preFilmObjects = await getPreFilmObjects(numberOfFilms);
     const rawFilms = await getRawFilms(preFilmObjects, startIndex, numberOfFilms);
@@ -50,13 +50,13 @@ async function main() {
 }
 
 // web scrapes my imdb ratings page
-// returns array of pre film objects: {filmID, myRating, watchedInCinema}
+// returns array of pre film objects: {id, myRating, watchedInCinema}
 // ~30 sec runtime
 async function getPreFilmObjects(numberOfFilms) {
     let preFilmObjects = [];
 
     let url = myRatingsURL;
-    let filmIDs = [];
+    let ids = [];
 
     // continuously iterate through each ratings web page
     for (let f = 0; url !== ""; f+=100) {
@@ -67,7 +67,7 @@ async function getPreFilmObjects(numberOfFilms) {
 
         // iterate through each instance of a film and push film ID to array
         c('.lister-item-image.ribbonize').each(function () {
-            filmIDs.push(c(this).attr('data-tconst'));
+            ids.push(c(this).attr('data-tconst'));
         });
 
         // get corresponding myRating of each film
@@ -81,7 +81,7 @@ async function getPreFilmObjects(numberOfFilms) {
         for (let i = f; i < min; i++) {
             let myRating = c('span.ipl-rating-star__rating').eq(1 + 24 * (i-f)).text();
             myRating = parseInt(myRating);
-            preFilmObjects.push({"filmID" : filmIDs[i], "myRating" : myRating, "watchedInCinema" : false});
+            preFilmObjects.push({"id" : ids[i], "myRating" : myRating, "watchedInCinema" : false});
         }
 
         // get url for next iteration
@@ -101,7 +101,7 @@ async function getPreFilmObjects(numberOfFilms) {
         let body = await response.text();
         let c = cheerio.load(body);
 
-        // push filmID to array
+        // push id to array
         c('.lister-item-image.ribbonize').each(function () {
             filmsWatchedInCinemas.push(c(this).attr('data-tconst'));
         })
@@ -109,7 +109,7 @@ async function getPreFilmObjects(numberOfFilms) {
         // for each rated film, if it is in filmsWatchedInCinema,
         // change watchedInCinema attribute to true
         preFilmObjects.forEach(film => {
-            if (filmsWatchedInCinemas.includes(film.filmID)) {
+            if (filmsWatchedInCinemas.includes(film.id)) {
                 film.watchedInCinema = true;
             }
         });
@@ -154,7 +154,7 @@ async function getNumberOfRatedFilms() {
     return parseInt(numberOfRatedFilms);
 }
 
-// iterates through 100 pre film objects {filmID, myRating, watchedInCinema},
+// iterates through 100 pre film objects {id, myRating, watchedInCinema},
 // and returns an array of 100 raw film objects.
 // (only does 100 films because api is limited to 100/24hrs)
 // a raw film is the initial return value from the imdb api, it is called
@@ -171,12 +171,12 @@ async function getRawFilms(preFilmObjects, startIndex, numberOfFilms) {
     return rawFilms;
 }
 
-// given a pre film object {filmID, myRating, watchedInCinema},
+// given a pre film object {id, myRating, watchedInCinema},
 // fetch the full raw film object using the imdb-api
 // ~30secs for 100 films
 async function getRawFilm(preFilmObject) {
     try {
-        const filmURL = apiURL.concat(preFilmObject.filmID);
+        const filmURL = apiURL.concat(preFilmObject.id);
         const response = await nodeFetch(filmURL, apiRequestOptions);
         return await response.json();
     }
@@ -215,15 +215,11 @@ function arrayObjectContains(arrayOfObjects, target) {
 
 // filters unnecessary data of rawFilm object
 // adds myRating and watchedInCinema attribute
-
-
 function getFilteredFilm(rawFilm, preFilmObject) {
     // deletions
-    delete rawFilm.id;
     delete rawFilm.originalTitle;
     delete rawFilm.fullTitle;
     delete rawFilm.type;
-    delete rawFilm.image;
     delete rawFilm.releaseDate;
     delete rawFilm.runtimeStr;
     delete rawFilm.plot;
@@ -241,7 +237,6 @@ function getFilteredFilm(rawFilm, preFilmObject) {
     delete rawFilm.companyList;
     delete rawFilm.countries;
     delete rawFilm.languages;
-    delete rawFilm.contentRating;
     delete rawFilm.ratings;
     delete rawFilm.wikipedia;
     delete rawFilm.posters;
@@ -262,8 +257,6 @@ function getFilteredFilm(rawFilm, preFilmObject) {
     });
 
     rawFilm.actorList.forEach(actor => {
-        delete actor.id;
-        delete actor.image;
         delete actor.asCharacter;
     });
 
@@ -275,7 +268,38 @@ function getFilteredFilm(rawFilm, preFilmObject) {
         delete language.value;
     });
 
-    // additions
+    // each element in directorList is an object with
+    // (after the deletions) only one attribute: name.
+    // we will simplify directorList by creating an array
+    // of strings, the director names.
+    let directors = [];
+    rawFilm.directorList.forEach(director => {
+        directors.push(director.name);
+    });
+    rawFilm.directorList = directors;
+
+    // same as above but with genreList
+    let genres = [];
+    rawFilm.genreList.forEach(genre => {
+        genres.push(genre.key);
+    });
+    rawFilm.genreList = genres;
+
+    // same as above but with languageList
+    let languages = [];
+    rawFilm.languageList.forEach(language => {
+        languages.push(language.key);
+    });
+    rawFilm.languageList = languages;
+
+    // changing strings to integers/floats
+    rawFilm.year = parseInt(rawFilm.year);
+    rawFilm.runtimeMins = parseInt(rawFilm.runtimeMins);
+    rawFilm.imDbRating = parseFloat(rawFilm.imDbRating);
+    rawFilm.imDbRatingVotes = parseFloat(rawFilm.imDbRatingVotes);
+    rawFilm.metacriticRating = parseInt(rawFilm.metacriticRating);
+
+    // adding myRating and watchedInCinema attributes to the film object
     rawFilm.myRating = preFilmObject.myRating;
     rawFilm.watchedInCinema = preFilmObject.watchedInCinema;
 

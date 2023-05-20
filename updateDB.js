@@ -15,11 +15,6 @@ export {readFilmData};
 // global constants
 const myRatingsURL = "https://www.imdb.com/user/ur95934592/ratings";
 const watchedInCinemaURL = "https://www.imdb.com/list/ls081360952/";
-const apiURL = "https://imdb-api.com/en/API/Title/k_blah/";
-const apiRequestOptions = {
-    method: 'GET',
-    redirect: 'follow'
-};
 
 main();
 
@@ -34,8 +29,8 @@ async function main() {
     const cinemaFilms = await getCinemaFilms();
     const numberOfFilms = await getNumberOfRatedFilms();
     const ratedFilms = await getRatedFilms(numberOfFilms, cinemaFilms);
-    // const updatedFilmData = await getUpdatedFilmData(filmData, ratedFilms);
-    // writeFilmsToJson(updatedFilmData);
+    const updatedFilmData = await getUpdatedFilmData(filmData, ratedFilms);
+    writeFilmsToJson(updatedFilmData);
 
     ///////////////////////////
     const endTime = Date.now();
@@ -58,11 +53,11 @@ function readFilmData() {
 }
 
 // gets array of all rated films,
-// returns a preFilmObject: {"filmID", "myRating", "watchedInCinema", "numberOfVotes"}
+// returns a preFilmObject: {"id", "myRating", "watchedInCinema", "numberOfVotes"}
 async function getRatedFilms(numberOfFilms, cinemaFilms) {
     let ratedFilms = [];
     let url = myRatingsURL;
-    let filmIDs = [];
+    let ids = [];
     let numberOfVotesArray = [];
 
     // iterate through each ratings' webpage
@@ -75,7 +70,7 @@ async function getRatedFilms(numberOfFilms, cinemaFilms) {
 
         // iterate through each instance of film and push film ID to array
         c('.lister-item-image.ribbonize').each(function () {
-            filmIDs.push(c(this).attr('data-tconst'));
+            ids.push(c(this).attr('data-tconst'));
         });
 
         // iterate through each instance of film and push numberOfVotes to array
@@ -89,7 +84,7 @@ async function getRatedFilms(numberOfFilms, cinemaFilms) {
         let min = Math.min(f + 100, numberOfFilms);
         for (let i = f; i < min; i++) {
             let myRating = c('span.ipl-rating-star__rating').eq(1 + 24 * (i-f)).text();
-            ratedFilms.push({"filmID" : filmIDs[i], "myRating" : parseInt(myRating),
+            ratedFilms.push({"id" : ids[i], "myRating" : parseInt(myRating),
                             "watchedInCinema" : false, "numberOfVotes" : numberOfVotesArray[i]});
         }
 
@@ -101,7 +96,7 @@ async function getRatedFilms(numberOfFilms, cinemaFilms) {
     const len = cinemaFilms.length;
     ratedFilms.forEach(film => {
         for (let i = 0; i < len; i++) {
-            if (film.filmID === cinemaFilms[i]) {
+            if (film.id === cinemaFilms[i]) {
                 film.watchedInCinema = true;
                 break;
             }
@@ -124,7 +119,7 @@ async function getCinemaFilms() {
         let body = await response.text();
         let c = cheerio.load(body);
 
-        // push filmID to array
+        // push id to array
         c('.lister-item-image.ribbonize').each(function () {
             cinemaFilms.push(c(this).attr('data-tconst'));
         })
@@ -137,10 +132,10 @@ async function getCinemaFilms() {
 }
 
 // gets metascore of film
-async function getMetascore(filmID) {
-    // get the web page URL for the film specified by filmID
+async function getMetascore(id) {
+    // get the web page URL for the film specified by id
     const imdbURL = "https://www.imdb.com/title/";
-    const url = imdbURL.concat(filmID);
+    const url = imdbURL.concat(id);
 
     // get html
     const response = await nodeFetch(url);
@@ -153,10 +148,10 @@ async function getMetascore(filmID) {
 }
 
 // gets imdb rating of film
-async function getImdbRating(filmID) {
-    // get the web page URL for the film specified by filmID
+async function getImdbRating(id) {
+    // get the web page URL for the film specified by id
     const imdbURL = "https://www.imdb.com/title/";
-    const url = imdbURL.concat(filmID);
+    const url = imdbURL.concat(id);
 
     // get html
     const response = await nodeFetch(url);
@@ -178,12 +173,12 @@ async function getUpdatedFilmData(filmData, ratedFilms) {
     // for each of the rated films
     for (let i = 0; i < len; i++) {
         // if the film is already in the database
-        const filmIndex = getIndexOfFilm(filmData, ratedFilms[i].filmID);
+        const filmIndex = getIndexOfFilm(filmData, ratedFilms[i].id);
 
         if (filmIndex !== -1) {
             // update metascore, imdbRating, numberOfVotes, watchedInCinema, myRating
-            filmData[filmIndex].metacriticRating = await getMetascore(filmData[filmIndex].filmID);
-            filmData[filmIndex].imDbRating = await getImdbRating(filmData[filmIndex].filmID);
+            filmData[filmIndex].metacriticRating = await getMetascore(filmData[filmIndex].id);
+            filmData[filmIndex].imDbRating = await getImdbRating(filmData[filmIndex].id);
             filmData[filmIndex].imDbRatingVotes = ratedFilms[i].numberOfVotes;
             filmData[filmIndex].watchedInCinema = ratedFilms[i].watchedInCinema;
             filmData[filmIndex].myRating = ratedFilms[i].myRating;
@@ -202,10 +197,10 @@ async function getUpdatedFilmData(filmData, ratedFilms) {
 
 // gets the index of a film in the database
 // if the film is not in the database, it returns -1
-function getIndexOfFilm(filmData, filmID) {
+function getIndexOfFilm(filmData, id) {
     const len = filmData.length;
     for (let i = 0; i < len; i++) {
-        if (filmData[i].filmID === filmID) {
+        if (filmData[i].id === id) {
             return i;
         }
     }

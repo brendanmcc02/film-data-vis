@@ -16,6 +16,7 @@
 11. English-spoken films vs international films 
 	a. Mean Rating (Bar chart)
    	b. Proportion (Pie chart)
+12. content rating? pg, r etc.
 
 ## Challenging ideas Graph
 1. Ratings of franchises (Star Wars, Harry Potter, Marvel) Line chart
