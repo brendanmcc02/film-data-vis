@@ -16,7 +16,9 @@ export {writeFilmsToJson, getFilteredFilm, getRawFilm, getNextURL, getNumberOfRa
 // global constants
 const myRatingsURL = "https://www.imdb.com/user/ur95934592/ratings";
 const watchedInCinemaURL = "https://www.imdb.com/list/ls081360952/";
-const apiURL = "https://imdb-api.com/en/API/Title/k_795p7sp0/";
+const imdbTop250URL = "https://www.imdb.com/chart/top";
+const myTop25URL = "https://www.imdb.com/list/ls048298278/";
+const apiURL = "https://imdb-api.com/en/API/Title/k_xg3u88nc/";
 const apiRequestOptions = {
     method: 'GET',
     redirect: 'follow'
@@ -34,13 +36,13 @@ async function main() {
     const startTime = Date.now();
     /////////////////////////////
 
-    // ~00:20 21st May k_795p7sp0
-    // ~23:45 20th May k_xg3u88nc
-    const startIndex = 0;
+    // ~21:45 26th May k_795p7sp0
+    // ~22:55 26th May k_xg3u88nc
+    const startIndex = 400;
     const numberOfFilms = await getNumberOfRatedFilms();
     const preFilmObjects = await getPreFilmObjects(numberOfFilms);
     const rawFilms = await getRawFilms(preFilmObjects, startIndex, numberOfFilms);
-    const filmData = await getFilmData(rawFilms, startIndex, preFilmObjects, numberOfFilms);
+    const filmData = getFilmData(rawFilms, startIndex, preFilmObjects, numberOfFilms);
     writeFilmsToJson(filmData);
 
     ///////////////////////////
@@ -50,7 +52,8 @@ async function main() {
 }
 
 // web scrapes my imdb ratings page
-// returns array of pre film objects: {id, myRating, watchedInCinema}
+// returns array of preFilmObjects:
+// {id, myRating, watchedInCinema imdbTop25Position, myPosition}
 // ~30 sec runtime
 async function getPreFilmObjects(numberOfFilms) {
     let preFilmObjects = [];
@@ -81,7 +84,9 @@ async function getPreFilmObjects(numberOfFilms) {
         for (let i = f; i < min; i++) {
             let myRating = c('span.ipl-rating-star__rating').eq(1 + 24 * (i-f)).text();
             myRating = parseInt(myRating);
-            preFilmObjects.push({"id" : ids[i], "myRating" : myRating, "watchedInCinema" : false});
+            preFilmObjects.push({"id" : ids[i], "myRating" : myRating,
+                "watchedInCinema" : false, "imdbTop25Position" : -1,
+                "myPosition" : -1});
         }
 
         // get url for next iteration
@@ -90,11 +95,11 @@ async function getPreFilmObjects(numberOfFilms) {
 
     // iterate through films watched in cinemas and
     // change 'watchedInCinema' attribute of relevant films
-
     let filmsWatchedInCinemas = [];
     url = watchedInCinemaURL;
 
-    // continuously iterate through each web page of the list
+    // continuously iterate through each web page of
+    // the 'films watched in cinema' list
     while (url !== "") {
         // get the html
         let response = await nodeFetch(watchedInCinemaURL);
@@ -118,7 +123,63 @@ async function getPreFilmObjects(numberOfFilms) {
         url = await getNextURL(url);
     }
 
+    // iterate through imdb top 250 films,
+    // and change the position attribute of the
+    // first 25 films that I've rated
+
+    // get the html
+    let response = await nodeFetch(imdbTop250URL);
+    let body = await response.text();
+    let c = cheerio.load(body);
+
+    let position = 1;
+    for (let i = 0; i < 250 && position <= 25; i++) {
+        let id = c('.wlb_ribbon').eq(i).attr('data-tconst');
+        let index = getIndexOfId(preFilmObjects, id);
+        if (index !== -1) {
+            preFilmObjects[index].imdbTop25Position = position;
+            position++;
+        }
+    }
+
+    // iterate through my top 25 films and change the
+    // 'myPosition' attribute of the corresponding films
+
+    let myTop25Films = [];
+
+    // get the html
+    response = await nodeFetch(myTop25URL);
+    body = await response.text();
+    c = cheerio.load(body);
+
+    // push id to array
+    c('.lister-item-image.ribbonize').each(function () {
+        myTop25Films.push(c(this).attr('data-tconst'));
+    });
+
+    // for each film, modify the 'myPosition' to the corresponding value
+    const len = myTop25Films.length;
+    for (let i = 0; i < len; i++) {
+        let id = myTop25Films[i];
+        let index = getIndexOfId(preFilmObjects, id);
+        preFilmObjects[index].myPosition = i + 1;
+    }
+
     return preFilmObjects;
+}
+
+// utility function that gets the index of
+// the preFilmObject with the matching id.
+// returns -1 if no match.
+function getIndexOfId(preFilmObjects, id) {
+    const len = preFilmObjects.length;
+    for (let i = 0; i < len; i++) {
+        if (preFilmObjects[i].id === id) {
+            return i;
+        }
+    }
+
+    return -1;
 }
 
 // given a current URL, returns the URL of the next web page
@@ -299,9 +360,11 @@ function getFilteredFilm(rawFilm, preFilmObject) {
     rawFilm.imDbRatingVotes = parseFloat(rawFilm.imDbRatingVotes);
     rawFilm.metacriticRating = parseInt(rawFilm.metacriticRating);
 
-    // adding myRating and watchedInCinema attributes to the film object
+    // adding attributes to the film object
     rawFilm.myRating = preFilmObject.myRating;
     rawFilm.watchedInCinema = preFilmObject.watchedInCinema;
+    rawFilm.imdbTop25Position = preFilmObject.imdbTop25Position;
+    rawFilm.myPosition = preFilmObject.myPosition;
 
     return rawFilm;
 }

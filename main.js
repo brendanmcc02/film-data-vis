@@ -5,18 +5,18 @@ async function main() {
     const response = await fetch("data/filmData.json");
     const filmData = await response.json();
 
-    const directorFilms = await getDirectorFilms(filmData, "Christopher Nolan");
-    const directorTitles = await getDirectorTitles(directorFilms);
-    const directorRatings = await getDirectorRatings(directorFilms);
+    const imdbTop25Films = await getImdbTop25Films(filmData);
+    const imdbTop25Titles = await getImdbTop25Titles(imdbTop25Films);
+    const imdbTop25Ratings = await getImdbTop25Ratings(imdbTop25Films);
 
     const ctx = document.getElementById('myChart');
     new Chart(ctx, {
-        type: 'line',
+        type: 'bar',
         data: {
-            labels: directorTitles,
+            labels: imdbTop25Titles,
             datasets: [{
                 label: 'Title',
-                data: directorRatings,
+                data: imdbTop25Ratings,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.2)'
                 ],
@@ -28,10 +28,10 @@ async function main() {
         },
         options: {
             scales: {
-                // y: {
-                //     min: 0,
-                //     max: 11
-                // }
+                y: {
+                    min: 0,
+                    max: 10
+                }
             }
         }
     });
@@ -248,7 +248,7 @@ async function getDirectorFilms(filmData, director) {
         swapped = false;
 
         for (let i = 0; i < len; i++) {
-            if (directorFilms[i].year > directorFilms[i+1].directorFilms) {
+            if (directorFilms[i].year > directorFilms[i+1].year) {
                 [directorFilms[i], directorFilms[i+1]] = [directorFilms[i+1], directorFilms[i]] // swap
                 swapped = true; // signal flag
             }
@@ -258,6 +258,8 @@ async function getDirectorFilms(filmData, director) {
     return directorFilms;
 }
 
+// given an array of sorted films by a director (oldest -> newest),
+// return array of titles of those films
 async function getDirectorTitles(directorFilms) {
     let directorTitles = [];
 
@@ -268,6 +270,8 @@ async function getDirectorTitles(directorFilms) {
     return directorTitles;
 }
 
+// given an array of sorted films by a director (oldest -> newest),
+// return array of my ratings of those films
 async function getDirectorRatings(directorFilms) {
     let directorRatings = [];
 
@@ -276,4 +280,132 @@ async function getDirectorRatings(directorFilms) {
     });
 
     return directorRatings;
+}
+
+// gets array of the top 25 films on imdb that I've rated
+// sorted 1st -> 25th
+async function getImdbTop25Films(filmData) {
+    let imdbTop25Films = [];
+
+    filmData.forEach(film => {
+        if (film.imdbTop25Position !== -1) {
+            imdbTop25Films.push(film);
+        }
+    });
+
+    // sort by position (1st -> 25th)
+    // bubble sort is used for its algorithmic simplicity.
+    // also because the array is not large,
+    // so time complexity is not an issue
+
+    let swapped = true; // flag
+    const len = imdbTop25Films.length - 1;
+
+    // continually make passes until the array is sorted
+    while (swapped) {
+        swapped = false;
+
+        for (let i = 0; i < len; i++) {
+            if (imdbTop25Films[i].imdbTop25Position > imdbTop25Films[i+1].imdbTop25Position) {
+                [imdbTop25Films[i], imdbTop25Films[i+1]] = [imdbTop25Films[i+1], imdbTop25Films[i]] // swap
+                swapped = true; // signal flag
+            }
+        }
+    }
+
+    return imdbTop25Films;
+}
+
+// given array of imdb top 25 films that I've rated,
+// return the titles of these films
+async function getImdbTop25Titles(imdbTop25Films) {
+    let imdbTop25Titles = [];
+
+    imdbTop25Films.forEach(film => {
+       imdbTop25Titles.push(film.title);
+    });
+
+    return imdbTop25Titles;
+}
+
+// given array of imdb top 25 films that I've rated,
+// return my ratings of these films
+async function getImdbTop25Ratings(imdbTop25Films) {
+    let imdbTop25Ratings = [];
+
+    imdbTop25Films.forEach(film => {
+        imdbTop25Ratings.push(film.myRating);
+    });
+
+    return imdbTop25Ratings;
+}
+
+// gets array of my top 25 films,
+// sorted by position (1st -> 25th)
+async function getMyTop25Films(filmData) {
+    let myTop25Films = [];
+
+    filmData.forEach(film => {
+       if (film.myPosition !== -1) {
+           myTop25Films.push(film);
+       }
+    });
+
+    // sort by position (1st -> 25th)
+    // bubble sort is used for its algorithmic simplicity.
+    // also because the array is not large,
+    // so time complexity is not an issue
+
+    let swapped = true; // flag
+    const len = myTop25Films.length - 1;
+
+    // continually make passes until the array is sorted
+    while (swapped) {
+        swapped = false;
+
+        for (let i = 0; i < len; i++) {
+            if (myTop25Films[i].myPosition > myTop25Films[i+1].myPosition) {
+                [myTop25Films[i], myTop25Films[i+1]] = [myTop25Films[i+1], myTop25Films[i]] // swap
+                swapped = true; // signal flag
+            }
+        }
+    }
+
+    return myTop25Films;
+}
+
+// given array of my top 25 films,
+// return an array of the titles of those films
+async function getMyTop25Titles(myTop25Films) {
+    let myTop25Titles = [];
+
+    myTop25Films.forEach(film => {
+       myTop25Titles.push(film.title);
+    });
+
+    return myTop25Titles;
+}
+
+// given array of my top 25 films,
+// return an array of the imdb rating of those films
+async function getMyTop25Ratings(myTop25Films) {
+    let myTop25Ratings = [];
+
+    myTop25Films.forEach(film => {
+        myTop25Ratings.push(film.imDbRating);
+    });
+
+    return myTop25Ratings;
+}
+
+// given array of my top 25 films,
+// return an array of the metascore of those films
+async function getMyTop25Ratings(myTop25Films) {
+    let myTop25Ratings = [];
+
+    myTop25Films.forEach(film => {
+        myTop25Ratings.push(film.metacriticRating);
+    });
+
+    return myTop25Ratings;
 }
