@@ -11,7 +11,7 @@ import * as cheerio from "cheerio";
 import * as fs from "fs";
 
 // function exports for updateDB.js
-export {writeFilmsToJson, getFilteredFilm, getRawFilm, getNextURL, getNumberOfRatedFilms};
+export {getPreFilmObjects, writeFilmsToJson, getFilteredFilm, getRawFilm, getNextURL, getNumberOfRatedFilms};
 
 // global constants
 const myRatingsURL = "https://www.imdb.com/user/ur95934592/ratings";
@@ -37,8 +37,8 @@ async function main() {
     /////////////////////////////
 
     // ~21:45 26th May k_795p7sp0
-    // ~22:55 26th May k_xg3u88nc
-    const startIndex = 400;
+    // ~16:25 31st May k_xg3u88nc
+    const startIndex = 300;
     const numberOfFilms = await getNumberOfRatedFilms();
     const preFilmObjects = await getPreFilmObjects(numberOfFilms);
     const rawFilms = await getRawFilms(preFilmObjects, startIndex, numberOfFilms);

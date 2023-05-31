@@ -7,7 +7,7 @@ import * as cheerio from "cheerio";
 import * as fs from "fs";
 
 // function imports
-import {writeFilmsToJson, getFilteredFilm, getRawFilm, getNextURL, getNumberOfRatedFilms} from './initDB.js'
+import {writeFilmsToJson, getPreFilmObjects, getFilteredFilm, getRawFilm, getNextURL, getNumberOfRatedFilms} from './initDB.js'
 
 // exports for main.js
 export {readFilmData};

@@ -1,32 +1,3 @@
-## Interesting:
-
-1. Mean Genre Rating [DONE]
-    -> atm its all genres, further customisation can be done for top 5, bottom 5
-2. Top k Directors w/ atleast n films [DONE]
-3. Ratings of a directors' films (e.g. Chris Nolan) [DONE]
-4. myRating of IMDB Top 25 [DONE]
-5. imdbRating of my Top 25 [DONE?] didn't properly test
-6. Metascore of my top 25 [DONE?] didn't properly test
-6. Mean Decade Rating
-5. Mean Rating per year (Line chart)
-6. Mean Runtime Rating (<90, <120, ..., <210, <240)
-7. Quantity of films watched per runtime interval (Piechart)
-8. Quantity of films watched per genre (Piechart)
-9. numOfVotes vs. Mean Rating (Scatterplot)
-10. Top 5/10 Actors (>= 5 films)
-11. English-spoken films vs international films
-	a. Mean Rating (Bar chart)
-   	b. Proportion (Pie chart)
-12. content rating. pg-13, r etc.
-13. watchedInCinema vs !watchedInCinema:
-    a. Mean Rating (Bar chart)
-    b. Proportion (Pie Chart)
-14. Ratings of franchises (Star Wars, Harry Potter, Marvel) Line chart
-
-
-
-Approach:
-
 js can be run in 1 of 2 environments:
 
 1. nodeJS
