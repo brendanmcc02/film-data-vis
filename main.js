@@ -7,19 +7,21 @@ async function main() {
     const filmData = await response.json();
 
     // get relevant data for graphs
-    const runtimes = await getRuntimes(filmData);
-    const runtimeLabels = await getRuntimeLabels(runtimes, 10);
-    const runtimeRatings = await getRuntimeRatings(runtimes, 10);
+    const cinemaFilms = await getCinemaFilms(filmData);
+    const cinemaLabels = await getCinemaLabels(cinemaFilms);
+    const cinemaQuantities = await getCinemaQuantities(cinemaFilms);
+
+    console.log(cinemaFilms);
 
     // plot the graph
     const ctx = document.getElementById('myChart');
     new Chart(ctx, {
-        type: 'bar',
+        type: 'doughnut',
         data: {
-            labels: runtimeLabels,
+            labels: cinemaLabels,
             datasets: [{
                 label: 'Title',
-                data: runtimeRatings,
+                data: cinemaQuantities,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.2)'
                 ],
@@ -128,38 +130,15 @@ async function getGenreRatings(genres) {
     return genreRatings;
 }
 
-// returns array of top k director labels with at least n films()
-// sorted highest->lowest ratingMean
-async function getTopKDirectorLabels(directors, k, n) {
-    let directorLabels = [];
+// returns array of quantity of films watched per genre (sorted highest -> lowest in meanRating)
+async function getGenreQuantities(genres) {
+    let genreQuantities = [];
 
-    const len = directors.length;
-    let count = 0;
-    for (let i = 0; count < k && i < len; i++) {
-        if (directors[i].ratingQuantity >= n) {
-            directorLabels.push(directors[i].director);
-            count++;
-        }
-    }
+    genres.forEach(genre => {
+       genreQuantities.push(genre.ratingQuantity);
+    });
 
-    return directorLabels;
-}
-
-// returns array of top k mean director ratings with at least n films()
-// sorted highest->lowest ratingMean
-async function getTopKDirectorRatings(directors, k, n) {
-    let directorRatings = [];
-
-    const len = directors.length;
-    let count = 0;
-    for (let i = 0; count < k && i < len; i++) {
-        if (directors[i].ratingQuantity >= n) {
-            directorRatings.push(directors[i].ratingMean);
-            count++;
-        }
-    }
-
-    return directorRatings;
+    return genreQuantities;
 }
 
 // returns an array of director objects {"director", "ratingMean", "ratingSum", "ratingQuantity"},
@@ -212,6 +191,39 @@ async function getDirectors(filmData) {
     return directors;
 }
 
+// returns array of top k director labels with at least n films
+// sorted highest->lowest ratingMean
+async function getTopKDirectorLabels(directors, k, n) {
+    let directorLabels = [];
+
+    const len = directors.length;
+    let count = 0;
+    for (let i = 0; count < k && i < len; i++) {
+        if (directors[i].ratingQuantity >= n) {
+            directorLabels.push(directors[i].director);
+            count++;
+        }
+    }
+
+    return directorLabels;
+}
+
+// returns array of top k mean director ratings with at least n films
+// sorted highest->lowest ratingMean
+async function getTopKDirectorRatings(directors, k, n) {
+    let directorRatings = [];
+
+    const len = directors.length;
+    let count = 0;
+    for (let i = 0; count < k && i < len; i++) {
+        if (directors[i].ratingQuantity >= n) {
+            directorRatings.push(directors[i].ratingMean);
+            count++;
+        }
+    }
+
+    return directorRatings;
+}
 
 // utility function that gets the index of a target director
 // in an array of directors.
@@ -283,6 +295,164 @@ async function getDirectorRatings(directorFilms) {
     });
 
     return directorRatings;
+}
+
+// returns an array of actor objects {"actorName", "ratingMean", "ratingSum", "ratingQuantity"},
+// sorted by ratingMean (highest -> lowest)
+async function getActors(filmData) {
+    let actors = [];
+
+    filmData.forEach(film => {
+        film.actorList.forEach(actor => {
+            let actorIndex = getActorIndex(actors, actor.name);
+            // actor not in array
+            if (actorIndex === -1) {
+                actors.push({"actorName" : actor.name, "ratingMean" : film.myRating,
+                    "ratingSum" : film.myRating, "ratingQuantity" : 1});
+            }
+            // actor is in array
+            else {
+                actors[actorIndex].ratingSum += film.myRating;
+                actors[actorIndex].ratingQuantity++;
+                actors[actorIndex].ratingMean = actors[actorIndex].ratingSum / actors[actorIndex].ratingQuantity;
+            }
+        });
+    });
+
+    // sort by ratingMean (highest -> lowest)
+    // bubble sort is used for its algorithmic simplicity.
+    // also because the array is not large,
+    // so time complexity is not an issue
+
+    let swapped = true; // flag
+    const len = actors.length - 1;
+
+    // continually make passes until the array is sorted
+    while (swapped) {
+        swapped = false;
+
+        for (let i = 0; i < len; i++) {
+            if (actors[i].ratingMean < actors[i+1].ratingMean) {
+                [actors[i], actors[i+1]] = [actors[i+1], actors[i]] // swap
+                swapped = true; // signal flag
+            }
+        }
+    }
+
+    // round each ratingMean to 2 decimal places
+    actors.forEach(actor => {
+        actor.ratingMean = Math.round((actor.ratingMean + Number.EPSILON) * 100) / 100;
+    });
+
+    return actors;
+}
+
+// returns array of top k actor labels with at least n films
+// sorted highest->lowest ratingMean
+async function getTopKActorLabels(actors, k, n) {
+    let actorLabels = [];
+
+    const len = actors.length;
+    let count = 0;
+    for (let i = 0; count < k && i < len; i++) {
+        if (actors[i].ratingQuantity >= n) {
+            actorLabels.push(actors[i].actorName);
+            count++;
+        }
+    }
+
+    return actorLabels;
+}
+
+// returns array of top k mean actor ratings with at least n films
+// sorted highest->lowest ratingMean
+async function getTopKActorRatings(actors, k, n) {
+    let actorRatings = [];
+
+    const len = actors.length;
+    let count = 0;
+    for (let i = 0; count < k && i < len; i++) {
+        if (actors[i].ratingQuantity >= n) {
+            actorRatings.push(actors[i].ratingMean);
+            count++;
+        }
+    }
+
+    return actorRatings;
+}
+
+// utility function that gets the index of a target actor
+// in an array of actors.
+// if actor is not in array, it returns -1
+function getActorIndex(actors, actorName) {
+    const len = actors.length;
+
+    for (let i = 0; i < len; i++) {
+        if (actors[i].actorName === actorName) {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+// returns array of an actor's films, sorted oldest -> newest
+async function getActorFilms(filmData, actorName) {
+    let actorFilms = [];
+
+    filmData.forEach(film => {
+        film.actorList.forEach(actor => {
+            if(actor.name === actorName) {
+                actorFilms.push(film);
+            }
+        });
+    });
+
+    // sort by year (oldest -> newest)
+    // bubble sort is used for its algorithmic simplicity.
+    // also because the array is not large,
+    // so time complexity is not an issue
+
+    let swapped = true; // flag
+    const len = actorFilms.length - 1;
+
+    // continually make passes until the array is sorted
+    while (swapped) {
+        swapped = false;
+
+        for (let i = 0; i < len; i++) {
+            if (actorFilms[i].year > actorFilms[i+1].year) {
+                [actorFilms[i], actorFilms[i+1]] = [actorFilms[i+1], actorFilms[i]] // swap
+                swapped = true; // signal flag
+            }
+        }
+    }
+
+    return actorFilms;
+}
+
+// given an array of sorted films by an actor (oldest -> newest),
+// return array of titles of those films
+async function getActorTitles(actorFilms) {
+    let actorTitles = [];
+
+    actorFilms.forEach(film => {
+        actorTitles.push(film.title);
+    });
+
+    return actorTitles;
+}
+
+// given an array of sorted films by an actor (oldest -> newest),
+// return array of my ratings of those films
+async function getActorRatings(actorFilms) {
+    let actorRatings = [];
+
+    actorFilms.forEach(film => {
+        actorRatings.push(film.myRating);
+    });
+
+    return actorRatings;
 }
 
 // gets array of the top 25 films on imdb that I've rated
@@ -674,6 +844,8 @@ async function getYearRatings(years, minYear, maxYear) {
     return yearRatings;
 }
 
+// [TODO] POSSIBLY BETTER SOLUTION: get rid of inequality attribute
+// [TODO] and for the runtime array object, set the runtime to infinity
 // returns an array of runtime objects:
 // {"runtime", "inequality" "ratingSum", "ratingQuantity", "ratingMean"}
 // sorted by runtime.
@@ -697,7 +869,7 @@ async function getRuntimes(filmData) {
     });
 
     // round each ratingMean to 2 decimal places
-    // (only if it's not null)
+    // (only if it's non-zero)
     runtimes.forEach(runtime => {
         if (runtime.ratingMean !== 0) {
             runtime.ratingMean = Math.round((runtime.ratingMean + Number.EPSILON) * 100) / 100;
@@ -709,7 +881,7 @@ async function getRuntimes(filmData) {
 
 // initialises the runtime array.
 // adds 7 intervals: <60, <90, ..., <210, <240.
-// then adds a final 8th interval: >240
+// then adds a final 8th interval: >=240
 async function initRuntimes() {
     let runtimes = [];
 
@@ -752,9 +924,9 @@ async function getRuntimeRatings(runtimes, n) {
     return runtimeRatings;
 }
 
-// given an array of runtimes,
+// given an array of runtime objects,
 // returns an array of runtimeQuantities,
-// sorted by runtime (i.e: 90, 120, ..., 210, 240
+// sorted by runtime (i.e: 60, 90, ..., 210, 240)
 async function getRuntimeQuantities(runtimes) {
     let runtimeQuantities = [];
 
@@ -765,4 +937,147 @@ async function getRuntimeQuantities(runtimes) {
     })
 
     return runtimeQuantities;
+}
+
+// returns array of {"label" : "English-Spoken/International", "ratingSum", "ratingQuantity", "ratingMean"}.
+// array is size 2, one object is for english-spoken films,
+// the second object is for international films.
+// to determine if a film is international:
+// oscars definition: film produced outside the US and >50% non-english dialogue track.
+// so, I check if a film is produced outside the US (and the UK because realistically if
+// a film is produced in the UK it will obviously have English be primarily spoken),
+// and then I check if the first language in the languageList is English.
+// unfortunately it's not perfect because Roma and All Quiet on the Western Front are international films,
+// but because they are netflix films, USA is included in its list of countries making it a non-international film.
+async function getEnglishInternationalFilms(filmData) {
+    let englishInternationalFilms = [
+        {"label" : "English-Spoken", "ratingMean" : 0, "ratingSum" : 0, "ratingQuantity" : 0},
+        {"label" : "International",  "ratingMean" : 0, "ratingSum" : 0, "ratingQuantity" : 0}];
+
+    filmData.forEach(film => {
+        // if the film is international
+        if (!film.countryList.includes("USA") && !film.countryList.includes("UK") && film.languageList[0] !== "English") {
+            englishInternationalFilms[1].ratingQuantity++;
+            englishInternationalFilms[1].ratingSum += film.myRating;
+            englishInternationalFilms[1].ratingMean = englishInternationalFilms[1].ratingSum / englishInternationalFilms[1].ratingQuantity;
+
+        }
+        // else, the film is english-spoken
+        else {
+            englishInternationalFilms[0].ratingQuantity++;
+            englishInternationalFilms[0].ratingSum += film.myRating;
+            englishInternationalFilms[0].ratingMean = englishInternationalFilms[0].ratingSum / englishInternationalFilms[0].ratingQuantity;
+        }
+    });
+
+    // round each ratingMean to 2 decimal places
+    englishInternationalFilms.forEach(eif => {
+        eif.ratingMean = Math.round((eif.ratingMean + Number.EPSILON) * 100) / 100;
+    });
+
+    return englishInternationalFilms;
+}
+
+// given a size 2 array of english & international films,
+// returns the labels of each object in that array
+async function getEnglishInternationalLabels(englishInternationalFilms) {
+    let englishInternationalLabels = [];
+
+    englishInternationalFilms.forEach(eif => {
+       englishInternationalLabels.push(eif.label);
+    });
+
+    return englishInternationalLabels;
+}
+
+// given a size 2 array of english & international films,
+// returns the ratingMean of each object in that array
+async function getEnglishInternationalRatings(englishInternationalFilms) {
+    let englishInternationalRatings = [];
+
+    englishInternationalFilms.forEach(eif => {
+        englishInternationalRatings.push(eif.ratingMean);
+    });
+
+    return englishInternationalRatings;
+}
+
+// given a size 2 array of english & international films,
+// returns the ratingQuantity of each object in that array
+async function getEnglishInternationalQuantities(englishInternationalFilms) {
+    let englishInternationalQuantities = [];
+
+    englishInternationalFilms.forEach(eif => {
+        englishInternationalQuantities.push(eif.ratingQuantity);
+    });
+
+    return englishInternationalQuantities;
+}
+
+// returns array of {"label" : "Watched in Cinemas / Not Watched in Cinemas", "ratingSum", "ratingQuantity", "ratingMean"}.
+// array is size 2, one object is for films watched in cinemas,
+// the second object is for films not watched in cinemas.
+async function getCinemaFilms(filmData) {
+    let cinemaFilms = [
+        {"label" : "Watched in Cinemas",     "ratingMean" : 0, "ratingSum" : 0, "ratingQuantity" : 0},
+        {"label" : "Not Watched in Cinemas", "ratingMean" : 0, "ratingSum" : 0, "ratingQuantity" : 0}];
+
+    filmData.forEach(film => {
+        // if the film was watched in cinema
+        if (film.watchedInCinema) {
+            cinemaFilms[0].ratingQuantity++;
+            cinemaFilms[0].ratingSum += film.myRating;
+            cinemaFilms[0].ratingMean = cinemaFilms[0].ratingSum / cinemaFilms[0].ratingQuantity;
+
+        }
+        // else, the film was not watched in cinema
+        else {
+            cinemaFilms[1].ratingQuantity++;
+            cinemaFilms[1].ratingSum += film.myRating;
+            cinemaFilms[1].ratingMean = cinemaFilms[1].ratingSum / cinemaFilms[1].ratingQuantity;
+        }
+    });
+
+    // round each ratingMean to 2 decimal places
+    cinemaFilms.forEach(cf => {
+        cf.ratingMean = Math.round((cf.ratingMean + Number.EPSILON) * 100) / 100;
+    });
+
+    return cinemaFilms;
+}
+
+// given a size 2 array of cinema films,
+// returns the labels of each object in that array
+async function getCinemaLabels(cinemaFilms) {
+    let cinemaLabels = [];
+
+    cinemaFilms.forEach(cf => {
+        cinemaLabels.push(cf.label);
+    });
+
+    return cinemaLabels;
+}
+
+// given a size 2 array of cinema films,
+// returns the ratingMean of each object in that array
+async function getCinemaRatings(cinemaFilms) {
+    let cinemaRatings = [];
+
+    cinemaFilms.forEach(cf => {
+        cinemaRatings.push(cf.ratingMean);
+    });
+
+    return cinemaRatings;
+}
+
+// given a size 2 array of cinema films,
+// returns the ratingQuantity of each object in that array
+async function getCinemaQuantities(cinemaFilms) {
+    let cinemaQuantities = [];
+
+    cinemaFilms.forEach(cf => {
+        cinemaQuantities.push(cf.ratingQuantity);
+    });
+
+    return cinemaQuantities;
 }

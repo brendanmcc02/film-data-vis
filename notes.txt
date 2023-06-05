@@ -12,3 +12,12 @@ The website will (naturally) run js in a web environment,
 and it only needs to read the file.
 
 updateDB.JS is responsible for writing updates to the file.
+
+
+international film:
+
+1. produced outside US
+2. non-english spoken >50%
+
+international:
+if (!film.countryList.includes("US") && film.langaugeList[0]!=="English")

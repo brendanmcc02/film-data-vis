@@ -2,7 +2,6 @@
 // as opposed to a web browser
 
 // api keys:
-// k_xg3u88nc tcd
 // k_795p7sp0 outlook
 
 // module imports
@@ -18,7 +17,7 @@ const myRatingsURL = "https://www.imdb.com/user/ur95934592/ratings";
 const watchedInCinemaURL = "https://www.imdb.com/list/ls081360952/";
 const imdbTop250URL = "https://www.imdb.com/chart/top";
 const myTop25URL = "https://www.imdb.com/list/ls048298278/";
-const apiURL = "https://imdb-api.com/en/API/Title/k_xg3u88nc/";
+const apiURL = "https://imdb-api.com/en/API/Title/k_795p7sp0/";
 const apiRequestOptions = {
     method: 'GET',
     redirect: 'follow'
@@ -36,9 +35,9 @@ async function main() {
     const startTime = Date.now();
     /////////////////////////////
 
-    // ~21:45 26th May k_795p7sp0
+    // ~11:55 5th June k_795p7sp0
     // ~16:25 31st May k_xg3u88nc
-    const startIndex = 300;
+    const startIndex = 100;
     const numberOfFilms = await getNumberOfRatedFilms();
     const preFilmObjects = await getPreFilmObjects(numberOfFilms);
     const rawFilms = await getRawFilms(preFilmObjects, startIndex, numberOfFilms);
@@ -311,7 +310,6 @@ function getFilteredFilm(rawFilm, preFilmObject) {
     delete rawFilm.tvEpisodeInfo;
     delete rawFilm.errorMessage;
     delete rawFilm.boxOffice;
-    delete rawFilm.countryList;
 
     rawFilm.directorList.forEach(director => {
        delete director.id;
@@ -319,6 +317,7 @@ function getFilteredFilm(rawFilm, preFilmObject) {
 
     rawFilm.actorList.forEach(actor => {
         delete actor.asCharacter;
+        delete actor.id
     });
 
     rawFilm.genreList.forEach(genre => {
@@ -327,6 +326,10 @@ function getFilteredFilm(rawFilm, preFilmObject) {
 
     rawFilm.languageList.forEach(language => {
         delete language.value;
+    });
+
+    rawFilm.countryList.forEach(country => {
+        delete country.value;
     });
 
     // each element in directorList is an object with
@@ -352,6 +355,13 @@ function getFilteredFilm(rawFilm, preFilmObject) {
         languages.push(language.key);
     });
     rawFilm.languageList = languages;
+
+    // same as above but with countryList
+    let countries = [];
+    rawFilm.countryList.forEach(country => {
+        countries.push(country.key);
+    });
+    rawFilm.countryList = countries;
 
     // changing strings to integers/floats
     rawFilm.year = parseInt(rawFilm.year);
