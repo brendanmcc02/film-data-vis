@@ -16,7 +16,7 @@
 - [x] Quantity of films watched per runtime interval {doughnut}
 - [x] English-spoken  vs. international films {meanRating: bar, proportion: doughnut}
 - [X] watchedInCinema vs. !watchedInCinema    {meanRating: bar, proportion: doughnut}
-- [ ] content rating (pg-13, r, etc.) {line}
+- [x] mean rating of each content rating (>= n films) {line}
 - [ ] ratings of franchises {line}
 - [ ] think about scatter plots
 - [ ] myRating (y-axis) & numOfVotes (x-axis) {scatter} / {line? get mean of each 50/100k interval}

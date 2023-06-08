@@ -14,10 +14,11 @@ and it only needs to read the file.
 updateDB.JS is responsible for writing updates to the file.
 
 
-international film:
+Not Rated (concat with null)
+G
+PG (concat with TV-PG)
+PG-13 (concat with Approved&Passed)
+R
+NC-17 (concat with X)
 
-1. produced outside US
-2. non-english spoken >50%
-
-international:
-if (!film.countryList.includes("US") && film.langaugeList[0]!=="English")
+Approved (concat with Passed) (pre-1968 films were either deemed approved or disapproved)

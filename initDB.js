@@ -2,7 +2,6 @@
 // as opposed to a web browser
 
 // api keys:
-// k_795p7sp0 outlook
 
 // module imports
 import nodeFetch from "node-fetch";
@@ -17,7 +16,7 @@ const myRatingsURL = "https://www.imdb.com/user/ur95934592/ratings";
 const watchedInCinemaURL = "https://www.imdb.com/list/ls081360952/";
 const imdbTop250URL = "https://www.imdb.com/chart/top";
 const myTop25URL = "https://www.imdb.com/list/ls048298278/";
-const apiURL = "https://imdb-api.com/en/API/Title/k_795p7sp0/";
+const apiURL = "https://imdb-api.com/en/API/Title/k_blah/";
 const apiRequestOptions = {
     method: 'GET',
     redirect: 'follow'
@@ -35,9 +34,8 @@ async function main() {
     const startTime = Date.now();
     /////////////////////////////
 
-    // ~11:55 5th June k_795p7sp0
-    // ~16:25 31st May k_xg3u88nc
-    const startIndex = 100;
+    // ~14:18 8th June k_795p7sp0
+    const startIndex = 0;
     const numberOfFilms = await getNumberOfRatedFilms();
     const preFilmObjects = await getPreFilmObjects(numberOfFilms);
     const rawFilms = await getRawFilms(preFilmObjects, startIndex, numberOfFilms);

@@ -172,9 +172,9 @@ async function getUpdatedFilmData(filmData, ratedFilms) {
 
     // for each of the rated films
     for (let i = 0; i < len; i++) {
-        // if the film is already in the database
         const filmIndex = getIndexOfFilm(filmData, ratedFilms[i].id);
 
+        // if the film is already in the database
         if (filmIndex !== -1) {
             // update metascore, imdbRating, numberOfVotes, watchedInCinema, myRating
             filmData[filmIndex].metacriticRating = await getMetascore(filmData[filmIndex].id);

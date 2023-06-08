@@ -7,21 +7,19 @@ async function main() {
     const filmData = await response.json();
 
     // get relevant data for graphs
-    const cinemaFilms = await getCinemaFilms(filmData);
-    const cinemaLabels = await getCinemaLabels(cinemaFilms);
-    const cinemaQuantities = await getCinemaQuantities(cinemaFilms);
-
-    console.log(cinemaFilms);
+    const contentRatings = await getContentRatings(filmData);
+    const contentRatingLabels = await getContentRatingLabels(contentRatings, 5);
+    const contentRatingRatings = await getContentRatingRatings(contentRatings, 5);
 
     // plot the graph
     const ctx = document.getElementById('myChart');
     new Chart(ctx, {
-        type: 'doughnut',
+        type: 'line',
         data: {
-            labels: cinemaLabels,
+            labels: contentRatingLabels,
             datasets: [{
                 label: 'Title',
-                data: cinemaQuantities,
+                data: contentRatingRatings,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.2)'
                 ],
@@ -1080,4 +1078,154 @@ async function getCinemaQuantities(cinemaFilms) {
     });
 
     return cinemaQuantities;
+}
+
+// gets an array of content rating objects:
+// {"label", "ratingSum", "ratingQuantity", "ratingMean"}.
+// sorted by age rating ("Not Rated", "G", "PG", "PG-13", "R", "NC-17").
+async function getContentRatings(filmData) {
+    let contentRatings = initContentRatings();
+
+    filmData.forEach(film => {
+        switch (film.contentRating) {
+            // if a film has no content rating, consider it as "Not Rated"
+            case null:
+                contentRatings[0].ratingSum += film.myRating;
+                contentRatings[0].ratingQuantity++;
+                contentRatings[0].ratingMean = contentRatings[0].ratingSum / contentRatings[0].ratingQuantity;
+                break;
+            case "Not Rated":
+                contentRatings[0].ratingSum += film.myRating;
+                contentRatings[0].ratingQuantity++;
+                contentRatings[0].ratingMean = contentRatings[0].ratingSum / contentRatings[0].ratingQuantity;
+                break;
+            case "G":
+                contentRatings[1].ratingSum += film.myRating;
+                contentRatings[1].ratingQuantity++;
+                contentRatings[1].ratingMean = contentRatings[1].ratingSum / contentRatings[1].ratingQuantity;
+                break;
+            case "PG":
+                contentRatings[2].ratingSum += film.myRating;
+                contentRatings[2].ratingQuantity++;
+                contentRatings[2].ratingMean = contentRatings[2].ratingSum / contentRatings[2].ratingQuantity;
+                break;
+            // if a film has "TV-PG" as it's content rating, consider it as "PG"
+            case "TV-PG":
+                contentRatings[2].ratingSum += film.myRating;
+                contentRatings[2].ratingQuantity++;
+                contentRatings[2].ratingMean = contentRatings[2].ratingSum / contentRatings[2].ratingQuantity;
+                break;
+            case "PG-13":
+                contentRatings[3].ratingSum += film.myRating;
+                contentRatings[3].ratingQuantity++;
+                contentRatings[3].ratingMean = contentRatings[3].ratingSum / contentRatings[3].ratingQuantity;
+                break;
+            // pre-1968 films were classified as either 'Approved' or 'Disapproved'.
+            // consider these films as "PG-13", which will not always be accurate,
+            // but it's the most likely solution
+            case "Approved":
+                contentRatings[3].ratingSum += film.myRating;
+                contentRatings[3].ratingQuantity++;
+                contentRatings[3].ratingMean = contentRatings[3].ratingSum / contentRatings[3].ratingQuantity;
+                break;
+            // pre-168 films were also classified as either 'Passed' or 'Not Passed'.
+            // consider these films as "PG-13", which will not always be accurate,
+            // but it's the most likely solution
+            case "Passed":
+                contentRatings[3].ratingSum += film.myRating;
+                contentRatings[3].ratingQuantity++;
+                contentRatings[3].ratingMean = contentRatings[3].ratingSum / contentRatings[3].ratingQuantity;
+                break;
+            case "R":
+                contentRatings[4].ratingSum += film.myRating;
+                contentRatings[4].ratingQuantity++;
+                contentRatings[4].ratingMean = contentRatings[4].ratingSum / contentRatings[4].ratingQuantity;
+                break;
+            case "NC-17":
+                contentRatings[5].ratingSum += film.myRating;
+                contentRatings[5].ratingQuantity++;
+                contentRatings[5].ratingMean = contentRatings[5].ratingSum / contentRatings[5].ratingQuantity;
+                break;
+            // 'X' rated films were basically NC-17, so consider 'X' films as NC-17
+            case "X":
+                contentRatings[5].ratingSum += film.myRating;
+                contentRatings[5].ratingQuantity++;
+                contentRatings[5].ratingMean = contentRatings[5].ratingSum / contentRatings[5].ratingQuantity;
+                break;
+            default:
+                console.log("idk what to do with this!!!", film.contentRating);
+        }
+    });
+
+    // round each ratingMean to 2 decimal places
+    // (only if it's non-null)
+    contentRatings.forEach(cr => {
+        if (cr.ratingMean != null) {
+            cr.ratingMean = Math.round((cr.ratingMean + Number.EPSILON) * 100) / 100;
+        }
+    });
+
+    return contentRatings;
+}
+
+// initialises the content ratings array in the form:
+// {"label", "ratingSum", "ratingQuantity", "ratingMean"}.
+// sorted by content rating ("Not Rated", "G", "PG", "PG-13", "R", "NC-17").
+function initContentRatings() {
+    let contentRatings = [];
+
+    for (let i = 0; i < 6; i++) {
+        switch (i) {
+            case 0:
+                contentRatings.push({"label" : "Not Rated", "ratingSum" : null, "ratingQuantity" : null, "ratingMean" : null});
+                break;
+            case 1:
+                contentRatings.push({"label" : "G", "ratingSum" : null, "ratingQuantity" : null, "ratingMean" : null});
+                break;
+            case 2:
+                contentRatings.push({"label" : "PG", "ratingSum" : null, "ratingQuantity" : null, "ratingMean" : null});
+                break;
+            case 3:
+                contentRatings.push({"label" : "PG-13", "ratingSum" : null, "ratingQuantity" : null, "ratingMean" : null});
+                break;
+            case 4:
+                contentRatings.push({"label" : "R", "ratingSum" : null, "ratingQuantity" : null, "ratingMean" : null});
+                break;
+            case 5:
+                contentRatings.push({"label" : "NC-17", "ratingSum" : null, "ratingQuantity" : null, "ratingMean" : null});
+        }
+    }
+
+    return contentRatings;
+}
+
+// returns array of ratingMeans of each contentRating.
+// (with >= n films)
+// sorted by content rating ("Not Rated", "G", "PG", "PG-13", "R", "NC-17")
+async function getContentRatingRatings(contentRatings, n) {
+    let contentRatingRatings = [];
+
+    contentRatings.forEach(cr => {
+        if (cr.ratingQuantity >= n) {
+            contentRatingRatings.push(cr.ratingMean);
+        }
+    });
+
+    return contentRatingRatings;
+}
+
+// returns array of labels of each contentRating.
+// (with >= n films)
+// (only if the ratingMean is non-null)
+// sorted by content rating ("Not Rated", "G", "PG", "PG-13", "R", "NC-17")
+async function getContentRatingLabels(contentRatings, n) {
+    let contentRatingLabels = [];
+
+    contentRatings.forEach(cr => {
+        if (cr.ratingQuantity >= n) {
+            contentRatingLabels.push(cr.label);
+        }
+    });
+
+    return contentRatingLabels;
 }
