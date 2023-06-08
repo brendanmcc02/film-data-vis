@@ -8,18 +8,18 @@ async function main() {
 
     // get relevant data for graphs
     const contentRatings = await getContentRatings(filmData);
-    const contentRatingLabels = await getContentRatingLabels(contentRatings, 5);
-    const contentRatingRatings = await getContentRatingRatings(contentRatings, 5);
+    const contentRatingLabels = await getContentRatingLabels(contentRatings, 1);
+    const contentRatingQuantities = await getContentRatingQuantities(contentRatings);
 
     // plot the graph
     const ctx = document.getElementById('myChart');
     new Chart(ctx, {
-        type: 'line',
+        type: 'doughnut',
         data: {
             labels: contentRatingLabels,
             datasets: [{
                 label: 'Title',
-                data: contentRatingRatings,
+                data: contentRatingQuantities,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.2)'
                 ],
@@ -1214,6 +1214,19 @@ async function getContentRatingRatings(contentRatings, n) {
     return contentRatingRatings;
 }
 
+// returns array of ratingQuantity of each contentRating.
+// (with >= n films)
+// sorted by content rating ("Not Rated", "G", "PG", "PG-13", "R", "NC-17")
+async function getContentRatingQuantities(contentRatings) {
+    let contentRatingRatings = [];
+
+    contentRatings.forEach(cr => {
+        contentRatingRatings.push(cr.ratingQuantity);
+    });
+
+    return contentRatingRatings;
+}
+
 // returns array of labels of each contentRating.
 // (with >= n films)
 // (only if the ratingMean is non-null)
@@ -1229,3 +1242,5 @@ async function getContentRatingLabels(contentRatings, n) {
 
     return contentRatingLabels;
 }
+
+//
