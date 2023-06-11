@@ -17,7 +17,9 @@
 - [x] English-spoken  vs. international films {meanRating: bar, proportion: doughnut}
 - [X] watchedInCinema vs. !watchedInCinema    {meanRating: bar, proportion: doughnut}
 - [x] mean rating of each content rating {meanRating: line, proportion: doughnut}
-- [ ] ratings of franchises {line}
+- [ ] mcu ratings {line}
+- [ ] bond ratings {line}
+- [ ] lotr, hp, star wars ratings {line}
 - [ ] think about scatter plots
 - [ ] myRating (y-axis) & numOfVotes (x-axis) {scatter} / {line? get mean of each 50/100k interval}
 

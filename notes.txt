@@ -14,11 +14,9 @@ and it only needs to read the file.
 updateDB.JS is responsible for writing updates to the file.
 
 
-Not Rated (concat with null)
-G
-PG (concat with TV-PG)
-PG-13 (concat with Approved&Passed)
-R
-NC-17 (concat with X)
+Franchises:
 
-Approved (concat with Passed) (pre-1968 films were either deemed approved or disapproved)
+web scrape from wikipedia ("list of x films")
+
+star wars, hp, lotr&hobbit easy
+mcu, bond wikipedia web scrape
