@@ -6,20 +6,22 @@ import fs from "fs";
 main();
 
 async function main() {
-    // get the html
-    let response = await nodeFetch("https://en.wikipedia.org/wiki/List_of_Marvel_Cinematic_Universe_films");
-    let body = await response.text();
-    let c = cheerio.load(body);
 
-    // const preFilmObjects = readFilmData();
+    let source = "Star Wars: Episode VI - Return of the Jedi";
+    let t = "Star ";
 
-    // web scrape all mcu film titles
-    c('.wikitable.plainrowheaders.defaultcenter.col2left tr th[scope="row"]').each(function () {
-       console.log(c(this).text());
-    });
-    // c('.wikitable.plainrowheaders.defaultcenter.col2left').each(function () {
-    //     console.log(c(this))
-    // })
+}
+
+async function containsSubstringArray(source, arrayOfSubstrings) {
+    const len = arrayOfSubstrings.length;
+
+    for (let i = 0; i < len; i++) {
+        if (source.includes(arrayOfSubstrings[i]) === true) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 // reads filmData.json file into a variable

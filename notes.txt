@@ -16,7 +16,12 @@ updateDB.JS is responsible for writing updates to the file.
 
 Franchises:
 
-web scrape from wikipedia ("list of x films")
+franchise attribute
 
 star wars, hp, lotr&hobbit easy
-mcu, bond wikipedia web scrape
+
+function: getFranchise(titles[])
+
+franchises = []
+
+

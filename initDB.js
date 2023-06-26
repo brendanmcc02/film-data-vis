@@ -2,6 +2,8 @@
 // as opposed to a web browser
 
 // api keys:
+// k_9thzt945 vivi04@gmail
+
 
 // module imports
 import nodeFetch from "node-fetch";
@@ -15,8 +17,10 @@ export {getPreFilmObjects, writeFilmsToJson, getFilteredFilm, getRawFilm, getNex
 const myRatingsURL = "https://www.imdb.com/user/ur95934592/ratings";
 const watchedInCinemaURL = "https://www.imdb.com/list/ls081360952/";
 const imdbTop250URL = "https://www.imdb.com/chart/top";
-const myTop25URL = "https://www.imdb.com/list/ls048298278/";
-const apiURL = "https://imdb-api.com/en/API/Title/k_blah/";
+const myTop10URL = "https://www.imdb.com/list/ls048298278/";
+const apiURL = "https://imdb-api.com/en/API/Title/k_9thzt945/";
+const marvelURL = "https://en.wikipedia.org/wiki/List_of_Marvel_Cinematic_Universe_films";
+const bondURL = "https://en.wikipedia.org/wiki/List_of_James_Bond_films";
 const apiRequestOptions = {
     method: 'GET',
     redirect: 'follow'
@@ -34,7 +38,7 @@ async function main() {
     const startTime = Date.now();
     /////////////////////////////
 
-    // ~14:18 8th June k_795p7sp0
+    // ~11:00 23rd June k_9thzt945
     const startIndex = 0;
     const numberOfFilms = await getNumberOfRatedFilms();
     const preFilmObjects = await getPreFilmObjects(numberOfFilms);
@@ -50,13 +54,14 @@ async function main() {
 
 // web scrapes my imdb ratings page
 // returns array of preFilmObjects:
-// {id, myRating, watchedInCinema imdbTop25Position, myPosition}
+// {title, id, myRating, watchedInCinema, imdbTop25Position, myPosition, franchise}
 // ~30 sec runtime
 async function getPreFilmObjects(numberOfFilms) {
     let preFilmObjects = [];
 
     let url = myRatingsURL;
     let ids = [];
+    let titles = [];
 
     // continuously iterate through each ratings web page
     for (let f = 0; url !== ""; f+=100) {
@@ -65,9 +70,14 @@ async function getPreFilmObjects(numberOfFilms) {
         let body = await response.text();
         let c = cheerio.load(body);
 
-        // iterate through each instance of a film and push film ID to array
+        // iterate through each instance of a film; push film ID to array
         c('.lister-item-image.ribbonize').each(function () {
             ids.push(c(this).attr('data-tconst'));
+        });
+
+        // web scrape all film titles
+        c('.lister-item-header a').each(function () {
+            titles.push(c(this).text());
         });
 
         // get corresponding myRating of each film
@@ -81,9 +91,9 @@ async function getPreFilmObjects(numberOfFilms) {
         for (let i = f; i < min; i++) {
             let myRating = c('span.ipl-rating-star__rating').eq(1 + 24 * (i-f)).text();
             myRating = parseInt(myRating);
-            preFilmObjects.push({"id" : ids[i], "myRating" : myRating,
+            preFilmObjects.push({"id" : ids[i], "title" : titles[i], "myRating" : myRating,
                 "watchedInCinema" : false, "imdbTop25Position" : -1,
-                "myPosition" : -1});
+                "myPosition" : -1, "franchise" : ""});
         }
 
         // get url for next iteration
@@ -139,28 +149,77 @@ async function getPreFilmObjects(numberOfFilms) {
         }
     }
 
-    // iterate through my top 25 films and change the
+    // iterate through my top 10 films and change the
     // 'myPosition' attribute of the corresponding films
 
-    let myTop25Films = [];
+    let myTop10Films = [];
 
     // get the html
-    response = await nodeFetch(myTop25URL);
+    response = await nodeFetch(myTop10URL);
     body = await response.text();
     c = cheerio.load(body);
 
     // push id to array
     c('.lister-item-image.ribbonize').each(function () {
-        myTop25Films.push(c(this).attr('data-tconst'));
+        myTop10Films.push(c(this).attr('data-tconst'));
     });
 
     // for each film, modify the 'myPosition' to the corresponding value
-    const len = myTop25Films.length;
+    const len = myTop10Films.length;
     for (let i = 0; i < len; i++) {
-        let id = myTop25Films[i];
+        let id = myTop10Films[i];
         let index = getIndexOfId(preFilmObjects, id);
         preFilmObjects[index].myPosition = i + 1;
     }
+
+    // franchises
+    // MCU
+
+    // get the html
+    response = await nodeFetch(marvelURL);
+    body = await response.text();
+    c = cheerio.load(body);
+
+    // get mcu films and change the franchise attribute of all mcu films in the database
+    // web scrape each entry in wiki page
+    c('.wikitable.plainrowheaders.defaultcenter.col2left tr th[scope="row"]').each(function () {
+        // get the title of the mcu film
+        let title = c(this).text();
+        title = title.replace("\n", "");
+        const len = preFilmObjects.length;
+
+        // find the mcu film in preFilmObjects,
+        // if there, change 'franchise' attribute to "MCU"
+        for (let i = 0; i < len; i++) {
+            if (preFilmObjects[i].title === title) {
+                preFilmObjects[i].franchise = "MCU";
+                i = len; // break
+            }
+        }
+    });
+
+    // James Bond
+
+    // get the html
+    response = await nodeFetch(bondURL);
+    body = await response.text();
+    c = cheerio.load(body);
+
+    c('table:first th[scope="row"]').each(function () {
+        // get the title of the bond film
+        let title = c(this).text();
+        title = title.replace("\n", "");
+        const len = preFilmObjects.length;
+
+        // find the bond film in preFilmObjects,
+        // if there, change 'franchise' attribute to "James Bond"
+        for (let i = 0; i < len; i++) {
+            if (preFilmObjects[i].title === title) {
+                preFilmObjects[i].franchise = "James Bond";
+                i = len; // break
+            }
+        }
+    });
 
     return preFilmObjects;
 }
@@ -373,6 +432,7 @@ function getFilteredFilm(rawFilm, preFilmObject) {
     rawFilm.watchedInCinema = preFilmObject.watchedInCinema;
     rawFilm.imdbTop25Position = preFilmObject.imdbTop25Position;
     rawFilm.myPosition = preFilmObject.myPosition;
+    rawFilm.franchise = preFilmObject.franchise;
 
     return rawFilm;
 }

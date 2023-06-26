@@ -7,19 +7,19 @@ async function main() {
     const filmData = await response.json();
 
     // get relevant data for graphs
-    const contentRatings = await getContentRatings(filmData);
-    const contentRatingLabels = await getContentRatingLabels(contentRatings, 1);
-    const contentRatingQuantities = await getContentRatingQuantities(contentRatings);
+    const franchise = await getFranchise(filmData, ["Harry Potter"]);
+    const franchiseTitles = await getFranchiseTitles(franchise);
+    const franchiseRatings = await getFranchiseRatings(franchise);
 
     // plot the graph
     const ctx = document.getElementById('myChart');
     new Chart(ctx, {
-        type: 'doughnut',
+        type: 'line',
         data: {
-            labels: contentRatingLabels,
+            labels: franchiseTitles,
             datasets: [{
                 label: 'Title',
-                data: contentRatingQuantities,
+                data: franchiseRatings,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.2)'
                 ],
@@ -511,14 +511,14 @@ async function getImdbTop25Ratings(imdbTop25Films) {
     return imdbTop25Ratings;
 }
 
-// gets array of my top 25 films,
-// sorted by position (1st -> 25th)
-async function getMyTop25Films(filmData) {
-    let myTop25Films = [];
+// gets array of my top 10 films,
+// sorted by position (1st -> 10th)
+async function getMyTop10Films(filmData) {
+    let myTop10Films = [];
 
     filmData.forEach(film => {
        if (film.myPosition !== -1) {
-           myTop25Films.push(film);
+           myTop10Films.push(film);
        }
     });
 
@@ -528,57 +528,57 @@ async function getMyTop25Films(filmData) {
     // so time complexity is not an issue
 
     let swapped = true; // flag
-    const len = myTop25Films.length - 1;
+    const len = myTop10Films.length - 1;
 
     // continually make passes until the array is sorted
     while (swapped) {
         swapped = false;
 
         for (let i = 0; i < len; i++) {
-            if (myTop25Films[i].myPosition > myTop25Films[i+1].myPosition) {
-                [myTop25Films[i], myTop25Films[i+1]] = [myTop25Films[i+1], myTop25Films[i]] // swap
+            if (myTop10Films[i].myPosition > myTop10Films[i+1].myPosition) {
+                [myTop10Films[i], myTop10Films[i+1]] = [myTop10Films[i+1], myTop10Films[i]] // swap
                 swapped = true; // signal flag
             }
         }
     }
 
-    return myTop25Films;
+    return myTop10Films;
 }
 
 // given array of my top 25 films,
 // return an array of the titles of those films
-async function getMyTop25Titles(myTop25Films) {
-    let myTop25Titles = [];
+async function getMyTop10Titles(myTop10Films) {
+    let myTop10Titles = [];
 
-    myTop25Films.forEach(film => {
-       myTop25Titles.push(film.title);
+    myTop10Films.forEach(film => {
+       myTop10Titles.push(film.title);
     });
 
-    return myTop25Titles;
+    return myTop10Titles;
 }
 
 // given array of my top 25 films,
 // return an array of the imdb rating of those films
-async function getMyTop25Ratings(myTop25Films) {
-    let myTop25Ratings = [];
+async function getMyTop10Ratings(myTop10Films) {
+    let myTop10Ratings = [];
 
-    myTop25Films.forEach(film => {
-        myTop25Ratings.push(film.imDbRating);
+    myTop10Films.forEach(film => {
+        myTop10Ratings.push(film.imDbRating);
     });
 
-    return myTop25Ratings;
+    return myTop10Ratings;
 }
 
 // given array of my top 25 films,
 // return an array of the metascore of those films
-async function getMyTop25Metascores(myTop25Films) {
-    let myTop25Metascores = [];
+async function getMyTop10Metascores(myTop10Films) {
+    let myTop10Metascores = [];
 
-    myTop25Films.forEach(film => {
-        myTop25Metascores.push(film.metacriticRating);
+    myTop10Films.forEach(film => {
+        myTop10Metascores.push(film.metacriticRating);
     });
 
-    return myTop25Metascores;
+    return myTop10Metascores;
 }
 
 // returns an array of decade objects
@@ -1243,4 +1243,161 @@ async function getContentRatingLabels(contentRatings, n) {
     return contentRatingLabels;
 }
 
-//
+// returns an array of bond film objects {"title", "myRating", "year"},
+// sorted by release date.
+// a special function is used for the bond franchise because
+// the bond films are all uniquely named, i.e. they don't all contain "James Bond"
+// in the titles, so it's much more difficult than (for example) the Harry Potter franchise
+// since the HP films all have "Harry Potter" in the title.
+// in "initDB.js", it web scrapes the wiki page for the bond films and changes
+// a 'franchise' attribute of the prefilmobject to "James Bond", so all this function
+// has to do is to take films with a "James Bond" franchise value.
+async function getBondFilms(filmData) {
+    let bondFilms = [];
+
+    // iterate through each film and add it to array if it's a bond film
+    filmData.forEach(film => {
+        if (film.franchise === "James Bond") {
+            bondFilms.push({"title" : film.title, "myRating" : film.myRating, "year" : film.year});
+        }
+    });
+
+    // sort by release date.
+    // bubble sort is used for algorithmic simplicity.
+
+    let swapped = true; // flag
+    const len = bondFilms.length - 1;
+
+    // continually make passes until the array is sorted
+    while (swapped) {
+        swapped = false;
+
+        for (let i = 0; i < len; i++) {
+            if (bondFilms[i].year > bondFilms[i+1].year) {
+                [bondFilms[i], bondFilms[i+1]] = [bondFilms[i+1], bondFilms[i]] // swap
+                swapped = true; // signal flag
+            }
+        }
+    }
+
+    return bondFilms;
+}
+
+// returns an array of mcu film objects {"title", "myRating", "year"},
+// sorted by release date
+// same logic as getBondFilms (check comments above)
+async function getMcuFilms(filmData) {
+    let mcuFilms = [];
+
+    // iterate through each film and add it to array if it's an MCU film
+    filmData.forEach(film => {
+        if (film.franchise === "MCU") {
+            mcuFilms.push({"title" : film.title, "myRating" : film.myRating, "year" : film.year});
+        }
+    });
+
+    // sort by release date.
+    // bubble sort is used for algorithmic simplicity.
+
+    let swapped = true; // flag
+    const len = mcuFilms.length - 1;
+
+    // continually make passes until the array is sorted
+    while (swapped) {
+        swapped = false;
+
+        for (let i = 0; i < len; i++) {
+            if (mcuFilms[i].year > mcuFilms[i+1].year) {
+                [mcuFilms[i], mcuFilms[i+1]] = [mcuFilms[i+1], mcuFilms[i]] // swap
+                swapped = true; // signal flag
+            }
+        }
+    }
+
+    return mcuFilms;
+}
+
+// given an array of franchise titles (e.g. ["Lord of the Rings", "The Hobbit"]),
+// return an array of film objects {"title", "rating", "year"},
+// each object is a film in the given franchise.
+// sorted by release year.
+async function getFranchise(filmData, titles) {
+
+    // MCU and Bond franchises are dealt with differently,
+    // hence they have their own functions
+    if (titles[0] === "MCU") {
+        return getMcuFilms(filmData)
+    } else if (titles[0] === "James Bond") {
+        return getBondFilms(filmData);
+    }
+
+    // else, the franchise is read more easily,
+    // simply by checking if the film titles contain a specific substring,
+    // e.g. checking for "Lord of the Rings" or "Harry Potter"
+    let franchise = [];
+    let len = filmData.length;
+
+    for (let i = 0; i < len; i++) {
+        // if the film title (e.g. lotr rotk) has a franchise (e.g. Lotr) as a substring
+        if (await containsSubstringArray(filmData[i].title, titles) === true) {
+            franchise.push({"title" : filmData[i].title, "myRating" : filmData[i].myRating, "year" : filmData[i].year});
+        }
+    }
+
+    // sort by release date.
+    // bubble sort is used for algorithmic simplicity.
+
+    let swapped = true; // flag
+    len = franchise.length - 1;
+
+    // continually make passes until the array is sorted
+    while (swapped) {
+        swapped = false;
+
+        for (let i = 0; i < len; i++) {
+            if (franchise[i].year > franchise[i+1].year) {
+                [franchise[i], franchise[i+1]] = [franchise[i+1], franchise[i]] // swap
+                swapped = true; // signal flag
+            }
+        }
+    }
+
+    return franchise;
+}
+
+// utility function that checks if an element in an array of substrings is contained in a source string
+async function containsSubstringArray(source, arrayOfSubstrings) {
+    const len = arrayOfSubstrings.length;
+
+    for (let i = 0; i < len; i++) {
+        if (source.includes(arrayOfSubstrings[i]) === true) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+// given an array of franchise objects, return an array of
+// the mean rating of each film in that franchise
+async function getFranchiseRatings(franchise) {
+    let franchiseRatings = [];
+
+    franchise.forEach(f => {
+       franchiseRatings.push(f.myRating);
+    });
+
+    return franchiseRatings;
+}
+
+// given an array of franchise objects, return an array of
+// the titles of each film in that franchise
+async function getFranchiseTitles(franchise) {
+    let franchiseTitles = [];
+
+    franchise.forEach(f => {
+        franchiseTitles.push(f.title);
+    });
+
+    return franchiseTitles;
+}
