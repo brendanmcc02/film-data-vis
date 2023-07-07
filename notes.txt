@@ -13,15 +13,20 @@ and it only needs to read the file.
 
 updateDB.JS is responsible for writing updates to the file.
 
+////////////////////////////////////////////////////////
 
-Franchises:
+getPreFilmObjects = {title, id, myRating, watchedInCinema, imdbTop25Position, myPosition, franchise}
 
-franchise attribute
+getFilmData(preFilmObj[]) {
+    filmData = []
 
-star wars, hp, lotr&hobbit easy
+    preFilmObjs.forEach(pfo => {
+        filmData.push(getFilm(pfo));
+    });
 
-function: getFranchise(titles[])
+    return filmData;
+}
 
-franchises = []
-
-
+async function getFilm(preFilmObj) {
+    ...
+}

@@ -7,19 +7,19 @@ async function main() {
     const filmData = await response.json();
 
     // get relevant data for graphs
-    const franchise = await getFranchise(filmData, ["Harry Potter"]);
-    const franchiseTitles = await getFranchiseTitles(franchise);
-    const franchiseRatings = await getFranchiseRatings(franchise);
+    const base = getRuntimes(filmData);
+    const labels = getRuntimeLabels(base, 3);
+    const data = getRuntimeRatings(base, 3);
 
     // plot the graph
     const ctx = document.getElementById('myChart');
     new Chart(ctx, {
-        type: 'line',
+        type: 'bar',
         data: {
-            labels: franchiseTitles,
+            labels: labels,
             datasets: [{
                 label: 'Title',
-                data: franchiseRatings,
+                data: data,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.2)'
                 ],
@@ -40,9 +40,21 @@ async function main() {
     });
 }
 
+// Very commonly I need to iterate through all the films
+// in the database and calculate the mean ratings of anything,
+// e.g. mean ratings of specific runtimes, or mean ratings of different genres.
+// this code adds the films myRating to a total (ratingSum), increments ratingQuantity,
+// and calculates the new mean rating of that particular object.
+// this function was created because the code became repetitive.
+function modifyMean(film, arrayOfMeanObjects, i) {
+    arrayOfMeanObjects[i].ratingSum += film.myRating;
+    arrayOfMeanObjects[i].ratingQuantity++;
+    arrayOfMeanObjects[i].ratingMean = arrayOfMeanObjects[i].ratingSum / arrayOfMeanObjects[i].ratingQuantity;
+}
+
 // returns an array of genre objects {"genre", "ratingMean", "ratingSum", "ratingQuantity"},
 // sorted by ratingMean (highest -> lowest)
-async function getGenres(filmData) {
+function getGenres(filmData) {
     let genres = [];
 
     filmData.forEach(film => {
@@ -55,9 +67,7 @@ async function getGenres(filmData) {
             }
             // genre is in array
             else {
-                genres[genreIndex].ratingSum += film.myRating;
-                genres[genreIndex].ratingQuantity++;
-                genres[genreIndex].ratingMean = genres[genreIndex].ratingSum / genres[genreIndex].ratingQuantity;
+                modifyMean(film, genres, genreIndex);
             }
         });
     });
@@ -107,7 +117,7 @@ function getGenreIndex(genres, genre) {
 }
 
 // returns array of genre labels (sorted highest->lowest ratingMean)
-async function getGenreLabels(genres) {
+function getGenreLabels(genres) {
     let genreLabels = [];
 
     genres.forEach(genre => {
@@ -118,7 +128,7 @@ async function getGenreLabels(genres) {
 }
 
 // returns array of mean genre ratings (sorted highest->lowest)
-async function getGenreRatings(genres) {
+function getGenreRatings(genres) {
     let genreRatings = [];
 
     genres.forEach(genre => {
@@ -129,7 +139,7 @@ async function getGenreRatings(genres) {
 }
 
 // returns array of quantity of films watched per genre (sorted highest -> lowest in meanRating)
-async function getGenreQuantities(genres) {
+function getGenreQuantities(genres) {
     let genreQuantities = [];
 
     genres.forEach(genre => {
@@ -141,7 +151,7 @@ async function getGenreQuantities(genres) {
 
 // returns an array of director objects {"director", "ratingMean", "ratingSum", "ratingQuantity"},
 // sorted by ratingMean (highest -> lowest)
-async function getDirectors(filmData) {
+function getDirectors(filmData) {
     let directors = [];
 
     filmData.forEach(film => {
@@ -154,9 +164,7 @@ async function getDirectors(filmData) {
             }
             // director is in array
             else {
-                directors[directorIndex].ratingSum += film.myRating;
-                directors[directorIndex].ratingQuantity++;
-                directors[directorIndex].ratingMean = directors[directorIndex].ratingSum / directors[directorIndex].ratingQuantity;
+                modifyMean(film, directors, directorIndex);
             }
         });
     });
@@ -191,7 +199,7 @@ async function getDirectors(filmData) {
 
 // returns array of top k director labels with at least n films
 // sorted highest->lowest ratingMean
-async function getTopKDirectorLabels(directors, k, n) {
+function getTopKDirectorLabels(directors, k, n) {
     let directorLabels = [];
 
     const len = directors.length;
@@ -208,7 +216,7 @@ async function getTopKDirectorLabels(directors, k, n) {
 
 // returns array of top k mean director ratings with at least n films
 // sorted highest->lowest ratingMean
-async function getTopKDirectorRatings(directors, k, n) {
+function getTopKDirectorRatings(directors, k, n) {
     let directorRatings = [];
 
     const len = directors.length;
@@ -239,7 +247,7 @@ function getDirectorIndex(directors, director) {
 }
 
 // returns array of a director's films, sorted oldest -> newest
-async function getDirectorFilms(filmData, director) {
+function getDirectorFilms(filmData, director) {
     let directorFilms = [];
 
     filmData.forEach(film => {
@@ -273,7 +281,7 @@ async function getDirectorFilms(filmData, director) {
 
 // given an array of sorted films by a director (oldest -> newest),
 // return array of titles of those films
-async function getDirectorTitles(directorFilms) {
+function getDirectorTitles(directorFilms) {
     let directorTitles = [];
 
     directorFilms.forEach(film => {
@@ -285,7 +293,7 @@ async function getDirectorTitles(directorFilms) {
 
 // given an array of sorted films by a director (oldest -> newest),
 // return array of my ratings of those films
-async function getDirectorRatings(directorFilms) {
+function getDirectorRatings(directorFilms) {
     let directorRatings = [];
 
     directorFilms.forEach(film => {
@@ -297,7 +305,7 @@ async function getDirectorRatings(directorFilms) {
 
 // returns an array of actor objects {"actorName", "ratingMean", "ratingSum", "ratingQuantity"},
 // sorted by ratingMean (highest -> lowest)
-async function getActors(filmData) {
+function getActors(filmData) {
     let actors = [];
 
     filmData.forEach(film => {
@@ -310,9 +318,7 @@ async function getActors(filmData) {
             }
             // actor is in array
             else {
-                actors[actorIndex].ratingSum += film.myRating;
-                actors[actorIndex].ratingQuantity++;
-                actors[actorIndex].ratingMean = actors[actorIndex].ratingSum / actors[actorIndex].ratingQuantity;
+                modifyMean(film, actors, actorIndex);
             }
         });
     });
@@ -347,7 +353,7 @@ async function getActors(filmData) {
 
 // returns array of top k actor labels with at least n films
 // sorted highest->lowest ratingMean
-async function getTopKActorLabels(actors, k, n) {
+function getTopKActorLabels(actors, k, n) {
     let actorLabels = [];
 
     const len = actors.length;
@@ -364,7 +370,7 @@ async function getTopKActorLabels(actors, k, n) {
 
 // returns array of top k mean actor ratings with at least n films
 // sorted highest->lowest ratingMean
-async function getTopKActorRatings(actors, k, n) {
+function getTopKActorRatings(actors, k, n) {
     let actorRatings = [];
 
     const len = actors.length;
@@ -395,7 +401,7 @@ function getActorIndex(actors, actorName) {
 }
 
 // returns array of an actor's films, sorted oldest -> newest
-async function getActorFilms(filmData, actorName) {
+function getActorFilms(filmData, actorName) {
     let actorFilms = [];
 
     filmData.forEach(film => {
@@ -431,7 +437,7 @@ async function getActorFilms(filmData, actorName) {
 
 // given an array of sorted films by an actor (oldest -> newest),
 // return array of titles of those films
-async function getActorTitles(actorFilms) {
+function getActorTitles(actorFilms) {
     let actorTitles = [];
 
     actorFilms.forEach(film => {
@@ -443,7 +449,7 @@ async function getActorTitles(actorFilms) {
 
 // given an array of sorted films by an actor (oldest -> newest),
 // return array of my ratings of those films
-async function getActorRatings(actorFilms) {
+function getActorRatings(actorFilms) {
     let actorRatings = [];
 
     actorFilms.forEach(film => {
@@ -455,7 +461,7 @@ async function getActorRatings(actorFilms) {
 
 // gets array of the top 25 films on imdb that I've rated
 // sorted 1st -> 25th
-async function getImdbTop25Films(filmData) {
+function getImdbTop25Films(filmData) {
     let imdbTop25Films = [];
 
     filmData.forEach(film => {
@@ -489,7 +495,7 @@ async function getImdbTop25Films(filmData) {
 
 // given array of imdb top 25 films that I've rated,
 // return the titles of these films
-async function getImdbTop25Titles(imdbTop25Films) {
+function getImdbTop25Titles(imdbTop25Films) {
     let imdbTop25Titles = [];
 
     imdbTop25Films.forEach(film => {
@@ -501,7 +507,7 @@ async function getImdbTop25Titles(imdbTop25Films) {
 
 // given array of imdb top 25 films that I've rated,
 // return my ratings of these films
-async function getImdbTop25Ratings(imdbTop25Films) {
+function getImdbTop25Ratings(imdbTop25Films) {
     let imdbTop25Ratings = [];
 
     imdbTop25Films.forEach(film => {
@@ -513,7 +519,7 @@ async function getImdbTop25Ratings(imdbTop25Films) {
 
 // gets array of my top 10 films,
 // sorted by position (1st -> 10th)
-async function getMyTop10Films(filmData) {
+function getMyTop10Films(filmData) {
     let myTop10Films = [];
 
     filmData.forEach(film => {
@@ -547,7 +553,7 @@ async function getMyTop10Films(filmData) {
 
 // given array of my top 25 films,
 // return an array of the titles of those films
-async function getMyTop10Titles(myTop10Films) {
+function getMyTop10Titles(myTop10Films) {
     let myTop10Titles = [];
 
     myTop10Films.forEach(film => {
@@ -559,7 +565,7 @@ async function getMyTop10Titles(myTop10Films) {
 
 // given array of my top 25 films,
 // return an array of the imdb rating of those films
-async function getMyTop10Ratings(myTop10Films) {
+function getMyTop10Ratings(myTop10Films) {
     let myTop10Ratings = [];
 
     myTop10Films.forEach(film => {
@@ -571,7 +577,7 @@ async function getMyTop10Ratings(myTop10Films) {
 
 // given array of my top 25 films,
 // return an array of the metascore of those films
-async function getMyTop10Metascores(myTop10Films) {
+function getMyTop10Metascores(myTop10Films) {
     let myTop10Metascores = [];
 
     myTop10Films.forEach(film => {
@@ -584,7 +590,7 @@ async function getMyTop10Metascores(myTop10Films) {
 // returns an array of decade objects
 // {"decade", "ratingMean", "ratingSum", "ratingQuantity"},
 // sorted by decade (earliest -> latest)
-async function getDecades(filmData) {
+function getDecades(filmData) {
     let decades = [];
 
     filmData.forEach(film => {
@@ -597,9 +603,7 @@ async function getDecades(filmData) {
         }
         // decade is in array
         else {
-            decades[decadeIndex].ratingSum += film.myRating;
-            decades[decadeIndex].ratingQuantity++;
-            decades[decadeIndex].ratingMean = decades[decadeIndex].ratingSum / decades[decadeIndex].ratingQuantity;
+            modifyMean(film, decades, decadeIndex);
         }
     });
 
@@ -649,7 +653,7 @@ function getDecadeIndex(decades, decade) {
 
 // returns array of decade labels with at least n films
 // (sorted earliest->latest decade)
-async function getDecadeLabels(decades, n) {
+function getDecadeLabels(decades, n) {
     let decadeLabels = [];
 
     decades.forEach(decade => {
@@ -663,7 +667,7 @@ async function getDecadeLabels(decades, n) {
 
 // returns array of decade myRatings with at least n films
 // (sorted earliest->latest decade)
-async function getDecadeRatings(decades, n) {
+function getDecadeRatings(decades, n) {
     let decadeRatings = [];
 
     decades.forEach(decade => {
@@ -680,7 +684,7 @@ async function getDecadeRatings(decades, n) {
 // if a there is a year with no rated films (e.g. 1961),
 // it is added to the array but with ratingMean = null.
 // sorted by year (earliest -> latest).
-async function getYears(filmData, n) {
+function getYears(filmData, n) {
     let years = [];
 
     filmData.forEach(film => {
@@ -693,9 +697,7 @@ async function getYears(filmData, n) {
         }
         // year is in array
         else {
-            years[yearIndex].ratingSum += film.myRating;
-            years[yearIndex].ratingQuantity++;
-            years[yearIndex].ratingMean = years[yearIndex].ratingSum / years[yearIndex].ratingQuantity;
+            modifyMean(film, years, yearIndex);
         }
     });
 
@@ -787,7 +789,7 @@ function getYearIndex(years, year) {
 // utility function that gets
 // the index of minimum non-null year
 // given an array of sorted year objects
-async function getMinYearIndex(years) {
+function getMinYearIndex(years) {
     // get the index of  minimum non-null year
     const len = years.length;
     for (let i = 0; i < len; i++) {
@@ -803,7 +805,7 @@ async function getMinYearIndex(years) {
 // utility function that gets
 // the index of maximum non-null year
 // given an array of sorted year objects
-async function getMaxYearIndex(years) {
+function getMaxYearIndex(years) {
     // get the index of maximum non-null year
     const len = years.length;
 
@@ -820,7 +822,7 @@ async function getMaxYearIndex(years) {
 // starts at the minimum non-null year,
 // ends at the maximum non-null year
 // (sorted earliest -> latest year)
-async function getYearLabels(years, minYear, maxYear) {
+function getYearLabels(years, minYear, maxYear) {
     let yearLabels = [];
 
     for (let y = minYear; y <= maxYear; y++) {
@@ -832,7 +834,7 @@ async function getYearLabels(years, minYear, maxYear) {
 
 // returns array of myRating of each year
 // (sorted earliest -> latest year)
-async function getYearRatings(years, minYear, maxYear) {
+function getYearRatings(years, minYear, maxYear) {
     let yearRatings = [];
 
     for (let y = minYear; y <= maxYear; y++) {
@@ -842,25 +844,20 @@ async function getYearRatings(years, minYear, maxYear) {
     return yearRatings;
 }
 
-// [TODO] POSSIBLY BETTER SOLUTION: get rid of inequality attribute
-// [TODO] and for the runtime array object, set the runtime to infinity
 // returns an array of runtime objects:
-// {"runtime", "inequality" "ratingSum", "ratingQuantity", "ratingMean"}
+// {"runtime", "ratingSum", "ratingQuantity", "ratingMean"}
 // sorted by runtime.
-async function getRuntimes(filmData) {
+function getRuntimes(filmData) {
     // initialise an array 'runtimes' in the format above
-    let runtimes = await initRuntimes();
+    let runtimes = initRuntimes();
 
     // for each film, modify the relevant entry in the 'runtimes'
     // array, modifying the quantity, sum, and mean of that runtime interval.
     const len = runtimes.length;
     filmData.forEach(film => {
         for (let r = 0; r < len; r++) {
-            if ( (runtimes[r].inequality === "<" && film.runtimeMins < runtimes[r].runtime)
-                 || (runtimes[r].inequality === ">=" && film.runtimeMins >= runtimes[r].runtime) ) {
-                runtimes[r].ratingSum += film.myRating;
-                runtimes[r].ratingQuantity++;
-                runtimes[r].ratingMean = runtimes[r].ratingSum / runtimes[r].ratingQuantity;
+            if (film.runtimeMins < runtimes[r].runtime) {
+                modifyMean(film, runtimes, r);
                 r = len; // break
             }
         }
@@ -878,30 +875,33 @@ async function getRuntimes(filmData) {
 }
 
 // initialises the runtime array.
-// adds 7 intervals: <60, <90, ..., <210, <240.
-// then adds a final 8th interval: >=240
-async function initRuntimes() {
+// adds 8 intervals: <60, <90, ..., <210, <240, <∞
+function initRuntimes() {
     let runtimes = [];
 
     for (let r = 60; r <= 240; r+=30) {
-        runtimes.push({"runtime" : r, "inequality": "<",
-            "ratingSum" : 0, "ratingQuantity" : 0, "ratingMean" : 0});
+        runtimes.push({"runtime" : r, "ratingSum" : 0,
+            "ratingQuantity" : 0, "ratingMean" : 0});
     }
 
-    runtimes.push({"runtime" : 240, "inequality" : ">=",
-        "ratingSum" : 0, "ratingQuantity" : 0, "ratingMean" : 0});
+    runtimes.push({"runtime" : Infinity, "ratingSum" : 0,
+        "ratingQuantity" : 0, "ratingMean" : 0});
 
     return runtimes;
 }
 
 // given an array of runtime objects,
 // returns the runtime labels if it has >= n films.
-async function getRuntimeLabels(runtimes, n) {
+function getRuntimeLabels(runtimes, n) {
     let runtimeLabels = [];
 
     runtimes.forEach(runtime => {
         if (runtime.ratingQuantity >= n) {
-            runtimeLabels.push(runtime.runtime);
+            if (runtime.runtime === Infinity) {
+                runtimeLabels.push("∞");
+            } else {
+                runtimeLabels.push(runtime.runtime);
+            }
         }
     });
 
@@ -910,7 +910,7 @@ async function getRuntimeLabels(runtimes, n) {
 
 // given an array of runtime objects,
 // returns the runtime meanRatings if it has >= n films.
-async function getRuntimeRatings(runtimes, n) {
+function getRuntimeRatings(runtimes, n) {
     let runtimeRatings = [];
 
     runtimes.forEach(runtime => {
@@ -925,7 +925,7 @@ async function getRuntimeRatings(runtimes, n) {
 // given an array of runtime objects,
 // returns an array of runtimeQuantities,
 // sorted by runtime (i.e: 60, 90, ..., 210, 240)
-async function getRuntimeQuantities(runtimes) {
+function getRuntimeQuantities(runtimes) {
     let runtimeQuantities = [];
 
     runtimes.forEach(runtime => {
@@ -947,7 +947,7 @@ async function getRuntimeQuantities(runtimes) {
 // and then I check if the first language in the languageList is English.
 // unfortunately it's not perfect because Roma and All Quiet on the Western Front are international films,
 // but because they are netflix films, USA is included in its list of countries making it a non-international film.
-async function getEnglishInternationalFilms(filmData) {
+function getEnglishInternationalFilms(filmData) {
     let englishInternationalFilms = [
         {"label" : "English-Spoken", "ratingMean" : 0, "ratingSum" : 0, "ratingQuantity" : 0},
         {"label" : "International",  "ratingMean" : 0, "ratingSum" : 0, "ratingQuantity" : 0}];
@@ -955,16 +955,11 @@ async function getEnglishInternationalFilms(filmData) {
     filmData.forEach(film => {
         // if the film is international
         if (!film.countryList.includes("USA") && !film.countryList.includes("UK") && film.languageList[0] !== "English") {
-            englishInternationalFilms[1].ratingQuantity++;
-            englishInternationalFilms[1].ratingSum += film.myRating;
-            englishInternationalFilms[1].ratingMean = englishInternationalFilms[1].ratingSum / englishInternationalFilms[1].ratingQuantity;
-
+            modifyMean(film, englishInternationalFilms, 1);
         }
         // else, the film is english-spoken
         else {
-            englishInternationalFilms[0].ratingQuantity++;
-            englishInternationalFilms[0].ratingSum += film.myRating;
-            englishInternationalFilms[0].ratingMean = englishInternationalFilms[0].ratingSum / englishInternationalFilms[0].ratingQuantity;
+            modifyMean(film, englishInternationalFilms, 0);
         }
     });
 
@@ -978,7 +973,7 @@ async function getEnglishInternationalFilms(filmData) {
 
 // given a size 2 array of english & international films,
 // returns the labels of each object in that array
-async function getEnglishInternationalLabels(englishInternationalFilms) {
+function getEnglishInternationalLabels(englishInternationalFilms) {
     let englishInternationalLabels = [];
 
     englishInternationalFilms.forEach(eif => {
@@ -990,7 +985,7 @@ async function getEnglishInternationalLabels(englishInternationalFilms) {
 
 // given a size 2 array of english & international films,
 // returns the ratingMean of each object in that array
-async function getEnglishInternationalRatings(englishInternationalFilms) {
+function getEnglishInternationalRatings(englishInternationalFilms) {
     let englishInternationalRatings = [];
 
     englishInternationalFilms.forEach(eif => {
@@ -1002,7 +997,7 @@ async function getEnglishInternationalRatings(englishInternationalFilms) {
 
 // given a size 2 array of english & international films,
 // returns the ratingQuantity of each object in that array
-async function getEnglishInternationalQuantities(englishInternationalFilms) {
+function getEnglishInternationalQuantities(englishInternationalFilms) {
     let englishInternationalQuantities = [];
 
     englishInternationalFilms.forEach(eif => {
@@ -1015,7 +1010,7 @@ async function getEnglishInternationalQuantities(englishInternationalFilms) {
 // returns array of {"label" : "Watched in Cinemas / Not Watched in Cinemas", "ratingSum", "ratingQuantity", "ratingMean"}.
 // array is size 2, one object is for films watched in cinemas,
 // the second object is for films not watched in cinemas.
-async function getCinemaFilms(filmData) {
+function getCinemaFilms(filmData) {
     let cinemaFilms = [
         {"label" : "Watched in Cinemas",     "ratingMean" : 0, "ratingSum" : 0, "ratingQuantity" : 0},
         {"label" : "Not Watched in Cinemas", "ratingMean" : 0, "ratingSum" : 0, "ratingQuantity" : 0}];
@@ -1023,16 +1018,11 @@ async function getCinemaFilms(filmData) {
     filmData.forEach(film => {
         // if the film was watched in cinema
         if (film.watchedInCinema) {
-            cinemaFilms[0].ratingQuantity++;
-            cinemaFilms[0].ratingSum += film.myRating;
-            cinemaFilms[0].ratingMean = cinemaFilms[0].ratingSum / cinemaFilms[0].ratingQuantity;
-
+            modifyMean(film, cinemaFilms, 0);
         }
         // else, the film was not watched in cinema
         else {
-            cinemaFilms[1].ratingQuantity++;
-            cinemaFilms[1].ratingSum += film.myRating;
-            cinemaFilms[1].ratingMean = cinemaFilms[1].ratingSum / cinemaFilms[1].ratingQuantity;
+            modifyMean(film, cinemaFilms, 1);
         }
     });
 
@@ -1046,7 +1036,7 @@ async function getCinemaFilms(filmData) {
 
 // given a size 2 array of cinema films,
 // returns the labels of each object in that array
-async function getCinemaLabels(cinemaFilms) {
+function getCinemaLabels(cinemaFilms) {
     let cinemaLabels = [];
 
     cinemaFilms.forEach(cf => {
@@ -1058,7 +1048,7 @@ async function getCinemaLabels(cinemaFilms) {
 
 // given a size 2 array of cinema films,
 // returns the ratingMean of each object in that array
-async function getCinemaRatings(cinemaFilms) {
+function getCinemaRatings(cinemaFilms) {
     let cinemaRatings = [];
 
     cinemaFilms.forEach(cf => {
@@ -1070,7 +1060,7 @@ async function getCinemaRatings(cinemaFilms) {
 
 // given a size 2 array of cinema films,
 // returns the ratingQuantity of each object in that array
-async function getCinemaQuantities(cinemaFilms) {
+function getCinemaQuantities(cinemaFilms) {
     let cinemaQuantities = [];
 
     cinemaFilms.forEach(cf => {
@@ -1083,77 +1073,55 @@ async function getCinemaQuantities(cinemaFilms) {
 // gets an array of content rating objects:
 // {"label", "ratingSum", "ratingQuantity", "ratingMean"}.
 // sorted by age rating ("Not Rated", "G", "PG", "PG-13", "R", "NC-17").
-async function getContentRatings(filmData) {
+function getContentRatings(filmData) {
     let contentRatings = initContentRatings();
 
     filmData.forEach(film => {
         switch (film.contentRating) {
             // if a film has no content rating, consider it as "Not Rated"
             case null:
-                contentRatings[0].ratingSum += film.myRating;
-                contentRatings[0].ratingQuantity++;
-                contentRatings[0].ratingMean = contentRatings[0].ratingSum / contentRatings[0].ratingQuantity;
+                modifyMean(film, contentRatings, 0);
                 break;
             case "Not Rated":
-                contentRatings[0].ratingSum += film.myRating;
-                contentRatings[0].ratingQuantity++;
-                contentRatings[0].ratingMean = contentRatings[0].ratingSum / contentRatings[0].ratingQuantity;
+                modifyMean(film, contentRatings, 0);
                 break;
             case "G":
-                contentRatings[1].ratingSum += film.myRating;
-                contentRatings[1].ratingQuantity++;
-                contentRatings[1].ratingMean = contentRatings[1].ratingSum / contentRatings[1].ratingQuantity;
+                modifyMean(film, contentRatings, 1);
                 break;
             case "PG":
-                contentRatings[2].ratingSum += film.myRating;
-                contentRatings[2].ratingQuantity++;
-                contentRatings[2].ratingMean = contentRatings[2].ratingSum / contentRatings[2].ratingQuantity;
+                modifyMean(film, contentRatings, 2);
                 break;
             // if a film has "TV-PG" as it's content rating, consider it as "PG"
             case "TV-PG":
-                contentRatings[2].ratingSum += film.myRating;
-                contentRatings[2].ratingQuantity++;
-                contentRatings[2].ratingMean = contentRatings[2].ratingSum / contentRatings[2].ratingQuantity;
+                modifyMean(film, contentRatings, 2);
                 break;
             case "PG-13":
-                contentRatings[3].ratingSum += film.myRating;
-                contentRatings[3].ratingQuantity++;
-                contentRatings[3].ratingMean = contentRatings[3].ratingSum / contentRatings[3].ratingQuantity;
+                modifyMean(film, contentRatings, 3);
                 break;
             // pre-1968 films were classified as either 'Approved' or 'Disapproved'.
             // consider these films as "PG-13", which will not always be accurate,
             // but it's the most likely solution
             case "Approved":
-                contentRatings[3].ratingSum += film.myRating;
-                contentRatings[3].ratingQuantity++;
-                contentRatings[3].ratingMean = contentRatings[3].ratingSum / contentRatings[3].ratingQuantity;
+                modifyMean(film, contentRatings, 3);
                 break;
             // pre-168 films were also classified as either 'Passed' or 'Not Passed'.
             // consider these films as "PG-13", which will not always be accurate,
             // but it's the most likely solution
             case "Passed":
-                contentRatings[3].ratingSum += film.myRating;
-                contentRatings[3].ratingQuantity++;
-                contentRatings[3].ratingMean = contentRatings[3].ratingSum / contentRatings[3].ratingQuantity;
+                modifyMean(film, contentRatings, 3);
                 break;
             case "R":
-                contentRatings[4].ratingSum += film.myRating;
-                contentRatings[4].ratingQuantity++;
-                contentRatings[4].ratingMean = contentRatings[4].ratingSum / contentRatings[4].ratingQuantity;
+                modifyMean(film, contentRatings, 4);
                 break;
             case "NC-17":
-                contentRatings[5].ratingSum += film.myRating;
-                contentRatings[5].ratingQuantity++;
-                contentRatings[5].ratingMean = contentRatings[5].ratingSum / contentRatings[5].ratingQuantity;
+                modifyMean(film, contentRatings, 5);
                 break;
             // 'X' rated films were basically NC-17, so consider 'X' films as NC-17
             case "X":
-                contentRatings[5].ratingSum += film.myRating;
-                contentRatings[5].ratingQuantity++;
-                contentRatings[5].ratingMean = contentRatings[5].ratingSum / contentRatings[5].ratingQuantity;
+                modifyMean(film, contentRatings, 5);
                 break;
             default:
-                console.log("idk what to do with this!!!", film.contentRating);
+                console.log("ERROR: Unrecognised Film Content Rating:", film.title, ", ", film.contentRating);
         }
     });
 
@@ -1202,7 +1170,7 @@ function initContentRatings() {
 // returns array of ratingMeans of each contentRating.
 // (with >= n films)
 // sorted by content rating ("Not Rated", "G", "PG", "PG-13", "R", "NC-17")
-async function getContentRatingRatings(contentRatings, n) {
+function getContentRatingRatings(contentRatings, n) {
     let contentRatingRatings = [];
 
     contentRatings.forEach(cr => {
@@ -1217,7 +1185,7 @@ async function getContentRatingRatings(contentRatings, n) {
 // returns array of ratingQuantity of each contentRating.
 // (with >= n films)
 // sorted by content rating ("Not Rated", "G", "PG", "PG-13", "R", "NC-17")
-async function getContentRatingQuantities(contentRatings) {
+function getContentRatingQuantities(contentRatings) {
     let contentRatingRatings = [];
 
     contentRatings.forEach(cr => {
@@ -1231,7 +1199,7 @@ async function getContentRatingQuantities(contentRatings) {
 // (with >= n films)
 // (only if the ratingMean is non-null)
 // sorted by content rating ("Not Rated", "G", "PG", "PG-13", "R", "NC-17")
-async function getContentRatingLabels(contentRatings, n) {
+function getContentRatingLabels(contentRatings, n) {
     let contentRatingLabels = [];
 
     contentRatings.forEach(cr => {
@@ -1252,7 +1220,7 @@ async function getContentRatingLabels(contentRatings, n) {
 // in "initDB.js", it web scrapes the wiki page for the bond films and changes
 // a 'franchise' attribute of the prefilmobject to "James Bond", so all this function
 // has to do is to take films with a "James Bond" franchise value.
-async function getBondFilms(filmData) {
+function getBondFilms(filmData) {
     let bondFilms = [];
 
     // iterate through each film and add it to array if it's a bond film
@@ -1286,7 +1254,7 @@ async function getBondFilms(filmData) {
 // returns an array of mcu film objects {"title", "myRating", "year"},
 // sorted by release date
 // same logic as getBondFilms (check comments above)
-async function getMcuFilms(filmData) {
+function getMcuFilms(filmData) {
     let mcuFilms = [];
 
     // iterate through each film and add it to array if it's an MCU film
@@ -1321,7 +1289,7 @@ async function getMcuFilms(filmData) {
 // return an array of film objects {"title", "rating", "year"},
 // each object is a film in the given franchise.
 // sorted by release year.
-async function getFranchise(filmData, titles) {
+function getFranchise(filmData, titles) {
 
     // MCU and Bond franchises are dealt with differently,
     // hence they have their own functions
@@ -1339,7 +1307,7 @@ async function getFranchise(filmData, titles) {
 
     for (let i = 0; i < len; i++) {
         // if the film title (e.g. lotr rotk) has a franchise (e.g. Lotr) as a substring
-        if (await containsSubstringArray(filmData[i].title, titles) === true) {
+        if (containsSubstringArray(filmData[i].title, titles) === true) {
             franchise.push({"title" : filmData[i].title, "myRating" : filmData[i].myRating, "year" : filmData[i].year});
         }
     }
@@ -1366,7 +1334,7 @@ async function getFranchise(filmData, titles) {
 }
 
 // utility function that checks if an element in an array of substrings is contained in a source string
-async function containsSubstringArray(source, arrayOfSubstrings) {
+function containsSubstringArray(source, arrayOfSubstrings) {
     const len = arrayOfSubstrings.length;
 
     for (let i = 0; i < len; i++) {
@@ -1380,7 +1348,7 @@ async function containsSubstringArray(source, arrayOfSubstrings) {
 
 // given an array of franchise objects, return an array of
 // the mean rating of each film in that franchise
-async function getFranchiseRatings(franchise) {
+function getFranchiseRatings(franchise) {
     let franchiseRatings = [];
 
     franchise.forEach(f => {
@@ -1392,7 +1360,7 @@ async function getFranchiseRatings(franchise) {
 
 // given an array of franchise objects, return an array of
 // the titles of each film in that franchise
-async function getFranchiseTitles(franchise) {
+function getFranchiseTitles(franchise) {
     let franchiseTitles = [];
 
     franchise.forEach(f => {

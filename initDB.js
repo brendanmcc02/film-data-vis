@@ -1,24 +1,19 @@
 // this file is intended to run in node.js
 // as opposed to a web browser
 
-// api keys:
-// k_9thzt945 vivi04@gmail
-
-
 // module imports
 import nodeFetch from "node-fetch";
 import * as cheerio from "cheerio";
 import * as fs from "fs";
 
 // function exports for updateDB.js
-export {getPreFilmObjects, writeFilmsToJson, getFilteredFilm, getRawFilm, getNextURL, getNumberOfRatedFilms};
+export {getPreFilmObjects, writeFilmsToJson,  getNextURL, getNumberOfRatedFilms};
 
 // global constants
 const myRatingsURL = "https://www.imdb.com/user/ur95934592/ratings";
 const watchedInCinemaURL = "https://www.imdb.com/list/ls081360952/";
 const imdbTop250URL = "https://www.imdb.com/chart/top";
 const myTop10URL = "https://www.imdb.com/list/ls048298278/";
-const apiURL = "https://imdb-api.com/en/API/Title/k_9thzt945/";
 const marvelURL = "https://en.wikipedia.org/wiki/List_of_Marvel_Cinematic_Universe_films";
 const bondURL = "https://en.wikipedia.org/wiki/List_of_James_Bond_films";
 const apiRequestOptions = {
@@ -28,22 +23,14 @@ const apiRequestOptions = {
 
 main();
 
-// api is limited to 100 calls/24hrs,
-// so this function creates a filmData.json with 100 films.
-// this has to be called multiple times (manually appending the filmData.json together),
-// until all my rated films have been added to the database.
-// the startIndex is the index of the array at which the api calls start.
-// the getRawFilms() method will only call 100 films
+// initialises a database of all my rated films on imdb
 async function main() {
     const startTime = Date.now();
     /////////////////////////////
 
-    // ~11:00 23rd June k_9thzt945
-    const startIndex = 0;
     const numberOfFilms = await getNumberOfRatedFilms();
     const preFilmObjects = await getPreFilmObjects(numberOfFilms);
-    const rawFilms = await getRawFilms(preFilmObjects, startIndex, numberOfFilms);
-    const filmData = getFilmData(rawFilms, startIndex, preFilmObjects, numberOfFilms);
+    const filmData = await getFilmData(preFilmObjects, numberOfFilms);
     writeFilmsToJson(filmData);
 
     ///////////////////////////
@@ -271,51 +258,64 @@ async function getNumberOfRatedFilms() {
     return parseInt(numberOfRatedFilms);
 }
 
-// iterates through 100 pre film objects {id, myRating, watchedInCinema},
-// and returns an array of 100 raw film objects.
-// (only does 100 films because api is limited to 100/24hrs)
-// a raw film is the initial return value from the imdb api, it is called
-// 'raw' because it has a lot of junk/unnecessary data that will go through
-// a filter function
-async function getRawFilms(preFilmObjects, startIndex, numberOfFilms) {
-    let rawFilms = [];
-
-    const min = Math.min(startIndex + 100, numberOfFilms);
-    for (let i = startIndex; i < min; i++) {
-        rawFilms.push(await getRawFilm(preFilmObjects[i]));
-    }
-
-    return rawFilms;
-}
-
-// given a pre film object {id, myRating, watchedInCinema},
-// fetch the full raw film object using the imdb-api
-// ~30secs for 100 films
-async function getRawFilm(preFilmObject) {
-    try {
-        const filmURL = apiURL.concat(preFilmObject.id);
-        const response = await nodeFetch(filmURL, apiRequestOptions);
-        return await response.json();
-    }
-    catch (error) {
-        console.error(error);
-    }
-}
-
 // returns clean array of filmData objects
-function getFilmData(rawFilms, startIndex, preFilmObjects, numberOfFilms) {
+async function getFilmData(preFilmObjects) {
     let filmData = [];
+    const len = preFilmObjects.length;
 
-    const min = Math.min(numberOfFilms - startIndex, 100);
-    for (let i = 0; i < min; i++) {
-        // if the film is a movie and not a short
-        if (rawFilms[i].type === "Movie" && !arrayObjectContains(rawFilms[i].genreList, "Short")) {
-            // filter unnecessary data and push that to filmData[]
-            filmData.push(getFilteredFilm(rawFilms[i], preFilmObjects[i + startIndex]));
+    for (let i = 0; i < len; i++) {
+        let film = await getFilmData(getFilm(preFilmObjects[i]));
+
+        if (film !== null) {
+            filmData.push(film);
         }
     }
 
     return filmData;
+}
+
+async function getFilm(preFilmObject) {
+    // initialise film object
+    let film = {"id": preFilmObject.id, "title": preFilmObject.title, "year": 0, "image": "",
+        "runtimeMins": -1, "directorList": [], "actorList": [], "genreList": [], "countryList": [],
+        "languageList": [], "contentRating": "", "imDbRating": -1, "imDbRatingVotes": -1,
+        "metacriticRating": -1, "myRating": preFilmObject.myRating,
+        "watchedInCinema": preFilmObject.watchedInCinema, "imdbTop25Position": preFilmObject.imdbTop25Position,
+        "myPosition": preFilmObject.myPosition, "franchise": preFilmObject.franchise
+    };
+
+    // get html of page
+    const baseTitleUrl = "https://www.imdb.com/title/";
+    const titleUrl = baseTitleUrl.concat(film.id)
+    const response = await nodeFetch(titleUrl);
+    const body = await response.text();
+    const c = cheerio.load(body);
+
+    // get year
+
+    // get film image
+
+    // get runtime
+
+    // get list of directors (try get image as well?)
+
+    // get list of actors {"name", "image"}
+
+    // get list of genres
+
+    // get list of countries
+
+    // get list of languages
+
+    // get content rating
+
+    // get imdb rating
+
+    // get number of imdb votes
+
+    // get metacritic (check updatedb.js)
+
+    return film;
 }
 
 // utility function that iterates through an array of objects,
@@ -328,113 +328,6 @@ function arrayObjectContains(arrayOfObjects, target) {
     });
 
     return false;
-}
-
-// filters unnecessary data of rawFilm object
-// adds myRating and watchedInCinema attribute
-function getFilteredFilm(rawFilm, preFilmObject) {
-    // deletions
-    delete rawFilm.originalTitle;
-    delete rawFilm.fullTitle;
-    delete rawFilm.type;
-    delete rawFilm.releaseDate;
-    delete rawFilm.runtimeStr;
-    delete rawFilm.plot;
-    delete rawFilm.plotLocal;
-    delete rawFilm.plotLocalIsRtl;
-    delete rawFilm.awards;
-    delete rawFilm.directors;
-    delete rawFilm.writers;
-    delete rawFilm.writerList;
-    delete rawFilm.stars;
-    delete rawFilm.starList;
-    delete rawFilm.fullCast;
-    delete rawFilm.genres;
-    delete rawFilm.companies;
-    delete rawFilm.companyList;
-    delete rawFilm.countries;
-    delete rawFilm.languages;
-    delete rawFilm.ratings;
-    delete rawFilm.wikipedia;
-    delete rawFilm.posters;
-    delete rawFilm.images;
-    delete rawFilm.trailer;
-    delete rawFilm.tagline;
-    delete rawFilm.keywords;
-    delete rawFilm.keywordList;
-    delete rawFilm.similars;
-    delete rawFilm.tvSeriesInfo;
-    delete rawFilm.tvEpisodeInfo;
-    delete rawFilm.errorMessage;
-    delete rawFilm.boxOffice;
-
-    rawFilm.directorList.forEach(director => {
-       delete director.id;
-    });
-
-    rawFilm.actorList.forEach(actor => {
-        delete actor.asCharacter;
-        delete actor.id
-    });
-
-    rawFilm.genreList.forEach(genre => {
-        delete genre.value;
-    });
-
-    rawFilm.languageList.forEach(language => {
-        delete language.value;
-    });
-
-    rawFilm.countryList.forEach(country => {
-        delete country.value;
-    });
-
-    // each element in directorList is an object with
-    // (after the deletions) only one attribute: name.
-    // we will simplify directorList by creating an array
-    // of strings, the director names.
-    let directors = [];
-    rawFilm.directorList.forEach(director => {
-        directors.push(director.name);
-    });
-    rawFilm.directorList = directors;
-
-    // same as above but with genreList
-    let genres = [];
-    rawFilm.genreList.forEach(genre => {
-        genres.push(genre.key);
-    });
-    rawFilm.genreList = genres;
-
-    // same as above but with languageList
-    let languages = [];
-    rawFilm.languageList.forEach(language => {
-        languages.push(language.key);
-    });
-    rawFilm.languageList = languages;
-
-    // same as above but with countryList
-    let countries = [];
-    rawFilm.countryList.forEach(country => {
-        countries.push(country.key);
-    });
-    rawFilm.countryList = countries;
-
-    // changing strings to integers/floats
-    rawFilm.year = parseInt(rawFilm.year);
-    rawFilm.runtimeMins = parseInt(rawFilm.runtimeMins);
-    rawFilm.imDbRating = parseFloat(rawFilm.imDbRating);
-    rawFilm.imDbRatingVotes = parseFloat(rawFilm.imDbRatingVotes);
-    rawFilm.metacriticRating = parseInt(rawFilm.metacriticRating);
-
-    // adding attributes to the film object
-    rawFilm.myRating = preFilmObject.myRating;
-    rawFilm.watchedInCinema = preFilmObject.watchedInCinema;
-    rawFilm.imdbTop25Position = preFilmObject.imdbTop25Position;
-    rawFilm.myPosition = preFilmObject.myPosition;
-    rawFilm.franchise = preFilmObject.franchise;
-
-    return rawFilm;
 }
 
 // given array of filtered filmData, write to .json file
