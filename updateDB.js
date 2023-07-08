@@ -7,7 +7,7 @@ import * as cheerio from "cheerio";
 import * as fs from "fs";
 
 // function imports
-import {writeFilmsToJson, getPreFilmObjects, getFilteredFilm, getRawFilm, getNextURL, getNumberOfRatedFilms} from './initDB.js'
+import {writeFilmsToJson, getPreFilmObjects, getNextURL, getNumberOfRatedFilms} from './initDB.js'
 
 // exports for main.js
 export {readFilmData};
@@ -76,7 +76,7 @@ async function getRatedFilms(numberOfFilms, cinemaFilms) {
         // iterate through each instance of film and push numberOfVotes to array
         c('.lister-item-content span[data-value]').each(function () {
             numberOfVotesArray.push(parseInt(c(this).attr('data-value')));
-        })
+        });
 
         // get corresponding myRating of each film
         // if you're confused by this code then check the comments

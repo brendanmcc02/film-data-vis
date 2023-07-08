@@ -16,10 +16,6 @@ const imdbTop250URL = "https://www.imdb.com/chart/top";
 const myTop10URL = "https://www.imdb.com/list/ls048298278/";
 const marvelURL = "https://en.wikipedia.org/wiki/List_of_Marvel_Cinematic_Universe_films";
 const bondURL = "https://en.wikipedia.org/wiki/List_of_James_Bond_films";
-const apiRequestOptions = {
-    method: 'GET',
-    redirect: 'follow'
-};
 
 main();
 
@@ -41,7 +37,7 @@ async function main() {
 
 // web scrapes my imdb ratings page
 // returns array of preFilmObjects:
-// {title, id, myRating, watchedInCinema, imdbTop25Position, myPosition, franchise}
+// {title, id, myRating, numberOfVotes, watchedInCinema, imdbTop25Position, myPosition, franchise}
 // ~30 sec runtime
 async function getPreFilmObjects(numberOfFilms) {
     let preFilmObjects = [];
@@ -49,6 +45,7 @@ async function getPreFilmObjects(numberOfFilms) {
     let url = myRatingsURL;
     let ids = [];
     let titles = [];
+    let numberOfVotes = [];
 
     // continuously iterate through each ratings web page
     for (let f = 0; url !== ""; f+=100) {
@@ -67,6 +64,11 @@ async function getPreFilmObjects(numberOfFilms) {
             titles.push(c(this).text());
         });
 
+        // web scrape number of imdb votes
+        c('.lister-item-content span[data-value]').each(function () {
+            numberOfVotes.push(parseInt(c(this).attr('data-value')));
+        });
+
         // get corresponding myRating of each film
         // ok this was an ugly solution but for some reason I can't get direct access to
         // the rating attribute of each film, so I had to get all the span tags
@@ -79,7 +81,7 @@ async function getPreFilmObjects(numberOfFilms) {
             let myRating = c('span.ipl-rating-star__rating').eq(1 + 24 * (i-f)).text();
             myRating = parseInt(myRating);
             preFilmObjects.push({"id" : ids[i], "title" : titles[i], "myRating" : myRating,
-                "watchedInCinema" : false, "imdbTop25Position" : -1,
+                "numberOfVotes" : numberOfVotes[i], "watchedInCinema" : false, "imdbTop25Position" : -1,
                 "myPosition" : -1, "franchise" : ""});
         }
 
@@ -264,7 +266,7 @@ async function getFilmData(preFilmObjects) {
     const len = preFilmObjects.length;
 
     for (let i = 0; i < len; i++) {
-        let film = await getFilmData(getFilm(preFilmObjects[i]));
+        let film = await getFilm(preFilmObjects[i]);
 
         if (film !== null) {
             filmData.push(film);
@@ -277,9 +279,9 @@ async function getFilmData(preFilmObjects) {
 async function getFilm(preFilmObject) {
     // initialise film object
     let film = {"id": preFilmObject.id, "title": preFilmObject.title, "year": 0, "image": "",
-        "runtimeMins": -1, "directorList": [], "actorList": [], "genreList": [], "countryList": [],
-        "languageList": [], "contentRating": "", "imDbRating": -1, "imDbRatingVotes": -1,
-        "metacriticRating": -1, "myRating": preFilmObject.myRating,
+        "runtime": -1, "directors": [], "actors": [], "genres": [], "countries": [],
+        "languages": [], "contentRating": "", "imdbRating": -1, "numberOfVotes": preFilmObject.numberOfVotes,
+        "metascore": -1, "myRating": preFilmObject.myRating,
         "watchedInCinema": preFilmObject.watchedInCinema, "imdbTop25Position": preFilmObject.imdbTop25Position,
         "myPosition": preFilmObject.myPosition, "franchise": preFilmObject.franchise
     };
@@ -291,43 +293,114 @@ async function getFilm(preFilmObject) {
     const body = await response.text();
     const c = cheerio.load(body);
 
+    // if the title is tv series, miniseries, or tv special, return null
+    if (c(".sc-52d569c6-0.kNzJA-D li").length > 3) {
+        return null;
+    }
+    // else if it's a tv episode
+    else if (c(".sc-52d569c6-0.kNzJA-D li").eq(0).text().includes("Episode")) {
+        return null;
+    }
+
     // get year
-
-    // get film image
-
-    // get runtime
-
-    // get list of directors (try get image as well?)
-
-    // get list of actors {"name", "image"}
-
-    // get list of genres
-
-    // get list of countries
-
-    // get list of languages
+    film.year = parseInt(c(".sc-52d569c6-0.kNzJA-D li").eq(0).text());
 
     // get content rating
+    if (c(".sc-52d569c6-0.kNzJA-D li").length === 3) {
+        film.contentRating = c(".sc-52d569c6-0.kNzJA-D li").eq(1).text();
+    }
+    // edge case for when a film has no content rating
+    else {
+        film.contentRating = "Not Rated";
+    }
 
-    // get imdb rating
+    // get runtime
+    let runtime = 0;
 
-    // get number of imdb votes
+    if (c(".sc-52d569c6-0.kNzJA-D li").length < 3) {
+        runtime = c(".sc-52d569c6-0.kNzJA-D li").eq(1).text();
+    } else {
+        runtime = c(".sc-52d569c6-0.kNzJA-D li").eq(2).text();
+    }
 
-    // get metacritic (check updatedb.js)
+    let runtimes = runtime.split(" ");
 
-    return film;
-}
-
-// utility function that iterates through an array of objects,
-// returning true if target value is found
-function arrayObjectContains(arrayOfObjects, target) {
-    arrayOfObjects.forEach(element => {
-        if (Object.values(element).includes(target)) {
-            return true;
+    if (runtimes.length === 1) {
+        if (runtimes[0].includes("m")) {
+            runtimes[0].replace("m","");
+            film.runtime = parseInt(runtimes[0]);
+        } else {
+            runtimes[0].replace("h","");
+            film.runtime = parseInt(runtimes[0]) * 60;
         }
+    } else {
+        runtimes[0].replace("h","");
+        runtimes[1].replace("m","");
+        runtimes[0] = parseInt(runtimes[0]);
+        runtimes[1] = parseInt(runtimes[1]);
+        film.runtime = (runtimes[0] * 60) + runtimes[1];
+    }
+
+    // get film image
+    film.image = c('.sc-385ac629-7.kdyVyZ img').attr('src');
+
+    // get list of directors (try to get image as well?)
+    c('.sc-52d569c6-3.jBXsRT li:first-child li').each(function () {
+        film.directors.push(c(this).text());
     });
 
-    return false;
+    // TODO fix actorName & image offset (if an actor has no image it messes it up)
+    // TODO check TDKR as an example, Sam Kennard has no image
+
+    let actorNames = [];
+    let actorImages = [];
+
+    // get list of actors
+
+    // get actor names
+    c('.sc-bfec09a1-1.fUguci').each(function () {
+        actorNames.push(c(this).text());
+    });
+
+    // get actor images
+    c('.sc-bfec09a1-6.cRAGvN.title-cast-item__avatar img').each(function () {
+        actorImages.push(c(this).attr('src'));
+    });
+
+    // combine actor name with their image as an object {"name", "image"}
+    // and push this to film.actors
+    const len = actorNames.length;
+    for (let i = 0; i < len; i++) {
+        film.actors.push({"name" : actorNames[i], "image" : actorImages[i]});
+    }
+
+    // get list of genres
+    c('.ipc-chip.ipc-chip--on-baseAlt').each(function () {
+        film.genres.push(c(this).text());
+    });
+
+    // get list of countries
+    c('.sc-f65f65be-0.fVkLRr[data-testid=title-details-section] ' +
+        'li:nth-child(2) li').each(function () {
+        film.countries.push(c(this).text());
+    });
+
+    // get list of languages
+    c('.sc-f65f65be-0.fVkLRr[data-testid=title-details-section] ' +
+        'li:nth-child(4) li').each(function () {
+        film.languages.push(c(this).text());
+    });
+
+    // get imdb rating
+    film.imdbRating = parseFloat(c('.sc-bde20123-1.iZlgcd').eq(0).text());
+
+    // get metascore (check updateDB.js)
+    let metascore = c(".score-meta").text();
+    if (metascore !== '') {
+        film.metascore = parseInt(metascore);
+    }
+
+    return film;
 }
 
 // given array of filtered filmData, write to .json file
