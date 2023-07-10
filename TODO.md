@@ -1,8 +1,9 @@
 # TODO
 
 ### initDB.js
-- [ ] for foreign films get english title as film.title
-- [ ] bug for languages, if foreign film it puts the english title as the language
+- [x] for foreign films get english title as film.title
+- [x] find efficient way to do 'franchise' attribute
+- [x] bug for languages, if foreign film it puts the english title as the language
 
 ### graphs
 - [x] Mean Genre Rating (atm it's all genres, further customisation: top/bottom k with >= n films) {bar}
