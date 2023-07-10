@@ -1,6 +1,10 @@
 # TODO
 
-### Graphs
+### initDB.js
+- [ ] for foreign films get english title as film.title
+- [ ] bug for languages, if foreign film it puts the english title as the language
+
+### graphs
 - [x] Mean Genre Rating (atm it's all genres, further customisation: top/bottom k with >= n films) {bar}
 - [x] Quantity of films watched per genre {doughnut}
 - [x] Top k Directors (>= n films) {bar}
@@ -23,8 +27,6 @@
 - [x] check if every function needs to be async
 
 ### Other
-- [ ] do getFilmData without using the imdb-api =(
-- [ ] come up with more descriptive name than 'preFilmObject'
 - [ ] alter content rating to match irish ratings (instead of USA)
 - [ ] create functions to accommodate graphs
 - [ ] re-initialise filmData.json with extra data

@@ -7,7 +7,7 @@ import * as cheerio from "cheerio";
 import * as fs from "fs";
 
 // function exports for updateDB.js
-export {getPreFilmObjects, writeFilmsToJson,  getNextURL, getNumberOfRatedFilms};
+export {getMyRatedFilms, writeFilmsToJson,  getNextURL};
 
 // global constants
 const myRatingsURL = "https://www.imdb.com/user/ur95934592/ratings";
@@ -24,9 +24,8 @@ async function main() {
     const startTime = Date.now();
     /////////////////////////////
 
-    const numberOfFilms = await getNumberOfRatedFilms();
-    const preFilmObjects = await getPreFilmObjects(numberOfFilms);
-    const filmData = await getFilmData(preFilmObjects, numberOfFilms);
+    const myRatedFilms = await getMyRatedFilms();
+    const filmData = await getFilmData(myRatedFilms);
     writeFilmsToJson(filmData);
 
     ///////////////////////////
@@ -35,17 +34,13 @@ async function main() {
     console.log("\nRuntime: " + runTime.toFixed(2) + " seconds");
 }
 
-// web scrapes my imdb ratings page
-// returns array of preFilmObjects:
-// {title, id, myRating, numberOfVotes, watchedInCinema, imdbTop25Position, myPosition, franchise}
+// web scrapes my ratings page and returns an array of film objects:
+// {title, id, myRating, watchedInCinema, imdbTop25Position, myTop10Position, franchise}
 // ~30 sec runtime
-async function getPreFilmObjects(numberOfFilms) {
-    let preFilmObjects = [];
+async function getMyRatedFilms() {
+    let myRatedFilms = [];
 
     let url = myRatingsURL;
-    let ids = [];
-    let titles = [];
-    let numberOfVotes = [];
 
     // continuously iterate through each ratings web page
     for (let f = 0; url !== ""; f+=100) {
@@ -54,51 +49,26 @@ async function getPreFilmObjects(numberOfFilms) {
         let body = await response.text();
         let c = cheerio.load(body);
 
-        // iterate through each instance of a film; push film ID to array
-        c('.lister-item-image.ribbonize').each(function () {
-            ids.push(c(this).attr('data-tconst'));
+        // for each film
+        c('.lister-list .lister-item.mode-detail').each(function () {
+            let title = c(this).find('.lister-item-header a').text();
+            let id = c(this).find('.lister-item-image.ribbonize').attr('data-tconst');
+            let myRating = c(this).find('.ipl-rating-star.ipl-rating-star--other-user.small .ipl-rating-star__rating').text();
+            myRatedFilms.push({"title" : title, "id" : id, "myRating" : myRating, "watchedInCinema" : false,
+                               "imdbTop25Position" : -1, "myTop10Position" : -1, "franchise" : ""});
         });
-
-        // web scrape all film titles
-        c('.lister-item-header a').each(function () {
-            titles.push(c(this).text());
-        });
-
-        // web scrape number of imdb votes
-        c('.lister-item-content span[data-value]').each(function () {
-            numberOfVotes.push(parseInt(c(this).attr('data-value')));
-        });
-
-        // get corresponding myRating of each film
-        // ok this was an ugly solution but for some reason I can't get direct access to
-        // the rating attribute of each film, so I had to get all the span tags
-        // with a certain name ("ipl-rating-star__rating"), - there are 24 of these for
-        // each film, and the 2nd one (index 1, hence the + 1 you see below) is my rating
-        // of the film. I hope future Brendan understands this, I apologise for the awful
-        // solution, but it works =)
-        let min = Math.min(f + 100, numberOfFilms);
-        for (let i = f; i < min; i++) {
-            let myRating = c('span.ipl-rating-star__rating').eq(1 + 24 * (i-f)).text();
-            myRating = parseInt(myRating);
-            preFilmObjects.push({"id" : ids[i], "title" : titles[i], "myRating" : myRating,
-                "numberOfVotes" : numberOfVotes[i], "watchedInCinema" : false, "imdbTop25Position" : -1,
-                "myPosition" : -1, "franchise" : ""});
-        }
 
         // get url for next iteration
         url = await getNextURL(url);
     }
 
-    // iterate through films watched in cinemas and
-    // change 'watchedInCinema' attribute of relevant films
+    // iterate through 'films watched in cinemas' list
     let filmsWatchedInCinemas = [];
     url = watchedInCinemaURL;
 
-    // continuously iterate through each web page of
-    // the 'films watched in cinema' list
     while (url !== "") {
         // get the html
-        let response = await nodeFetch(watchedInCinemaURL);
+        let response = await nodeFetch(url);
         let body = await response.text();
         let c = cheerio.load(body);
 
@@ -107,17 +77,17 @@ async function getPreFilmObjects(numberOfFilms) {
             filmsWatchedInCinemas.push(c(this).attr('data-tconst'));
         })
 
-        // for each rated film, if it is in filmsWatchedInCinema,
-        // change watchedInCinema attribute to true
-        preFilmObjects.forEach(film => {
-            if (filmsWatchedInCinemas.includes(film.id)) {
-                film.watchedInCinema = true;
-            }
-        });
-
         // change url for next iteration
         url = await getNextURL(url);
     }
+
+    // for each rated film, if it is in filmsWatchedInCinema,
+    // change watchedInCinema attribute to true
+    myRatedFilms.forEach(film => {
+        if (filmsWatchedInCinemas.includes(film.id)) {
+            film.watchedInCinema = true;
+        }
+    });
 
     // iterate through imdb top 250 films,
     // and change the position attribute of the
@@ -131,15 +101,15 @@ async function getPreFilmObjects(numberOfFilms) {
     let position = 1;
     for (let i = 0; i < 250 && position <= 25; i++) {
         let id = c('.wlb_ribbon').eq(i).attr('data-tconst');
-        let index = getIndexOfId(preFilmObjects, id);
+        let index = getIndexOfId(myRatedFilms, id);
         if (index !== -1) {
-            preFilmObjects[index].imdbTop25Position = position;
+            myRatedFilms[index].imdbTop25Position = position;
             position++;
         }
     }
 
     // iterate through my top 10 films and change the
-    // 'myPosition' attribute of the corresponding films
+    // 'myTop10Position' attribute of the corresponding films
 
     let myTop10Films = [];
 
@@ -153,15 +123,15 @@ async function getPreFilmObjects(numberOfFilms) {
         myTop10Films.push(c(this).attr('data-tconst'));
     });
 
-    // for each film, modify the 'myPosition' to the corresponding value
+    // for each film, modify the 'myTop10Position' to the corresponding value
     const len = myTop10Films.length;
     for (let i = 0; i < len; i++) {
         let id = myTop10Films[i];
-        let index = getIndexOfId(preFilmObjects, id);
-        preFilmObjects[index].myPosition = i + 1;
+        let index = getIndexOfId(myRatedFilms, id);
+        myRatedFilms[index].myTop10Position = i + 1;
     }
 
-    // franchises
+    // Franchises:
     // MCU
 
     // get the html
@@ -175,13 +145,13 @@ async function getPreFilmObjects(numberOfFilms) {
         // get the title of the mcu film
         let title = c(this).text();
         title = title.replace("\n", "");
-        const len = preFilmObjects.length;
+        const len = myRatedFilms.length;
 
-        // find the mcu film in preFilmObjects,
+        // find the mcu film in myRatedFilms,
         // if there, change 'franchise' attribute to "MCU"
         for (let i = 0; i < len; i++) {
-            if (preFilmObjects[i].title === title) {
-                preFilmObjects[i].franchise = "MCU";
+            if (myRatedFilms[i].title === title) {
+                myRatedFilms[i].franchise = "MCU";
                 i = len; // break
             }
         }
@@ -198,28 +168,28 @@ async function getPreFilmObjects(numberOfFilms) {
         // get the title of the bond film
         let title = c(this).text();
         title = title.replace("\n", "");
-        const len = preFilmObjects.length;
+        const len = myRatedFilms.length;
 
-        // find the bond film in preFilmObjects,
+        // find the bond film in myRatedFilms,
         // if there, change 'franchise' attribute to "James Bond"
         for (let i = 0; i < len; i++) {
-            if (preFilmObjects[i].title === title) {
-                preFilmObjects[i].franchise = "James Bond";
+            if (myRatedFilms[i].title === title) {
+                myRatedFilms[i].franchise = "James Bond";
                 i = len; // break
             }
         }
     });
 
-    return preFilmObjects;
+    return myRatedFilms;
 }
 
 // utility function that gets the index of
-// the preFilmObject with the matching id.
+// the myRatedFilm with the matching id.
 // returns -1 if no match.
-function getIndexOfId(preFilmObjects, id) {
-    const len = preFilmObjects.length;
+function getIndexOfId(myRatedFilms, id) {
+    const len = myRatedFilms.length;
     for (let i = 0; i < len; i++) {
-        if (preFilmObjects[i].id === id) {
+        if (myRatedFilms[i].id === id) {
             return i;
         }
     }
@@ -248,25 +218,13 @@ async function getNextURL(currentURL) {
     return nextURL.toString();
 }
 
-// returns number of films rated on my account
-async function getNumberOfRatedFilms() {
-    // get html
-    const response = await nodeFetch(myRatingsURL);
-    const body = await response.text();
-    const c = cheerio.load(body);
-
-    let numberOfRatedFilms = c(".lister-list-length span").text();
-
-    return parseInt(numberOfRatedFilms);
-}
-
 // returns clean array of filmData objects
-async function getFilmData(preFilmObjects) {
+async function getFilmData(myRatedFilms) {
     let filmData = [];
-    const len = preFilmObjects.length;
+    const len = myRatedFilms.length;
 
     for (let i = 0; i < len; i++) {
-        let film = await getFilm(preFilmObjects[i]);
+        let film = await getFilm(myRatedFilms[i]);
 
         if (film !== null) {
             filmData.push(film);
@@ -276,14 +234,16 @@ async function getFilmData(preFilmObjects) {
     return filmData;
 }
 
-async function getFilm(preFilmObject) {
+// returns an array of film objects:
+// {title, year, myRating, imdbRating, metascore, image, runtime, directors, actors, genres, countries,
+// languages, contentRating, watchedInCinema, imdbTop25Position, myTop10Position, franchise}
+async function getFilm(myRatedFilm) {
     // initialise film object
-    let film = {"id": preFilmObject.id, "title": preFilmObject.title, "year": 0, "image": "",
-        "runtime": -1, "directors": [], "actors": [], "genres": [], "countries": [],
-        "languages": [], "contentRating": "", "imdbRating": -1, "numberOfVotes": preFilmObject.numberOfVotes,
-        "metascore": -1, "myRating": preFilmObject.myRating,
-        "watchedInCinema": preFilmObject.watchedInCinema, "imdbTop25Position": preFilmObject.imdbTop25Position,
-        "myPosition": preFilmObject.myPosition, "franchise": preFilmObject.franchise
+    let film = {"title": myRatedFilm.title, "year": 0,  "myRating": myRatedFilm.myRating, "imdbRating": -1.0,
+                "metascore": -1, "image": "", "runtime": -1, "directors": [], "actors": [],
+                "genres": [], "countries": [], "languages": [], "contentRating": "",
+                "watchedInCinema": myRatedFilm.watchedInCinema, "imdbTop25Position": myRatedFilm.imdbTop25Position,
+                "myTop10Position": myRatedFilm.myTop10Position, "franchise": myRatedFilm.franchise
     };
 
     // get html of page
@@ -349,43 +309,29 @@ async function getFilm(preFilmObject) {
         film.directors.push(c(this).text());
     });
 
-    // TODO fix actorName & image offset (if an actor has no image it messes it up)
-    // TODO check TDKR as an example, Sam Kennard has no image
+    // get actors
+    c('.sc-bfec09a1-5.kUzsHJ').each(function () {
+        let actorName = c(this).find('.sc-bfec09a1-1.fUguci').text();
+        let actorImage = c(this).find('.sc-bfec09a1-6.cRAGvN.title-cast-item__avatar img').attr('src');
+        if (actorImage === undefined) {
+            actorImage = "";
+        }
 
-    let actorNames = [];
-    let actorImages = [];
+        film.actors.push({"name" : actorName, "image" : actorImage});
+    })
 
-    // get list of actors
-
-    // get actor names
-    c('.sc-bfec09a1-1.fUguci').each(function () {
-        actorNames.push(c(this).text());
-    });
-
-    // get actor images
-    c('.sc-bfec09a1-6.cRAGvN.title-cast-item__avatar img').each(function () {
-        actorImages.push(c(this).attr('src'));
-    });
-
-    // combine actor name with their image as an object {"name", "image"}
-    // and push this to film.actors
-    const len = actorNames.length;
-    for (let i = 0; i < len; i++) {
-        film.actors.push({"name" : actorNames[i], "image" : actorImages[i]});
-    }
-
-    // get list of genres
+    // get genres
     c('.ipc-chip.ipc-chip--on-baseAlt').each(function () {
         film.genres.push(c(this).text());
     });
 
-    // get list of countries
+    // get countries
     c('.sc-f65f65be-0.fVkLRr[data-testid=title-details-section] ' +
         'li:nth-child(2) li').each(function () {
         film.countries.push(c(this).text());
     });
 
-    // get list of languages
+    // get languages
     c('.sc-f65f65be-0.fVkLRr[data-testid=title-details-section] ' +
         'li:nth-child(4) li').each(function () {
         film.languages.push(c(this).text());
@@ -394,7 +340,7 @@ async function getFilm(preFilmObject) {
     // get imdb rating
     film.imdbRating = parseFloat(c('.sc-bde20123-1.iZlgcd').eq(0).text());
 
-    // get metascore (check updateDB.js)
+    // get metascore
     let metascore = c(".score-meta").text();
     if (metascore !== '') {
         film.metascore = parseInt(metascore);
@@ -403,7 +349,7 @@ async function getFilm(preFilmObject) {
     return film;
 }
 
-// given array of filtered filmData, write to .json file
+// writes filmData array to a .json file
 // CAUTION: if a filmData.json already exists, the function
 // will overwrite it
 function writeFilmsToJson(filmData) {
