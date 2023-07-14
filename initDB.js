@@ -24,16 +24,19 @@ async function main() {
     const startTime = Date.now();
     /////////////////////////////
 
-    const myRatedFilms = await getMyRatedFilms();
-    // const myRatedFilms = [{"id": "tt11564570", "myRating": 6, "watchedInCinema": false,
-    //     "imdbTop25Position": -1, "myTop10Position": -1}];
+    // const myRatedFilms = await getMyRatedFilms();
+    const myRatedFilms = [{"id": "tt1951266", "myRating": 6, "watchedInCinema": false,
+        "imdbTop25Position": -1, "myTop10Position": -1}];
     const films = await getFilms(myRatedFilms);
     writeFilmsToJson(films);
 
     ///////////////////////////
     const endTime = Date.now();
-    const runTime = (endTime - startTime) / 1000.0;
-    console.log("\nRuntime: " + runTime.toFixed(2) + " seconds");
+    let runtime = (endTime - startTime) / 1000;
+    // console.log("\nRuntime: " + runTime.toFixed(2) + " seconds");
+    const minutes = Math.floor(runtime/60);
+    const seconds = runtime % 60;
+    console.log("\nRuntime: " + minutes + " minutes " + seconds + " seconds.")
 }
 
 // web scrapes my ratings page and returns an array of film objects:
@@ -54,8 +57,8 @@ async function getMyRatedFilms() {
         // for each film
         c('.lister-list .lister-item.mode-detail').each(function () {
             let id = c(this).find('.lister-item-image.ribbonize').attr('data-tconst');
-            let myRating = c(this).find('.ipl-rating-star.ipl-rating-star--other-user.small ' +
-                '.ipl-rating-star__rating').text();
+            let myRating = parseInt(c(this).find('.ipl-rating-star.ipl-rating-star--other-user.small ' +
+                '.ipl-rating-star__rating').text());
             myRatedFilms.push({"id" : id, "myRating" : myRating, "watchedInCinema" : false,
                 "imdbTop25Position" : -1, "myTop10Position" : -1});
         });
@@ -219,6 +222,15 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
         return null;
     }
 
+    // get genres
+    c('.ipc-chip.ipc-chip--on-baseAlt').each(function () {
+        film.genres.push(c(this).text());
+    });
+
+    if (film.genres.includes("Short") || film.genres.includes("Documentary")) {
+        return null;
+    }
+
     // get title
     film.title = c('.sc-afe43def-1.fDTGTb').text();
 
@@ -232,6 +244,40 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
     // edge case for when a film has no content rating
     else {
         film.contentRating = "Not Rated";
+    }
+
+    // simplify edge cases for content ratings
+    switch (film.contentRating) {
+        case "12":
+            film.contentRating = "12A";
+            break;
+        case "15":
+            film.contentRating = "15A";
+            break;
+        case "PG-13":
+            film.contentRating = "PG";
+            break;
+        case "Approved":
+            film.contentRating = "Not Rated";
+            break;
+        case "Passed":
+            film.contentRating = "Not Rated";
+            break;
+        case "TV-G":
+            film.contentRating = "G";
+            break;
+        case "TV-PG":
+            film.contentRating = "PG";
+            break;
+        case "TV-14":
+            film.contentRating = "15A";
+            break;
+        case "TV-MA":
+            film.contentRating = "18";
+            break;
+        case "R":
+            film.contentRating = "18";
+            break;
     }
 
     // get runtime
@@ -264,36 +310,25 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
     // get film image
     film.image = c('.sc-385ac629-7.kdyVyZ img').attr('src');
 
-    // get list of directors (try to get image as well?)
-    c('.sc-52d569c6-3.jBXsRT li:first-child li').each(function () {
-        film.directors.push(c(this).text());
-    });
-
     // get actors
     c('.sc-bfec09a1-5.kUzsHJ').each(function () {
         let actorName = c(this).find('.sc-bfec09a1-1.fUguci').text();
         let actorImage = c(this).find('.sc-bfec09a1-6.cRAGvN.title-cast-item__avatar img').attr('src');
+
         if (actorImage === undefined) {
             actorImage = "";
         }
 
         film.actors.push({"name" : actorName, "image" : actorImage});
-    })
-
-    // get genres
-    c('.ipc-chip.ipc-chip--on-baseAlt').each(function () {
-        film.genres.push(c(this).text());
     });
 
     // get countries
-    c('.sc-f65f65be-0.fVkLRr[data-testid=title-details-section] ' +
-        'li:nth-child(2) li').each(function () {
+    c('li[data-testid=title-details-origin] li').each(function () {
         film.countries.push(c(this).text());
     });
 
     // get languages
-    c('.sc-f65f65be-0.fVkLRr[data-testid=title-details-section] ' +
-        'li:nth-child(4) li').each(function () {
+    c('li[data-testid=title-details-languages] li').each(function () {
         film.languages.push(c(this).text());
     });
 
@@ -322,6 +357,29 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
         if (mcuFilmTitles[i] === film.title) {
             film.franchise = "MCU";
         }
+    }
+
+    // get directors
+
+    // full list of directors is on another URL
+    let fullCreditsURL = titleUrl.concat("/fullcredits")
+
+    // get html
+    response = await nodeFetch(fullCreditsURL);
+    body = await response.text();
+    c = cheerio.load(body);
+
+    // for each director
+    c('table:first td.name a').each(function () {
+        film.directors.push(c(this).text());
+    });
+
+    // the text in the tag is in the form: " DIRECTOR NAME\n",
+    // so the \n and the initial space needs to be removed
+    const directorLen = film.directors.length;
+    for (let i = 0; i < directorLen; i++) {
+        film.directors[i] = film.directors[i].replace("\n", "");
+        film.directors[i] = film.directors[i].replace(" ", "");
     }
 
     return film;

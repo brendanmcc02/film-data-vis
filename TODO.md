@@ -1,9 +1,12 @@
 # TODO
 
 ### initDB.js
-- [x] for foreign films get english title as film.title
 - [x] find efficient way to do 'franchise' attribute
 - [x] bug for languages, if foreign film it puts the english title as the language
+- [x] if film has >3 directors, only the first 3 are scraped
+- [x] filter content rating in initDB.js
+- [x] avoid hard-coding languages and countries
+- [ ] fix imdbtop25position
 
 ### graphs
 - [x] Mean Genre Rating (atm it's all genres, further customisation: top/bottom k with >= n films) {bar}
@@ -26,6 +29,7 @@
 - [x] bond ratings {line}
 - [x] lotr, hp, star wars ratings {line}
 - [x] check if every function needs to be async
+- [ ] myRating distribution {bar}
 
 ### Other
 - [ ] alter content rating to match irish ratings (instead of USA)

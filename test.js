@@ -1,15 +1,20 @@
 import nodeFetch from "node-fetch";
 import * as cheerio from "cheerio";
+import fs from "fs";
 const marvelURL = "https://en.wikipedia.org/wiki/List_of_Marvel_Cinematic_Universe_films";
 const bondURL = "https://en.wikipedia.org/wiki/List_of_James_Bond_films";
 
 main();
 
 async function main() {
-    let myRatedFilms = [{"id": "tt0055928", "myRating": 6, "watchedInCinema": false,
-                        "imdbTop25Position": -1, "myTop10Position": -1}];
+    const filmData = readFilmData();
 
-    let films = await getFilms(myRatedFilms);
+    filmData.forEach(film => {
+        // if (film.countries.length === 0) {
+            console.log(film.franchise);
+        // }
+
+    });
 }
 
 // web scrapes my ratings page and returns an array of film objects:
@@ -342,4 +347,18 @@ async function getMcuFilmTitles() {
     });
 
     return mcuFilmTitles;
+}
+
+// reads filmData.json file into a variable
+function readFilmData() {
+    let filmData;
+
+    try {
+        filmData = fs.readFileSync("data/filmData.json");
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+
+    return JSON.parse(filmData);
 }
