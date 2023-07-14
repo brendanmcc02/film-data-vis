@@ -9,7 +9,7 @@ import * as fs from "fs";
 // function imports
 import {writeFilmsToJson, getPreFilmObjects, getNextURL, getNumberOfRatedFilms} from './initDB.js'
 
-// exports for main.js
+// exports for graph.js
 export {readFilmData};
 
 // global constants

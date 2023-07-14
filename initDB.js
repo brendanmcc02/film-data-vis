@@ -12,7 +12,6 @@ export {getMyRatedFilms, writeFilmsToJson, getNextURL};
 // global constants
 const myRatingsURL = "https://www.imdb.com/user/ur95934592/ratings";
 const watchedInCinemaURL = "https://www.imdb.com/list/ls081360952/";
-const imdbTop250URL = "https://www.imdb.com/chart/top";
 const myTop10URL = "https://www.imdb.com/list/ls048298278/";
 const marvelURL = "https://en.wikipedia.org/wiki/List_of_Marvel_Cinematic_Universe_films";
 const bondURL = "https://en.wikipedia.org/wiki/List_of_James_Bond_films";
@@ -24,23 +23,21 @@ async function main() {
     const startTime = Date.now();
     /////////////////////////////
 
-    // const myRatedFilms = await getMyRatedFilms();
-    const myRatedFilms = [{"id": "tt1951266", "myRating": 6, "watchedInCinema": false,
-        "imdbTop25Position": -1, "myTop10Position": -1}];
+    const myRatedFilms = await getMyRatedFilms();
+    // const myRatedFilms = [{"id": "tt1951266", "myRating": 6, "watchedInCinema": false, "myTop10Position": -1}];
     const films = await getFilms(myRatedFilms);
     writeFilmsToJson(films);
 
     ///////////////////////////
     const endTime = Date.now();
     let runtime = (endTime - startTime) / 1000;
-    // console.log("\nRuntime: " + runTime.toFixed(2) + " seconds");
     const minutes = Math.floor(runtime/60);
     const seconds = runtime % 60;
-    console.log("\nRuntime: " + minutes + " minutes " + seconds + " seconds.")
+    console.log("\nRuntime: " + minutes + " minutes " + seconds.toFixed(2) + " seconds.")
 }
 
 // web scrapes my ratings page and returns an array of film objects:
-// {id, myRating, watchedInCinema, imdbTop25Position, myTop10Position}
+// {id, myRating, watchedInCinema, myTop10Position}
 // ~30 sec runtime
 async function getMyRatedFilms() {
     let myRatedFilms = [];
@@ -59,8 +56,8 @@ async function getMyRatedFilms() {
             let id = c(this).find('.lister-item-image.ribbonize').attr('data-tconst');
             let myRating = parseInt(c(this).find('.ipl-rating-star.ipl-rating-star--other-user.small ' +
                 '.ipl-rating-star__rating').text());
-            myRatedFilms.push({"id" : id, "myRating" : myRating, "watchedInCinema" : false,
-                "imdbTop25Position" : -1, "myTop10Position" : -1});
+            myRatedFilms.push({"id" : id, "myRating" : myRating,
+                               "watchedInCinema" : false, "myTop10Position" : -1});
         });
 
         // get url for next iteration
@@ -94,34 +91,15 @@ async function getMyRatedFilms() {
         }
     });
 
-    // iterate through imdb top 250 films,
-    // and change the position attribute of the
-    // first 25 films that I've rated
-
-    // get the html
-    let response = await nodeFetch(imdbTop250URL);
-    let body = await response.text();
-    let c = cheerio.load(body);
-
-    let position = 1;
-    for (let i = 0; i < 250 && position <= 25; i++) {
-        let id = c('.wlb_ribbon').eq(i).attr('data-tconst');
-        let index = getIndexOfId(myRatedFilms, id);
-        if (index !== -1) {
-            myRatedFilms[index].imdbTop25Position = position;
-            position++;
-        }
-    }
-
     // iterate through my top 10 films and change the
     // 'myTop10Position' attribute of the corresponding films
 
     let myTop10Films = [];
 
     // get the html
-    response = await nodeFetch(myTop10URL);
-    body = await response.text();
-    c = cheerio.load(body);
+    let response = await nodeFetch(myTop10URL);
+    let body = await response.text();
+    let c = cheerio.load(body);
 
     // push id to array
     c('.lister-item-image.ribbonize').each(function () {
@@ -196,13 +174,13 @@ async function getFilms(myRatedFilms) {
 
 // returns a film object:
 // {title, year, myRating, imdbRating, metascore, image, runtime, directors, actors, genres, countries,
-// languages, contentRating, watchedInCinema, imdbTop25Position, myTop10Position, franchise}
+// languages, contentRating, watchedInCinema, myTop10Position, franchise}
 async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
     // initialise film object
     let film = {"title": "", "year": 0,  "myRating": myRatedFilm.myRating, "imdbRating": -1.0,
         "metascore": -1, "image": "", "runtime": -1, "directors": [], "actors": [],
         "genres": [], "countries": [], "languages": [], "contentRating": "",
-        "watchedInCinema": myRatedFilm.watchedInCinema, "imdbTop25Position": myRatedFilm.imdbTop25Position,
+        "watchedInCinema": myRatedFilm.watchedInCinema,
         "myTop10Position": myRatedFilm.myTop10Position, "franchise": ""
     };
 

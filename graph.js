@@ -1,6 +1,6 @@
-main();
+graph();
 
-async function main() {
+async function graph() {
 
     // read filmData.json into a variable
     const response = await fetch("data/filmData.json");

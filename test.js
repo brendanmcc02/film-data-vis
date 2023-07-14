@@ -7,14 +7,14 @@ const bondURL = "https://en.wikipedia.org/wiki/List_of_James_Bond_films";
 main();
 
 async function main() {
-    const filmData = readFilmData();
+    let response = await nodeFetch("https://www.imdb.com/chart/top/");
+    let body = await response.text();
+    let c = cheerio.load(body);
 
-    filmData.forEach(film => {
-        // if (film.countries.length === 0) {
-            console.log(film.franchise);
-        // }
-
-    });
+    for (let i = 0; i < 250; i++) {
+        let id = c('.wlb_ribbon').eq(i).attr('data-tconst');
+        console.log(id);
+    }
 }
 
 // web scrapes my ratings page and returns an array of film objects:
