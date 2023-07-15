@@ -7,9 +7,9 @@ async function graph() {
     const filmData = await response.json();
 
     // get relevant data for graphs
-    const base = getRuntimes(filmData);
-    const labels = getRuntimeLabels(base, 3);
-    const data = getRuntimeRatings(base, 3);
+    const base = getImdbTop25Films(filmData);
+    const labels = getImdbTop25Titles(base);
+    const data = getImdbTop25Ratings(base);
 
     // plot the graph
     const ctx = document.getElementById('myChart');
@@ -37,6 +37,10 @@ async function graph() {
                 }
             }
         }
+    });
+
+    labels.forEach(label => {
+        console.log(label);
     });
 }
 
@@ -121,7 +125,7 @@ function getGenreLabels(genres) {
     let genreLabels = [];
 
     genres.forEach(genre => {
-       genreLabels.push(genre.genre);
+        genreLabels.push(genre.genre);
     });
 
     return genreLabels;
@@ -143,7 +147,7 @@ function getGenreQuantities(genres) {
     let genreQuantities = [];
 
     genres.forEach(genre => {
-       genreQuantities.push(genre.ratingQuantity);
+        genreQuantities.push(genre.ratingQuantity);
     });
 
     return genreQuantities;
@@ -285,7 +289,7 @@ function getDirectorTitles(directorFilms) {
     let directorTitles = [];
 
     directorFilms.forEach(film => {
-       directorTitles.push(film.title);
+        directorTitles.push(film.title);
     });
 
     return directorTitles;
@@ -464,33 +468,40 @@ function getActorRatings(actorFilms) {
 function getImdbTop25Films(filmData) {
     let imdbTop25Films = [];
 
-    filmData.forEach(film => {
-        if (film.imdbTop25Position !== -1) {
-            imdbTop25Films.push(film);
-        }
-    });
+    const len = filmData.length;
 
-    // sort by position (1st -> 25th)
-    // bubble sort is used for its algorithmic simplicity.
-    // also because the array is not large,
-    // so time complexity is not an issue
-
-    let swapped = true; // flag
-    const len = imdbTop25Films.length - 1;
-
-    // continually make passes until the array is sorted
-    while (swapped) {
-        swapped = false;
-
+    for (let count = 0; count < 25; count++) {
+        let maxFilm = {};
+        // ensure the initial maxFilm is not in imdbTop25Films
         for (let i = 0; i < len; i++) {
-            if (imdbTop25Films[i].imdbTop25Position > imdbTop25Films[i+1].imdbTop25Position) {
-                [imdbTop25Films[i], imdbTop25Films[i+1]] = [imdbTop25Films[i+1], imdbTop25Films[i]] // swap
-                swapped = true; // signal flag
+            if (!arrayContainsTitle(imdbTop25Films, filmData[i].title)) {
+                maxFilm = filmData[i];
             }
         }
+        for (let i = 0; i < len; i++) {
+            if (filmData[i].imdbRating > maxFilm.imdbRating
+                    && !arrayContainsTitle(imdbTop25Films, filmData[i].title)) {
+                maxFilm = filmData[i];
+            }
+        }
+
+        imdbTop25Films.push(maxFilm);
     }
 
     return imdbTop25Films;
+}
+
+// utility function that checks if an array of film objects contains a given film title
+function arrayContainsTitle(array, title) {
+    const len = array.length;
+
+    for (let i = 0; i < len; i++) {
+        if (array[i].title === title) {
+            return true;
+        }
+    }
+
+    return false;
 }
 
 // given array of imdb top 25 films that I've rated,
@@ -499,7 +510,7 @@ function getImdbTop25Titles(imdbTop25Films) {
     let imdbTop25Titles = [];
 
     imdbTop25Films.forEach(film => {
-       imdbTop25Titles.push(film.title);
+        imdbTop25Titles.push(film.title);
     });
 
     return imdbTop25Titles;
@@ -523,9 +534,9 @@ function getMyTop10Films(filmData) {
     let myTop10Films = [];
 
     filmData.forEach(film => {
-       if (film.myPosition !== -1) {
-           myTop10Films.push(film);
-       }
+        if (film.myPosition !== -1) {
+            myTop10Films.push(film);
+        }
     });
 
     // sort by position (1st -> 25th)
@@ -557,7 +568,7 @@ function getMyTop10Titles(myTop10Films) {
     let myTop10Titles = [];
 
     myTop10Films.forEach(film => {
-       myTop10Titles.push(film.title);
+        myTop10Titles.push(film.title);
     });
 
     return myTop10Titles;
@@ -977,7 +988,7 @@ function getEnglishInternationalLabels(englishInternationalFilms) {
     let englishInternationalLabels = [];
 
     englishInternationalFilms.forEach(eif => {
-       englishInternationalLabels.push(eif.label);
+        englishInternationalLabels.push(eif.label);
     });
 
     return englishInternationalLabels;
@@ -1352,7 +1363,7 @@ function getFranchiseRatings(franchise) {
     let franchiseRatings = [];
 
     franchise.forEach(f => {
-       franchiseRatings.push(f.myRating);
+        franchiseRatings.push(f.myRating);
     });
 
     return franchiseRatings;

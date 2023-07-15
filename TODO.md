@@ -1,10 +1,10 @@
 # TODO
 
 ## General
-- [ ] finish initDB.ks
-- [ ] create functions to accommodate graphs
-- [ ] for updateDB.js when it appends a film it should follow format from tidy.js
-- [ ] get cron-job working for updateDB.js (run twice a day?)
+- [ ] finish initDB.js
+- [ ] finish updateDB.js
+- [ ] get cron-job working for updateDB.js
+- [ ] finish graph.js
 - [ ] design the website
 
 
@@ -14,7 +14,9 @@
 - [x] if film has >3 directors, only the first 3 are scraped
 - [x] filter content rating in initDB.js
 - [x] avoid hard-coding languages and countries
-- [x] fix imdbtop25position
+- [x] fix imdbTop25Position
+- [x] node fetch error handling: try catch statements (node fetch timed out)
+- [ ] add progress messages (console.log)
 
 ### graph.js
 - [x] Mean Genre Rating (atm it's all genres, further customisation: top/bottom k with >= n films) {bar}
@@ -23,7 +25,7 @@
 - [x] Ratings of a directors' films (e.g. Chris Nolan) {line}
 - [x] Top k Actors (>= n films) {bar}
 - [x] Ratings of an actor's films (e.g. Ryan Gosling) {line}
-- [ ] myRating of IMDB Top 25 {line}
+- [x] myRating of IMDB Top 25 {bar}
 - [x] imdbRating of my Top 25 {bar}
 - [x] metascore of my Top 25 {bar}
 - [x] mean decade rating (>= n films) {hist}

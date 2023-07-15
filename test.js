@@ -7,14 +7,20 @@ const bondURL = "https://en.wikipedia.org/wiki/List_of_James_Bond_films";
 main();
 
 async function main() {
-    let response = await nodeFetch("https://www.imdb.com/chart/top/");
-    let body = await response.text();
-    let c = cheerio.load(body);
+    try {
+        let response = await nodeFetch("https://www.imdb.com/chart/top/");
+        let body = await response.text();
+        let c = cheerio.load(body);
 
-    for (let i = 0; i < 250; i++) {
-        let id = c('.wlb_ribbon').eq(i).attr('data-tconst');
-        console.log(id);
+        c('.sc-14dd939d-7').each(function() {
+            console.log(c(this).text());
+        });
+
+    } catch (error) {
+        console.log(error.name + ": " + error.message);
+        throw error;
     }
+
 }
 
 // web scrapes my ratings page and returns an array of film objects:

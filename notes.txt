@@ -15,18 +15,18 @@ updateDB.JS is responsible for writing updates to the file.
 
 ////////////////////////////////////////////////////////
 
-getPreFilmObjects = {title, id, myRating, watchedInCinema, imdbTop25Position, myPosition, franchise}
+task: pick the top 25 imdb rated films from filmData[]
 
-getFilmData(preFilmObj[]) {
-    filmData = []
+imdbTop25Films = []
 
-    preFilmObjs.forEach(pfo => {
-        filmData.push(getFilm(pfo));
-    });
+for c in range 25 {
+    for i in range len {
+        if (filmData[i].imdbRating > currentMaxFilm) {
+            currentMaxFilm = filmData[i]
+        }
+    }
 
-    return filmData;
+    imdbTop25Films.push(maxFilm)
 }
 
-async function getFilm(preFilmObj) {
-    ...
-}
+return imdbTop25Films
