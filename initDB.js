@@ -23,9 +23,12 @@ async function main() {
     const startTime = Date.now();
     /////////////////////////////
 
+    console.log("Web scraping my rated films.\n");
     const myRatedFilms = await getMyRatedFilms();
     // const myRatedFilms = [{"id": "tt1951266", "myRating": 6, "watchedInCinema": false, "myTop10Position": -1}];
+    console.log("Web scraping full data for each rated film.\n");
     const films = await getFilms(myRatedFilms);
+    console.log("Writing to filmData.json.\n");
     writeFilmsToJson(films);
 
     ///////////////////////////
