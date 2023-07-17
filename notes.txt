@@ -15,18 +15,19 @@ updateDB.JS is responsible for writing updates to the file.
 
 ////////////////////////////////////////////////////////
 
-task: pick the top 25 imdb rated films from filmData[]
+updateDB.js:
 
-imdbTop25Films = []
+scrape myRatedFilms
 
-for c in range 25 {
-    for i in range len {
-        if (filmData[i].imdbRating > currentMaxFilm) {
-            currentMaxFilm = filmData[i]
-        }
-    }
+for each rated film:
+    if film is already in db:
+        update:
+            myRating
+            imdbRating
+            metascore
+            watchedInCinema
+            myTop10Position
+    else:
+        use getFilm
+        append to filmData.json
 
-    imdbTop25Films.push(maxFilm)
-}
-
-return imdbTop25Films

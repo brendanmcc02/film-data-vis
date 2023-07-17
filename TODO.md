@@ -1,7 +1,7 @@
 # TODO
 
 ## General
-- [ ] finish initDB.js
+- [x] finish initDB.js
 - [ ] finish updateDB.js
 - [ ] get cron-job working for updateDB.js
 - [ ] finish graph.js
@@ -16,7 +16,7 @@
 - [x] avoid hard-coding languages and countries
 - [x] fix imdbTop25Position
 - [x] node fetch error handling: try catch statements (node fetch timed out)
-- [ ] add progress messages (console.log)
+- [x] add progress messages (console.log)
 
 ### graph.js
 - [x] Mean Genre Rating (atm it's all genres, further customisation: top/bottom k with >= n films) {bar}

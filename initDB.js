@@ -7,7 +7,7 @@ import * as cheerio from "cheerio";
 import * as fs from "fs";
 
 // function exports for updateDB.js
-export {getMyRatedFilms, writeFilmsToJson, getNextURL};
+export {getMyRatedFilms, writeFilmsToJson, getFilm, getBondFilmTitles, getMcuFilmTitles};
 
 // global constants
 const myRatingsURL = "https://www.imdb.com/user/ur95934592/ratings";
@@ -23,12 +23,11 @@ async function main() {
     const startTime = Date.now();
     /////////////////////////////
 
-    console.log("Web scraping my rated films.\n");
+    console.log("Web scraping my rated films.");
     const myRatedFilms = await getMyRatedFilms();
-    // const myRatedFilms = [{"id": "tt1951266", "myRating": 6, "watchedInCinema": false, "myTop10Position": -1}];
-    console.log("Web scraping full data for each rated film.\n");
+    console.log("Web scraping full data for each rated film.");
     const films = await getFilms(myRatedFilms);
-    console.log("Writing to filmData.json.\n");
+    console.log("Writing to filmData.json.");
     writeFilmsToJson(films);
 
     ///////////////////////////
@@ -187,6 +186,7 @@ async function getFilms(myRatedFilms) {
     const mcuFilmTitles = await getMcuFilmTitles();
 
     for (let i = 0; i < len; i++) {
+        console.log("Scraping film: ", i + 1, "/", "len");
         let film = await getFilm(myRatedFilms[i], bondFilmTitles, mcuFilmTitles);
 
         if (film !== null) {
@@ -203,8 +203,8 @@ async function getFilms(myRatedFilms) {
 // languages, contentRating, watchedInCinema, myTop10Position, franchise}
 async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
     // initialise film object
-    let film = {"title": "", "year": 0,  "myRating": myRatedFilm.myRating, "imdbRating": -1.0,
-        "metascore": -1, "image": "", "runtime": -1, "directors": [], "actors": [],
+    let film = {"title": "", "id": myRatedFilm.id, "year": 0,  "myRating": myRatedFilm.myRating,
+        "imdbRating": -1.0, "metascore": -1, "image": "", "runtime": -1, "directors": [], "actors": [],
         "genres": [], "countries": [], "languages": [], "contentRating": "",
         "watchedInCinema": myRatedFilm.watchedInCinema,
         "myTop10Position": myRatedFilm.myTop10Position, "franchise": ""
@@ -286,7 +286,7 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
         }
 
         // get runtime
-        let runtime = 0;
+        let runtime;
 
         if (c(".sc-52d569c6-0.kNzJA-D li").length < 3) {
             runtime = c(".sc-52d569c6-0.kNzJA-D li").eq(1).text();
