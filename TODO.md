@@ -3,6 +3,8 @@
 ## General
 - [x] finish initDB.js
 - [ ] finish updateDB.js
+- [ ] metadata.json - contains info about latest write, error messages
+- [ ] error handling
 - [ ] get cron-job working for updateDB.js
 - [ ] finish graph.js
 - [ ] design the website
@@ -42,4 +44,4 @@
 - [ ] myRating distribution {bar}
 
 ### updateDB.js
-- [ ]
+- [x] figure out functions running twice smdfh

@@ -12,6 +12,7 @@ export {getMyRatedFilms, writeFilmsToJson, getFilm, getBondFilmTitles, getMcuFil
 // global constants
 const myRatingsURL = "https://www.imdb.com/user/ur95934592/ratings";
 const watchedInCinemaURL = "https://www.imdb.com/list/ls081360952/";
+const imdbBaseTitleUrl = "https://www.imdb.com/title/";
 const myTop10URL = "https://www.imdb.com/list/ls048298278/";
 const marvelURL = "https://en.wikipedia.org/wiki/List_of_Marvel_Cinematic_Universe_films";
 const bondURL = "https://en.wikipedia.org/wiki/List_of_James_Bond_films";
@@ -24,8 +25,9 @@ async function main() {
     /////////////////////////////
 
     console.log("Web scraping my rated films.");
-    const myRatedFilms = await getMyRatedFilms();
-    console.log("Web scraping full data for each rated film.");
+    const myRatedFilms = [{"id" : "tt9603212", "myRating" : 7, "watchedInCinema" : true, "myTop10Position" : -1}]; // for testing
+    // const myRatedFilms = await getMyRatedFilms();
+    console.log("Web scraping full data for each rated film:");
     const films = await getFilms(myRatedFilms);
     console.log("Writing to filmData.json.");
     writeFilmsToJson(films);
@@ -57,13 +59,25 @@ async function getMyRatedFilms() {
             // for each film
             c('.lister-list .lister-item.mode-detail').each(function () {
                 let id = c(this).find('.lister-item-image.ribbonize').attr('data-tconst');
+
+                // error handling
+                if (id === undefined) {
+                    // throw new Error("ID of rated film is undefined.");
+                }
+
                 let myRating = parseInt(c(this).find('.ipl-rating-star.ipl-rating-star--other-user.small ' +
                     '.ipl-rating-star__rating').text());
+
+                // error handling
+                if (myRating === undefined) {
+                    // throw new Error("myRating of rated film is undefined." + id);
+                }
+
                 myRatedFilms.push({"id" : id, "myRating" : myRating,
                     "watchedInCinema" : false, "myTop10Position" : -1});
             });
 
-            // get url for next iteration
+            // get url for next iteration.
             url = await getNextURL(url);
         } catch (error) {
             console.log(error.name + ": " + error.message);
@@ -85,7 +99,14 @@ async function getMyRatedFilms() {
 
             // push id to array
             c('.lister-item-image.ribbonize').each(function () {
-                filmsWatchedInCinemas.push(c(this).attr('data-tconst'));
+                let id = c(this).attr('data-tconst');
+
+                if (id !== undefined) {
+                    filmsWatchedInCinemas.push(id);
+                } else {
+                    // throw new Error("ID of cinema film is undefined.");
+                }
+
             })
 
             // change url for next iteration
@@ -118,7 +139,14 @@ async function getMyRatedFilms() {
 
         // push id to array
         c('.lister-item-image.ribbonize').each(function () {
-            myTop10Films.push(c(this).attr('data-tconst'));
+            let id = c(this).attr('data-tconst');
+
+            if (id !== undefined) {
+                myTop10Films.push(id);
+            } else {
+                // throw new Error("ID of myTop10 film is undefined.");
+            }
+
         });
 
         // for each film, modify the 'myTop10Position' to the corresponding value
@@ -186,7 +214,7 @@ async function getFilms(myRatedFilms) {
     const mcuFilmTitles = await getMcuFilmTitles();
 
     for (let i = 0; i < len; i++) {
-        console.log("Scraping film: ", i + 1, "/", "len");
+        console.log("Scraping film:", i + 1, "/", len);
         let film = await getFilm(myRatedFilms[i], bondFilmTitles, mcuFilmTitles);
 
         if (film !== null) {
@@ -199,7 +227,7 @@ async function getFilms(myRatedFilms) {
 }
 
 // returns a film object:
-// {title, year, myRating, imdbRating, metascore, image, runtime, directors, actors, genres, countries,
+// {title, id, year, myRating, imdbRating, metascore, image, runtime, directors, actors, genres, countries,
 // languages, contentRating, watchedInCinema, myTop10Position, franchise}
 async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
     // initialise film object
@@ -212,22 +240,32 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
 
     try {
         // get html of page
-        const baseTitleUrl = "https://www.imdb.com/title/";
-        const titleUrl = baseTitleUrl.concat(myRatedFilm.id)
+        const titleUrl = imdbBaseTitleUrl.concat(myRatedFilm.id)
         let response = await nodeFetch(titleUrl);
         let body = await response.text();
         let c = cheerio.load(body);
 
         // if the title is tv series, miniseries, or tv special, return null
-        if (c(".sc-52d569c6-0.kNzJA-D li").length > 3) {
+        if (c(".sc-afe43def-4.kdXikI li").length > 3) {
             return null;
         }
-        // else if it's a tv episode
-        else if (c(".sc-52d569c6-0.kNzJA-D li").eq(0).text().includes("Episode")) {
+        // else if it's a tv episode, also return null
+        else if (c(".sc-afe43def-4.kdXikI li").eq(0).text().includes("Episode")) {
             return null;
+        }
+        // else if the html tag is not being read, throw an error
+        else if (c(".sc-afe43def-4.kdXiko li").length === 0) {
+            // throw new Error("\'year-contentRating-runtime\' html tag is outdated, or html page has been updated." +
+            //                 myRatedFilm.id);
         }
 
         // get genres
+
+        if (c('.ipc-chip.ipc-chip--on-baseAlt').length === 0) {
+            // throw new Error("film genres are not being recognised. also possible the film has no genres." +
+            //                 myRatedFilm.id);
+        }
+
         c('.ipc-chip.ipc-chip--on-baseAlt').each(function () {
             film.genres.push(c(this).text());
         });
@@ -237,14 +275,33 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
         }
 
         // get title
-        film.title = c('.sc-afe43def-1.fDTGTb').text();
+        let title = c('.sc-afe43def-1.fDTGTb').text();
+
+        if (title === undefined) {
+            // throw new Error("film title not recognised. css class name possibly updated." +
+            //     film.id);
+        }
+
+        film.title = title;
 
         // get year
-        film.year = parseInt(c(".sc-52d569c6-0.kNzJA-D li").eq(0).text());
+        let year = parseInt(c(".sc-afe43def-4.kdXikI li").eq(0).text());
+
+        if (year === undefined) {
+            // throw new Error("film year not recognised. css class name possibly updated." +
+            //     film.id);
+        }
+
+        film.year = year;
 
         // get content rating
-        if (c(".sc-52d569c6-0.kNzJA-D li").length === 3) {
-            film.contentRating = c(".sc-52d569c6-0.kNzJA-D li").eq(1).text();
+        if (c(".sc-afe43def-4.kdXikI li").length === 3) {
+            film.contentRating = c(".sc-afe43def-4.kdXikI li").eq(1).text();
+        }
+        // error handling
+        else if (c(".sc-afe43def-4.kdXikI li").length === 0) {
+            // throw new Error("film content rating not recognised. css class name possibly updated." +
+            //     film.id);
         }
         // edge case for when a film has no content rating
         else {
@@ -285,13 +342,27 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
                 break;
         }
 
+        // if the content rating still dodges edge cases, set it as "Not Rated"
+        const irishRatings = ["Not Rated", "G", "PG", "12A", "15A", "16", "18"];
+        if (!irishRatings.includes(film.contentRating)) {
+            film.contentRating = "Not Rated";
+        }
+
         // get runtime
         let runtime;
 
-        if (c(".sc-52d569c6-0.kNzJA-D li").length < 3) {
-            runtime = c(".sc-52d569c6-0.kNzJA-D li").eq(1).text();
-        } else {
-            runtime = c(".sc-52d569c6-0.kNzJA-D li").eq(2).text();
+        // initial error handling
+        if (c(".sc-afe43def-4.kdXikI li").length === 0) {
+            // throw new Error("film runtime not recognised. css class name possibly updated." +
+            //     film.id);
+        }
+        // if the film has no content rating, runtime will be at index 1
+        else if (c(".sc-afe43def-4.kdXikI li").length < 3) {
+            runtime = c(".sc-afe43def-4.kdXikI li").eq(1).text();
+        }
+        // else, the film has a content rating, and the runtime will be at index 2
+        else {
+            runtime = c(".sc-afe43def-4.kdXikI li").eq(2).text();
         }
 
         let runtimes = runtime.split(" ");
@@ -313,9 +384,24 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
         }
 
         // get film image
-        film.image = c('.sc-385ac629-7.kdyVyZ img').attr('src');
+        let image = c('.sc-385ac629-7.kdyVyZ img').attr('src');
+
+        if (image === undefined) {
+            // // throw new Error("film image not recognised. css class name possibly updated." +
+            //     film.id);
+        }
+
+        film.image = image;
 
         // get actors
+
+        // error handling
+
+        if (c('.sc-bfec09a1-5.kUzsHJ').length === 0) {
+            // // throw new Error("film actors not recognised. either css class name was updated, or the film has no star cast." +
+            // film.id);
+        }
+
         c('.sc-bfec09a1-5.kUzsHJ').each(function () {
             let actorName = c(this).find('.sc-bfec09a1-1.fUguci').text();
             let actorImage = c(this).find('.sc-bfec09a1-6.cRAGvN.title-cast-item__avatar img').attr('src');

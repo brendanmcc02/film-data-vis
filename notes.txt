@@ -17,17 +17,8 @@ updateDB.JS is responsible for writing updates to the file.
 
 updateDB.js:
 
-scrape myRatedFilms
+rate a film, gets added to filmData.json
+unrate the film
+script runs again
 
-for each rated film:
-    if film is already in db:
-        update:
-            myRating
-            imdbRating
-            metascore
-            watchedInCinema
-            myTop10Position
-    else:
-        use getFilm
-        append to filmData.json
-
+iterate through filmData.json, if there is a film there not in myRatedFilms, remove it
