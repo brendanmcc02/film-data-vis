@@ -2,13 +2,12 @@
 
 ## General
 - [x] finish initDB.js
-- [ ] finish updateDB.js
-- [ ] metadata.json - contains info about latest write, error messages
-- [ ] error handling
+- [x] finish updateDB.js
+- [x] metadata.json - contains info about latest write, error messages
+- [x] error handling
 - [ ] get cron-job working for updateDB.js
 - [ ] finish graph.js
 - [ ] design the website
-
 
 ### initDB.js
 - [x] find efficient way to do 'franchise' attribute

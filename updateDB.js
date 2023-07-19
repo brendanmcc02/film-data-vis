@@ -7,13 +7,13 @@ import * as cheerio from "cheerio";
 import * as fs from "fs";
 
 // function imports
-import {writeFilmsToJson, getMyRatedFilms, getFilm, getBondFilmTitles, getMcuFilmTitles} from './initDB.js'
+import {writeToJson, getMyRatedFilms, getFilm, getBondFilmTitles, getMcuFilmTitles} from './initDB.js'
+
+// constant imports
+import {imdbBaseTitleUrl} from './initDB.js';
 
 // exports for graph.js
-export {readFilmData};
-
-// global constants
-const imdbBaseTitleUrl = "https://www.imdb.com/title/";
+export {readFromJson};
 
 main();
 
@@ -25,11 +25,11 @@ async function main() {
     /////////////////////////////
 
     console.log("Reading filmData.json into a variable.");
-    let filmData = readFilmData();
+    let filmData = readFromJson("data/filmData.json");
     console.log("Updating filmData.json:")
     await updateFilmData(filmData);
     console.log("Writing filmData to .json file.")
-    writeFilmsToJson(filmData);
+    writeToJson("data/filmData.json", filmData);
 
     ///////////////////////////
     const endTime = Date.now();
@@ -39,12 +39,12 @@ async function main() {
     console.log("\nRuntime: " + minutes + " minutes " + seconds.toFixed(1) + " seconds.");
 }
 
-// reads filmData.json file into a variable
-function readFilmData() {
+// reads .json file into a variable
+function readFromJson(filepath) {
     let filmData;
 
     try {
-        filmData = fs.readFileSync("data/filmData.json");
+        filmData = fs.readFileSync(filepath);
     } catch (error) {
         console.error(error);
         throw error;

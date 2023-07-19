@@ -14,11 +14,3 @@ and it only needs to read the file.
 updateDB.JS is responsible for writing updates to the file.
 
 ////////////////////////////////////////////////////////
-
-updateDB.js:
-
-rate a film, gets added to filmData.json
-unrate the film
-script runs again
-
-iterate through filmData.json, if there is a film there not in myRatedFilms, remove it
