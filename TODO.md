@@ -1,7 +1,7 @@
 # TODO
 
 ## General
-- [x] finish initDB.js
+- [ ] finish initDB.js
 - [x] finish updateDB.js
 - [x] metadata.json - contains info about latest write, error messages
 - [x] error handling
@@ -18,6 +18,7 @@
 - [x] fix imdbTop25Position
 - [x] node fetch error handling: try catch statements (node fetch timed out)
 - [x] add progress messages (console.log)
+- [x] don't rely on dynamic html tags (they change every so often)
 
 ### graph.js
 - [x] Mean Genre Rating (atm it's all genres, further customisation: top/bottom k with >= n films) {bar}

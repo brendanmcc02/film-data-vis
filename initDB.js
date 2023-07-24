@@ -7,7 +7,7 @@ import * as cheerio from "cheerio";
 import * as fs from "fs";
 
 // function exports for updateDB.js
-export {getMyRatedFilms, writeToJson, getFilm, getBondFilmTitles, getMcuFilmTitles};
+export {getMyRatedFilms, writeToJson, getFilm, getBondFilmTitles, getMcuFilmTitles, writeMetadata};
 
 // constant exports
 export {imdbBaseTitleUrl};
@@ -21,12 +21,13 @@ const marvelURL = "https://en.wikipedia.org/wiki/List_of_Marvel_Cinematic_Univer
 const bondURL = "https://en.wikipedia.org/wiki/List_of_James_Bond_films";
 
 const startTime = Date.now();
+
 main();
 
 // initialises a database of all my rated films on imdb
 async function main() {
     console.log("Web scraping my rated films.");
-    const myRatedFilms = [{"id" : "tt9603212", "myRating" : 7, "watchedInCinema" : true, "myTop10Position" : -1}]; // for testing
+    const myRatedFilms = [{"id" : "tt0468569", "myRating" : 7, "watchedInCinema" : true, "myTop10Position" : -1}]; // for testing
     // const myRatedFilms = await getMyRatedFilms();
     console.log("Web scraping full data for each rated film:");
     const films = await getFilms(myRatedFilms);
@@ -34,7 +35,7 @@ async function main() {
     writeToJson(films, "data/filmData.json");
 
     console.log("Writing to metadata.json.");
-    writeMetadata("ok", "", "");
+    writeMetadata("ok", startTime, "", "");
 }
 
 // web scrapes my ratings page and returns an array of film objects:
@@ -77,7 +78,7 @@ async function getMyRatedFilms() {
             // get url for next iteration.
             url = await getNextURL(url);
         } catch (error) {
-            writeMetadata("error", error.name, error.message);
+            writeMetadata("error", startTime, error.name, error.message);
             throw error;
         }
     }
@@ -108,7 +109,7 @@ async function getMyRatedFilms() {
             // change url for next iteration
             url = await getNextURL(url);
         } catch (error) {
-            writeMetadata("error", error.name, error.message);
+            writeMetadata("error", startTime, error.name, error.message);
             throw error;
         }
     }
@@ -153,7 +154,7 @@ async function getMyRatedFilms() {
 
         return myRatedFilms;
     } catch (error) {
-        writeMetadata("error", error.name, error.message);
+        writeMetadata("error", startTime, error.name, error.message);
         throw error;
     }
 }
@@ -193,7 +194,7 @@ async function getNextURL(currentURL) {
 
         return nextURL.toString();
     } catch (error) {
-        writeMetadata("error", error.name, error.message);
+        writeMetadata("error", startTime, error.name, error.message);
         throw error;
     }
 
@@ -226,7 +227,7 @@ async function getFilms(myRatedFilms) {
         
         return films;
     } catch (error) {
-        writeMetadata("error", error.name, error.message);
+        writeMetadata("error", startTime, error.name, error.message);
         throw error;
     }
 }
@@ -251,15 +252,18 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
         let c = cheerio.load(body);
 
         // if the title is tv series, miniseries, or tv special, return "not a feature film"
-        if (c(".sc-afe43def-4.kdXikI li").length > 3) {
+
+        let selector = 'ul.ipc-inline-list.ipc-inline-list--show-dividers.baseAlt[role=presentation]:nth-child(2) li.ipc-inline-list__item';
+
+        if (c(selector).length > 3) {
             return "not a feature film";
         }
         // else if it's a tv episode, also return "not a feature film"
-        else if (c(".sc-afe43def-4.kdXikI li").eq(0).text().includes("Episode")) {
+        else if (c(selector).eq(0).text().includes("Episode")) {
             return "not a feature film";
         }
         // else if the html tag is not being read, throw an error
-        else if (c(".sc-afe43def-4.kdXiko li").length === 0) {
+        else if (c(selector).length === 0) {
             throwErrorMessage("\'year-contentRating-runtime\' html tag is outdated, or html page has been updated. " +
                             myRatedFilm.id);
         }
@@ -281,7 +285,7 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
         }
 
         // get title
-        let title = c('.sc-afe43def-1.fDTGTb').text();
+        let title = c('h1[data-testid=hero__pageTitle]').text();
 
         if (title === undefined) {
             throwErrorMessage("film title not recognised. css class name possibly updated. " + film.id);
@@ -290,7 +294,8 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
         film.title = title;
 
         // get year
-        let year = parseInt(c(".sc-afe43def-4.kdXikI li").eq(0).text());
+
+        let year = parseInt(c(selector).eq(0).text());
 
         if (year === undefined) {
             throwErrorMessage("film year not recognised. css class name possibly updated. " + film.id);
@@ -299,11 +304,12 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
         film.year = year;
 
         // get content rating
-        if (c(".sc-afe43def-4.kdXikI li").length === 3) {
-            film.contentRating = c(".sc-afe43def-4.kdXikI li").eq(1).text();
+
+        if (c(selector).length === 3) {
+            film.contentRating = c(selector).eq(1).text();
         }
         // error handling - film content rating
-        else if (c(".sc-afe43def-4.kdXikI li").length === 0) {
+        else if (c(selector).length === 0) {
             throwErrorMessage("film content rating not recognised. css class name possibly updated. " + film.id);
         }
         // edge case for when a film has no content rating
@@ -354,19 +360,16 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
         // get runtime
         let runtime;
 
-        // initial error handling
-        if (c(".sc-afe43def-4.kdXikI li").length === 0) {
-            throwErrorMessage("film runtime not recognised. css class name possibly updated. " + film.id);
-        }
-        // if the film has no content rating, runtime will be at index 1
-        else if (c(".sc-afe43def-4.kdXikI li").length < 3) {
-            runtime = c(".sc-afe43def-4.kdXikI li").eq(1).text();
+        if (c(selector).length < 3) {
+            runtime = c(selector).eq(1).text();
         }
         // else, the film has a content rating, and the runtime will be at index 2
         else {
-            runtime = c(".sc-afe43def-4.kdXikI li").eq(2).text();
+            runtime = c(selector).eq(2).text();
         }
 
+        // converting runtime to minutes
+        // e.g. 2h 32m => 152
         let runtimes = runtime.split(" ");
 
         if (runtimes.length === 1) {
@@ -386,7 +389,9 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
         }
 
         // get film image
-        let image = c('.sc-385ac629-7.kdyVyZ img').attr('src');
+        selector = '.ipc-media.ipc-media--baseAlt.ipc-media--poster-l.ipc-poster__poster-image.ipc-media__img';
+
+        let image = c(selector + ' img').attr('src');
 
         if (image === undefined) {
             throwErrorMessage("film image not recognised. css class name possibly updated. " + film.id);
@@ -398,20 +403,22 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
 
         // error handling - actors
 
-        if (c('.sc-bfec09a1-5.kUzsHJ').length === 0) {
+        selector = '.ipc-sub-grid--wraps-at-above-l div[data-testid=title-cast-item]';
+
+        if (c(selector).length === 0) {
             throwErrorMessage("film actors not recognised. css class name was updated, or the film has no star cast. " +
                              film.id);
         }
 
-        c('.sc-bfec09a1-5.kUzsHJ').each(function () {
-            let actorName = c(this).find('.sc-bfec09a1-1.fUguci').text();
+        c(selector).each(function () {
+            let actorName = c(this).find('div:nth-child(2) a[data-testid=title-cast-item__actor]').text();
 
             // error handling - actor name
             if (actorName === undefined) {
                 throwErrorMessage("actor name not recognised. css class name possibly updated.")
             }
 
-            let actorImage = c(this).find('.sc-bfec09a1-6.cRAGvN.title-cast-item__avatar img').attr('src');
+            let actorImage = c(this).find('div:nth-child(1) img').attr('src');
 
             // it's possible the actor has no image, not an error.
             if (actorImage === undefined) {
@@ -450,7 +457,7 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
         // get imdb rating
 
         // error handling - imdbRating
-        let imdbRating = c('.sc-bde20123-1.iZlgcd').eq(0).text();
+        let imdbRating = c('div[data-testid=hero-rating-bar__aggregate-rating__score]').first().find('span:nth-child(1)').text();
 
         if (imdbRating === '') {
             throwErrorMessage("imdb rating not recognised. css class name possibly changed. " + film.id);
@@ -513,7 +520,7 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
 
         return film;
     } catch (error) {
-        writeMetadata("error", error.name, error.message);
+        writeMetadata("error", startTime, error.name, error.message);
         throw error;
     }
 }
@@ -545,7 +552,7 @@ async function getBondFilmTitles() {
 
         return bondFilmTitles;
     } catch (error) {
-        writeMetadata("error", error.name, error.message);
+        writeMetadata("error", startTime, error.name, error.message);
         throw error;
     }
 
@@ -579,10 +586,9 @@ async function getMcuFilmTitles() {
 
         return mcuFilmTitles;
     } catch (error) {
-        writeMetadata("error", error.name, error.message);
+        writeMetadata("error", startTime, error.name, error.message);
         throw error;
     }
-
 }
 
 // writes data to a .json file
@@ -635,8 +641,8 @@ function getTimestamp() {
 }
 
 // writes metadata.json file
-function writeMetadata(status, errorName, errorMessage) {
-    const runtime = getRuntime();
+function writeMetadata(status, startTime, errorName, errorMessage) {
+    const runtime = getRuntime(startTime);
 
     const metadata = {"status": status, "lastWrite": getTimestamp(), "runtime": runtime, "errorName" : errorName, "errorMessage": errorMessage};
 
@@ -644,7 +650,7 @@ function writeMetadata(status, errorName, errorMessage) {
 }
 
 // returns the runtime, e.g: "10 minutes 40 seconds"
-function getRuntime() {
+function getRuntime(startTime) {
     const endTime = Date.now();
     let runtime = (endTime - startTime) / 1000;
     const minutes = Math.floor(runtime/60);

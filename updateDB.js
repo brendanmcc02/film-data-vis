@@ -7,7 +7,7 @@ import * as cheerio from "cheerio";
 import * as fs from "fs";
 
 // function imports
-import {writeToJson, getMyRatedFilms, getFilm, getBondFilmTitles, getMcuFilmTitles} from './initDB.js'
+import {writeToJson, getMyRatedFilms, getFilm, getBondFilmTitles, getMcuFilmTitles, writeMetadata} from './initDB.js'
 
 // constant imports
 import {imdbBaseTitleUrl} from './initDB.js';
@@ -15,15 +15,14 @@ import {imdbBaseTitleUrl} from './initDB.js';
 // exports for graph.js
 export {readFromJson};
 
+const startTime = Date.now();
+
 main();
 
-// reads filmData.json as a variable,
-// updates filmData
-// and then writes filmData into json
+// 1. reads filmData.json into a variable,
+// 2. updates filmData
+// 3. writes to json
 async function main() {
-    const startTime = Date.now();
-    /////////////////////////////
-
     console.log("Reading filmData.json into a variable.");
     let filmData = readFromJson("data/filmData.json");
     console.log("Updating filmData.json:")
@@ -31,12 +30,8 @@ async function main() {
     console.log("Writing filmData to .json file.")
     writeToJson("data/filmData.json", filmData);
 
-    ///////////////////////////
-    const endTime = Date.now();
-    let runtime = (endTime - startTime) / 1000;
-    const minutes = Math.floor(runtime/60);
-    const seconds = runtime % 60;
-    console.log("\nRuntime: " + minutes + " minutes " + seconds.toFixed(1) + " seconds.");
+    console.log("Writing to metadata.json.");
+    writeMetadata("ok", startTime, "", "");
 }
 
 // reads .json file into a variable
@@ -88,7 +83,7 @@ async function updateFilmData(filmData) {
         else {
             let film = await getFilm(myRatedFilms[i], bondFilmTitles, mcuFilmTitles);
 
-            if (film != null) {
+            if (film !== "not a feature film") {
                 filmData.unshift(film);
             }
         }
@@ -145,7 +140,7 @@ async function getFilmRatingData(id) {
 
         return filmRatingData;
     } catch (error) {
-        console.log(error.name + ": " + error.message);
+        writeMetadata("error", error.name, error.message);
         throw error;
     }
 
