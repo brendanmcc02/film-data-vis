@@ -5,11 +5,25 @@ import fs from "fs";
 main();
 
 async function main() {
-    let response = await nodeFetch("https://www.imdb.com/title/tt0468569");
-    let body = await response.text();
-    let c = cheerio.load(body);
+    let films = readFromJson("data/filmData.json");
 
-    // goal: get year-ct-rt tag
+    films.forEach(film => {
+        if (film.franchise !== "") {
+            console.log(film.franchise + " " + film.title);
+        }
+    });
+}
 
-    console.log(c('h1[data-testid=hero__pageTitle]').text());
+// reads .json file into a variable
+function readFromJson(filepath) {
+    let filmData;
+
+    try {
+        filmData = fs.readFileSync(filepath);
+    } catch (error) {
+        console.error(error);
+        throw error;
+    }
+
+    return JSON.parse(filmData);
 }

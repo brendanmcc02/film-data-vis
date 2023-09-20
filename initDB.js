@@ -27,8 +27,8 @@ main();
 // initialises a database of all my rated films on imdb
 async function main() {
     console.log("Web scraping my rated films.");
-    const myRatedFilms = [{"id" : "tt0468569", "myRating" : 7, "watchedInCinema" : true, "myTop10Position" : -1}]; // for testing
-    // const myRatedFilms = await getMyRatedFilms();
+    // const myRatedFilms = [{"id" : "tt2396224", "myRating" : 6, "watchedInCinema" : false, "myTop10Position" : -1}]; // for testing
+    const myRatedFilms = await getMyRatedFilms();
     console.log("Web scraping full data for each rated film:");
     const films = await getFilms(myRatedFilms);
     console.log("Writing to filmData.json.");
@@ -264,8 +264,12 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
         }
         // else if the html tag is not being read, throw an error
         else if (c(selector).length === 0) {
-            throwErrorMessage("\'year-contentRating-runtime\' html tag is outdated, or html page has been updated. " +
-                            myRatedFilm.id);
+            selector = 'ul.ipc-inline-list.ipc-inline-list--show-dividers.baseAlt[role=presentation]:nth-child(3) li.ipc-inline-list__item';
+
+            if (c(selector).length === 0) {
+                throwErrorMessage("\'year-contentRating-runtime\' html tag is outdated, or html page has been updated. " +
+                    myRatedFilm.id);
+            }
         }
 
         // get genres
@@ -273,7 +277,7 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
         // error handling - film genres
         if (c('.ipc-chip.ipc-chip--on-baseAlt').length === 0) {
             throwErrorMessage("film genres are not being recognised. also possible the film has no genres. " +
-                            myRatedFilm.id);
+                "If the film has no genres, I guess just get rid of the error handling, or alter it." + myRatedFilm.id);
         }
 
         c('.ipc-chip.ipc-chip--on-baseAlt').each(function () {
@@ -405,28 +409,25 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
 
         selector = '.ipc-sub-grid--wraps-at-above-l div[data-testid=title-cast-item]';
 
-        if (c(selector).length === 0) {
-            throwErrorMessage("film actors not recognised. css class name was updated, or the film has no star cast. " +
-                             film.id);
+        if (c(selector).length > 0) {
+            c(selector).each(function () {
+                let actorName = c(this).find('div:nth-child(2) a[data-testid=title-cast-item__actor]').text();
+
+                // error handling - actor name
+                if (actorName === undefined) {
+                    throwErrorMessage("actor name not recognised. css class name possibly updated.")
+                }
+
+                let actorImage = c(this).find('div:nth-child(1) img').attr('src');
+
+                // it's possible the actor has no image, not an error.
+                if (actorImage === undefined) {
+                    actorImage = "";
+                }
+
+                film.actors.push({"name" : actorName, "image" : actorImage});
+            });
         }
-
-        c(selector).each(function () {
-            let actorName = c(this).find('div:nth-child(2) a[data-testid=title-cast-item__actor]').text();
-
-            // error handling - actor name
-            if (actorName === undefined) {
-                throwErrorMessage("actor name not recognised. css class name possibly updated.")
-            }
-
-            let actorImage = c(this).find('div:nth-child(1) img').attr('src');
-
-            // it's possible the actor has no image, not an error.
-            if (actorImage === undefined) {
-                actorImage = "";
-            }
-
-            film.actors.push({"name" : actorName, "image" : actorImage});
-        });
 
         // get countries
 
@@ -466,7 +467,8 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
         film.imdbRating = parseFloat(imdbRating);
 
         // get metascore
-        let metascore = c(".score-meta").text();
+        let metascore = c(".metacritic-score-box").text();
+
         if (metascore !== '') {
             film.metascore = parseInt(metascore);
         }
