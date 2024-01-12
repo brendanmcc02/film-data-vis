@@ -14,3 +14,12 @@ and it only needs to read the file.
 updateDB.JS is responsible for writing updates to the file.
 
 ////////////////////////////////////////////////////////
+
+Data Science has multiple strands: Data Visualisation, Analytics, ML, Deep Learning.
+
+film-data-vis focuses on the data visualisation strand of data science.
+fetch data (web scrape) and convert to raw form (.json).
+Clean the data, then visualise the data with graphs.
+
+film-data-ana: potential project idea? focuses on the 'data analysis' strand of data science.
+regression models, correlation, etc.
