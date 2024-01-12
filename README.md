@@ -1,2 +1,2 @@
 # filmDataVis
-A project to analyse and visualise the film data on my IMDB account.
+A project to visualise the film data on my IMDB account.
