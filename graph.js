@@ -7,9 +7,9 @@ async function graph() {
     const filmData = await response.json();
 
     // get relevant data for graphs
-    const base = getImdbTop25Films(filmData);
-    const labels = getImdbTop25Titles(base);
-    const data = getImdbTop25Ratings(base);
+    const base = getMyRatings(filmData);
+    const labels = getMyRatingLabels(base);
+    const data = getMyRatingQuantities(base);
 
     // plot the graph
     const ctx = document.getElementById('myChart');
@@ -37,10 +37,6 @@ async function graph() {
                 }
             }
         }
-    });
-
-    labels.forEach(label => {
-        console.log(label);
     });
 }
 
@@ -1083,16 +1079,12 @@ function getCinemaQuantities(cinemaFilms) {
 
 // gets an array of content rating objects:
 // {"label", "ratingSum", "ratingQuantity", "ratingMean"}.
-// sorted by age rating ("Not Rated", "G", "PG", "PG-13", "R", "NC-17").
+// sorted by age rating ("Not Rated", "G", "PG", "12A", "15A", "16", "18").
 function getContentRatings(filmData) {
     let contentRatings = initContentRatings();
 
     filmData.forEach(film => {
         switch (film.contentRating) {
-            // if a film has no content rating, consider it as "Not Rated"
-            case null:
-                modifyMean(film, contentRatings, 0);
-                break;
             case "Not Rated":
                 modifyMean(film, contentRatings, 0);
                 break;
@@ -1102,34 +1094,17 @@ function getContentRatings(filmData) {
             case "PG":
                 modifyMean(film, contentRatings, 2);
                 break;
-            // if a film has "TV-PG" as it's content rating, consider it as "PG"
-            case "TV-PG":
-                modifyMean(film, contentRatings, 2);
-                break;
-            case "PG-13":
+            case "12A":
                 modifyMean(film, contentRatings, 3);
                 break;
-            // pre-1968 films were classified as either 'Approved' or 'Disapproved'.
-            // consider these films as "PG-13", which will not always be accurate,
-            // but it's the most likely solution
-            case "Approved":
-                modifyMean(film, contentRatings, 3);
-                break;
-            // pre-168 films were also classified as either 'Passed' or 'Not Passed'.
-            // consider these films as "PG-13", which will not always be accurate,
-            // but it's the most likely solution
-            case "Passed":
-                modifyMean(film, contentRatings, 3);
-                break;
-            case "R":
+            case "15A":
                 modifyMean(film, contentRatings, 4);
                 break;
-            case "NC-17":
+            case "16":
                 modifyMean(film, contentRatings, 5);
                 break;
-            // 'X' rated films were basically NC-17, so consider 'X' films as NC-17
-            case "X":
-                modifyMean(film, contentRatings, 5);
+            case "18":
+                modifyMean(film, contentRatings, 6);
                 break;
             default:
                 console.log("ERROR: Unrecognised Film Content Rating:", film.title, ", ", film.contentRating);
@@ -1149,11 +1124,11 @@ function getContentRatings(filmData) {
 
 // initialises the content ratings array in the form:
 // {"label", "ratingSum", "ratingQuantity", "ratingMean"}.
-// sorted by content rating ("Not Rated", "G", "PG", "PG-13", "R", "NC-17").
+// sorted by content rating ("Not Rated", "G", "PG", "12A", "15A", "16", "18").
 function initContentRatings() {
     let contentRatings = [];
 
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 7; i++) {
         switch (i) {
             case 0:
                 contentRatings.push({"label" : "Not Rated", "ratingSum" : null, "ratingQuantity" : null, "ratingMean" : null});
@@ -1165,13 +1140,16 @@ function initContentRatings() {
                 contentRatings.push({"label" : "PG", "ratingSum" : null, "ratingQuantity" : null, "ratingMean" : null});
                 break;
             case 3:
-                contentRatings.push({"label" : "PG-13", "ratingSum" : null, "ratingQuantity" : null, "ratingMean" : null});
+                contentRatings.push({"label" : "12A", "ratingSum" : null, "ratingQuantity" : null, "ratingMean" : null});
                 break;
             case 4:
-                contentRatings.push({"label" : "R", "ratingSum" : null, "ratingQuantity" : null, "ratingMean" : null});
+                contentRatings.push({"label" : "15A", "ratingSum" : null, "ratingQuantity" : null, "ratingMean" : null});
                 break;
             case 5:
-                contentRatings.push({"label" : "NC-17", "ratingSum" : null, "ratingQuantity" : null, "ratingMean" : null});
+                contentRatings.push({"label" : "16", "ratingSum" : null, "ratingQuantity" : null, "ratingMean" : null});
+                break;
+            case 6:
+                contentRatings.push({"label" : "18", "ratingSum" : null, "ratingQuantity" : null, "ratingMean" : null});
         }
     }
 
@@ -1195,7 +1173,7 @@ function getContentRatingRatings(contentRatings, n) {
 
 // returns array of ratingQuantity of each contentRating.
 // (with >= n films)
-// sorted by content rating ("Not Rated", "G", "PG", "PG-13", "R", "NC-17")
+// sorted by content rating ("Not Rated", "G", "PG", "12A", "15A", "16", "18").
 function getContentRatingQuantities(contentRatings) {
     let contentRatingRatings = [];
 
@@ -1209,7 +1187,7 @@ function getContentRatingQuantities(contentRatings) {
 // returns array of labels of each contentRating.
 // (with >= n films)
 // (only if the ratingMean is non-null)
-// sorted by content rating ("Not Rated", "G", "PG", "PG-13", "R", "NC-17")
+// sorted by content rating ("Not Rated", "G", "PG", "12A", "15A", "16", "18").
 function getContentRatingLabels(contentRatings, n) {
     let contentRatingLabels = [];
 
@@ -1379,4 +1357,45 @@ function getFranchiseTitles(franchise) {
     });
 
     return franchiseTitles;
+}
+
+// returns an array of the distribution of myRating of films
+function getMyRatings(filmData) {
+    let myRatings = new Array(10);
+
+    for (let i = 0; i < 10; i++) {
+        myRatings[i] = 0;
+    }
+
+    filmData.forEach(film => {
+        myRatings[film.myRating - 1]++;
+    });
+
+    return myRatings;
+}
+
+// returns an array of the quantities of each myRating (only ratings with > 0 ratings)
+function getMyRatingQuantities(myRatings) {
+    let myRatingQuantities = [];
+
+    for (let i = 0; i < 10; i++) {
+        if (myRatings[i] > 0) {
+            myRatingQuantities.push(myRatings[i].toString());
+        }
+    }
+
+    return myRatingQuantities;
+}
+
+// returns an array of the labels of each myRating (only ratings with > 0 ratings)
+function getMyRatingLabels(myRatings) {
+    let myRatingLabels = [];
+
+    for (let i = 1; i <= 10; i++) {
+        if (myRatings[i-1] > 0) {
+            myRatingLabels.push(i.toString());
+        }
+    }
+
+    return myRatingLabels;
 }

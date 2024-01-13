@@ -28,7 +28,7 @@ async function main() {
     console.log("Updating filmData.json:")
     await updateFilmData(filmData);
     console.log("Writing filmData to .json file.")
-    writeToJson("data/filmData.json", filmData);
+    writeToJson(filmData, "data/filmData.json");
 
     console.log("Writing to metadata.json.");
     writeMetadata("ok", startTime, "", "");

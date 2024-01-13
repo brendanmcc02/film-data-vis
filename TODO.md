@@ -6,7 +6,8 @@
 - [x] metadata.json - contains info about latest write, error messages
 - [x] error handling
 - [ ] get cron-job working for updateDB.js
-- [ ] finish graph.js
+- [ ] push filmData.json & metadata.json each time cron job is run (bash script?)
+- [x] finish graph.js
 - [ ] design the website
 
 ### initDB.js
@@ -21,7 +22,6 @@
 - [x] don't rely on dynamic html tags (they change every so often)
 - [x] fix glass onion 'year-cr-runtime' bug
 - [x] re-initDB and check if new selectors are bug-free
-- [ ] get actors from detailed page instead of just taking from top cast
 
 ### graph.js
 - [x] Mean Genre Rating (atm it's all genres, further customisation: top/bottom k with >= n films) {bar}
@@ -39,12 +39,12 @@
 - [x] Quantity of films watched per runtime interval {doughnut}
 - [x] English-spoken  vs. international films {meanRating: bar, proportion: doughnut}
 - [x] watchedInCinema vs. !watchedInCinema    {meanRating: bar, proportion: doughnut}
-- [ ] mean rating of each content rating {meanRating: line, proportion: doughnut}
+- [x] mean rating of each content rating {meanRating: line, proportion: doughnut}
 - [x] mcu ratings {line}
 - [x] bond ratings {line}
 - [x] lotr, hp, star wars ratings {line}
 - [x] check if every function needs to be async
-- [ ] myRating distribution {bar}
+- [x] myRating distribution {bar}
 
 ### updateDB.js
 - [x] figure out functions running twice smdfh

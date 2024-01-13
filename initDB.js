@@ -22,7 +22,7 @@ const bondURL = "https://en.wikipedia.org/wiki/List_of_James_Bond_films";
 
 const startTime = Date.now();
 
-main();
+// main();
 
 // initialises a database of all my rated films on imdb
 async function main() {
