@@ -2,17 +2,14 @@ import nodeFetch from "node-fetch";
 import * as cheerio from "cheerio";
 import fs from "fs";
 
+const imdbBaseTitleUrl = "https://www.imdb.com/title/";
+
 main();
 
 async function main() {
-    let films = readFromJson("data/filmData.json");
-
-    films.forEach(film => {
-        if (film.franchise !== "") {
-            console.log(film.franchise + " " + film.title);
-        }
-    });
+    writeToJson({"test":"cron wrote this"}, "data/test.json");
 }
+
 
 // reads .json file into a variable
 function readFromJson(filepath) {
@@ -26,4 +23,16 @@ function readFromJson(filepath) {
     }
 
     return JSON.parse(filmData);
+}
+
+// writes data to a .json file
+function writeToJson(data, filepath) {
+    const stringData = JSON.stringify(data, null, 4);
+
+    fs.writeFileSync(filepath, stringData, (error) => {
+        if (error) {
+            console.log(error);
+            throw error;
+        }
+    });
 }

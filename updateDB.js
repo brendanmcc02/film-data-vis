@@ -7,7 +7,7 @@ import * as cheerio from "cheerio";
 import * as fs from "fs";
 
 // function imports
-import {writeToJson, getMyRatedFilms, getFilm, getBondFilmTitles, getMcuFilmTitles, writeMetadata} from './initDB.js'
+import {writeToJson, getMyRatedFilms, getFilm, getBondFilmTitles, getMcuFilmTitles, writeMetadata, throwErrorMessage} from './initDB.js'
 
 // constant imports
 import {imdbBaseTitleUrl} from './initDB.js';
@@ -41,7 +41,7 @@ function readFromJson(filepath) {
     try {
         filmData = fs.readFileSync(filepath);
     } catch (error) {
-        console.error(error);
+        writeMetadata("error", startTime, error.name, error.message);
         throw error;
     }
 
@@ -123,24 +123,24 @@ async function getFilmRatingData(id) {
         const c = cheerio.load(body);
 
         // get imdbRating
-        const imdbRating = c("span.sc-bde20123-1.iZlgcd").eq(0).text();
+        const imdbRating = c('div[data-testid=hero-rating-bar__aggregate-rating__score]').first().find('span:nth-child(1)').text();
         filmRatingData.imdbRating = parseFloat(imdbRating);
 
+        if (imdbRating === '') {
+            throwErrorMessage("imdb rating not recognised. css class name possibly changed. " + id);
+        }
+
         // get metascore
-        let metascore = c(".score-meta").text();
+        let metascore = c(".metacritic-score-box").text();
 
         // if film has a metascore, parse the string to an integer
         if (metascore !== '') {
             filmRatingData.metascore = parseInt(metascore);
         }
-        // else, set the metascore to -1
-        else {
-            filmRatingData.metascore = -1;
-        }
 
         return filmRatingData;
     } catch (error) {
-        writeMetadata("error", error.name, error.message);
+        writeMetadata("error", startTime, error.name, error.message);
         throw error;
     }
 

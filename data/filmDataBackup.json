@@ -96,7 +96,7 @@
       "English"
     ],
     "contentRating": "15A",
-    "watchedInCinema": false,
+    "watchedInCinema": true,
     "myTop10Position": -1,
     "franchise": ""
   },
@@ -302,7 +302,7 @@
       "Japanese"
     ],
     "contentRating": "12A",
-    "watchedInCinema": false,
+    "watchedInCinema": true,
     "myTop10Position": -1,
     "franchise": ""
   },
@@ -1341,7 +1341,7 @@
     "id": "tt5537002",
     "year": 2023,
     "myRating": 6,
-    "imdbRating": 7.8,
+    "imdbRating": 7.7,
     "metascore": 89,
     "image": "https://m.media-amazon.com/images/M/MV5BMjE4ZTZlNDAtM2Q3YS00YjFhLThjN2UtODg2ZGNlN2E2MWU2XkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_QL75_UX190_CR0,2,190,281_.jpg",
     "runtime": 206,
@@ -3617,7 +3617,7 @@
     ],
     "contentRating": "PG",
     "watchedInCinema": true,
-    "myTop10Position": -1,
+    "myTop10Position": 10,
     "franchise": ""
   },
   {
@@ -13971,7 +13971,7 @@
     "id": "tt0071315",
     "year": 1974,
     "myRating": 10,
-    "imdbRating": 8.2,
+    "imdbRating": 8.1,
     "metascore": 92,
     "image": "https://m.media-amazon.com/images/M/MV5BMjJkMDZhYzItZTFhMi00ZGI4LThlNTAtZDNlYmEwNjFkNDYzXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_QL75_UX190_CR0,3,190,281_.jpg",
     "runtime": 130,
@@ -27400,7 +27400,7 @@
     "title": "Brief Encounter",
     "id": "tt0037558",
     "year": 1945,
-    "myRating": 10,
+    "myRating": 9,
     "imdbRating": 8,
     "metascore": 92,
     "image": "https://m.media-amazon.com/images/M/MV5BYWQ0MGNjOTYtMWJlNi00YWMxLWFmMzktYjAyNTVkY2U1NWNhL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_QL75_UX190_CR0,6,190,281_.jpg",
@@ -27495,7 +27495,7 @@
     ],
     "contentRating": "Not Rated",
     "watchedInCinema": false,
-    "myTop10Position": 9,
+    "myTop10Position": -1,
     "franchise": ""
   },
   {
@@ -33802,7 +33802,7 @@
     "id": "tt4686844",
     "year": 2017,
     "myRating": 7,
-    "imdbRating": 7.3,
+    "imdbRating": 7.2,
     "metascore": 88,
     "image": "https://m.media-amazon.com/images/M/MV5BMTcxMDc1NjcyNl5BMl5BanBnXkFtZTgwNDU0NDYxMzI@._V1_QL75_UX190_CR0,0,190,281_.jpg",
     "runtime": 107,
@@ -40762,7 +40762,7 @@
     ],
     "contentRating": "PG",
     "watchedInCinema": true,
-    "myTop10Position": 10,
+    "myTop10Position": 9,
     "franchise": ""
   },
   {
@@ -40770,7 +40770,7 @@
     "id": "tt0451279",
     "year": 2017,
     "myRating": 7,
-    "imdbRating": 7.4,
+    "imdbRating": 7.3,
     "metascore": 76,
     "image": "https://m.media-amazon.com/images/M/MV5BMTYzODQzYjQtNTczNC00MzZhLTg1ZWYtZDUxYmQ3ZTY4NzA1XkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_QL75_UX190_CR0,0,190,281_.jpg",
     "runtime": 141,

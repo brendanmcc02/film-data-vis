@@ -7,7 +7,7 @@ import * as cheerio from "cheerio";
 import * as fs from "fs";
 
 // function exports for updateDB.js
-export {getMyRatedFilms, writeToJson, getFilm, getBondFilmTitles, getMcuFilmTitles, writeMetadata};
+export {getMyRatedFilms, writeToJson, getFilm, getBondFilmTitles, getMcuFilmTitles, writeMetadata, throwErrorMessage};
 
 // constant exports
 export {imdbBaseTitleUrl};
@@ -599,14 +599,14 @@ function writeToJson(data, filepath) {
 
     fs.writeFileSync(filepath, stringData, (error) => {
         if (error) {
-            console.log(error);
+            writeMetadata("error", startTime, error.name, error.message);
             throw error;
         }
     });
 }
 
 // returns string in the form: 'time day dd/mm/yyy'
-// e.g. 13:18 Wednesday 19/7/2023
+// e.g. 13:18 Wednesday 19/7/2024
 function getTimestamp() {
     const date = new Date();
     let day = date.getDay();
@@ -638,7 +638,15 @@ function getTimestamp() {
             break;
     }
 
-    return date.getHours().toString() + ":" + date.getMinutes().toString() + " " + day + " " +
+    let mins = date.getMinutes();
+
+    if (mins < 10) {
+        mins = "0" + mins.toString();
+    } else {
+        mins = mins.toString();
+    }
+
+    return date.getHours().toString() + ":" + mins + " " + day + " " +
         date.getDate() + "/" + (date.getMonth() + 1).toString() + "/" + date.getFullYear();
 }
 

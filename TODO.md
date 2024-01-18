@@ -48,3 +48,5 @@
 
 ### updateDB.js
 - [x] figure out functions running twice smdfh
+- [x] error handling
+- [x] imdb rating, metascore null for updateDB.js -> take getImdbRating & getMetascore from initDB.js
