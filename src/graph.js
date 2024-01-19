@@ -3,7 +3,7 @@ graph();
 async function graph() {
 
     // read filmData.json into a variable
-    const response = await fetch("data/filmData.json");
+    const response = await fetch("../data/filmData.json");
     const filmData = await response.json();
 
     // get relevant data for graphs

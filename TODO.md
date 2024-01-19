@@ -1,14 +1,12 @@
 # TODO
 
-test commit
-
 ## General
 - [x] finish initDB.js
 - [x] finish updateDB.js
 - [x] metadata.json - contains info about latest write, error messages
 - [x] error handling
-- [ ] get cron-job working for updateDB.js
-- [ ] push filmData.json & metadata.json each time cron job is run (bash script?)
+- [x] get cron-job working for updateDB.js
+- [x] push filmData.json & metadata.json each time cron job is run
 - [x] finish graph.js
 - [ ] design the website
 
