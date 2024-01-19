@@ -7,7 +7,7 @@ import * as cheerio from "cheerio";
 import * as fs from "fs";
 
 // function imports
-import {writeToJson, getMyRatedFilms, getFilm, getBondFilmTitles, getMcuFilmTitles, writeMetadata, throwErrorMessage} from './initDB.js'
+import {writeToJson, getMyRatedFilms, getFilm, getBondFilmTitles, getMcuFilmTitles, writeMetadata, throwErrorMessage} from './initDB.js';
 
 // constant imports
 import {imdbBaseTitleUrl} from './initDB.js';
