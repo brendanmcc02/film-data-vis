@@ -32,7 +32,7 @@ async function main() {
     console.log("Web scraping full data for each rated film:");
     const films = await getFilms(myRatedFilms);
     console.log("Writing to filmData.json.");
-    writeToJson(films, "data/filmData.json");
+    writeToJson(films, "../data/filmData.json");
 
     console.log("Writing to metadata.json.");
     writeMetadata("ok", startTime, "", "");
@@ -656,7 +656,7 @@ function writeMetadata(status, startTime, errorName, errorMessage) {
 
     const metadata = {"status": status, "lastWrite": getTimestamp(), "runtime": runtime, "errorName" : errorName, "errorMessage": errorMessage};
 
-    writeToJson(metadata, "data/metadata.json");
+    writeToJson(metadata, "../data/metadata.json");
 }
 
 // returns the runtime, e.g: "10 minutes 40 seconds"

@@ -7,7 +7,7 @@ const imdbBaseTitleUrl = "https://www.imdb.com/title/";
 main();
 
 async function main() {
-    writeToJson({"test":"broski"}, "data/test.json");
+    writeToJson({"test":"love ya"}, "../data/test.json");
 }
 
 

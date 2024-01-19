@@ -24,11 +24,11 @@ main();
 // 3. writes to json
 async function main() {
     console.log("Reading filmData.json into a variable.");
-    let filmData = readFromJson("data/filmData.json");
+    let filmData = readFromJson("../data/filmData.json");
     console.log("Updating filmData.json:")
     await updateFilmData(filmData);
     console.log("Writing filmData to .json file.")
-    writeToJson(filmData, "data/filmData.json");
+    writeToJson(filmData, "../data/filmData.json");
 
     console.log("Writing to metadata.json.");
     writeMetadata("ok", startTime, "", "");
