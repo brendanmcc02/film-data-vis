@@ -7,24 +7,144 @@ async function graph() {
     const filmData = await response.json();
 
     // get relevant data for graphs
-    const base = getMyRatings(filmData);
-    const labels = getMyRatingLabels(base);
-    const data = getMyRatingQuantities(base);
 
-    // plot the graph
-    const ctx = document.getElementById('myChart');
-    new Chart(ctx, {
+    // mean genre ratings
+    const base_genres = getGenres(filmData);
+    const labels_genres = getGenreLabels(base_genres, 5);
+    const data_genres = getGenreRatings(base_genres, 5);
+
+    // genre quantities
+    const labels_genres_quant = getGenreLabels(base_genres, 1);
+    const data_genres_quant = getGenreQuantities(base_genres);
+
+    // directors
+    const base_directors = getDirectors(filmData);
+    const labels_directors = getTopKDirectorLabels(base_directors, 5, 5);
+    const data_directors = getTopKDirectorRatings(base_directors, 5, 5);
+
+    // Christopher Nolan
+    const base_nolan = getDirectorFilms(filmData, "Christopher Nolan");
+    const labels_nolan = getDirectorTitles(base_nolan);
+    const data_nolan = getDirectorRatings(base_nolan);
+
+    // Denis Villeneuve
+    const base_villeneuve = getDirectorFilms(filmData, "Denis Villeneuve");
+    const labels_villeneuve = getDirectorTitles(base_villeneuve);
+    const data_villeneuve = getDirectorRatings(base_villeneuve);
+
+    // actors
+    const base_actors = getActors(filmData);
+    const labels_actors = getTopKActorLabels(base_actors, 10, 5);
+    const data_actors = getTopKActorRatings(base_actors, 10, 5);
+
+    // ryan gosling
+    const base_gosling = getActorFilms(filmData, "Ryan Gosling");
+    const labels_gosling = getActorTitles(base_gosling);
+    const data_gosling = getActorRatings(base_gosling);
+
+    // my rating of imdb top 25
+    const base_imdbtop25 = getImdbTop25Films(filmData);
+    const labels_imdbtop25 = getImdbTop25Titles(base_imdbtop25);
+    const data_imdbtop25 = getImdbTop25Ratings(base_imdbtop25);
+
+    // imdb rating & metascore of my top 10
+    const base_mytop10 = getMyTop10Films(filmData);
+    const labels_mytop10 = getMyTop10Titles(base_mytop10);
+    const data_mytop10imdb = getMyTop10Ratings(base_mytop10);
+    const data_mytop10meta = getMyTop10Metascores(base_mytop10);
+
+    // mean decade rating
+    const base_decade = getDecades(filmData);
+    const labels_decade = getDecadeLabels(base_decade, 10);
+    const data_decade = getDecadeRatings(base_decade, 10);
+
+    // mean year rating
+    const base_year = getYears(filmData, 5);
+    const minYearIndex = getMinYearIndex(base_year);
+    const maxYearIndex = getMaxYearIndex(base_year);
+    const labels_year = getYearLabels(base_year, minYearIndex, maxYearIndex);
+    const data_year = getYearRatings(base_year, minYearIndex, maxYearIndex);
+
+    // mean runtime rating & distribution
+    const base_runtime = getRuntimes(filmData);
+    const labels_runtime_ratings = getRuntimeLabels(base_runtime, 5);
+    const data_runtime_ratings = getRuntimeRatings(base_runtime, 5);
+    const labels_runtime_quant = getRuntimeLabels(base_runtime, 1);
+    const data_runtime_quant = getRuntimeQuantities(base_runtime);
+
+    // english-spoken vs international films
+    const base_engint = getEnglishInternationalFilms(filmData);
+    const labels_engint = getEnglishInternationalLabels(base_engint);
+    const data_engint = getEnglishInternationalRatings(base_engint);
+    const quant_engint = getEnglishInternationalQuantities(base_engint);
+
+    // watched in cinema
+    const base_cinema = getCinemaFilms(filmData);
+    const labels_cinema = getCinemaLabels(base_cinema);
+    const ratings_cinema = getCinemaRatings(base_cinema);
+    const quant_cinema = getCinemaQuantities(base_cinema);
+
+    // content rating
+    const base_content = getContentRatings(filmData);
+    const labels_content = getContentRatingLabels(base_content, 5);
+    const ratings_content = getContentRatingRatings(base_content, 5);
+    const quant_content = getContentRatingQuantities(base_content);
+
+    // mcu
+    const base_mcu = getFranchise(filmData, "MCU");
+    const labels_mcu = getFranchiseTitles(base_mcu);
+    const rating_mcu = getFranchiseRatings(base_mcu);
+
+    // bond
+    const base_bond = getFranchise(filmData, "James Bond");
+    const labels_bond = getFranchiseTitles(base_bond);
+    const rating_bond = getFranchiseRatings(base_bond);
+
+    // lotr
+    const base_lotr = getFranchise(filmData, "Lord of the Rings");
+    const labels_lotr = getFranchiseTitles(base_lotr);
+    const rating_lotr = getFranchiseRatings(base_lotr);
+
+    // hp
+    const base_hp = getFranchise(filmData, "Harry Potter");
+    const labels_hp = getFranchiseTitles(base_hp);
+    const rating_hp = getFranchiseRatings(base_hp);
+
+    // star wars
+    const base_sw = getFranchise(filmData, "Star Wars");
+    const labels_sw = getFranchiseTitles(base_sw);
+    const rating_sw = getFranchiseRatings(base_sw);
+
+    // myRating dist
+    const base_myRating = getMyRatings(filmData);
+    const labels_myRating = getMyRatingLabels(base_myRating);
+    const data_myRating = getMyRatingQuantities(base_myRating);
+
+    // plot the graphs
+    const ctx_1 = document.getElementById('graph-1');
+    new Chart(ctx_1, {
         type: 'bar',
         data: {
-            labels: labels,
+            labels: labels_genres,
             datasets: [{
-                label: 'Title',
-                data: data,
+                label: 'Mean Genre Rating, >= 5 films',
+                data: data_genres,
                 backgroundColor: [
-                    'rgba(54, 162, 235, 0.2)'
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(255, 159, 64, 0.3)',
+                    'rgba(153, 102, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)'
+
                 ],
                 borderColor: [
-                    'rgba(54, 162, 235, 1)'
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 205, 86, 1)'
                 ],
                 borderWidth: 1
             }]
@@ -38,7 +158,952 @@ async function graph() {
             }
         }
     });
+
+    const ctx_2 = document.getElementById('graph-2');
+    new Chart(ctx_2, {
+        type: 'doughnut',
+        data: {
+            labels: labels_genres_quant,
+            datasets: [{
+                label: 'Title',
+                data: data_genres_quant,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(255, 159, 64, 0.3)',
+                    'rgba(153, 102, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)'
+
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 205, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        }
+    });
+
+    const ctx_3 = document.getElementById('graph-3');
+    new Chart(ctx_3, {
+        type: 'bar',
+        data: {
+            labels: labels_directors,
+            datasets: [{
+                label: 'Title',
+                data: data_directors,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(255, 159, 64, 0.3)',
+                    'rgba(153, 102, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)'
+
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 205, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 0,
+                    max: 10
+                }
+            }
+        }
+    });
+
+    const ctx_4 = document.getElementById('graph-4');
+    new Chart(ctx_4, {
+        type: 'line',
+        data: {
+            labels: labels_nolan,
+            datasets: [{
+                label: 'Title',
+                data: data_nolan,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(255, 159, 64, 0.3)',
+                    'rgba(153, 102, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)'
+
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 205, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 0,
+                    max: 10
+                }
+            }
+        }
+    });
+
+    const ctx_5 = document.getElementById('graph-5');
+    new Chart(ctx_5, {
+        type: 'line',
+        data: {
+            labels: labels_villeneuve,
+            datasets: [{
+                label: 'Title',
+                data: data_villeneuve,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(255, 159, 64, 0.3)',
+                    'rgba(153, 102, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)'
+
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 205, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 0,
+                    max: 10
+                }
+            }
+        }
+    });
+
+    const ctx_6 = document.getElementById('graph-6');
+    new Chart(ctx_6, {
+        type: 'bar',
+        data: {
+            labels: labels_actors,
+            datasets: [{
+                label: 'Title',
+                data: data_actors,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(255, 159, 64, 0.3)',
+                    'rgba(153, 102, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)'
+
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 205, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 0,
+                    max: 10
+                }
+            }
+        }
+    });
+
+    const ctx_7 = document.getElementById('graph-7');
+    new Chart(ctx_7, {
+        type: 'line',
+        data: {
+            labels: labels_gosling,
+            datasets: [{
+                label: 'Title',
+                data: data_gosling,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(255, 159, 64, 0.3)',
+                    'rgba(153, 102, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)'
+
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 205, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 0,
+                    max: 10
+                }
+            }
+        }
+    });
+
+    const ctx_8 = document.getElementById('graph-8');
+    new Chart(ctx_8, {
+        type: 'line',
+        data: {
+            labels: labels_imdbtop25,
+            datasets: [{
+                label: 'Title',
+                data: data_imdbtop25,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(255, 159, 64, 0.3)',
+                    'rgba(153, 102, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)'
+
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 205, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 0,
+                    max: 10
+                }
+            }
+        }
+    });
+
+    const ctx_9 = document.getElementById('graph-9');
+    new Chart(ctx_9, {
+        type: 'bar',
+        data: {
+            labels: labels_mytop10,
+            datasets: [{
+                label: 'Title',
+                data: data_mytop10imdb,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(255, 159, 64, 0.3)',
+                    'rgba(153, 102, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)'
+
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 205, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 0,
+                    max: 10
+                }
+            }
+        }
+    });
+
+    const ctx_10 = document.getElementById('graph-10');
+    new Chart(ctx_10, {
+        type: 'bar',
+        data: {
+            labels: labels_mytop10,
+            datasets: [{
+                label: 'Title',
+                data: data_mytop10meta,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(255, 159, 64, 0.3)',
+                    'rgba(153, 102, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)'
+
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 205, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 0,
+                    max: 100
+                }
+            }
+        }
+    });
+
+    const ctx_11 = document.getElementById('graph-11');
+    new Chart(ctx_11, {
+        type: 'bar',
+        data: {
+            labels: labels_decade,
+            datasets: [{
+                label: 'Title',
+                data: data_decade,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(255, 159, 64, 0.3)',
+                    'rgba(153, 102, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)'
+
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 205, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 0,
+                    max: 10
+                }
+            }
+        }
+    });
+
+    const ctx_12 = document.getElementById('graph-12');
+    new Chart(ctx_12, {
+        type: 'line',
+        data: {
+            labels: labels_year,
+            datasets: [{
+                label: 'Title',
+                data: data_year,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(255, 159, 64, 0.3)',
+                    'rgba(153, 102, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)'
+
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 205, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 0,
+                    max: 10
+                }
+            }
+        }
+    });
+
+    const ctx_13 = document.getElementById('graph-13');
+    new Chart(ctx_13, {
+        type: 'bar',
+        data: {
+            labels: labels_runtime_ratings,
+            datasets: [{
+                label: 'Title',
+                data: data_runtime_ratings,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(255, 159, 64, 0.3)',
+                    'rgba(153, 102, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)'
+
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 205, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 0,
+                    max: 10
+                }
+            }
+        }
+    });
+
+    const ctx_14 = document.getElementById('graph-14');
+    new Chart(ctx_14, {
+        type: 'doughnut',
+        data: {
+            labels: labels_runtime_quant,
+            datasets: [{
+                label: 'Title',
+                data: data_runtime_quant,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(255, 159, 64, 0.3)',
+                    'rgba(153, 102, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)'
+
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 205, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        }
+    });
+
+    const ctx_15 = document.getElementById('graph-15');
+    new Chart(ctx_15, {
+        type: 'bar',
+        data: {
+            labels: labels_engint,
+            datasets: [{
+                label: 'Title',
+                data: data_engint,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(255, 159, 64, 0.3)',
+                    'rgba(153, 102, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)'
+
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 205, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 0,
+                    max: 10
+                }
+            }
+        }
+    });
+
+    const ctx_16 = document.getElementById('graph-16');
+    new Chart(ctx_16, {
+        type: 'doughnut',
+        data: {
+            labels: labels_engint,
+            datasets: [{
+                label: 'Title',
+                data: quant_engint,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(255, 159, 64, 0.3)',
+                    'rgba(153, 102, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)'
+
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 205, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 0,
+                    max: 10
+                }
+            }
+        }
+    });
+
+    const ctx_17 = document.getElementById('graph-17');
+    new Chart(ctx_17, {
+        type: 'bar',
+        data: {
+            labels: labels_cinema,
+            datasets: [{
+                label: 'Title',
+                data: ratings_cinema,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(255, 159, 64, 0.3)',
+                    'rgba(153, 102, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)'
+
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 205, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 0,
+                    max: 10
+                }
+            }
+        }
+    });
+
+    const ctx_18 = document.getElementById('graph-18');
+    new Chart(ctx_18, {
+        type: 'doughnut',
+        data: {
+            labels: labels_cinema,
+            datasets: [{
+                label: 'Title',
+                data: quant_cinema,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(255, 159, 64, 0.3)',
+                    'rgba(153, 102, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)'
+
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 205, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 0,
+                    max: 10
+                }
+            }
+        }
+    });
+
+    const ctx_19 = document.getElementById('graph-19');
+    new Chart(ctx_19, {
+        type: 'bar',
+        data: {
+            labels: labels_content,
+            datasets: [{
+                label: 'Title',
+                data: ratings_content,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(255, 159, 64, 0.3)',
+                    'rgba(153, 102, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)'
+
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 205, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 0,
+                    max: 10
+                }
+            }
+        }
+    });
+
+    const ctx_20 = document.getElementById('graph-20');
+    new Chart(ctx_20, {
+        type: 'doughnut',
+        data: {
+            labels: labels_content,
+            datasets: [{
+                label: 'Title',
+                data: quant_content,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(255, 159, 64, 0.3)',
+                    'rgba(153, 102, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)'
+
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 205, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 0,
+                    max: 10
+                }
+            }
+        }
+    });
+
+    const ctx_21 = document.getElementById('graph-21');
+    new Chart(ctx_21, {
+        type: 'line',
+        data: {
+            labels: labels_mcu,
+            datasets: [{
+                label: 'Title',
+                data: rating_mcu,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(255, 159, 64, 0.3)',
+                    'rgba(153, 102, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)'
+
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 205, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 0,
+                    max: 10
+                }
+            }
+        }
+    });
+
+    const ctx_22 = document.getElementById('graph-22');
+    new Chart(ctx_22, {
+        type: 'line',
+        data: {
+            labels: labels_bond,
+            datasets: [{
+                label: 'Title',
+                data: rating_bond,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(255, 159, 64, 0.3)',
+                    'rgba(153, 102, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)'
+
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 205, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 0,
+                    max: 10
+                }
+            }
+        }
+    });
+
+    const ctx_23 = document.getElementById('graph-23');
+    new Chart(ctx_23, {
+        type: 'line',
+        data: {
+            labels: labels_lotr,
+            datasets: [{
+                label: 'Title',
+                data: rating_lotr,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(255, 159, 64, 0.3)',
+                    'rgba(153, 102, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)'
+
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 205, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 0,
+                    max: 10
+                }
+            }
+        }
+    });
+
+    const ctx_24 = document.getElementById('graph-24');
+    new Chart(ctx_24, {
+        type: 'line',
+        data: {
+            labels: labels_hp,
+            datasets: [{
+                label: 'Title',
+                data: rating_hp,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(255, 159, 64, 0.3)',
+                    'rgba(153, 102, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)'
+
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 205, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 0,
+                    max: 10
+                }
+            }
+        }
+    });
+
+    const ctx_25 = document.getElementById('graph-25');
+    new Chart(ctx_25, {
+        type: 'line',
+        data: {
+            labels: labels_sw,
+            datasets: [{
+                label: 'Title',
+                data: rating_sw,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(255, 159, 64, 0.3)',
+                    'rgba(153, 102, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)'
+
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 205, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 0,
+                    max: 10
+                }
+            }
+        }
+    });
+
+    const ctx_26 = document.getElementById('graph-26');
+    new Chart(ctx_26, {
+        type: 'bar',
+        data: {
+            labels: labels_myRating,
+            datasets: [{
+                label: 'Title',
+                data: data_myRating,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(255, 159, 64, 0.3)',
+                    'rgba(153, 102, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)'
+
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 205, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    min: 0
+                }
+            }
+        }
+    });
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Very commonly I need to iterate through all the films
 // in the database and calculate the mean ratings of anything,
@@ -58,7 +1123,7 @@ function getGenres(filmData) {
     let genres = [];
 
     filmData.forEach(film => {
-        film.genreList.forEach(genre => {
+        film.genres.forEach(genre => {
             let genreIndex = getGenreIndex(genres, genre);
             // genre not in array
             if (genreIndex === -1) {
@@ -116,23 +1181,27 @@ function getGenreIndex(genres, genre) {
     return -1;
 }
 
-// returns array of genre labels (sorted highest->lowest ratingMean)
-function getGenreLabels(genres) {
+// returns array of genre labels (sorted highest->lowest ratingMean, with >= n films)
+function getGenreLabels(genres, n) {
     let genreLabels = [];
 
     genres.forEach(genre => {
-        genreLabels.push(genre.genre);
+        if (genre.ratingQuantity >= n) {
+            genreLabels.push(genre.genre);
+        }
     });
 
     return genreLabels;
 }
 
 // returns array of mean genre ratings (sorted highest->lowest)
-function getGenreRatings(genres) {
+function getGenreRatings(genres, n) {
     let genreRatings = [];
 
     genres.forEach(genre => {
-        genreRatings.push(genre.ratingMean);
+        if (genre.ratingQuantity >= n) {
+            genreRatings.push(genre.ratingMean);
+        }
     });
 
     return genreRatings;
@@ -155,7 +1224,7 @@ function getDirectors(filmData) {
     let directors = [];
 
     filmData.forEach(film => {
-        film.directorList.forEach(director => {
+        film.directors.forEach(director => {
             let directorIndex = getDirectorIndex(directors, director);
             // director not in array
             if (directorIndex === -1) {
@@ -251,7 +1320,7 @@ function getDirectorFilms(filmData, director) {
     let directorFilms = [];
 
     filmData.forEach(film => {
-        if(film.directorList.includes(director)) {
+        if(film.directors.includes(director)) {
             directorFilms.push(film);
         }
     });
@@ -309,7 +1378,7 @@ function getActors(filmData) {
     let actors = [];
 
     filmData.forEach(film => {
-        film.actorList.forEach(actor => {
+        film.actors.forEach(actor => {
             let actorIndex = getActorIndex(actors, actor.name);
             // actor not in array
             if (actorIndex === -1) {
@@ -405,7 +1474,7 @@ function getActorFilms(filmData, actorName) {
     let actorFilms = [];
 
     filmData.forEach(film => {
-        film.actorList.forEach(actor => {
+        film.actors.forEach(actor => {
             if(actor.name === actorName) {
                 actorFilms.push(film);
             }
@@ -530,12 +1599,12 @@ function getMyTop10Films(filmData) {
     let myTop10Films = [];
 
     filmData.forEach(film => {
-        if (film.myPosition !== -1) {
+        if (film.myTop10Position !== -1) {
             myTop10Films.push(film);
         }
     });
 
-    // sort by position (1st -> 25th)
+    // sort by position (1st -> 10th)
     // bubble sort is used for its algorithmic simplicity.
     // also because the array is not large,
     // so time complexity is not an issue
@@ -548,7 +1617,7 @@ function getMyTop10Films(filmData) {
         swapped = false;
 
         for (let i = 0; i < len; i++) {
-            if (myTop10Films[i].myPosition > myTop10Films[i+1].myPosition) {
+            if (myTop10Films[i].myTop10Position > myTop10Films[i+1].myTop10Position) {
                 [myTop10Films[i], myTop10Films[i+1]] = [myTop10Films[i+1], myTop10Films[i]] // swap
                 swapped = true; // signal flag
             }
@@ -558,7 +1627,7 @@ function getMyTop10Films(filmData) {
     return myTop10Films;
 }
 
-// given array of my top 25 films,
+// given array of my top 10 films,
 // return an array of the titles of those films
 function getMyTop10Titles(myTop10Films) {
     let myTop10Titles = [];
@@ -570,13 +1639,13 @@ function getMyTop10Titles(myTop10Films) {
     return myTop10Titles;
 }
 
-// given array of my top 25 films,
+// given array of my top 10 films,
 // return an array of the imdb rating of those films
 function getMyTop10Ratings(myTop10Films) {
     let myTop10Ratings = [];
 
     myTop10Films.forEach(film => {
-        myTop10Ratings.push(film.imDbRating);
+        myTop10Ratings.push(film.imdbRating);
     });
 
     return myTop10Ratings;
@@ -588,7 +1657,7 @@ function getMyTop10Metascores(myTop10Films) {
     let myTop10Metascores = [];
 
     myTop10Films.forEach(film => {
-        myTop10Metascores.push(film.metacriticRating);
+        myTop10Metascores.push(film.metascore);
     });
 
     return myTop10Metascores;
@@ -708,23 +1777,16 @@ function getYears(filmData, n) {
         }
     });
 
-    // get the min year with >= n films
-
-    // unnecessary to use infinity, I guess this will become
-    // deprecated in 73 years =)
+    // get the min year (with >= n films TODO?)
     let minYear = 2100;
     years.forEach(year => {
-        if (year.year < minYear) {
-            minYear = year.year;
-        }
+        minYear = Math.min(minYear, year.year);
     });
 
     // get the max year
     let maxYear = 0;
     years.forEach(year => {
-        if (year.year > maxYear) {
-            maxYear = year.year;
-        }
+        maxYear = Math.max(maxYear, year.year);
     });
 
     // starting from the minimum year, add year objects for years
@@ -801,7 +1863,6 @@ function getMinYearIndex(years) {
     const len = years.length;
     for (let i = 0; i < len; i++) {
         if (years[i].ratingMean !== null) {
-            console.log(i);
             return i;
         }
     }
@@ -863,7 +1924,7 @@ function getRuntimes(filmData) {
     const len = runtimes.length;
     filmData.forEach(film => {
         for (let r = 0; r < len; r++) {
-            if (film.runtimeMins < runtimes[r].runtime) {
+            if (film.runtime < runtimes[r].runtime) {
                 modifyMean(film, runtimes, r);
                 r = len; // break
             }
@@ -961,7 +2022,7 @@ function getEnglishInternationalFilms(filmData) {
 
     filmData.forEach(film => {
         // if the film is international
-        if (!film.countryList.includes("USA") && !film.countryList.includes("UK") && film.languageList[0] !== "English") {
+        if (!film.countries.includes("USA") && !film.countries.includes("UK") && film.languages[0] !== "English") {
             modifyMean(film, englishInternationalFilms, 1);
         }
         // else, the film is english-spoken
@@ -1275,7 +2336,7 @@ function getMcuFilms(filmData) {
 }
 
 // given an array of franchise titles (e.g. ["Lord of the Rings", "The Hobbit"]),
-// return an array of film objects {"title", "rating", "year"},
+// return an array of film objects {"title", "myRating", "year"},
 // each object is a film in the given franchise.
 // sorted by release year.
 function getFranchise(filmData, titles) {

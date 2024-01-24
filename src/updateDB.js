@@ -73,7 +73,9 @@ async function updateFilmData(filmData) {
             // update myRating, imdbRating, metascore, watchedInCinema, myTop10Position
             filmData[filmIndex].myRating = myRatedFilms[i].myRating;
             const filmRatingData = await getFilmRatingData(filmData[filmIndex].id);
-            filmData[filmIndex].imdbRating = filmRatingData.imdbRating;
+            if (filmRatingData.imdbRating !== -1) {
+                filmData[filmIndex].imdbRating = filmRatingData.imdbRating;
+            }
             filmData[filmIndex].metascore = filmRatingData.metascore;
             filmData[filmIndex].watchedInCinema = myRatedFilms[i].watchedInCinema;
             filmData[filmIndex].myTop10Position = myRatedFilms[i].myTop10Position;
@@ -124,10 +126,15 @@ async function getFilmRatingData(id) {
 
         // get imdbRating
         const imdbRating = c('div[data-testid=hero-rating-bar__aggregate-rating__score]').first().find('span:nth-child(1)').text();
-        filmRatingData.imdbRating = parseFloat(imdbRating);
 
-        if (imdbRating === '') {
-            throwErrorMessage("imdb rating not recognised. css class name possibly changed. " + id);
+        if (imdbRating !== '') {
+            filmRatingData.imdbRating = parseFloat(imdbRating);
+        }
+        // there is a rare (~1/100) bug where it simply won't read the imdb rating. it is not replicable, don't know what the problem is but idc.
+        // for now if the bug occurs, i won't bother updating the imdb rating for that film. the imdb rating really only changes on new movies,
+        // and if the bug occurs on one film, most likely the next time the update script is run it'll update it's imdb rating on the next round.
+        else {
+            filmRatingData.imdbRating = -1.0;
         }
 
         // get metascore

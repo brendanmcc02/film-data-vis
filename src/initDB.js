@@ -461,7 +461,7 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
         let imdbRating = c('div[data-testid=hero-rating-bar__aggregate-rating__score]').first().find('span:nth-child(1)').text();
 
         if (imdbRating === '') {
-            throwErrorMessage("imdb rating not recognised. css class name possibly changed. " + film.id);
+            throwErrorMessage("imdb rating not recognised. this is either a result of a ~1/100 bug, or the class name changed." + film.id);
         }
 
         film.imdbRating = parseFloat(imdbRating);
