@@ -1,7 +1,7 @@
 {
-    "status": "error",
-    "lastWrite": "20:35 Wednesday 24/1/2024",
-    "runtime": "6 minutes 33 seconds",
-    "errorName": "Error",
-    "errorMessage": "imdb rating not recognised. css class name possibly changed. tt1255953"
+    "status": "ok",
+    "lastWrite": "21:27 Wednesday 24/1/2024",
+    "runtime": "25 minutes 19 seconds",
+    "errorName": "",
+    "errorMessage": ""
 }
