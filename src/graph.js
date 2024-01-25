@@ -121,7 +121,7 @@ async function graph() {
     const data_myRating = getMyRatingQuantities(base_myRating);
 
     // plot the graphs
-    const ctx_1 = document.getElementById('graph-1');
+    const ctx_1 = document.getElementById('mean-genre-rating');
     new Chart(ctx_1, {
         type: 'bar',
         data: {
@@ -216,7 +216,7 @@ async function graph() {
         }
     });
 
-    const ctx_2 = document.getElementById('graph-2');
+    const ctx_2 = document.getElementById('quant-genre');
     new Chart(ctx_2, {
         type: 'doughnut',
         data: {
@@ -280,7 +280,7 @@ async function graph() {
         }
     });
 
-    const ctx_3 = document.getElementById('graph-3');
+    const ctx_3 = document.getElementById('directors');
     new Chart(ctx_3, {
         type: 'bar',
         data: {
@@ -375,7 +375,7 @@ async function graph() {
         }
     });
 
-    const ctx_4 = document.getElementById('graph-4');
+    const ctx_4 = document.getElementById('nolan');
     new Chart(ctx_4, {
         type: 'line',
         data: {
@@ -464,7 +464,7 @@ async function graph() {
         }
     });
 
-    const ctx_5 = document.getElementById('graph-5');
+    const ctx_5 = document.getElementById('villeneuve');
     new Chart(ctx_5, {
         type: 'line',
         data: {
@@ -553,7 +553,7 @@ async function graph() {
         }
     });
 
-    const ctx_6 = document.getElementById('graph-6');
+    const ctx_6 = document.getElementById('actors');
     new Chart(ctx_6, {
         type: 'bar',
         data: {
@@ -648,7 +648,7 @@ async function graph() {
         }
     });
 
-    const ctx_7 = document.getElementById('graph-7');
+    const ctx_7 = document.getElementById('gosling');
     new Chart(ctx_7, {
         type: 'line',
         data: {
@@ -737,7 +737,7 @@ async function graph() {
         }
     });
 
-    const ctx_8 = document.getElementById('graph-8');
+    const ctx_8 = document.getElementById('imdb-top-25');
     new Chart(ctx_8, {
         type: 'line',
         data: {
@@ -826,7 +826,7 @@ async function graph() {
         }
     });
 
-    const ctx_9 = document.getElementById('graph-9');
+    const ctx_9 = document.getElementById('imdb-top-10');
     new Chart(ctx_9, {
         type: 'bar',
         data: {
@@ -913,7 +913,7 @@ async function graph() {
         }
     });
 
-    const ctx_10 = document.getElementById('graph-10');
+    const ctx_10 = document.getElementById('meta-top-10');
     new Chart(ctx_10, {
         type: 'bar',
         data: {
@@ -1000,7 +1000,7 @@ async function graph() {
         }
     });
 
-    const ctx_11 = document.getElementById('graph-11');
+    const ctx_11 = document.getElementById('decade');
     new Chart(ctx_11, {
         type: 'bar',
         data: {
@@ -1095,7 +1095,7 @@ async function graph() {
         }
     });
 
-    const ctx_12 = document.getElementById('graph-12');
+    const ctx_12 = document.getElementById('year');
     new Chart(ctx_12, {
         type: 'line',
         data: {
@@ -1192,7 +1192,7 @@ async function graph() {
         }
     });
 
-    const ctx_13 = document.getElementById('graph-13');
+    const ctx_13 = document.getElementById('rating-runtime');
     new Chart(ctx_13, {
         type: 'bar',
         data: {
@@ -1287,7 +1287,7 @@ async function graph() {
         }
     });
 
-    const ctx_14 = document.getElementById('graph-14');
+    const ctx_14 = document.getElementById('quant-runtime');
     new Chart(ctx_14, {
         type: 'doughnut',
         data: {
@@ -1348,7 +1348,7 @@ async function graph() {
         }
     });
 
-    const ctx_15 = document.getElementById('graph-15');
+    const ctx_15 = document.getElementById('rating-eng-int');
     new Chart(ctx_15, {
         type: 'bar',
         data: {
@@ -1435,7 +1435,7 @@ async function graph() {
         }
     });
 
-    const ctx_16 = document.getElementById('graph-16');
+    const ctx_16 = document.getElementById('quant-eng-int');
     new Chart(ctx_16, {
         type: 'doughnut',
         data: {
@@ -1496,7 +1496,7 @@ async function graph() {
         }
     });
 
-    const ctx_17 = document.getElementById('graph-17');
+    const ctx_17 = document.getElementById('rating-cinema');
     new Chart(ctx_17, {
         type: 'bar',
         data: {
@@ -1583,7 +1583,7 @@ async function graph() {
         }
     });
 
-    const ctx_18 = document.getElementById('graph-18');
+    const ctx_18 = document.getElementById('quant-cinema');
     new Chart(ctx_18, {
         type: 'doughnut',
         data: {
@@ -1644,7 +1644,7 @@ async function graph() {
         }
     });
 
-    const ctx_19 = document.getElementById('graph-19');
+    const ctx_19 = document.getElementById('rating-content-rating');
     new Chart(ctx_19, {
         type: 'bar',
         data: {
@@ -1731,7 +1731,7 @@ async function graph() {
         }
     });
 
-    const ctx_20 = document.getElementById('graph-20');
+    const ctx_20 = document.getElementById('quant-content-rating');
     new Chart(ctx_20, {
         type: 'doughnut',
         data: {
@@ -1792,7 +1792,7 @@ async function graph() {
         }
     });
 
-    const ctx_21 = document.getElementById('graph-21');
+    const ctx_21 = document.getElementById('mcu');
     new Chart(ctx_21, {
         type: 'line',
         data: {
@@ -1881,7 +1881,7 @@ async function graph() {
         }
     });
 
-    const ctx_22 = document.getElementById('graph-22');
+    const ctx_22 = document.getElementById('bond');
     new Chart(ctx_22, {
         type: 'line',
         data: {
@@ -1970,7 +1970,7 @@ async function graph() {
         }
     });
 
-    const ctx_23 = document.getElementById('graph-23');
+    const ctx_23 = document.getElementById('lotr');
     new Chart(ctx_23, {
         type: 'line',
         data: {
@@ -2059,7 +2059,7 @@ async function graph() {
         }
     });
 
-    const ctx_24 = document.getElementById('graph-24');
+    const ctx_24 = document.getElementById('hp');
     new Chart(ctx_24, {
         type: 'line',
         data: {
@@ -2148,7 +2148,7 @@ async function graph() {
         }
     });
 
-    const ctx_25 = document.getElementById('graph-25');
+    const ctx_25 = document.getElementById('sw');
     new Chart(ctx_25, {
         type: 'line',
         data: {
@@ -2237,7 +2237,7 @@ async function graph() {
         }
     });
 
-    const ctx_26 = document.getElementById('graph-26');
+    const ctx_26 = document.getElementById('dist');
     new Chart(ctx_26, {
         type: 'bar',
         data: {
