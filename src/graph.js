@@ -34,8 +34,8 @@ async function graph() {
 
     // actors
     const base_actors = getActors(filmData);
-    const labels_actors = getTopKActorLabels(base_actors, 10, 5);
-    const data_actors = getTopKActorRatings(base_actors, 10, 5);
+    const labels_actors = getTopKActorLabels(base_actors, 5, 5);
+    const data_actors = getTopKActorRatings(base_actors, 5, 5);
 
     // ryan gosling
     const base_gosling = getActorFilms(filmData, "Ryan Gosling");
@@ -91,27 +91,27 @@ async function graph() {
     const quant_content = getContentRatingQuantities(base_content);
 
     // mcu
-    const base_mcu = getFranchise(filmData, "MCU");
+    const base_mcu = getFranchise(filmData, ["MCU"]);
     const labels_mcu = getFranchiseTitles(base_mcu);
     const rating_mcu = getFranchiseRatings(base_mcu);
 
     // bond
-    const base_bond = getFranchise(filmData, "James Bond");
+    const base_bond = getFranchise(filmData, ["James Bond"]);
     const labels_bond = getFranchiseTitles(base_bond);
     const rating_bond = getFranchiseRatings(base_bond);
 
     // lotr
-    const base_lotr = getFranchise(filmData, "Lord of the Rings");
+    const base_lotr = getFranchise(filmData, ["Lord of the Rings", "The Hobbit"]);
     const labels_lotr = getFranchiseTitles(base_lotr);
     const rating_lotr = getFranchiseRatings(base_lotr);
 
     // hp
-    const base_hp = getFranchise(filmData, "Harry Potter");
+    const base_hp = getFranchise(filmData, ["Harry Potter", "Fantastic Beasts"]);
     const labels_hp = getFranchiseTitles(base_hp);
     const rating_hp = getFranchiseRatings(base_hp);
 
     // star wars
-    const base_sw = getFranchise(filmData, "Star Wars");
+    const base_sw = getFranchise(filmData, ["Star Wars", "Rogue One"]);
     const labels_sw = getFranchiseTitles(base_sw);
     const rating_sw = getFranchiseRatings(base_sw);
 
@@ -127,33 +127,90 @@ async function graph() {
         data: {
             labels: labels_genres,
             datasets: [{
-                label: 'Mean Genre Rating, >= 5 films',
                 data: data_genres,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
                     'rgba(75, 192, 192, 0.3)',
                     'rgba(255, 159, 64, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)'
-
+                    'rgba(175, 125, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)',
+                    'rgba(20, 20, 235, 0.3)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(175, 125, 255, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(20, 20, 235, 0.5)'
                 ],
                 borderColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    'rgba(175, 125, 255, 0.8)',
+                    'rgba(255, 205, 86, 0.8)',
+                    'rgba(20, 20, 235, 0.8)'
+                ],
+                hoverBorderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(255, 159, 64, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 205, 86, 1)'
+                    'rgba(175, 125, 255, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(20, 20, 235, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 2,
+                hoverBorderWidth: 3,
+                borderRadius: 5
             }]
         },
         options: {
             scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Genres',
+                        font: {
+                            size: 20
+                        }
+                    }
+                },
                 y: {
                     min: 0,
-                    max: 10
+                    max: 10,
+                    title: {
+                        display: true,
+                        text: 'Mean Rating',
+                        font: {
+                            size: 20
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Mean Genre Rating',
+                    padding: 0,
+                    font: {
+                        size: 30
+                    }
+                },
+                subtitle: {
+                    display: true,
+                    text: '>= 5 Films',
+                    padding: 15,
+                    font: {
+                        size: 18
+                    }
                 }
             }
         }
@@ -165,27 +222,61 @@ async function graph() {
         data: {
             labels: labels_genres_quant,
             datasets: [{
-                label: 'Title',
                 data: data_genres_quant,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
                     'rgba(75, 192, 192, 0.3)',
                     'rgba(255, 159, 64, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)'
-
+                    'rgba(175, 125, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)',
+                    'rgba(20, 20, 235, 0.3)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(175, 125, 255, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(20, 20, 235, 0.5)'
                 ],
                 borderColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    'rgba(175, 125, 255, 0.8)',
+                    'rgba(255, 205, 86, 0.8)',
+                    'rgba(20, 20, 235, 0.8)'
+                ],
+                hoverBorderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(255, 159, 64, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 205, 86, 1)'
+                    'rgba(175, 125, 255, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(20, 20, 235, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 2,
+                hoverBorderWidth: 3
             }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Number of Films watched per Genre',
+                    padding: 20,
+                    font: {
+                        size: 30
+                    }
+                }
+            }
         }
     });
 
@@ -195,33 +286,90 @@ async function graph() {
         data: {
             labels: labels_directors,
             datasets: [{
-                label: 'Title',
                 data: data_directors,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
                     'rgba(75, 192, 192, 0.3)',
                     'rgba(255, 159, 64, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)'
-
+                    'rgba(175, 125, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)',
+                    'rgba(20, 20, 235, 0.3)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(175, 125, 255, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(20, 20, 235, 0.5)'
                 ],
                 borderColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    'rgba(175, 125, 255, 0.8)',
+                    'rgba(255, 205, 86, 0.8)',
+                    'rgba(20, 20, 235, 0.8)'
+                ],
+                hoverBorderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(255, 159, 64, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 205, 86, 1)'
+                    'rgba(175, 125, 255, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(20, 20, 235, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 2,
+                hoverBorderWidth: 3,
+                borderRadius: 5
             }]
         },
         options: {
             scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Directors',
+                        font: {
+                            size: 20
+                        }
+                    }
+                },
                 y: {
                     min: 0,
-                    max: 10
+                    max: 10,
+                    title: {
+                        display: true,
+                        text: 'Mean Rating',
+                        font: {
+                            size: 20
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Top 5 Directors',
+                    padding: 0,
+                    font: {
+                        size: 30
+                    }
+                },
+                subtitle: {
+                    display: true,
+                    text: '>= 5 Films',
+                    padding: 15,
+                    font: {
+                        size: 18
+                    }
                 }
             }
         }
@@ -233,33 +381,84 @@ async function graph() {
         data: {
             labels: labels_nolan,
             datasets: [{
-                label: 'Title',
                 data: data_nolan,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
                     'rgba(75, 192, 192, 0.3)',
                     'rgba(255, 159, 64, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)'
-
+                    'rgba(175, 125, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)',
+                    'rgba(20, 20, 235, 0.3)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(175, 125, 255, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(20, 20, 235, 0.5)'
                 ],
                 borderColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    'rgba(175, 125, 255, 0.8)',
+                    'rgba(255, 205, 86, 0.8)',
+                    'rgba(20, 20, 235, 0.8)'
+                ],
+                hoverBorderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(255, 159, 64, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 205, 86, 1)'
+                    'rgba(175, 125, 255, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(20, 20, 235, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 2,
+                radius: 5,
+                hoverRadius: 10,
+                hoverBorderWidth: 2,
+                tension: 0.4
             }]
         },
         options: {
             scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Film',
+                        font: {
+                            size: 20
+                        }
+                    }
+                },
                 y: {
                     min: 0,
-                    max: 10
+                    max: 10,
+                    title: {
+                        display: true,
+                        text: 'Rating',
+                        font: {
+                            size: 20
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Christopher Nolan Films',
+                    padding: 15,
+                    font: {
+                        size: 30
+                    }
                 }
             }
         }
@@ -271,33 +470,84 @@ async function graph() {
         data: {
             labels: labels_villeneuve,
             datasets: [{
-                label: 'Title',
                 data: data_villeneuve,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
                     'rgba(75, 192, 192, 0.3)',
                     'rgba(255, 159, 64, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)'
-
+                    'rgba(175, 125, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)',
+                    'rgba(20, 20, 235, 0.3)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(175, 125, 255, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(20, 20, 235, 0.5)'
                 ],
                 borderColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    'rgba(175, 125, 255, 0.8)',
+                    'rgba(255, 205, 86, 0.8)',
+                    'rgba(20, 20, 235, 0.8)'
+                ],
+                hoverBorderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(255, 159, 64, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 205, 86, 1)'
+                    'rgba(175, 125, 255, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(20, 20, 235, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 2,
+                radius: 5,
+                hoverRadius: 10,
+                hoverBorderWidth: 2,
+                tension: 0.4
             }]
         },
         options: {
             scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Film',
+                        font: {
+                            size: 20
+                        }
+                    }
+                },
                 y: {
                     min: 0,
-                    max: 10
+                    max: 10,
+                    title: {
+                        display: true,
+                        text: 'Rating',
+                        font: {
+                            size: 20
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Denis Villeneuve Films',
+                    padding: 15,
+                    font: {
+                        size: 30
+                    }
                 }
             }
         }
@@ -309,33 +559,90 @@ async function graph() {
         data: {
             labels: labels_actors,
             datasets: [{
-                label: 'Title',
                 data: data_actors,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
                     'rgba(75, 192, 192, 0.3)',
                     'rgba(255, 159, 64, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)'
-
+                    'rgba(175, 125, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)',
+                    'rgba(20, 20, 235, 0.3)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(175, 125, 255, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(20, 20, 235, 0.5)'
                 ],
                 borderColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    'rgba(175, 125, 255, 0.8)',
+                    'rgba(255, 205, 86, 0.8)',
+                    'rgba(20, 20, 235, 0.8)'
+                ],
+                hoverBorderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(255, 159, 64, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 205, 86, 1)'
+                    'rgba(175, 125, 255, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(20, 20, 235, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 2,
+                hoverBorderWidth: 3,
+                borderRadius: 5
             }]
         },
         options: {
             scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Actors',
+                        font: {
+                            size: 20
+                        }
+                    }
+                },
                 y: {
                     min: 0,
-                    max: 10
+                    max: 10,
+                    title: {
+                        display: true,
+                        text: 'Mean Rating',
+                        font: {
+                            size: 20
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Top 5 Actors',
+                    padding: 0,
+                    font: {
+                        size: 30
+                    }
+                },
+                subtitle: {
+                    display: true,
+                    text: '>= 5 Films',
+                    padding: 15,
+                    font: {
+                        size: 18
+                    }
                 }
             }
         }
@@ -347,33 +654,84 @@ async function graph() {
         data: {
             labels: labels_gosling,
             datasets: [{
-                label: 'Title',
                 data: data_gosling,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
                     'rgba(75, 192, 192, 0.3)',
                     'rgba(255, 159, 64, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)'
-
+                    'rgba(175, 125, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)',
+                    'rgba(20, 20, 235, 0.3)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(175, 125, 255, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(20, 20, 235, 0.5)'
                 ],
                 borderColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    'rgba(175, 125, 255, 0.8)',
+                    'rgba(255, 205, 86, 0.8)',
+                    'rgba(20, 20, 235, 0.8)'
+                ],
+                hoverBorderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(255, 159, 64, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 205, 86, 1)'
+                    'rgba(175, 125, 255, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(20, 20, 235, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 2,
+                radius: 5,
+                hoverRadius: 10,
+                hoverBorderWidth: 2,
+                tension: 0.4
             }]
         },
         options: {
             scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Film',
+                        font: {
+                            size: 20
+                        }
+                    }
+                },
                 y: {
                     min: 0,
-                    max: 10
+                    max: 10,
+                    title: {
+                        display: true,
+                        text: 'Rating',
+                        font: {
+                            size: 20
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Ryan Gosling Films',
+                    padding: 15,
+                    font: {
+                        size: 30
+                    }
                 }
             }
         }
@@ -385,33 +743,84 @@ async function graph() {
         data: {
             labels: labels_imdbtop25,
             datasets: [{
-                label: 'Title',
                 data: data_imdbtop25,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
                     'rgba(75, 192, 192, 0.3)',
                     'rgba(255, 159, 64, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)'
-
+                    'rgba(175, 125, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)',
+                    'rgba(20, 20, 235, 0.3)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(175, 125, 255, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(20, 20, 235, 0.5)'
                 ],
                 borderColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    'rgba(175, 125, 255, 0.8)',
+                    'rgba(255, 205, 86, 0.8)',
+                    'rgba(20, 20, 235, 0.8)'
+                ],
+                hoverBorderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(255, 159, 64, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 205, 86, 1)'
+                    'rgba(175, 125, 255, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(20, 20, 235, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 2,
+                radius: 5,
+                hoverRadius: 10,
+                hoverBorderWidth: 2,
+                tension: 0.4
             }]
         },
         options: {
             scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Film',
+                        font: {
+                            size: 20
+                        }
+                    }
+                },
                 y: {
                     min: 0,
-                    max: 10
+                    max: 10,
+                    title: {
+                        display: true,
+                        text: 'My Rating',
+                        font: {
+                            size: 20
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'IMDB Top 25',
+                    padding: 15,
+                    font: {
+                        size: 30
+                    }
                 }
             }
         }
@@ -423,33 +832,82 @@ async function graph() {
         data: {
             labels: labels_mytop10,
             datasets: [{
-                label: 'Title',
                 data: data_mytop10imdb,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
                     'rgba(75, 192, 192, 0.3)',
                     'rgba(255, 159, 64, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)'
-
+                    'rgba(175, 125, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)',
+                    'rgba(20, 20, 235, 0.3)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(175, 125, 255, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(20, 20, 235, 0.5)'
                 ],
                 borderColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    'rgba(175, 125, 255, 0.8)',
+                    'rgba(255, 205, 86, 0.8)',
+                    'rgba(20, 20, 235, 0.8)'
+                ],
+                hoverBorderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(255, 159, 64, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 205, 86, 1)'
+                    'rgba(175, 125, 255, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(20, 20, 235, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 2,
+                hoverBorderWidth: 3,
+                borderRadius: 5
             }]
         },
         options: {
             scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'My Top 10 Films',
+                        font: {
+                            size: 20
+                        }
+                    }
+                },
                 y: {
                     min: 0,
-                    max: 10
+                    max: 10,
+                    title: {
+                        display: true,
+                        text: 'IMDB Rating',
+                        font: {
+                            size: 20
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'IMDB Rating of my Top 10 Films',
+                    padding: 15,
+                    font: {
+                        size: 30
+                    }
                 }
             }
         }
@@ -461,33 +919,82 @@ async function graph() {
         data: {
             labels: labels_mytop10,
             datasets: [{
-                label: 'Title',
                 data: data_mytop10meta,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
                     'rgba(75, 192, 192, 0.3)',
                     'rgba(255, 159, 64, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)'
-
+                    'rgba(175, 125, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)',
+                    'rgba(20, 20, 235, 0.3)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(175, 125, 255, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(20, 20, 235, 0.5)'
                 ],
                 borderColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    'rgba(175, 125, 255, 0.8)',
+                    'rgba(255, 205, 86, 0.8)',
+                    'rgba(20, 20, 235, 0.8)'
+                ],
+                hoverBorderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(255, 159, 64, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 205, 86, 1)'
+                    'rgba(175, 125, 255, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(20, 20, 235, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 2,
+                hoverBorderWidth: 3,
+                borderRadius: 5
             }]
         },
         options: {
             scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'My Top 10 Films',
+                        font: {
+                            size: 20
+                        }
+                    }
+                },
                 y: {
                     min: 0,
-                    max: 100
+                    max: 100,
+                    title: {
+                        display: true,
+                        text: 'Metascore',
+                        font: {
+                            size: 20
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Metascore of my Top 10 Films',
+                    padding: 15,
+                    font: {
+                        size: 30
+                    }
                 }
             }
         }
@@ -499,33 +1006,90 @@ async function graph() {
         data: {
             labels: labels_decade,
             datasets: [{
-                label: 'Title',
                 data: data_decade,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
                     'rgba(75, 192, 192, 0.3)',
                     'rgba(255, 159, 64, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)'
-
+                    'rgba(175, 125, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)',
+                    'rgba(20, 20, 235, 0.3)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(175, 125, 255, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(20, 20, 235, 0.5)'
                 ],
                 borderColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    'rgba(175, 125, 255, 0.8)',
+                    'rgba(255, 205, 86, 0.8)',
+                    'rgba(20, 20, 235, 0.8)'
+                ],
+                hoverBorderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(255, 159, 64, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 205, 86, 1)'
+                    'rgba(175, 125, 255, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(20, 20, 235, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 2,
+                hoverBorderWidth: 3,
+                borderRadius: 5
             }]
         },
         options: {
             scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Decade',
+                        font: {
+                            size: 20
+                        }
+                    }
+                },
                 y: {
                     min: 0,
-                    max: 10
+                    max: 10,
+                    title: {
+                        display: true,
+                        text: 'Mean Rating',
+                        font: {
+                            size: 20
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Mean Decade Ratings',
+                    padding: 0,
+                    font: {
+                        size: 30
+                    }
+                },
+                subtitle: {
+                    display: true,
+                    text: '>= 10 Films',
+                    padding: 15,
+                    font: {
+                        size: 18
+                    }
                 }
             }
         }
@@ -537,33 +1101,92 @@ async function graph() {
         data: {
             labels: labels_year,
             datasets: [{
-                label: 'Title',
                 data: data_year,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
                     'rgba(75, 192, 192, 0.3)',
                     'rgba(255, 159, 64, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)'
-
+                    'rgba(175, 125, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)',
+                    'rgba(20, 20, 235, 0.3)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(175, 125, 255, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(20, 20, 235, 0.5)'
                 ],
                 borderColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    'rgba(175, 125, 255, 0.8)',
+                    'rgba(255, 205, 86, 0.8)',
+                    'rgba(20, 20, 235, 0.8)'
+                ],
+                hoverBorderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(255, 159, 64, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 205, 86, 1)'
+                    'rgba(175, 125, 255, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(20, 20, 235, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 2,
+                radius: 5,
+                hoverRadius: 10,
+                hoverBorderWidth: 2,
+                tension: 0.4
             }]
         },
         options: {
             scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Year',
+                        font: {
+                            size: 20
+                        }
+                    }
+                },
                 y: {
                     min: 0,
-                    max: 10
+                    max: 10,
+                    title: {
+                        display: true,
+                        text: 'Mean Rating',
+                        font: {
+                            size: 20
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Mean Rating for each Year',
+                    padding: 0,
+                    font: {
+                        size: 30
+                    }
+                },
+                subtitle: {
+                    display: true,
+                    text: '>= 5 Films',
+                    padding: 15,
+                    font: {
+                        size: 18
+                    }
                 }
             }
         }
@@ -575,33 +1198,90 @@ async function graph() {
         data: {
             labels: labels_runtime_ratings,
             datasets: [{
-                label: 'Title',
                 data: data_runtime_ratings,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
                     'rgba(75, 192, 192, 0.3)',
                     'rgba(255, 159, 64, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)'
-
+                    'rgba(175, 125, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)',
+                    'rgba(20, 20, 235, 0.3)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(175, 125, 255, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(20, 20, 235, 0.5)'
                 ],
                 borderColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    'rgba(175, 125, 255, 0.8)',
+                    'rgba(255, 205, 86, 0.8)',
+                    'rgba(20, 20, 235, 0.8)'
+                ],
+                hoverBorderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(255, 159, 64, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 205, 86, 1)'
+                    'rgba(175, 125, 255, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(20, 20, 235, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 2,
+                hoverBorderWidth: 3,
+                borderRadius: 5
             }]
         },
         options: {
             scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Runtime (minutes)',
+                        font: {
+                            size: 20
+                        }
+                    }
+                },
                 y: {
                     min: 0,
-                    max: 10
+                    max: 10,
+                    title: {
+                        display: true,
+                        text: 'Mean Rating',
+                        font: {
+                            size: 20
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Mean Rating for each Runtime Interval',
+                    padding: 0,
+                    font: {
+                        size: 30
+                    }
+                },
+                subtitle: {
+                    display: true,
+                    text: '>= 5 Films',
+                    padding: 15,
+                    font: {
+                        size: 18
+                    }
                 }
             }
         }
@@ -613,27 +1293,58 @@ async function graph() {
         data: {
             labels: labels_runtime_quant,
             datasets: [{
-                label: 'Title',
                 data: data_runtime_quant,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
                     'rgba(75, 192, 192, 0.3)',
                     'rgba(255, 159, 64, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)'
-
+                    'rgba(175, 125, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)',
+                    'rgba(20, 20, 235, 0.3)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(175, 125, 255, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(20, 20, 235, 0.5)'
                 ],
                 borderColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    'rgba(175, 125, 255, 0.8)',
+                    'rgba(255, 205, 86, 0.8)',
+                    'rgba(20, 20, 235, 0.8)'
+                ],
+                hoverBorderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(255, 159, 64, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 205, 86, 1)'
+                    'rgba(175, 125, 255, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(20, 20, 235, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 2,
+                hoverBorderWidth: 3
             }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Number of Films watched per Runtime Interval',
+                    padding: 20,
+                    font: {
+                        size: 30
+                    }
+                }
+            }
         }
     });
 
@@ -643,33 +1354,82 @@ async function graph() {
         data: {
             labels: labels_engint,
             datasets: [{
-                label: 'Title',
                 data: data_engint,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
                     'rgba(75, 192, 192, 0.3)',
                     'rgba(255, 159, 64, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)'
-
+                    'rgba(175, 125, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)',
+                    'rgba(20, 20, 235, 0.3)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(175, 125, 255, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(20, 20, 235, 0.5)'
                 ],
                 borderColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    'rgba(175, 125, 255, 0.8)',
+                    'rgba(255, 205, 86, 0.8)',
+                    'rgba(20, 20, 235, 0.8)'
+                ],
+                hoverBorderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(255, 159, 64, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 205, 86, 1)'
+                    'rgba(175, 125, 255, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(20, 20, 235, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 2,
+                hoverBorderWidth: 3,
+                borderRadius: 5
             }]
         },
         options: {
             scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Film Type',
+                        font: {
+                            size: 20
+                        }
+                    }
+                },
                 y: {
                     min: 0,
-                    max: 10
+                    max: 10,
+                    title: {
+                        display: true,
+                        text: 'Mean Rating',
+                        font: {
+                            size: 20
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Mean Rating of English & International Films',
+                    padding: 15,
+                    font: {
+                        size: 30
+                    }
                 }
             }
         }
@@ -681,33 +1441,56 @@ async function graph() {
         data: {
             labels: labels_engint,
             datasets: [{
-                label: 'Title',
                 data: quant_engint,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
                     'rgba(75, 192, 192, 0.3)',
                     'rgba(255, 159, 64, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)'
-
+                    'rgba(175, 125, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)',
+                    'rgba(20, 20, 235, 0.3)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(175, 125, 255, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(20, 20, 235, 0.5)'
                 ],
                 borderColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    'rgba(175, 125, 255, 0.8)',
+                    'rgba(255, 205, 86, 0.8)',
+                    'rgba(20, 20, 235, 0.8)'
+                ],
+                hoverBorderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(255, 159, 64, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 205, 86, 1)'
+                    'rgba(175, 125, 255, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(20, 20, 235, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 2,
+                hoverBorderWidth: 3
             }]
         },
         options: {
-            scales: {
-                y: {
-                    min: 0,
-                    max: 10
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Number of English & International Films',
+                    padding: 20,
+                    font: {
+                        size: 30
+                    }
                 }
             }
         }
@@ -719,33 +1502,82 @@ async function graph() {
         data: {
             labels: labels_cinema,
             datasets: [{
-                label: 'Title',
                 data: ratings_cinema,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
                     'rgba(75, 192, 192, 0.3)',
                     'rgba(255, 159, 64, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)'
-
+                    'rgba(175, 125, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)',
+                    'rgba(20, 20, 235, 0.3)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(175, 125, 255, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(20, 20, 235, 0.5)'
                 ],
                 borderColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    'rgba(175, 125, 255, 0.8)',
+                    'rgba(255, 205, 86, 0.8)',
+                    'rgba(20, 20, 235, 0.8)'
+                ],
+                hoverBorderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(255, 159, 64, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 205, 86, 1)'
+                    'rgba(175, 125, 255, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(20, 20, 235, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 2,
+                hoverBorderWidth: 3,
+                borderRadius: 5
             }]
         },
         options: {
             scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Film Type',
+                        font: {
+                            size: 20
+                        }
+                    }
+                },
                 y: {
                     min: 0,
-                    max: 10
+                    max: 10,
+                    title: {
+                        display: true,
+                        text: 'Mean Rating',
+                        font: {
+                            size: 20
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Mean Rating of Films watched in and out of Cinema',
+                    padding: 15,
+                    font: {
+                        size: 30
+                    }
                 }
             }
         }
@@ -757,33 +1589,56 @@ async function graph() {
         data: {
             labels: labels_cinema,
             datasets: [{
-                label: 'Title',
                 data: quant_cinema,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
                     'rgba(75, 192, 192, 0.3)',
                     'rgba(255, 159, 64, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)'
-
+                    'rgba(175, 125, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)',
+                    'rgba(20, 20, 235, 0.3)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(175, 125, 255, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(20, 20, 235, 0.5)'
                 ],
                 borderColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    'rgba(175, 125, 255, 0.8)',
+                    'rgba(255, 205, 86, 0.8)',
+                    'rgba(20, 20, 235, 0.8)'
+                ],
+                hoverBorderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(255, 159, 64, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 205, 86, 1)'
+                    'rgba(175, 125, 255, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(20, 20, 235, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 2,
+                hoverBorderWidth: 3
             }]
         },
         options: {
-            scales: {
-                y: {
-                    min: 0,
-                    max: 10
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Number of Films watched in & out of Cinema',
+                    padding: 20,
+                    font: {
+                        size: 30
+                    }
                 }
             }
         }
@@ -795,33 +1650,82 @@ async function graph() {
         data: {
             labels: labels_content,
             datasets: [{
-                label: 'Title',
                 data: ratings_content,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
                     'rgba(75, 192, 192, 0.3)',
                     'rgba(255, 159, 64, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)'
-
+                    'rgba(175, 125, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)',
+                    'rgba(20, 20, 235, 0.3)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(175, 125, 255, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(20, 20, 235, 0.5)'
                 ],
                 borderColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    'rgba(175, 125, 255, 0.8)',
+                    'rgba(255, 205, 86, 0.8)',
+                    'rgba(20, 20, 235, 0.8)'
+                ],
+                hoverBorderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(255, 159, 64, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 205, 86, 1)'
+                    'rgba(175, 125, 255, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(20, 20, 235, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 2,
+                hoverBorderWidth: 3,
+                borderRadius: 5
             }]
         },
         options: {
             scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Content Rating',
+                        font: {
+                            size: 20
+                        }
+                    }
+                },
                 y: {
                     min: 0,
-                    max: 10
+                    max: 10,
+                    title: {
+                        display: true,
+                        text: 'Mean Rating',
+                        font: {
+                            size: 20
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Mean Rating of each Content Rating',
+                    padding: 15,
+                    font: {
+                        size: 30
+                    }
                 }
             }
         }
@@ -833,33 +1737,56 @@ async function graph() {
         data: {
             labels: labels_content,
             datasets: [{
-                label: 'Title',
                 data: quant_content,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
                     'rgba(75, 192, 192, 0.3)',
                     'rgba(255, 159, 64, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)'
-
+                    'rgba(175, 125, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)',
+                    'rgba(20, 20, 235, 0.3)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(175, 125, 255, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(20, 20, 235, 0.5)'
                 ],
                 borderColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    'rgba(175, 125, 255, 0.8)',
+                    'rgba(255, 205, 86, 0.8)',
+                    'rgba(20, 20, 235, 0.8)'
+                ],
+                hoverBorderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(255, 159, 64, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 205, 86, 1)'
+                    'rgba(175, 125, 255, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(20, 20, 235, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 2,
+                hoverBorderWidth: 3
             }]
         },
         options: {
-            scales: {
-                y: {
-                    min: 0,
-                    max: 10
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Number of Films per Content Rating',
+                    padding: 20,
+                    font: {
+                        size: 30
+                    }
                 }
             }
         }
@@ -871,33 +1798,84 @@ async function graph() {
         data: {
             labels: labels_mcu,
             datasets: [{
-                label: 'Title',
                 data: rating_mcu,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
                     'rgba(75, 192, 192, 0.3)',
                     'rgba(255, 159, 64, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)'
-
+                    'rgba(175, 125, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)',
+                    'rgba(20, 20, 235, 0.3)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(175, 125, 255, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(20, 20, 235, 0.5)'
                 ],
                 borderColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    'rgba(175, 125, 255, 0.8)',
+                    'rgba(255, 205, 86, 0.8)',
+                    'rgba(20, 20, 235, 0.8)'
+                ],
+                hoverBorderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(255, 159, 64, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 205, 86, 1)'
+                    'rgba(175, 125, 255, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(20, 20, 235, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 2,
+                radius: 5,
+                hoverRadius: 10,
+                hoverBorderWidth: 2,
+                tension: 0.4
             }]
         },
         options: {
             scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Film',
+                        font: {
+                            size: 20
+                        }
+                    }
+                },
                 y: {
                     min: 0,
-                    max: 10
+                    max: 10,
+                    title: {
+                        display: true,
+                        text: 'Rating',
+                        font: {
+                            size: 20
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'MCU Films',
+                    padding: 15,
+                    font: {
+                        size: 30
+                    }
                 }
             }
         }
@@ -909,33 +1887,84 @@ async function graph() {
         data: {
             labels: labels_bond,
             datasets: [{
-                label: 'Title',
                 data: rating_bond,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
                     'rgba(75, 192, 192, 0.3)',
                     'rgba(255, 159, 64, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)'
-
+                    'rgba(175, 125, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)',
+                    'rgba(20, 20, 235, 0.3)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(175, 125, 255, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(20, 20, 235, 0.5)'
                 ],
                 borderColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    'rgba(175, 125, 255, 0.8)',
+                    'rgba(255, 205, 86, 0.8)',
+                    'rgba(20, 20, 235, 0.8)'
+                ],
+                hoverBorderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(255, 159, 64, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 205, 86, 1)'
+                    'rgba(175, 125, 255, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(20, 20, 235, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 2,
+                radius: 5,
+                hoverRadius: 10,
+                hoverBorderWidth: 2,
+                tension: 0.4
             }]
         },
         options: {
             scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Film',
+                        font: {
+                            size: 20
+                        }
+                    }
+                },
                 y: {
                     min: 0,
-                    max: 10
+                    max: 10,
+                    title: {
+                        display: true,
+                        text: 'Rating',
+                        font: {
+                            size: 20
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'James Bond Films',
+                    padding: 15,
+                    font: {
+                        size: 30
+                    }
                 }
             }
         }
@@ -947,33 +1976,84 @@ async function graph() {
         data: {
             labels: labels_lotr,
             datasets: [{
-                label: 'Title',
                 data: rating_lotr,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
                     'rgba(75, 192, 192, 0.3)',
                     'rgba(255, 159, 64, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)'
-
+                    'rgba(175, 125, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)',
+                    'rgba(20, 20, 235, 0.3)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(175, 125, 255, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(20, 20, 235, 0.5)'
                 ],
                 borderColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    'rgba(175, 125, 255, 0.8)',
+                    'rgba(255, 205, 86, 0.8)',
+                    'rgba(20, 20, 235, 0.8)'
+                ],
+                hoverBorderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(255, 159, 64, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 205, 86, 1)'
+                    'rgba(175, 125, 255, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(20, 20, 235, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 2,
+                radius: 5,
+                hoverRadius: 10,
+                hoverBorderWidth: 2,
+                tension: 0.4
             }]
         },
         options: {
             scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Film',
+                        font: {
+                            size: 20
+                        }
+                    }
+                },
                 y: {
                     min: 0,
-                    max: 10
+                    max: 10,
+                    title: {
+                        display: true,
+                        text: 'Rating',
+                        font: {
+                            size: 20
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'The Lord of the Rings & The Hobbit Films',
+                    padding: 15,
+                    font: {
+                        size: 30
+                    }
                 }
             }
         }
@@ -985,33 +2065,84 @@ async function graph() {
         data: {
             labels: labels_hp,
             datasets: [{
-                label: 'Title',
                 data: rating_hp,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
                     'rgba(75, 192, 192, 0.3)',
                     'rgba(255, 159, 64, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)'
-
+                    'rgba(175, 125, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)',
+                    'rgba(20, 20, 235, 0.3)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(175, 125, 255, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(20, 20, 235, 0.5)'
                 ],
                 borderColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    'rgba(175, 125, 255, 0.8)',
+                    'rgba(255, 205, 86, 0.8)',
+                    'rgba(20, 20, 235, 0.8)'
+                ],
+                hoverBorderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(255, 159, 64, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 205, 86, 1)'
+                    'rgba(175, 125, 255, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(20, 20, 235, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 2,
+                radius: 5,
+                hoverRadius: 10,
+                hoverBorderWidth: 2,
+                tension: 0.4
             }]
         },
         options: {
             scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Film',
+                        font: {
+                            size: 20
+                        }
+                    }
+                },
                 y: {
                     min: 0,
-                    max: 10
+                    max: 10,
+                    title: {
+                        display: true,
+                        text: 'Rating',
+                        font: {
+                            size: 20
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Harry Potter & Fantastic Beasts Films',
+                    padding: 15,
+                    font: {
+                        size: 30
+                    }
                 }
             }
         }
@@ -1023,33 +2154,84 @@ async function graph() {
         data: {
             labels: labels_sw,
             datasets: [{
-                label: 'Title',
                 data: rating_sw,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
                     'rgba(75, 192, 192, 0.3)',
                     'rgba(255, 159, 64, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)'
-
+                    'rgba(175, 125, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)',
+                    'rgba(20, 20, 235, 0.3)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(175, 125, 255, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(20, 20, 235, 0.5)'
                 ],
                 borderColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    'rgba(175, 125, 255, 0.8)',
+                    'rgba(255, 205, 86, 0.8)',
+                    'rgba(20, 20, 235, 0.8)'
+                ],
+                hoverBorderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(255, 159, 64, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 205, 86, 1)'
+                    'rgba(175, 125, 255, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(20, 20, 235, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 2,
+                radius: 5,
+                hoverRadius: 10,
+                hoverBorderWidth: 2,
+                tension: 0.4
             }]
         },
         options: {
             scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Film',
+                        font: {
+                            size: 20
+                        }
+                    }
+                },
                 y: {
                     min: 0,
-                    max: 10
+                    max: 10,
+                    title: {
+                        display: true,
+                        text: 'Rating',
+                        font: {
+                            size: 20
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Star Wars Films',
+                    padding: 15,
+                    font: {
+                        size: 30
+                    }
                 }
             }
         }
@@ -1061,48 +2243,86 @@ async function graph() {
         data: {
             labels: labels_myRating,
             datasets: [{
-                label: 'Title',
                 data: data_myRating,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
                     'rgba(75, 192, 192, 0.3)',
                     'rgba(255, 159, 64, 0.3)',
-                    'rgba(153, 102, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)'
-
+                    'rgba(175, 125, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)',
+                    'rgba(20, 20, 235, 0.3)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(175, 125, 255, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(20, 20, 235, 0.5)'
                 ],
                 borderColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    'rgba(175, 125, 255, 0.8)',
+                    'rgba(255, 205, 86, 0.8)',
+                    'rgba(20, 20, 235, 0.8)'
+                ],
+                hoverBorderColor: [
                     'rgba(54, 162, 235, 1)',
                     'rgba(255, 99, 132, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(255, 159, 64, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 205, 86, 1)'
+                    'rgba(175, 125, 255, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(20, 20, 235, 1)'
                 ],
-                borderWidth: 1
+                borderWidth: 2,
+                hoverBorderWidth: 3,
+                borderRadius: 5
             }]
         },
         options: {
             scales: {
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Rating',
+                        font: {
+                            size: 20
+                        }
+                    }
+                },
                 y: {
-                    min: 0
+                    min: 0,
+                    title: {
+                        display: true,
+                        text: 'Number of Films',
+                        font: {
+                            size: 20
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: true,
+                    text: 'Distribution of my Ratings',
+                    padding: 15,
+                    font: {
+                        size: 30
+                    }
                 }
             }
         }
     });
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 // Very commonly I need to iterate through all the films
@@ -1968,7 +3188,7 @@ function getRuntimeLabels(runtimes, n) {
             if (runtime.runtime === Infinity) {
                 runtimeLabels.push("∞");
             } else {
-                runtimeLabels.push(runtime.runtime);
+                runtimeLabels.push("<"+ runtime.runtime);
             }
         }
     });
