@@ -1,5 +1,107 @@
 [
     {
+        "title": "The Graduate",
+        "id": "tt0061722",
+        "year": 1967,
+        "myRating": 7,
+        "imdbRating": 8,
+        "metascore": 83,
+        "image": "https://m.media-amazon.com/images/M/MV5BMTQ0ODc4MDk4Nl5BMl5BanBnXkFtZTcwMTEzNzgzNA@@._V1_QL75_UX190_CR0,2,190,281_.jpg",
+        "runtime": 106,
+        "directors": [
+            "Mike Nichols"
+        ],
+        "actors": [
+            {
+                "name": "Dustin Hoffman",
+                "image": "https://m.media-amazon.com/images/M/MV5BMTc3NzU0ODczMF5BMl5BanBnXkFtZTcwODEyMDY5Mg@@._V1_QL75_UX140_CR0,1,140,140_.jpg"
+            },
+            {
+                "name": "Anne Bancroft",
+                "image": "https://m.media-amazon.com/images/M/MV5BMTg2MzQ3MTk4OV5BMl5BanBnXkFtZTcwMzIzNzgzNA@@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Katharine Ross",
+                "image": "https://m.media-amazon.com/images/M/MV5BZmM3ZDVmOTQtMGUxMy00Y2E4LWIwMGMtM2M5NTUyMmJiZTk0XkEyXkFqcGdeQXVyMDc2NTEzMw@@._V1_QL75_UX140_CR0,9,140,140_.jpg"
+            },
+            {
+                "name": "William Daniels",
+                "image": "https://m.media-amazon.com/images/M/MV5BMjI0MDA2NTYxMV5BMl5BanBnXkFtZTcwNTU3NTgzNw@@._V1_QL75_UX140_CR0,14,140,140_.jpg"
+            },
+            {
+                "name": "Murray Hamilton",
+                "image": "https://m.media-amazon.com/images/M/MV5BMjA1MDkyNzM0MV5BMl5BanBnXkFtZTcwOTk1MTA1OA@@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Elizabeth Wilson",
+                "image": "https://m.media-amazon.com/images/M/MV5BNjExMzQ5NTAwNF5BMl5BanBnXkFtZTgwMDc2NzY2NTE@._V1_QL75_UX140_CR0,17,140,140_.jpg"
+            },
+            {
+                "name": "Buck Henry",
+                "image": "https://m.media-amazon.com/images/M/MV5BY2UwNGU5NDEtZmU3Yy00YzNlLWE0YmUtZWIyMjgyZGU4OGM2XkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_QL75_UX140_CR0,12,140,140_.jpg"
+            },
+            {
+                "name": "Brian Avery",
+                "image": "https://m.media-amazon.com/images/M/MV5BMjA4ODQ1NTEyNF5BMl5BanBnXkFtZTcwNTIzNzgzNA@@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Walter Brooke",
+                "image": "https://m.media-amazon.com/images/M/MV5BODY0NzM3MzIxN15BMl5BanBnXkFtZTgwNjk5NzU0NDE@._V1_QL75_UY140_CR24,0,140,140_.jpg"
+            },
+            {
+                "name": "Norman Fell",
+                "image": "https://m.media-amazon.com/images/M/MV5BMjA0NjQ1Mjc0MF5BMl5BanBnXkFtZTYwODAxNDI2._V1_QL75_UX140_CR0,3,140,140_.jpg"
+            },
+            {
+                "name": "Alice Ghostley",
+                "image": "https://m.media-amazon.com/images/M/MV5BMTYzMDQxMjA4NV5BMl5BanBnXkFtZTcwNjMwNDkwOA@@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Marion Lorne",
+                "image": "https://m.media-amazon.com/images/M/MV5BMTczNzk2OTk4Nl5BMl5BanBnXkFtZTYwODQ5OTE2._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Eddra Gale",
+                "image": "https://m.media-amazon.com/images/M/MV5BMjE2NzAzNDQxMF5BMl5BanBnXkFtZTgwOTk5OTU2MjE@._V1_QL75_UY140_CR24,0,140,140_.jpg"
+            },
+            {
+                "name": "Frank Baker",
+                "image": "https://m.media-amazon.com/images/M/MV5BMDIyOWI4Y2EtZmY4OS00ZTY0LWE5NmEtZjQxOGI4NjFjYjQyXkEyXkFqcGdeQXVyMzI5NDcxNzI@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "George Bruggeman",
+                "image": "https://m.media-amazon.com/images/M/MV5BZjI0NGFmZGQtNDA0OS00MzE5LWI2NmYtMzNkN2RjODBjMGNhXkEyXkFqcGdeQXVyMTcyODY2NDQ@._V1_QL75_UX140_CR0,85,140,140_.jpg"
+            },
+            {
+                "name": "Garrett Cassell",
+                "image": ""
+            },
+            {
+                "name": "Buddy Douglas",
+                "image": ""
+            },
+            {
+                "name": "Richard Dreyfuss",
+                "image": "https://m.media-amazon.com/images/M/MV5BMTUzMjIzMjM2NV5BMl5BanBnXkFtZTcwNDAxMDY0Mg@@._V1_QL75_UX140_CR0,7,140,140_.jpg"
+            }
+        ],
+        "genres": [
+            "Comedy",
+            "Drama",
+            "Romance"
+        ],
+        "countries": [
+            "United States"
+        ],
+        "languages": [
+            "English"
+        ],
+        "contentRating": "15A",
+        "watchedInCinema": false,
+        "myTop10Position": -1,
+        "franchise": ""
+    },
+    {
         "title": "The Holdovers",
         "id": "tt14849194",
         "year": 2023,
@@ -5261,7 +5363,7 @@
         "year": 2006,
         "myRating": 8,
         "imdbRating": 7.8,
-        "metascore": 80,
+        "metascore": -1,
         "image": "https://m.media-amazon.com/images/M/MV5BMTgzNTgzODU0NV5BMl5BanBnXkFtZTcwMjEyMjMzMQ@@._V1_QL75_UY281_CR0,0,190,281_.jpg",
         "runtime": 101,
         "directors": [
@@ -11863,7 +11965,7 @@
         "year": 1998,
         "myRating": 6,
         "imdbRating": 7.2,
-        "metascore": 77,
+        "metascore": 78,
         "image": "https://m.media-amazon.com/images/M/MV5BNThmZGY4NzgtMTM4OC00NzNkLWEwNmEtMjdhMGY5YTc1NDE4XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_QL75_UX190_CR0,6,190,281_.jpg",
         "runtime": 95,
         "directors": [
@@ -13116,7 +13218,7 @@
         "year": 1968,
         "myRating": 7,
         "imdbRating": 8.5,
-        "metascore": 82,
+        "metascore": -1,
         "image": "https://m.media-amazon.com/images/M/MV5BODQ3NDExOGYtMzI3Mi00NWRlLTkwNjAtNjc4MDgzZGJiZTA1XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_QL75_UX190_CR0,1,190,281_.jpg",
         "runtime": 166,
         "directors": [
@@ -14177,7 +14279,7 @@
         "year": 1948,
         "myRating": 8,
         "imdbRating": 7.6,
-        "metascore": -1,
+        "metascore": 82,
         "image": "https://m.media-amazon.com/images/M/MV5BM2Q3MDk4MzQtYzg1Ny00MGQ2LThjMzgtYWRjY2JlZTRkNjU0XkEyXkFqcGdeQXVyMTUzMDUzNTI3._V1_QL75_UX190_CR0,2,190,281_.jpg",
         "runtime": 154,
         "directors": [
@@ -14385,7 +14487,7 @@
         "year": 1954,
         "myRating": 7,
         "imdbRating": 8.6,
-        "metascore": 98,
+        "metascore": -1,
         "image": "https://m.media-amazon.com/images/M/MV5BNTkwY2I5NWMtMjNlNi00ZThjLWI4NzQtNDI4M2I4OGM1YjAzXkEyXkFqcGdeQXVyNzYxODE3NTQ@._V1_QL75_UY281_CR5,0,190,281_.jpg",
         "runtime": 207,
         "directors": [
@@ -16621,7 +16723,7 @@
         "year": 2021,
         "myRating": 6,
         "imdbRating": 7.5,
-        "metascore": -1,
+        "metascore": 76,
         "image": "https://m.media-amazon.com/images/M/MV5BYTcyNmY4ZGEtYmE4Zi00ZDViLTlmYzMtMmQ4ZTM4OWNmZjQxXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_QL75_UX190_CR0,0,190,281_.jpg",
         "runtime": 144,
         "directors": [
@@ -18292,7 +18394,7 @@
         "year": 2012,
         "myRating": 8,
         "imdbRating": 7.8,
-        "metascore": 81,
+        "metascore": -1,
         "image": "https://m.media-amazon.com/images/M/MV5BMWZiNjE2OWItMTkwNy00ZWQzLWI0NTgtMWE0NjNiYTljN2Q1XkEyXkFqcGdeQXVyNzAwMjYxMzA@._V1_QL75_UX190_CR0,0,190,281_.jpg",
         "runtime": 143,
         "directors": [
@@ -21633,7 +21735,7 @@
         "year": 2012,
         "myRating": 8,
         "imdbRating": 7.3,
-        "metascore": -1,
+        "metascore": 68,
         "image": "https://m.media-amazon.com/images/M/MV5BMjc1OTEwNjU4N15BMl5BanBnXkFtZTcwNzUzNDIwOQ@@._V1_QL75_UX190_CR0,6,190,281_.jpg",
         "runtime": 140,
         "directors": [
@@ -29720,7 +29822,7 @@
         "year": 1992,
         "myRating": 4,
         "imdbRating": 7.1,
-        "metascore": -1,
+        "metascore": 68,
         "image": "https://m.media-amazon.com/images/M/MV5BOGZmYzVkMmItM2NiOS00MDI3LWI4ZWQtMTg0YWZkODRkMmViXkEyXkFqcGdeQXVyODY0NzcxNw@@._V1_QL75_UX190_CR0,0,190,281_.jpg",
         "runtime": 126,
         "directors": [
@@ -31048,7 +31150,7 @@
         "year": 2013,
         "myRating": 6,
         "imdbRating": 7.4,
-        "metascore": -1,
+        "metascore": 75,
         "image": "https://m.media-amazon.com/images/M/MV5BMTQ1MjQwMTE5OF5BMl5BanBnXkFtZTgwNjk3MTcyMDE@._V1_QL75_UX190_CR0,0,190,281_.jpg",
         "runtime": 102,
         "directors": [
@@ -32858,7 +32960,7 @@
         "year": 2002,
         "myRating": 7,
         "imdbRating": 7.3,
-        "metascore": -1,
+        "metascore": 74,
         "image": "https://m.media-amazon.com/images/M/MV5BYTY5MGE4MjEtNTMzYy00ODAxLWFiNDQtNzhlOGJiZWIzNDhkXkEyXkFqcGdeQXVyNTM5NzI0NDY@._V1_QL75_UX190_CR0,0,190,281_.jpg",
         "runtime": 85,
         "directors": [
@@ -34317,7 +34419,7 @@
         "year": 1995,
         "myRating": 8,
         "imdbRating": 7.8,
-        "metascore": -1,
+        "metascore": 75,
         "image": "https://m.media-amazon.com/images/M/MV5BZDg0MWNmNjktMGEwZC00ZDlmLWI1MTUtMDBmNjQzMWM2NjBjXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_QL75_UX190_CR0,2,190,281_.jpg",
         "runtime": 111,
         "directors": [
@@ -39032,7 +39134,7 @@
         "year": 1958,
         "myRating": 7,
         "imdbRating": 8.3,
-        "metascore": 100,
+        "metascore": -1,
         "image": "https://m.media-amazon.com/images/M/MV5BYTE4ODEwZDUtNDFjOC00NjAxLWEzYTQtYTI1NGVmZmFlNjdiL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_QL75_UX190_CR0,6,190,281_.jpg",
         "runtime": 128,
         "directors": [
