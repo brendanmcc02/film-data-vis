@@ -14,6 +14,15 @@ body, html {
     src: url("fonts/Lato/Lato-Italic.ttf");
 }
 
+.canvas-div {
+    width: 60%;
+    margin: 0;
+    position: relative;
+    top: 48%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
 .title-text {
     font-size: 50px;
     color: azure;
