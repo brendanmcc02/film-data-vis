@@ -1,12 +1,59 @@
 body, html {
     height: 100%;
     margin: 0;
+    scroll-behavior: smooth;
 }
 
-.bg {
-    background-image: url("../media/la-la-land.jpg");
-    height: 100%;
+@font-face {
+    font-family: lato-black;
+    src: url("fonts/Lato/Lato-Black.ttf");
+}
 
+@font-face {
+    font-family: lato-italic;
+    src: url("fonts/Lato/Lato-Italic.ttf");
+}
+
+.title-text {
+    font-size: 50px;
+    color: azure;
+    font-family: lato-black, serif;
+}
+
+.para-text {
+    font-size: 23px;
+    color: aliceblue;
+    font-family: lato-italic, serif;
+}
+
+.center {
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.center-bottom {
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 95%;
+    transform: translate(-50%, -50%);
+}
+
+.down-button {
+    color: white;
+    font-size: 50px;
+    text-decoration: none;
+}
+
+.home-image {
+    background-image: url("media/la-la-land.jpg");
+}
+
+.background-image {
+    height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
