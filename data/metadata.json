@@ -1,7 +1,7 @@
 {
-    "status": "ok",
-    "lastWrite": "11:09 Thursday 25/1/2024",
-    "runtime": "23 minutes 3 seconds",
-    "errorName": "",
-    "errorMessage": ""
+    "status": "error",
+    "lastWrite": "15:09 Saturday 27/1/2024",
+    "runtime": "1 minutes 2 seconds",
+    "errorName": "FetchError",
+    "errorMessage": "request to https://www.imdb.com/title/tt0098635 failed, reason: getaddrinfo EAI_AGAIN www.imdb.com"
 }
