@@ -1442,7 +1442,7 @@
         "year": 2011,
         "myRating": 9,
         "imdbRating": 7.4,
-        "metascore": 68,
+        "metascore": -1,
         "image": "https://m.media-amazon.com/images/M/MV5BMTg2MjkwMTM0NF5BMl5BanBnXkFtZTcwMzc4NDg2NQ@@._V1_QL75_UX190_CR0,0,190,281_.jpg",
         "runtime": 118,
         "directors": [
@@ -5363,7 +5363,7 @@
         "year": 2006,
         "myRating": 8,
         "imdbRating": 7.8,
-        "metascore": -1,
+        "metascore": 80,
         "image": "https://m.media-amazon.com/images/M/MV5BMTgzNTgzODU0NV5BMl5BanBnXkFtZTcwMjEyMjMzMQ@@._V1_QL75_UY281_CR0,0,190,281_.jpg",
         "runtime": 101,
         "directors": [
@@ -10403,7 +10403,7 @@
         "year": 2012,
         "myRating": 7,
         "imdbRating": 7.2,
-        "metascore": 69,
+        "metascore": -1,
         "image": "https://m.media-amazon.com/images/M/MV5BNTZjNzRjMTMtZDMzNy00Y2ZjLTg0OTAtZjVhNzYyZmJjOTljXkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_QL75_UX190_CR0,0,190,281_.jpg",
         "runtime": 109,
         "directors": [
@@ -13218,7 +13218,7 @@
         "year": 1968,
         "myRating": 7,
         "imdbRating": 8.5,
-        "metascore": -1,
+        "metascore": 82,
         "image": "https://m.media-amazon.com/images/M/MV5BODQ3NDExOGYtMzI3Mi00NWRlLTkwNjAtNjc4MDgzZGJiZTA1XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_QL75_UX190_CR0,1,190,281_.jpg",
         "runtime": 166,
         "directors": [
@@ -14487,7 +14487,7 @@
         "year": 1954,
         "myRating": 7,
         "imdbRating": 8.6,
-        "metascore": -1,
+        "metascore": 98,
         "image": "https://m.media-amazon.com/images/M/MV5BNTkwY2I5NWMtMjNlNi00ZThjLWI4NzQtNDI4M2I4OGM1YjAzXkEyXkFqcGdeQXVyNzYxODE3NTQ@._V1_QL75_UY281_CR5,0,190,281_.jpg",
         "runtime": 207,
         "directors": [
@@ -18394,7 +18394,7 @@
         "year": 2012,
         "myRating": 8,
         "imdbRating": 7.8,
-        "metascore": -1,
+        "metascore": 81,
         "image": "https://m.media-amazon.com/images/M/MV5BMWZiNjE2OWItMTkwNy00ZWQzLWI0NTgtMWE0NjNiYTljN2Q1XkEyXkFqcGdeQXVyNzAwMjYxMzA@._V1_QL75_UX190_CR0,0,190,281_.jpg",
         "runtime": 143,
         "directors": [
@@ -23072,7 +23072,7 @@
         "id": "tt0071360",
         "year": 1974,
         "myRating": 7,
-        "imdbRating": 7.8,
+        "imdbRating": 7.7,
         "metascore": 87,
         "image": "https://m.media-amazon.com/images/M/MV5BNzAwZWRhZTEtOWYwMi00YzQ5LWE1MzQtM2JlZWE0Y2E4ZDg3XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_QL75_UX190_CR0,3,190,281_.jpg",
         "runtime": 113,
@@ -25343,7 +25343,7 @@
         "year": 2004,
         "myRating": 8,
         "imdbRating": 7.9,
-        "metascore": 76,
+        "metascore": -1,
         "image": "https://m.media-amazon.com/images/M/MV5BMTg5Mjk2NDMtZTk0Ny00YTQ0LWIzYWEtMWI5MGQ0Mjg1OTNkXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_QL75_UX190_CR0,1,190,281_.jpg",
         "runtime": 99,
         "directors": [
@@ -28098,7 +28098,7 @@
         "year": 2000,
         "myRating": 8,
         "imdbRating": 7.1,
-        "metascore": 88,
+        "metascore": -1,
         "image": "https://m.media-amazon.com/images/M/MV5BNDgxNjZlZDYtZGJmZC00Mjg0LWEwYzctYWQ0MWFjNTM3ZmM4XkEyXkFqcGdeQXVyNTM5NzI0NDY@._V1_QL75_UY281_CR0,0,190,281_.jpg",
         "runtime": 84,
         "directors": [
@@ -32090,7 +32090,7 @@
         "year": 2000,
         "myRating": 7,
         "imdbRating": 7.4,
-        "metascore": 73,
+        "metascore": -1,
         "image": "https://m.media-amazon.com/images/M/MV5BYTA1NWRkNTktNDMxNS00NjE4LWEzMDAtNzA3YzlhYzRhNDA4L2ltYWdlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_QL75_UX190_CR0,0,190,281_.jpg",
         "runtime": 131,
         "directors": [
@@ -33901,7 +33901,7 @@
         "year": 1989,
         "myRating": 7,
         "imdbRating": 7.6,
-        "metascore": 88,
+        "metascore": -1,
         "image": "https://m.media-amazon.com/images/M/MV5BOWUyNDA0ZmItMzg2My00YjJhLTk1N2QtYTAxYTc0NzMzNDI0XkEyXkFqcGdeQXVyMTI5NzUyMTIz._V1_QL75_UX190_CR0,2,190,281_.jpg",
         "runtime": 83,
         "directors": [
@@ -39134,7 +39134,7 @@
         "year": 1958,
         "myRating": 7,
         "imdbRating": 8.3,
-        "metascore": -1,
+        "metascore": 100,
         "image": "https://m.media-amazon.com/images/M/MV5BYTE4ODEwZDUtNDFjOC00NjAxLWEzYTQtYTI1NGVmZmFlNjdiL2ltYWdlL2ltYWdlXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_QL75_UX190_CR0,6,190,281_.jpg",
         "runtime": 128,
         "directors": [
@@ -44603,7 +44603,7 @@
         "year": 2019,
         "myRating": 8,
         "imdbRating": 8.4,
-        "metascore": 78,
+        "metascore": -1,
         "image": "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_QL75_UX190_CR0,0,190,281_.jpg",
         "runtime": 181,
         "directors": [

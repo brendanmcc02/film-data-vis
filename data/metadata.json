@@ -1,7 +1,7 @@
 {
-    "status": "error",
-    "lastWrite": "15:24 Saturday 27/1/2024",
-    "runtime": "0 minutes 0 seconds",
-    "errorName": "FetchError",
-    "errorMessage": "request to https://www.imdb.com/user/ur95934592/ratings failed, reason: getaddrinfo EAI_AGAIN www.imdb.com"
+    "status": "ok",
+    "lastWrite": "15:25 Saturday 27/1/2024",
+    "runtime": "25 minutes 10 seconds",
+    "errorName": "",
+    "errorMessage": ""
 }
