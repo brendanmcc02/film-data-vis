@@ -5,6 +5,7 @@
 - [ ] Descriptions of each graph
 - [ ] Down arrow on all pages 
 - [ ] change runtime labels from mins to hhmm (e.g. instead of <150 do <2h30m)
+- [ ] decade quant
 - [ ] wallpapers for each page
 - [ ] Final Page (How it works)
 
@@ -20,6 +21,7 @@
 - [ ] design the website
 
 ### graph.js
+- [ ] decade quantity {doughnut}
 - [x] Mean Genre Rating {bar}
 - [x] Quantity of films watched per genre {doughnut}
 - [x] Top k Directors (>= n films) {bar}
