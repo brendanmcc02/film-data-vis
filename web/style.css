@@ -10,17 +10,74 @@ body, html {
 }
 
 @font-face {
+    font-family: lato-bold;
+    src: url("fonts/Lato/Lato-Bold.ttf");
+}
+
+@font-face {
     font-family: lato-italic;
     src: url("fonts/Lato/Lato-Italic.ttf");
 }
 
+@font-face {
+    font-family: lato-bold-italic;
+    src: url("fonts/Lato/Lato-BoldItalic.ttf");
+}
+
+.canvas-description-div {
+    position: relative;
+    opacity: 0.95;
+    background-color: floralwhite;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    padding: 13px;
+    border-radius: 20px;
+}
+
 .canvas-div {
     width: 60%;
+    top: 18%;
+    left: 0.5%;
+}
+
+.description-div {
+    width: 35%;
+    /*height: 59.3%;*/
+    top: -44.5%;
+    left: 62.7%;
+}
+
+.doughnut-div {
+    width: 40%;
+    padding: 1.5% 1% 1%;
+    transform: translate(25%, -13%);
+}
+
+.doughnut-description-div {
+    transform: translate(-24%, -30%);
+}
+
+.description {
     margin: 0;
-    position: relative;
-    top: 48%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
+    padding: 0 15px;
+}
+
+.description-title {
+    font-family: lato-black, serif;
+    font-size: 45px;
+    letter-spacing: 1px;
+    padding-top: 10px;
+}
+
+.description-subtitle {
+    font-family: lato-italic, serif;
+    font-size: 22px;
+}
+
+.description-para {
+    font-family: lato-italic, serif;
+    font-size: 18px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 .title-text {
@@ -31,7 +88,7 @@ body, html {
 
 .para-text {
     font-size: 23px;
-    color: aliceblue;
+    color: floralwhite;
     font-family: lato-italic, serif;
 }
 
@@ -43,12 +100,17 @@ body, html {
     transform: translate(-50%, -50%);
 }
 
-.center-bottom {
+.center-bottom-home {
     text-align: center;
-    position: absolute;
-    left: 50%;
-    top: 95%;
-    transform: translate(-50%, -50%);
+    /*position: relative; */
+    position: fixed;
+    /*transform: translate(0%, 1150%);*/
+}
+
+.center-bottom-other {
+    text-align: center;
+    position: relative;
+    transform: translate(0%, -115%);
 }
 
 .down-button {

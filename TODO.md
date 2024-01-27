@@ -1,5 +1,13 @@
 # TODO
 
+### Website
+- [x] Position all graphs and descriptions
+- [ ] Descriptions of each graph
+- [ ] Down arrow on all pages 
+- [ ] change runtime labels from mins to hhmm (e.g. instead of <150 do <2h30m)
+- [ ] wallpapers for each page
+- [ ] Final Page (How it works)
+
 ## General
 - [x] finish initDB.js
 - [x] finish updateDB.js
@@ -8,7 +16,7 @@
 - [x] get cron-job working for updateDB.js
 - [x] finish initDB.js
 - [x] finish updateDB.js
-- [ ] finish graph.js
+- [x] finish graph.js
 - [ ] design the website
 
 ### graph.js

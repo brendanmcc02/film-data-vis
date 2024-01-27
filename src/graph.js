@@ -195,22 +195,6 @@ async function graph() {
             plugins: {
                 legend: {
                     display: false
-                },
-                title: {
-                    display: true,
-                    text: 'Mean Genre Rating',
-                    padding: 0,
-                    font: {
-                        size: 30
-                    }
-                },
-                subtitle: {
-                    display: true,
-                    text: '>= 5 Films',
-                    padding: 15,
-                    font: {
-                        size: 18
-                    }
                 }
             }
         }
@@ -267,14 +251,6 @@ async function graph() {
             plugins: {
                 legend: {
                     display: false
-                },
-                title: {
-                    display: true,
-                    text: 'Number of Films watched per Genre',
-                    padding: 20,
-                    font: {
-                        size: 30
-                    }
                 }
             }
         }
@@ -354,22 +330,6 @@ async function graph() {
             plugins: {
                 legend: {
                     display: false
-                },
-                title: {
-                    display: true,
-                    text: 'Top 5 Directors',
-                    padding: 0,
-                    font: {
-                        size: 30
-                    }
-                },
-                subtitle: {
-                    display: true,
-                    text: '>= 5 Films',
-                    padding: 15,
-                    font: {
-                        size: 18
-                    }
                 }
             }
         }
@@ -451,14 +411,6 @@ async function graph() {
             plugins: {
                 legend: {
                     display: false
-                },
-                title: {
-                    display: true,
-                    text: 'Christopher Nolan Films',
-                    padding: 15,
-                    font: {
-                        size: 30
-                    }
                 }
             }
         }
@@ -540,14 +492,6 @@ async function graph() {
             plugins: {
                 legend: {
                     display: false
-                },
-                title: {
-                    display: true,
-                    text: 'Denis Villeneuve Films',
-                    padding: 15,
-                    font: {
-                        size: 30
-                    }
                 }
             }
         }
@@ -627,22 +571,6 @@ async function graph() {
             plugins: {
                 legend: {
                     display: false
-                },
-                title: {
-                    display: true,
-                    text: 'Top 5 Actors',
-                    padding: 0,
-                    font: {
-                        size: 30
-                    }
-                },
-                subtitle: {
-                    display: true,
-                    text: '>= 5 Films',
-                    padding: 15,
-                    font: {
-                        size: 18
-                    }
                 }
             }
         }
@@ -724,14 +652,6 @@ async function graph() {
             plugins: {
                 legend: {
                     display: false
-                },
-                title: {
-                    display: true,
-                    text: 'Ryan Gosling Films',
-                    padding: 15,
-                    font: {
-                        size: 30
-                    }
                 }
             }
         }
@@ -813,14 +733,6 @@ async function graph() {
             plugins: {
                 legend: {
                     display: false
-                },
-                title: {
-                    display: true,
-                    text: 'IMDB Top 25',
-                    padding: 15,
-                    font: {
-                        size: 30
-                    }
                 }
             }
         }
@@ -900,14 +812,6 @@ async function graph() {
             plugins: {
                 legend: {
                     display: false
-                },
-                title: {
-                    display: true,
-                    text: 'IMDB Rating of my Top 10 Films',
-                    padding: 15,
-                    font: {
-                        size: 30
-                    }
                 }
             }
         }
@@ -987,14 +891,6 @@ async function graph() {
             plugins: {
                 legend: {
                     display: false
-                },
-                title: {
-                    display: true,
-                    text: 'Metascore of my Top 10 Films',
-                    padding: 15,
-                    font: {
-                        size: 30
-                    }
                 }
             }
         }
@@ -1074,22 +970,6 @@ async function graph() {
             plugins: {
                 legend: {
                     display: false
-                },
-                title: {
-                    display: true,
-                    text: 'Mean Decade Ratings',
-                    padding: 0,
-                    font: {
-                        size: 30
-                    }
-                },
-                subtitle: {
-                    display: true,
-                    text: '>= 10 Films',
-                    padding: 15,
-                    font: {
-                        size: 18
-                    }
                 }
             }
         }
@@ -1171,22 +1051,6 @@ async function graph() {
             plugins: {
                 legend: {
                     display: false
-                },
-                title: {
-                    display: true,
-                    text: 'Mean Rating for each Year',
-                    padding: 0,
-                    font: {
-                        size: 30
-                    }
-                },
-                subtitle: {
-                    display: true,
-                    text: '>= 5 Films',
-                    padding: 15,
-                    font: {
-                        size: 18
-                    }
                 }
             }
         }
@@ -1266,22 +1130,6 @@ async function graph() {
             plugins: {
                 legend: {
                     display: false
-                },
-                title: {
-                    display: true,
-                    text: 'Mean Rating for each Runtime Interval',
-                    padding: 0,
-                    font: {
-                        size: 30
-                    }
-                },
-                subtitle: {
-                    display: true,
-                    text: '>= 5 Films',
-                    padding: 15,
-                    font: {
-                        size: 18
-                    }
                 }
             }
         }
@@ -1333,18 +1181,6 @@ async function graph() {
                 borderWidth: 2,
                 hoverBorderWidth: 3
             }]
-        },
-        options: {
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Number of Films watched per Runtime Interval',
-                    padding: 20,
-                    font: {
-                        size: 30
-                    }
-                }
-            }
         }
     });
 
@@ -1422,14 +1258,6 @@ async function graph() {
             plugins: {
                 legend: {
                     display: false
-                },
-                title: {
-                    display: true,
-                    text: 'Mean Rating of English & International Films',
-                    padding: 15,
-                    font: {
-                        size: 30
-                    }
                 }
             }
         }
@@ -1481,18 +1309,6 @@ async function graph() {
                 borderWidth: 2,
                 hoverBorderWidth: 3
             }]
-        },
-        options: {
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Number of English & International Films',
-                    padding: 20,
-                    font: {
-                        size: 30
-                    }
-                }
-            }
         }
     });
 
@@ -1570,14 +1386,6 @@ async function graph() {
             plugins: {
                 legend: {
                     display: false
-                },
-                title: {
-                    display: true,
-                    text: 'Mean Rating of Films watched in and out of Cinema',
-                    padding: 15,
-                    font: {
-                        size: 30
-                    }
                 }
             }
         }
@@ -1629,18 +1437,6 @@ async function graph() {
                 borderWidth: 2,
                 hoverBorderWidth: 3
             }]
-        },
-        options: {
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Number of Films watched in & out of Cinema',
-                    padding: 20,
-                    font: {
-                        size: 30
-                    }
-                }
-            }
         }
     });
 
@@ -1718,14 +1514,6 @@ async function graph() {
             plugins: {
                 legend: {
                     display: false
-                },
-                title: {
-                    display: true,
-                    text: 'Mean Rating of each Content Rating',
-                    padding: 15,
-                    font: {
-                        size: 30
-                    }
                 }
             }
         }
@@ -1777,18 +1565,6 @@ async function graph() {
                 borderWidth: 2,
                 hoverBorderWidth: 3
             }]
-        },
-        options: {
-            plugins: {
-                title: {
-                    display: true,
-                    text: 'Number of Films per Content Rating',
-                    padding: 20,
-                    font: {
-                        size: 30
-                    }
-                }
-            }
         }
     });
 
@@ -1868,14 +1644,6 @@ async function graph() {
             plugins: {
                 legend: {
                     display: false
-                },
-                title: {
-                    display: true,
-                    text: 'MCU Films',
-                    padding: 15,
-                    font: {
-                        size: 30
-                    }
                 }
             }
         }
@@ -1957,14 +1725,6 @@ async function graph() {
             plugins: {
                 legend: {
                     display: false
-                },
-                title: {
-                    display: true,
-                    text: 'James Bond Films',
-                    padding: 15,
-                    font: {
-                        size: 30
-                    }
                 }
             }
         }
@@ -2046,14 +1806,6 @@ async function graph() {
             plugins: {
                 legend: {
                     display: false
-                },
-                title: {
-                    display: true,
-                    text: 'The Lord of the Rings & The Hobbit Films',
-                    padding: 15,
-                    font: {
-                        size: 30
-                    }
                 }
             }
         }
@@ -2135,14 +1887,6 @@ async function graph() {
             plugins: {
                 legend: {
                     display: false
-                },
-                title: {
-                    display: true,
-                    text: 'Harry Potter & Fantastic Beasts Films',
-                    padding: 15,
-                    font: {
-                        size: 30
-                    }
                 }
             }
         }
@@ -2224,14 +1968,6 @@ async function graph() {
             plugins: {
                 legend: {
                     display: false
-                },
-                title: {
-                    display: true,
-                    text: 'Star Wars Films',
-                    padding: 15,
-                    font: {
-                        size: 30
-                    }
                 }
             }
         }
@@ -2310,14 +2046,6 @@ async function graph() {
             plugins: {
                 legend: {
                     display: false
-                },
-                title: {
-                    display: true,
-                    text: 'Distribution of my Ratings',
-                    padding: 15,
-                    font: {
-                        size: 30
-                    }
                 }
             }
         }
