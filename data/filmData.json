@@ -1,5 +1,879 @@
 [
     {
+        "title": "Free Solo",
+        "id": "tt7775622",
+        "year": 2018,
+        "myRating": 8,
+        "imdbRating": 8.1,
+        "metascore": 83,
+        "image": "https://m.media-amazon.com/images/M/MV5BMjMwYjcwNWQtNTQ5YS00MzVlLTkxYzMtNDIwZWIxZTE4Zjg2XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_QL75_UX190_CR0,2,190,281_.jpg",
+        "runtime": 100,
+        "directors": [
+            "Jimmy Chin",
+            "Elizabeth Chai Vasarhelyi"
+        ],
+        "actors": [
+            {
+                "name": "Alex Honnold",
+                "image": "https://m.media-amazon.com/images/M/MV5BMjAwNDM0NzUwMV5BMl5BanBnXkFtZTgwMzEwMDM2NzM@._V1_QL75_UX140_CR0,7,140,140_.jpg"
+            },
+            {
+                "name": "Tommy Caldwell",
+                "image": "https://m.media-amazon.com/images/M/MV5BNjZmYmY3MGUtMWYwNS00ZmZiLWI5NGMtODc2OTdiNDYwYTYyXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,2,140,140_.jpg"
+            },
+            {
+                "name": "Jimmy Chin",
+                "image": "https://m.media-amazon.com/images/M/MV5BMTgzNTQxMjE0Ml5BMl5BanBnXkFtZTgwMTAwNTEwNDE@._V1_QL75_UX140_CR0,1,140,140_.jpg"
+            },
+            {
+                "name": "Cheyne Lempe",
+                "image": "https://m.media-amazon.com/images/M/MV5BZDk2NjRmMWUtNTA3NS00MzM2LWI5YmYtNjg4YWYzYmI0YzQ4XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,12,140,140_.jpg"
+            },
+            {
+                "name": "Mikey Schaefer",
+                "image": "https://m.media-amazon.com/images/M/MV5BYTFhYzFkNGQtYTdlNS00ZWZmLTg2ODctYWMwNDM0NWI1NzZiXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,14,140,140_.jpg"
+            },
+            {
+                "name": "Sanni McCandless",
+                "image": "https://m.media-amazon.com/images/M/MV5BYWRhMTY5ZWQtZWI0ZS00Y2M4LTg1ZTQtODc2YTY3YTAyMjA0XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UY140_CR35,0,140,140_.jpg"
+            },
+            {
+                "name": "Dierdre Wolownick",
+                "image": "https://m.media-amazon.com/images/M/MV5BMzcwNDAyZGQtMDdiYi00NThiLWJhYWEtZmFjN2YwZmU4Mjc4XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,7,140,140_.jpg"
+            },
+            {
+                "name": "Peter Croft",
+                "image": "https://m.media-amazon.com/images/M/MV5BMzQ3OTI4MTYtYTRhOS00OWE4LTlmOTEtNWQzNTBiODVhOTQxXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "John Bachar",
+                "image": "https://m.media-amazon.com/images/M/MV5BNWM2YzdmMTctNzcxNy00OThiLTkwMzAtMDVjYmZjYmRlOTg4XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Derek Hersey",
+                "image": "https://m.media-amazon.com/images/M/MV5BMjgxZjQ5MDItZDFiZS00MTQzLWE2YWEtOWZiNWNiZTI0MmM1XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,10,140,140_.jpg"
+            },
+            {
+                "name": "Sean Leary",
+                "image": "https://m.media-amazon.com/images/M/MV5BMTNiZTk1NjQtMjY3ZC00YmI2LTk3YzctMjc2MDExYjg5ODlhXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,1,140,140_.jpg"
+            },
+            {
+                "name": "Dan Osman",
+                "image": "https://m.media-amazon.com/images/M/MV5BMTc3NjczMzMxNl5BMl5BanBnXkFtZTcwNDE3OTQxMQ@@._V1_QL75_UX140_CR0,12,140,140_.jpg"
+            },
+            {
+                "name": "Dean Potter",
+                "image": "https://m.media-amazon.com/images/M/MV5BODFkZTI4YmMtMTM5OC00ZjBiLTg0MzItYTljZGYyODM3ODQyXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,8,140,140_.jpg"
+            }
+        ],
+        "genres": [
+            "Documentary",
+            "Adventure",
+            "Sport"
+        ],
+        "countries": [
+            "United States"
+        ],
+        "languages": [
+            "English"
+        ],
+        "contentRating": "PG",
+        "watchedInCinema": false,
+        "myTop10Position": -1,
+        "franchise": ""
+    },
+    {
+        "title": "Jodorowsky's Dune",
+        "id": "tt1935156",
+        "year": 2013,
+        "myRating": 8,
+        "imdbRating": 8,
+        "metascore": 79,
+        "image": "https://m.media-amazon.com/images/M/MV5BMTU0MzcxMTAxMl5BMl5BanBnXkFtZTgwODMyMTIxMTE@._V1_QL75_UX190_CR0,0,190,281_.jpg",
+        "runtime": 90,
+        "directors": [
+            "Frank Pavich"
+        ],
+        "actors": [
+            {
+                "name": "Alejandro Jodorowsky",
+                "image": "https://m.media-amazon.com/images/M/MV5BMTQyNTA0NTU2OV5BMl5BanBnXkFtZTcwMjg2MDgxOA@@._V1_QL75_UX140_CR0,11,140,140_.jpg"
+            },
+            {
+                "name": "Michel Seydoux",
+                "image": "https://m.media-amazon.com/images/M/MV5BNGIyNGFjYTYtMTU0Yi00ZjA5LWFhMjMtOTM5MTg2YzlmZWRkXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,5,140,140_.jpg"
+            },
+            {
+                "name": "H.R. Giger",
+                "image": "https://m.media-amazon.com/images/M/MV5BYWZjMDZlZTMtOGZlZC00M2MxLThmOGItOGFkNDA1NTU4MTE4XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,4,140,140_.jpg"
+            },
+            {
+                "name": "Chris Foss",
+                "image": "https://m.media-amazon.com/images/M/MV5BOTBjYzY3YzYtZDVhZi00YjRkLWI1ZGItNDRiMDlmYzMwNjY0XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,8,140,140_.jpg"
+            },
+            {
+                "name": "Amanda Lear",
+                "image": "https://m.media-amazon.com/images/M/MV5BOTAwZDVjNmQtMDQ2My00MGFkLWEyYWYtM2JjNDZhMWUyYTVlXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Brontis Jodorowsky",
+                "image": "https://m.media-amazon.com/images/M/MV5BMTYyNTgxNTY5NV5BMl5BanBnXkFtZTgwMjgyOTE3NjM@._V1_QL75_UX140_CR0,12,140,140_.jpg"
+            },
+            {
+                "name": "Christian Vander",
+                "image": "https://m.media-amazon.com/images/M/MV5BYTRjMjc4NDItODcxOC00NWUwLWE4NGMtM2UxYzc4Mzk3OTMwXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,10,140,140_.jpg"
+            },
+            {
+                "name": "Devin Faraci",
+                "image": "https://m.media-amazon.com/images/M/MV5BMTI0ODU3MjU2Ml5BMl5BanBnXkFtZTcwODI4MTI3MQ@@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Diane O'Bannon",
+                "image": "https://m.media-amazon.com/images/M/MV5BYTdiM2U2YTEtZWNiNS00NDM4LThlMjAtYjc1NjRkNTIyYjhmXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,1,140,140_.jpg"
+            },
+            {
+                "name": "Drew McWeeny",
+                "image": "https://m.media-amazon.com/images/M/MV5BODQ1NTIwMmQtN2MxZC00MDc4LWIyMTgtZjVkNjQ1OTAxMTBjXkEyXkFqcGdeQXVyNDQ4ODYzMjQ@._V1_QL75_UX140_CR0,1,140,140_.jpg"
+            },
+            {
+                "name": "Gary Kurtz",
+                "image": "https://m.media-amazon.com/images/M/MV5BMzgyMDA1MzYtYjA0NS00NzlkLTgxZjMtYTMxNjNkMWM2YzZmXkEyXkFqcGdeQXVyMjUyNDk2ODc@._V1_QL75_UY140_CR47,0,140,140_.jpg"
+            },
+            {
+                "name": "Jean-Paul Gibon",
+                "image": "https://m.media-amazon.com/images/M/MV5BOGUxM2U4YmMtNjdmMC00NzE5LWJjY2ItNGU4ZWNlM2EwNjgzXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,10,140,140_.jpg"
+            },
+            {
+                "name": "Jean-Pierre Vignau",
+                "image": "https://m.media-amazon.com/images/M/MV5BMWU1NTk3NWQtZDhjNy00NDAyLWFhMGItOWI4NWI5ZTVmMTVhXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,3,140,140_.jpg"
+            },
+            {
+                "name": "Nicolas Winding Refn",
+                "image": "https://m.media-amazon.com/images/M/MV5BOTI3NzAzMTAwMl5BMl5BanBnXkFtZTcwNzM5MjQxNw@@._V1_QL75_UX140_CR0,7,140,140_.jpg"
+            },
+            {
+                "name": "Richard Stanley",
+                "image": "https://m.media-amazon.com/images/M/MV5BYTcyOGEwZjAtMjY3MC00OWNjLTlkYTEtNjFlYjg1NWQxZDNlXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,7,140,140_.jpg"
+            },
+            {
+                "name": "Salvador Dalí",
+                "image": "https://m.media-amazon.com/images/M/MV5BNTc4MTE0MDE5OF5BMl5BanBnXkFtZTYwMDMxNjI2._V1_QL75_UX140_CR0,14,140,140_.jpg"
+            },
+            {
+                "name": "Jean 'Moebius' Giraud",
+                "image": "https://m.media-amazon.com/images/M/MV5BYWNhYjE0OTYtMzM5Zi00NDg5LTg0MzItZjgzODY5M2NmYzFmXkEyXkFqcGdeQXVyMjUyNDk2ODc@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Magma",
+                "image": ""
+            }
+        ],
+        "genres": [
+            "Documentary"
+        ],
+        "countries": [
+            "France",
+            "United States"
+        ],
+        "languages": [
+            "English",
+            "Spanish",
+            "French",
+            "German"
+        ],
+        "contentRating": "PG",
+        "watchedInCinema": false,
+        "myTop10Position": -1,
+        "franchise": ""
+    },
+    {
+        "title": "They Shall Not Grow Old",
+        "id": "tt7905466",
+        "year": 2018,
+        "myRating": 8,
+        "imdbRating": 8.2,
+        "metascore": 91,
+        "image": "https://m.media-amazon.com/images/M/MV5BZWI3ZThmYzUtNDJhOC00ZWY4LThiNmMtZDgxNjE3Yzk4NDU1XkEyXkFqcGdeQXVyNTk5Nzg1NjQ@._V1_QL75_UX190_CR0,2,190,281_.jpg",
+        "runtime": 99,
+        "directors": [
+            "Peter Jackson"
+        ],
+        "actors": [
+            {
+                "name": "Thomas Adlam",
+                "image": ""
+            },
+            {
+                "name": "William Argent",
+                "image": ""
+            },
+            {
+                "name": "John Ashby",
+                "image": ""
+            },
+            {
+                "name": "Attwood",
+                "image": ""
+            },
+            {
+                "name": "Walter Aust",
+                "image": ""
+            },
+            {
+                "name": "Donald Bain",
+                "image": ""
+            },
+            {
+                "name": "Thomas Baker",
+                "image": ""
+            },
+            {
+                "name": "George Banton",
+                "image": ""
+            },
+            {
+                "name": "Walter Becklake",
+                "image": ""
+            },
+            {
+                "name": "Arthur Beeton",
+                "image": ""
+            },
+            {
+                "name": "Robert Bell",
+                "image": ""
+            },
+            {
+                "name": "William Benham",
+                "image": ""
+            },
+            {
+                "name": "Joseph Biglin",
+                "image": ""
+            },
+            {
+                "name": "Edwin Bigwood",
+                "image": ""
+            },
+            {
+                "name": "Horace Birks",
+                "image": ""
+            },
+            {
+                "name": "Edmund Blunden",
+                "image": ""
+            },
+            {
+                "name": "Clarence Bourne",
+                "image": ""
+            },
+            {
+                "name": "Allan Bray",
+                "image": ""
+            }
+        ],
+        "genres": [
+            "Documentary",
+            "History",
+            "War"
+        ],
+        "countries": [
+            "United Kingdom",
+            "New Zealand"
+        ],
+        "languages": [
+            "English"
+        ],
+        "contentRating": "12A",
+        "watchedInCinema": false,
+        "myTop10Position": -1,
+        "franchise": ""
+    },
+    {
+        "title": "Kipchoge: The Last Milestone",
+        "id": "tt14247964",
+        "year": 2021,
+        "myRating": 7,
+        "imdbRating": 7.5,
+        "metascore": -1,
+        "image": "https://m.media-amazon.com/images/M/MV5BOTE2MWI0NjYtNjY5Ny00MDI5LWJmMjQtODkwNGRhN2Q2YWE1XkEyXkFqcGdeQXVyMTA0NTUxNTIy._V1_QL75_UY281_CR5,0,190,281_.jpg",
+        "runtime": 87,
+        "directors": [
+            "Jake Scott"
+        ],
+        "actors": [
+            {
+                "name": "Eliud Kipchoge",
+                "image": ""
+            }
+        ],
+        "genres": [
+            "Documentary",
+            "Sport"
+        ],
+        "countries": [
+            "United Kingdom"
+        ],
+        "languages": [
+            "English",
+            "Swahili"
+        ],
+        "contentRating": "PG",
+        "watchedInCinema": false,
+        "myTop10Position": -1,
+        "franchise": ""
+    },
+    {
+        "title": "The Dawn Wall",
+        "id": "tt7286916",
+        "year": 2017,
+        "myRating": 8,
+        "imdbRating": 8.1,
+        "metascore": 81,
+        "image": "https://m.media-amazon.com/images/M/MV5BNjE3NzU0NDctZTZjMi00OGE2LWFiOWMtNGZhMjQ1MmViNzZlXkEyXkFqcGdeQXVyNDI3MDA5MDQ@._V1_QL75_UY281_CR5,0,190,281_.jpg",
+        "runtime": 100,
+        "directors": [
+            "Josh Lowell",
+            "Peter Mortimer"
+        ],
+        "actors": [
+            {
+                "name": "John Branch",
+                "image": ""
+            },
+            {
+                "name": "Tommy Caldwell",
+                "image": "https://m.media-amazon.com/images/M/MV5BNjZmYmY3MGUtMWYwNS00ZmZiLWI5NGMtODc2OTdiNDYwYTYyXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,2,140,140_.jpg"
+            },
+            {
+                "name": "Kevin Jorgeson",
+                "image": "https://m.media-amazon.com/images/M/MV5BOTBlMDAwMTktZTBmZi00MTE3LTgzMWYtM2FhYTcyZjk1YWRmXkEyXkFqcGdeQXVyNDExMzMxNjE@._V1_QL75_UY140_CR35,0,140,140_.jpg"
+            }
+        ],
+        "genres": [
+            "Documentary",
+            "Biography",
+            "Sport"
+        ],
+        "countries": [
+            "Austria",
+            "United States"
+        ],
+        "languages": [
+            "English"
+        ],
+        "contentRating": "15A",
+        "watchedInCinema": false,
+        "myTop10Position": -1,
+        "franchise": ""
+    },
+    {
+        "title": "The Social Dilemma",
+        "id": "tt11464826",
+        "year": 2020,
+        "myRating": 7,
+        "imdbRating": 7.6,
+        "metascore": 78,
+        "image": "https://m.media-amazon.com/images/M/MV5BNDVhMGNhYjEtMDkwZi00NmQ5LWFkODktYzhiYjY2NTZmYTNhXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_QL75_UY281_CR4,0,190,281_.jpg",
+        "runtime": 94,
+        "directors": [
+            "Jeff Orlowski-Yang"
+        ],
+        "actors": [
+            {
+                "name": "Tristan Harris",
+                "image": "https://m.media-amazon.com/images/M/MV5BZWJkYjQ4NzgtYzU3ZC00ZTQ3LWI4NGUtYWFkNzBmZDViOTkxXkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Jeff Seibert",
+                "image": "https://m.media-amazon.com/images/M/MV5BMDIzOTlkM2ItN2NhOS00N2U3LWEzZGItZGRjY2I3MjVhODI2XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,5,140,140_.jpg"
+            },
+            {
+                "name": "Bailey Richardson",
+                "image": "https://m.media-amazon.com/images/M/MV5BMDBjOWNlNTYtNzIyMy00MzRjLWFjMGEtN2JhYzYxZmNlNTY3XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Joe Toscano",
+                "image": "https://m.media-amazon.com/images/M/MV5BY2ExMTFkZTItYWNlZC00NjVkLWFhNjYtYzVmOWFmMTgyMWEwXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,4,140,140_.jpg"
+            },
+            {
+                "name": "Sandy Parakilas",
+                "image": "https://m.media-amazon.com/images/M/MV5BZGQyY2Y1ODEtYTQ3Yy00YmUwLTg5ODktMzA0Y2U3MzFkZWYxXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,4,140,140_.jpg"
+            },
+            {
+                "name": "Guillaume Chaslot",
+                "image": "https://m.media-amazon.com/images/M/MV5BN2M1MGJjYTItOGIwYi00YmY3LWExODMtMWMzNzg2OGJjZjY0XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Lynn Fox",
+                "image": "https://m.media-amazon.com/images/M/MV5BNzAwMzIxZjAtMzkyMC00ZmQyLWE0MDAtM2I2ZmM3N2E5MzgzXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,1,140,140_.jpg"
+            },
+            {
+                "name": "Aza Raskin",
+                "image": "https://m.media-amazon.com/images/M/MV5BODM2YzNkYTYtODFlNi00YjdmLWIyMjMtNjk2NGUxMjg5N2FlXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,8,140,140_.jpg"
+            },
+            {
+                "name": "Alex Roetter",
+                "image": "https://m.media-amazon.com/images/M/MV5BYTcwYzNkN2ItOTBkNi00YTJlLTk1YzctYzhlY2EyMzI1YWEzXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,7,140,140_.jpg"
+            },
+            {
+                "name": "Tim Kendall",
+                "image": "https://m.media-amazon.com/images/M/MV5BZjg5MmRjNTktMjBjMy00N2M5LWFhZmQtNGYyOGExMzg2NWUzXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Justin Rosenstein",
+                "image": "https://m.media-amazon.com/images/M/MV5BOWNjZWM1NzEtNTc3NS00MTA2LWI5MjUtMDQ0ZWE0MDU1NDlmXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,5,140,140_.jpg"
+            },
+            {
+                "name": "Randy Fernando",
+                "image": "https://m.media-amazon.com/images/M/MV5BNzgyOTgxODQtM2NiZi00MWQyLWI2YWMtNzQwMjkxMjYzYWY0XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,2,140,140_.jpg"
+            },
+            {
+                "name": "Jaron Lanier",
+                "image": "https://m.media-amazon.com/images/M/MV5BMjMwOTIxNDMxNF5BMl5BanBnXkFtZTgwMDM0NjI0MjE@._V1_QL75_UY140_CR24,0,140,140_.jpg"
+            },
+            {
+                "name": "Roger McNamee",
+                "image": "https://m.media-amazon.com/images/M/MV5BZDZmOTdlNTEtNjA5MC00YmMyLWI0ZmEtNDIwMDJmNjMxMDE2XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Shoshana Zuboff",
+                "image": "https://m.media-amazon.com/images/M/MV5BZWE4MjA5MzYtMDU1OC00ZGZjLWJlMWQtOWM2YmQ3ZDk0NDJiXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,5,140,140_.jpg"
+            },
+            {
+                "name": "Anna Lembke",
+                "image": "https://m.media-amazon.com/images/M/MV5BYzMwOTNlMTktY2M4ZS00NDRhLWJiNDktYjNiZGRiMmEwM2JjXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,2,140,140_.jpg"
+            },
+            {
+                "name": "James Fetter",
+                "image": "https://m.media-amazon.com/images/M/MV5BZmMxZDQwNWUtNmI2ZC00YzBjLWE3MmQtYjM0MzQ3YjUxMThkXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,7,140,140_.jpg"
+            },
+            {
+                "name": "Mary Fetter",
+                "image": "https://m.media-amazon.com/images/M/MV5BZDA5ZWZlMTMtY2E1Ny00Yjk4LTg3OTYtMTYwMWI5OWQ3MjEyXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,10,140,140_.jpg"
+            }
+        ],
+        "genres": [
+            "Documentary",
+            "Drama"
+        ],
+        "countries": [
+            "United States"
+        ],
+        "languages": [
+            "English"
+        ],
+        "contentRating": "PG",
+        "watchedInCinema": false,
+        "myTop10Position": -1,
+        "franchise": ""
+    },
+    {
+        "title": "Wham!",
+        "id": "tt27726927",
+        "year": 2023,
+        "myRating": 8,
+        "imdbRating": 7.5,
+        "metascore": 73,
+        "image": "https://m.media-amazon.com/images/M/MV5BMWUyOGZhZTYtZDBjNC00Y2NhLTk1ZTktYzY5YzIxOTkzM2JiXkEyXkFqcGdeQXVyMjExNjgyMTc@._V1_QL75_UY281_CR11,0,190,281_.jpg",
+        "runtime": 92,
+        "directors": [
+            "Chris Smith"
+        ],
+        "actors": [
+            {
+                "name": "Bananarama",
+                "image": "https://m.media-amazon.com/images/M/MV5BMDQ1NDJiYWEtYTU4MC00Njc5LWEzOWMtNzYzNDYxNGVkMmViXkEyXkFqcGdeQXVyODY0NzcxNw@@._V1_QL75_UX140_CR0,9,140,140_.jpg"
+            },
+            {
+                "name": "Bono",
+                "image": "https://m.media-amazon.com/images/M/MV5BMTQ4MzQ5ODgxOV5BMl5BanBnXkFtZTYwNzk3Nzk0._V1_QL75_UX140_CR0,6,140,140_.jpg"
+            },
+            {
+                "name": "David Bowie",
+                "image": "https://m.media-amazon.com/images/M/MV5BMTQ4NTE3MTYzOF5BMl5BanBnXkFtZTcwNDM4OTcyMg@@._V1_QL75_UX140_CR0,4,140,140_.jpg"
+            },
+            {
+                "name": "Boy George",
+                "image": "https://m.media-amazon.com/images/M/MV5BMTMzMTE1MTI1N15BMl5BanBnXkFtZTcwNDY0Njc0NA@@._V1_QL75_UX140_CR0,12,140,140_.jpg"
+            },
+            {
+                "name": "Phil Collins",
+                "image": "https://m.media-amazon.com/images/M/MV5BMjY2NjU2Nzg5MV5BMl5BanBnXkFtZTYwMDUwMjg2._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Mark Dean",
+                "image": ""
+            },
+            {
+                "name": "Helen DeMacque",
+                "image": ""
+            },
+            {
+                "name": "Aretha Franklin",
+                "image": "https://m.media-amazon.com/images/M/MV5BNjc1ODk0MTI5MV5BMl5BanBnXkFtZTgwMTMyNDExNjM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Elton John",
+                "image": "https://m.media-amazon.com/images/M/MV5BMjM3Njk3Nzc4MF5BMl5BanBnXkFtZTgwODMzNjUxMzE@._V1_QL75_UX140_CR0,2,140,140_.jpg"
+            },
+            {
+                "name": "Shirlie Kemp",
+                "image": ""
+            },
+            {
+                "name": "Paul McCartney",
+                "image": "https://m.media-amazon.com/images/M/MV5BMTk1MjE1NzM0NV5BMl5BanBnXkFtZTcwMTI5NzIxMw@@._V1_QL75_UX140_CR0,10,140,140_.jpg"
+            },
+            {
+                "name": "Freddie Mercury",
+                "image": "https://m.media-amazon.com/images/M/MV5BMzgyMjk2MzE1MF5BMl5BanBnXkFtZTcwOTA3MTUxNA@@._V1_QL75_UX140_CR0,6,140,140_.jpg"
+            },
+            {
+                "name": "George Michael",
+                "image": "https://m.media-amazon.com/images/M/MV5BOTIwOTA1Mjk1Ml5BMl5BanBnXkFtZTcwMTAyNzAxNw@@._V1_QL75_UX140_CR0,12,140,140_.jpg"
+            },
+            {
+                "name": "Simon Napier-Bell",
+                "image": ""
+            },
+            {
+                "name": "Kyriacos Panayiotou",
+                "image": ""
+            },
+            {
+                "name": "Andrew Ridgeley",
+                "image": ""
+            },
+            {
+                "name": "Sting",
+                "image": "https://m.media-amazon.com/images/M/MV5BOTI2NDcyNTk4OV5BMl5BanBnXkFtZTcwOTYyNjQ4NA@@._V1_QL75_UX140_CR0,10,140,140_.jpg"
+            },
+            {
+                "name": "Wham!",
+                "image": "https://m.media-amazon.com/images/M/MV5BMTA5NDU1ODI1MDVeQTJeQWpwZ15BbWU4MDI0NDU3OTcx._V1_QL75_UY140_CR55,0,140,140_.jpg"
+            }
+        ],
+        "genres": [
+            "Documentary",
+            "Biography",
+            "Music"
+        ],
+        "countries": [
+            "United Kingdom"
+        ],
+        "languages": [
+            "English"
+        ],
+        "contentRating": "15A",
+        "watchedInCinema": false,
+        "myTop10Position": -1,
+        "franchise": ""
+    },
+    {
+        "title": "White Hot: The Rise & Fall of Abercrombie & Fitch",
+        "id": "tt19034522",
+        "year": 2022,
+        "myRating": 5,
+        "imdbRating": 5.8,
+        "metascore": 48,
+        "image": "https://m.media-amazon.com/images/M/MV5BODM4MTRjMmItMjgzMy00MDcxLWI2YzAtYmIxMDhiOGE4YmY3XkEyXkFqcGdeQXVyMTgwMTUxODE@._V1_QL75_UX190_CR0,0,190,281_.jpg",
+        "runtime": 88,
+        "directors": [
+            "Alison Klayman"
+        ],
+        "actors": [
+            {
+                "name": "Benjamin O'Keefe",
+                "image": "https://m.media-amazon.com/images/M/MV5BYjRlNzUxMzUtMjZlMS00ZDVhLTk2MDEtMWY2YmExYTZmNmRiXkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Bobby Blanski",
+                "image": "https://m.media-amazon.com/images/M/MV5BNDZkZDU2OGYtNTkxOC00OGFhLWFlNWMtMzc1MTJmNDNjNTZlXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Ryan Daharsh",
+                "image": "https://m.media-amazon.com/images/M/MV5BYTkxZmJiYTktYTc4ZC00ZWE2LWE3MWMtNTZkNjU2YjQwOTE5XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Sapna Maheshwari",
+                "image": "https://m.media-amazon.com/images/M/MV5BOGU5NmJlYjgtMTQ4NS00YTM2LWI3MzUtY2M5YTFiYjRhMGQwXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Jennifer Sheahan",
+                "image": "https://m.media-amazon.com/images/M/MV5BYWY3ZGQzOGMtM2E5MS00MjZhLTg3Y2EtMzAzYWRjNTE5YzIwXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Alan Karo",
+                "image": "https://m.media-amazon.com/images/M/MV5BMGNkYWJhZDUtYWE1MS00OWMyLWI5MmEtMTkyMTA1M2Y2OTk0XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Anthony Ocampo",
+                "image": "https://m.media-amazon.com/images/M/MV5BYjNjY2IyYWUtZmY1NS00NzkwLTllMDAtOThhMmI2ODI5YzhhXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Treva Lindsey",
+                "image": "https://m.media-amazon.com/images/M/MV5BZDI0YjAwNmUtNzE1MC00ZGRmLTgzMzgtZGE4YmEyZDNlYjhmXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Carla Barrientos",
+                "image": "https://m.media-amazon.com/images/M/MV5BY2Y2NTNiYTgtYWZiZi00YjZiLWEzZTMtNmViZDg0MWU0ZjM5XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Robin Givhan",
+                "image": "https://m.media-amazon.com/images/M/MV5BNTRhNWRlY2QtZjhhYi00NGQ5LWFkNmItMTI0MDE5ZWE1MmE2XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Jose Sanchez",
+                "image": "https://m.media-amazon.com/images/M/MV5BMTBjOGJkNGYtMWQyNi00ZTEzLTgzNGItZDliODM1M2RmMzhkXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Moe Tkacik",
+                "image": "https://m.media-amazon.com/images/M/MV5BZTQ1YWNhYmMtY2U1Ni00MjhiLThkNjMtMzg5MTEwMzIzN2M0XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Cindy Smith-Maglione",
+                "image": "https://m.media-amazon.com/images/M/MV5BNDJlMzU4MDktNWU5NC00YzZiLWIyODAtNTY4YmY3Zjg1YzBjXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Charles Martin",
+                "image": "https://m.media-amazon.com/images/M/MV5BMDAyZDJmMmItZWUxNS00YzQ0LTgxMGUtZDkwMmQ0YjdiYzQ0XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Susan Berfield",
+                "image": "https://m.media-amazon.com/images/M/MV5BOGU1OGNjN2YtMDlmYi00NGEyLWE5ZWUtOThkYWRmYWY0NTk1XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,4,140,140_.jpg"
+            },
+            {
+                "name": "Lindsey Rupp",
+                "image": "https://m.media-amazon.com/images/M/MV5BNTY3NmY2MTUtNGViNi00NWIzLWEzMmMtMWFjNTczZjU0OGQ2XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Kelly Blumberg",
+                "image": "https://m.media-amazon.com/images/M/MV5BZTkxMWQyODgtNjk0Mi00YTJkLWE2MjUtMGM5ODRjMjYyYTE4XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Kjerstin Gruys",
+                "image": "https://m.media-amazon.com/images/M/MV5BNWE5OWE2OTItZGFmNS00NTFjLWFlNWEtOWU4YTk1NWY3M2YwXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            }
+        ],
+        "genres": [
+            "Documentary"
+        ],
+        "countries": [
+            "United States"
+        ],
+        "languages": [
+            "English"
+        ],
+        "contentRating": "15A",
+        "watchedInCinema": false,
+        "myTop10Position": -1,
+        "franchise": ""
+    },
+    {
+        "title": "Fyre",
+        "id": "tt9412098",
+        "year": 2019,
+        "myRating": 8,
+        "imdbRating": 7.2,
+        "metascore": 75,
+        "image": "https://m.media-amazon.com/images/M/MV5BMjQ2NzE1MjYxMV5BMl5BanBnXkFtZTgwMjM3MDQxNzM@._V1_QL75_UX190_CR0,0,190,281_.jpg",
+        "runtime": 97,
+        "directors": [
+            "Chris Smith"
+        ],
+        "actors": [
+            {
+                "name": "Billy McFarland",
+                "image": "https://m.media-amazon.com/images/M/MV5BMjE1NDc5NDUyN15BMl5BanBnXkFtZTgwMzM4MDQxNzM@._V1_QL75_UX140_CR0,12,140,140_.jpg"
+            },
+            {
+                "name": "Jason Bell",
+                "image": "https://m.media-amazon.com/images/M/MV5BZGFhOTBkMzMtZmUyMi00OWUxLWFlZjYtNDllNjVmOGI2ZjI3XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Gabrielle Bluestone",
+                "image": "https://m.media-amazon.com/images/M/MV5BODA5Nzk0YTktNThkMi00MTZiLWE0NjMtNzI4NjU0YWIwZWUyXkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Shiyuan Deng",
+                "image": "https://m.media-amazon.com/images/M/MV5BZjYwNzg4ZjQtOTc1OS00NDAzLWFkMWQtOTE1OTkzZjRjMzA0XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Ja Rule",
+                "image": "https://m.media-amazon.com/images/M/MV5BMTYxMzcyNzQ5OV5BMl5BanBnXkFtZTYwMDIwNTE3._V1_QL75_UX140_CR0,15,140,140_.jpg"
+            },
+            {
+                "name": "Michael Ciccarelli",
+                "image": "https://m.media-amazon.com/images/M/MV5BOTU0ZDExMDQtMjZmOS00MzM5LTg5ZTMtOWI2Zjg2MzI1MzRhXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Mdavid Low",
+                "image": "https://m.media-amazon.com/images/M/MV5BOGE1NDAxMTEtMDRhMy00YjgxLWI2ZmItZjYzMTBiMWQxMDc5XkEyXkFqcGdeQXVyOTk1OTY0NTc@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Samuel Krost",
+                "image": "https://m.media-amazon.com/images/M/MV5BM2FjZjhhY2QtN2U4Yy00NTBkLTlmMWYtM2FjMDkyZjcwYjJkXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,13,140,140_.jpg"
+            },
+            {
+                "name": "Andy King",
+                "image": "https://m.media-amazon.com/images/M/MV5BZjQwMTE2MzAtZDA0ZS00YTEzLWI2MTEtMTE0NWUzZDJjMWM1XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Henry Rolle",
+                "image": "https://m.media-amazon.com/images/M/MV5BNTFiNDFkZmQtM2U1NC00MWZjLWJjMjEtMjVmMTcxNzQ1Y2Q0XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,2,140,140_.jpg"
+            },
+            {
+                "name": "Brett Kincaid",
+                "image": "https://m.media-amazon.com/images/M/MV5BNzg3YzBjYmItMzNkNy00MTVjLTliY2EtMzdhY2QyMDQ3MWEyXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,8,140,140_.jpg"
+            },
+            {
+                "name": "Mick Purzycki",
+                "image": "https://m.media-amazon.com/images/M/MV5BNDMzOGJkZjEtY2I5MS00YjAzLTg3NzMtNWVlNDMxMTQ1YTAwXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,5,140,140_.jpg"
+            },
+            {
+                "name": "James Ryan Ohliger",
+                "image": "https://m.media-amazon.com/images/M/MV5BZTg2MDMxZWEtODc5ZS00NTg0LWIxNTYtNmVlMDcxNTdjNDAzXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,2,140,140_.jpg"
+            },
+            {
+                "name": "Grant Margolin",
+                "image": "https://m.media-amazon.com/images/M/MV5BZTM5NTgyZTMtNjk0Yy00ZGEzLWI2ZjYtNDY0YjBlZDFlOGE2XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Keith van der Linde",
+                "image": "https://m.media-amazon.com/images/M/MV5BYTNjY2M4OTctYzkwZS00NWE3LTk3M2YtYWZiYjc5MzAyODU2XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,4,140,140_.jpg"
+            },
+            {
+                "name": "Marc Weinstein",
+                "image": "https://m.media-amazon.com/images/M/MV5BNWMwNjE0YzktZDUxOS00Y2ExLWI1OWQtZmUzMjdiOWFkNzhkXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            },
+            {
+                "name": "Martin Howell",
+                "image": "https://m.media-amazon.com/images/M/MV5BNjg5YTA4OWEtNmVmYy00YThiLTk1MWYtOWM0ZWY4OTMxZTNiXkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,2,140,140_.jpg"
+            },
+            {
+                "name": "Mark Musters",
+                "image": "https://m.media-amazon.com/images/M/MV5BYTI0MzVkMTAtZWFlYi00NWFlLWIwNzctMzU4OWEzZmY5NzY2XkEyXkFqcGdeQXVyNjUxMjc1OTM@._V1_QL75_UX140_CR0,0,140,140_.jpg"
+            }
+        ],
+        "genres": [
+            "Documentary",
+            "Crime",
+            "Music"
+        ],
+        "countries": [
+            "United States"
+        ],
+        "languages": [
+            "English"
+        ],
+        "contentRating": "18",
+        "watchedInCinema": false,
+        "myTop10Position": -1,
+        "franchise": ""
+    },
+    {
+        "title": "Blackfish",
+        "id": "tt2545118",
+        "year": 2013,
+        "myRating": 8,
+        "imdbRating": 8.1,
+        "metascore": 83,
+        "image": "https://m.media-amazon.com/images/M/MV5BNTkyNTkwMzkxMl5BMl5BanBnXkFtZTcwMzAwOTE2OQ@@._V1_QL75_UX190_CR0,0,190,281_.jpg",
+        "runtime": 83,
+        "directors": [
+            "Gabriela Cowperthwaite"
+        ],
+        "actors": [
+            {
+                "name": "Tilikum",
+                "image": "https://m.media-amazon.com/images/M/MV5BMTYxOTA5NTUyNV5BMl5BanBnXkFtZTcwMTY5ODE3OQ@@._V1_QL75_UY140_CR55,0,140,140_.jpg"
+            },
+            {
+                "name": "Dave Duffus",
+                "image": "https://m.media-amazon.com/images/M/MV5BMTA1MzY0NDAyODBeQTJeQWpwZ15BbWU3MDc1OTgxNzk@._V1_QL75_UY140_CR55,0,140,140_.jpg"
+            },
+            {
+                "name": "Samantha Berg",
+                "image": "https://m.media-amazon.com/images/M/MV5BMjMyMTMzMjg5OV5BMl5BanBnXkFtZTcwODU5ODE3OQ@@._V1_QL75_UY140_CR55,0,140,140_.jpg"
+            },
+            {
+                "name": "Dean Gomersall",
+                "image": ""
+            },
+            {
+                "name": "John Hargrove",
+                "image": ""
+            },
+            {
+                "name": "Mark Simmons",
+                "image": ""
+            },
+            {
+                "name": "Kim Ashdown",
+                "image": ""
+            },
+            {
+                "name": "James Earl Jones",
+                "image": "https://m.media-amazon.com/images/M/MV5BMTcwNTg1MzMwM15BMl5BanBnXkFtZTcwNTQyMDgyMg@@._V1_QL75_UX140_CR0,16,140,140_.jpg"
+            },
+            {
+                "name": "Shamu",
+                "image": ""
+            },
+            {
+                "name": "Carol Ray",
+                "image": ""
+            },
+            {
+                "name": "John Jett",
+                "image": ""
+            },
+            {
+                "name": "Dawn Brancheau",
+                "image": ""
+            },
+            {
+                "name": "Jeffrey Ventre",
+                "image": ""
+            },
+            {
+                "name": "Thomas Tobin",
+                "image": ""
+            },
+            {
+                "name": "Jim Payne",
+                "image": ""
+            },
+            {
+                "name": "Martha Sugalski",
+                "image": ""
+            },
+            {
+                "name": "Whoopi Goldberg",
+                "image": "https://m.media-amazon.com/images/M/MV5BMjE4ODgzNjQwOV5BMl5BanBnXkFtZTYwNzczNzc0._V1_QL75_UX140_CR0,15,140,140_.jpg"
+            },
+            {
+                "name": "David Kirby",
+                "image": ""
+            }
+        ],
+        "genres": [
+            "Documentary"
+        ],
+        "countries": [
+            "United States"
+        ],
+        "languages": [
+            "English",
+            "Spanish"
+        ],
+        "contentRating": "12A",
+        "watchedInCinema": false,
+        "myTop10Position": -1,
+        "franchise": ""
+    },
+    {
         "title": "The Graduate",
         "id": "tt0061722",
         "year": 1967,
@@ -7711,7 +8585,7 @@
         "year": 2013,
         "myRating": 7,
         "imdbRating": 7.3,
-        "metascore": 54,
+        "metascore": -1,
         "image": "https://m.media-amazon.com/images/M/MV5BODYwNDYxNDk1Nl5BMl5BanBnXkFtZTgwOTAwMTk2MDE@._V1_QL75_UX190_CR0,0,190,281_.jpg",
         "runtime": 114,
         "directors": [
@@ -11965,7 +12839,7 @@
         "year": 1998,
         "myRating": 6,
         "imdbRating": 7.2,
-        "metascore": -1,
+        "metascore": 78,
         "image": "https://m.media-amazon.com/images/M/MV5BNThmZGY4NzgtMTM4OC00NzNkLWEwNmEtMjdhMGY5YTc1NDE4XkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_QL75_UX190_CR0,6,190,281_.jpg",
         "runtime": 95,
         "directors": [
@@ -16520,7 +17394,7 @@
         "year": 2021,
         "myRating": 8,
         "imdbRating": 7.2,
-        "metascore": -1,
+        "metascore": 49,
         "image": "https://m.media-amazon.com/images/M/MV5BZjcwZjY3NjAtNzkxZS00NmFjLTg1OGYtODJmMThhY2UwMTc5XkEyXkFqcGdeQXVyODE5NzE3OTE@._V1_QL75_UY281_CR18,0,190,281_.jpg",
         "runtime": 138,
         "directors": [
@@ -20274,7 +21148,7 @@
         "year": 1999,
         "myRating": 6,
         "imdbRating": 7.3,
-        "metascore": 79,
+        "metascore": 80,
         "image": "https://m.media-amazon.com/images/M/MV5BY2ZiYWUxN2ItYmQxZi00NDlkLWE2NDAtOTNmYTg1MDI0NDk1XkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_QL75_UX190_CR0,0,190,281_.jpg",
         "runtime": 88,
         "directors": [
@@ -21735,7 +22609,7 @@
         "year": 2012,
         "myRating": 8,
         "imdbRating": 7.3,
-        "metascore": -1,
+        "metascore": 68,
         "image": "https://m.media-amazon.com/images/M/MV5BMjc1OTEwNjU4N15BMl5BanBnXkFtZTcwNzUzNDIwOQ@@._V1_QL75_UX190_CR0,6,190,281_.jpg",
         "runtime": 140,
         "directors": [
@@ -23593,7 +24467,7 @@
         "year": 2009,
         "myRating": 8,
         "imdbRating": 7.6,
-        "metascore": 78,
+        "metascore": -1,
         "image": "https://m.media-amazon.com/images/M/MV5BNzU3NDg4NTAyNV5BMl5BanBnXkFtZTcwOTg2ODg1Mg@@._V1_QL75_UX190_CR0,6,190,281_.jpg",
         "runtime": 153,
         "directors": [
@@ -24112,7 +24986,7 @@
         "year": 2001,
         "myRating": 7,
         "imdbRating": 7.6,
-        "metascore": 65,
+        "metascore": -1,
         "image": "https://m.media-amazon.com/images/M/MV5BNmQ0ODBhMjUtNDRhOC00MGQzLTk5MTAtZDliODg5NmU5MjZhXkEyXkFqcGdeQXVyNDUyOTg3Njg@._V1_QL75_UY281_CR1,0,190,281_.jpg",
         "runtime": 152,
         "directors": [
@@ -25343,7 +26217,7 @@
         "year": 2004,
         "myRating": 8,
         "imdbRating": 7.9,
-        "metascore": 76,
+        "metascore": -1,
         "image": "https://m.media-amazon.com/images/M/MV5BMTg5Mjk2NDMtZTk0Ny00YTQ0LWIzYWEtMWI5MGQ0Mjg1OTNkXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_QL75_UX190_CR0,1,190,281_.jpg",
         "runtime": 99,
         "directors": [
@@ -26466,7 +27340,7 @@
         "year": 2020,
         "myRating": 6,
         "imdbRating": 6.1,
-        "metascore": 60,
+        "metascore": -1,
         "image": "https://m.media-amazon.com/images/M/MV5BMzQ3NTQxMjItODBjYi00YzUzLWE1NzQtZTBlY2Y2NjZlNzkyXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_QL75_UY281_CR1,0,190,281_.jpg",
         "runtime": 109,
         "directors": [
@@ -32090,7 +32964,7 @@
         "year": 2000,
         "myRating": 7,
         "imdbRating": 7.4,
-        "metascore": 73,
+        "metascore": -1,
         "image": "https://m.media-amazon.com/images/M/MV5BYTA1NWRkNTktNDMxNS00NjE4LWEzMDAtNzA3YzlhYzRhNDA4L2ltYWdlXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_QL75_UX190_CR0,0,190,281_.jpg",
         "runtime": 131,
         "directors": [
@@ -38718,7 +39592,7 @@
         "year": 1962,
         "myRating": 10,
         "imdbRating": 8.3,
-        "metascore": 100,
+        "metascore": -1,
         "image": "https://m.media-amazon.com/images/M/MV5BYWY5ZjhjNGYtZmI2Ny00ODM0LWFkNzgtZmI1YzA2N2MxMzA0XkEyXkFqcGdeQXVyNjUwNzk3NDc@._V1_QL75_UY281_CR3,0,190,281_.jpg",
         "runtime": 218,
         "directors": [
@@ -38927,7 +39801,7 @@
         "id": "tt2013293",
         "year": 2013,
         "myRating": 7,
-        "imdbRating": 7.7,
+        "imdbRating": 7.8,
         "metascore": 83,
         "image": "https://m.media-amazon.com/images/M/MV5BMTU4NDg0MzkzNV5BMl5BanBnXkFtZTgwODA3Mzc1MDE@._V1_QL75_UX190_CR0,0,190,281_.jpg",
         "runtime": 126,
@@ -40868,7 +41742,7 @@
         "year": 2018,
         "myRating": 9,
         "imdbRating": 8.4,
-        "metascore": -1,
+        "metascore": 87,
         "image": "https://m.media-amazon.com/images/M/MV5BMjMwNDkxMTgzOF5BMl5BanBnXkFtZTgwNTkwNTQ3NjM@._V1_QL75_UX190_CR0,0,190,281_.jpg",
         "runtime": 117,
         "directors": [
