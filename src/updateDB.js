@@ -73,10 +73,17 @@ async function updateFilmData(filmData) {
             // update myRating, imdbRating, metascore, watchedInCinema, myTop10Position
             filmData[filmIndex].myRating = myRatedFilms[i].myRating;
             const filmRatingData = await getFilmRatingData(filmData[filmIndex].id);
-            if (filmRatingData.imdbRating !== -1) {
+
+            // update only if new imdb rating is not -1
+            if (filmRatingData.imdbRating !== -1.0) {
                 filmData[filmIndex].imdbRating = filmRatingData.imdbRating;
             }
-            filmData[filmIndex].metascore = filmRatingData.metascore;
+
+            // update only if: new meta is not -1
+            if (filmRatingData.metascore !== -1) {
+                filmData[filmIndex].metascore = filmRatingData.metascore;
+            }
+
             filmData[filmIndex].watchedInCinema = myRatedFilms[i].watchedInCinema;
             filmData[filmIndex].myTop10Position = myRatedFilms[i].myTop10Position;
         }

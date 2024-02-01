@@ -22,12 +22,13 @@ const bondURL = "https://en.wikipedia.org/wiki/List_of_James_Bond_films";
 
 const startTime = Date.now();
 
+// leave as commented unless you actually want to run this script
 // main();
 
 // initialises a database of all my rated films on imdb
 async function main() {
     console.log("Web scraping my rated films.");
-    // const myRatedFilms = [{"id" : "tt2396224", "myRating" : 6, "watchedInCinema" : false, "myTop10Position" : -1}]; // for testing
+    // const myRatedFilms = [{"id" : "tt1935156", "myRating" : 8, "watchedInCinema" : false, "myTop10Position" : -1}]; // for testing
     const myRatedFilms = await getMyRatedFilms();
     console.log("Web scraping full data for each rated film:");
     const films = await getFilms(myRatedFilms);
@@ -284,7 +285,8 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
             film.genres.push(c(this).text());
         });
 
-        if (film.genres.includes("Short") || film.genres.includes("Documentary")) {
+        //  || film.genres.includes("Documentary")
+        if (film.genres.includes("Short")) {
             return "not a feature film";
         }
 

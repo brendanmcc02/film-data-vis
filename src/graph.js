@@ -69,26 +69,26 @@ async function graph() {
     const base_runtime = getRuntimes(filmData);
     const labels_runtime_ratings = getRuntimeLabels(base_runtime, 5);
     const data_runtime_ratings = getRuntimeRatings(base_runtime, 5);
-    const labels_runtime_quant = getRuntimeLabels(base_runtime, 1);
-    const data_runtime_quant = getRuntimeQuantities(base_runtime);
+    // const labels_runtime_quant = getRuntimeLabels(base_runtime, 1);
+    // const data_runtime_quant = getRuntimeQuantities(base_runtime);
 
     // english-spoken vs international films
     const base_engint = getEnglishInternationalFilms(filmData);
     const labels_engint = getEnglishInternationalLabels(base_engint);
     const data_engint = getEnglishInternationalRatings(base_engint);
-    const quant_engint = getEnglishInternationalQuantities(base_engint);
+    // const quant_engint = getEnglishInternationalQuantities(base_engint);
 
     // watched in cinema
     const base_cinema = getCinemaFilms(filmData);
     const labels_cinema = getCinemaLabels(base_cinema);
     const ratings_cinema = getCinemaRatings(base_cinema);
-    const quant_cinema = getCinemaQuantities(base_cinema);
+    // const quant_cinema = getCinemaQuantities(base_cinema);
 
     // content rating
     const base_content = getContentRatings(filmData);
     const labels_content = getContentRatingLabels(base_content, 5);
     const ratings_content = getContentRatingRatings(base_content, 5);
-    const quant_content = getContentRatingQuantities(base_content);
+    // const quant_content = getContentRatingQuantities(base_content);
 
     // mcu
     const base_mcu = getFranchise(filmData, ["MCU"]);
@@ -1135,55 +1135,6 @@ async function graph() {
         }
     });
 
-    const ctx_14 = document.getElementById('quant-runtime');
-    new Chart(ctx_14, {
-        type: 'doughnut',
-        data: {
-            labels: labels_runtime_quant,
-            datasets: [{
-                data: data_runtime_quant,
-                backgroundColor: [
-                    'rgba(54, 162, 235, 0.3)',
-                    'rgba(255, 99, 132, 0.3)',
-                    'rgba(75, 192, 192, 0.3)',
-                    'rgba(255, 159, 64, 0.3)',
-                    'rgba(175, 125, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)',
-                    'rgba(20, 20, 235, 0.3)'
-                ],
-                hoverBackgroundColor: [
-                    'rgba(54, 162, 235, 0.5)',
-                    'rgba(255, 99, 132, 0.5)',
-                    'rgba(75, 192, 192, 0.5)',
-                    'rgba(255, 159, 64, 0.5)',
-                    'rgba(175, 125, 255, 0.5)',
-                    'rgba(255, 205, 86, 0.5)',
-                    'rgba(20, 20, 235, 0.5)'
-                ],
-                borderColor: [
-                    'rgba(54, 162, 235, 0.8)',
-                    'rgba(255, 99, 132, 0.8)',
-                    'rgba(75, 192, 192, 0.8)',
-                    'rgba(255, 159, 64, 0.8)',
-                    'rgba(175, 125, 255, 0.8)',
-                    'rgba(255, 205, 86, 0.8)',
-                    'rgba(20, 20, 235, 0.8)'
-                ],
-                hoverBorderColor: [
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(255, 159, 64, 1)',
-                    'rgba(175, 125, 255, 1)',
-                    'rgba(255, 205, 86, 1)',
-                    'rgba(20, 20, 235, 1)'
-                ],
-                borderWidth: 2,
-                hoverBorderWidth: 3
-            }]
-        }
-    });
-
     const ctx_15 = document.getElementById('rating-eng-int');
     new Chart(ctx_15, {
         type: 'bar',
@@ -1260,55 +1211,6 @@ async function graph() {
                     display: false
                 }
             }
-        }
-    });
-
-    const ctx_16 = document.getElementById('quant-eng-int');
-    new Chart(ctx_16, {
-        type: 'doughnut',
-        data: {
-            labels: labels_engint,
-            datasets: [{
-                data: quant_engint,
-                backgroundColor: [
-                    'rgba(54, 162, 235, 0.3)',
-                    'rgba(255, 99, 132, 0.3)',
-                    'rgba(75, 192, 192, 0.3)',
-                    'rgba(255, 159, 64, 0.3)',
-                    'rgba(175, 125, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)',
-                    'rgba(20, 20, 235, 0.3)'
-                ],
-                hoverBackgroundColor: [
-                    'rgba(54, 162, 235, 0.5)',
-                    'rgba(255, 99, 132, 0.5)',
-                    'rgba(75, 192, 192, 0.5)',
-                    'rgba(255, 159, 64, 0.5)',
-                    'rgba(175, 125, 255, 0.5)',
-                    'rgba(255, 205, 86, 0.5)',
-                    'rgba(20, 20, 235, 0.5)'
-                ],
-                borderColor: [
-                    'rgba(54, 162, 235, 0.8)',
-                    'rgba(255, 99, 132, 0.8)',
-                    'rgba(75, 192, 192, 0.8)',
-                    'rgba(255, 159, 64, 0.8)',
-                    'rgba(175, 125, 255, 0.8)',
-                    'rgba(255, 205, 86, 0.8)',
-                    'rgba(20, 20, 235, 0.8)'
-                ],
-                hoverBorderColor: [
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(255, 159, 64, 1)',
-                    'rgba(175, 125, 255, 1)',
-                    'rgba(255, 205, 86, 1)',
-                    'rgba(20, 20, 235, 1)'
-                ],
-                borderWidth: 2,
-                hoverBorderWidth: 3
-            }]
         }
     });
 
@@ -1391,55 +1293,6 @@ async function graph() {
         }
     });
 
-    const ctx_18 = document.getElementById('quant-cinema');
-    new Chart(ctx_18, {
-        type: 'doughnut',
-        data: {
-            labels: labels_cinema,
-            datasets: [{
-                data: quant_cinema,
-                backgroundColor: [
-                    'rgba(54, 162, 235, 0.3)',
-                    'rgba(255, 99, 132, 0.3)',
-                    'rgba(75, 192, 192, 0.3)',
-                    'rgba(255, 159, 64, 0.3)',
-                    'rgba(175, 125, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)',
-                    'rgba(20, 20, 235, 0.3)'
-                ],
-                hoverBackgroundColor: [
-                    'rgba(54, 162, 235, 0.5)',
-                    'rgba(255, 99, 132, 0.5)',
-                    'rgba(75, 192, 192, 0.5)',
-                    'rgba(255, 159, 64, 0.5)',
-                    'rgba(175, 125, 255, 0.5)',
-                    'rgba(255, 205, 86, 0.5)',
-                    'rgba(20, 20, 235, 0.5)'
-                ],
-                borderColor: [
-                    'rgba(54, 162, 235, 0.8)',
-                    'rgba(255, 99, 132, 0.8)',
-                    'rgba(75, 192, 192, 0.8)',
-                    'rgba(255, 159, 64, 0.8)',
-                    'rgba(175, 125, 255, 0.8)',
-                    'rgba(255, 205, 86, 0.8)',
-                    'rgba(20, 20, 235, 0.8)'
-                ],
-                hoverBorderColor: [
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(255, 159, 64, 1)',
-                    'rgba(175, 125, 255, 1)',
-                    'rgba(255, 205, 86, 1)',
-                    'rgba(20, 20, 235, 1)'
-                ],
-                borderWidth: 2,
-                hoverBorderWidth: 3
-            }]
-        }
-    });
-
     const ctx_19 = document.getElementById('rating-content-rating');
     new Chart(ctx_19, {
         type: 'bar',
@@ -1516,55 +1369,6 @@ async function graph() {
                     display: false
                 }
             }
-        }
-    });
-
-    const ctx_20 = document.getElementById('quant-content-rating');
-    new Chart(ctx_20, {
-        type: 'doughnut',
-        data: {
-            labels: labels_content,
-            datasets: [{
-                data: quant_content,
-                backgroundColor: [
-                    'rgba(54, 162, 235, 0.3)',
-                    'rgba(255, 99, 132, 0.3)',
-                    'rgba(75, 192, 192, 0.3)',
-                    'rgba(255, 159, 64, 0.3)',
-                    'rgba(175, 125, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)',
-                    'rgba(20, 20, 235, 0.3)'
-                ],
-                hoverBackgroundColor: [
-                    'rgba(54, 162, 235, 0.5)',
-                    'rgba(255, 99, 132, 0.5)',
-                    'rgba(75, 192, 192, 0.5)',
-                    'rgba(255, 159, 64, 0.5)',
-                    'rgba(175, 125, 255, 0.5)',
-                    'rgba(255, 205, 86, 0.5)',
-                    'rgba(20, 20, 235, 0.5)'
-                ],
-                borderColor: [
-                    'rgba(54, 162, 235, 0.8)',
-                    'rgba(255, 99, 132, 0.8)',
-                    'rgba(75, 192, 192, 0.8)',
-                    'rgba(255, 159, 64, 0.8)',
-                    'rgba(175, 125, 255, 0.8)',
-                    'rgba(255, 205, 86, 0.8)',
-                    'rgba(20, 20, 235, 0.8)'
-                ],
-                hoverBorderColor: [
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(255, 159, 64, 1)',
-                    'rgba(175, 125, 255, 1)',
-                    'rgba(255, 205, 86, 1)',
-                    'rgba(20, 20, 235, 1)'
-                ],
-                borderWidth: 2,
-                hoverBorderWidth: 3
-            }]
         }
     });
 
@@ -2938,21 +2742,6 @@ function getRuntimeRatings(runtimes, n) {
     return runtimeRatings;
 }
 
-// given an array of runtime objects,
-// returns an array of runtimeQuantities,
-// sorted by runtime (i.e: 60, 90, ..., 210, 240)
-function getRuntimeQuantities(runtimes) {
-    let runtimeQuantities = [];
-
-    runtimes.forEach(runtime => {
-        if (runtime.ratingQuantity > 0) {
-            runtimeQuantities.push(runtime.ratingQuantity);
-        }
-    })
-
-    return runtimeQuantities;
-}
-
 // returns array of {"label" : "English-Spoken/International", "ratingSum", "ratingQuantity", "ratingMean"}.
 // array is size 2, one object is for english-spoken films,
 // the second object is for international films.
@@ -3011,18 +2800,6 @@ function getEnglishInternationalRatings(englishInternationalFilms) {
     return englishInternationalRatings;
 }
 
-// given a size 2 array of english & international films,
-// returns the ratingQuantity of each object in that array
-function getEnglishInternationalQuantities(englishInternationalFilms) {
-    let englishInternationalQuantities = [];
-
-    englishInternationalFilms.forEach(eif => {
-        englishInternationalQuantities.push(eif.ratingQuantity);
-    });
-
-    return englishInternationalQuantities;
-}
-
 // returns array of {"label" : "Watched in Cinemas / Not Watched in Cinemas", "ratingSum", "ratingQuantity", "ratingMean"}.
 // array is size 2, one object is for films watched in cinemas,
 // the second object is for films not watched in cinemas.
@@ -3072,18 +2849,6 @@ function getCinemaRatings(cinemaFilms) {
     });
 
     return cinemaRatings;
-}
-
-// given a size 2 array of cinema films,
-// returns the ratingQuantity of each object in that array
-function getCinemaQuantities(cinemaFilms) {
-    let cinemaQuantities = [];
-
-    cinemaFilms.forEach(cf => {
-        cinemaQuantities.push(cf.ratingQuantity);
-    });
-
-    return cinemaQuantities;
 }
 
 // gets an array of content rating objects:
@@ -3175,19 +2940,6 @@ function getContentRatingRatings(contentRatings, n) {
         if (cr.ratingQuantity >= n) {
             contentRatingRatings.push(cr.ratingMean);
         }
-    });
-
-    return contentRatingRatings;
-}
-
-// returns array of ratingQuantity of each contentRating.
-// (with >= n films)
-// sorted by content rating ("Not Rated", "G", "PG", "12A", "15A", "16", "18").
-function getContentRatingQuantities(contentRatings) {
-    let contentRatingRatings = [];
-
-    contentRatings.forEach(cr => {
-        contentRatingRatings.push(cr.ratingQuantity);
     });
 
     return contentRatingRatings;

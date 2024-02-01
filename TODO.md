@@ -2,11 +2,14 @@
 
 ### Website
 - [x] Position all graphs and descriptions
-- [ ] Descriptions of each graph
-- [ ] Down arrow on all pages 
+- [x] Descriptions of each graph
+- [x] if metascore is not -1, update it 
+- [ ] Down arrow on all pages
+- [ ] scale graphs and divs to work with different screen sizes
 - [ ] change runtime labels from mins to hhmm (e.g. instead of <150 do <2h30m)
 - [ ] decade quant
 - [ ] wallpapers for each page
+- [ ] home page
 - [ ] Final Page (How it works)
 
 ## General

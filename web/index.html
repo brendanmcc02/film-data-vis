@@ -21,7 +21,7 @@
         </div>
 
         <div class="center-bottom-home">
-            <a class="down-button" href="#quant-eng-int-page"><span>&#8659;</span></a>
+            <a class="down-button" href="#rating-genre-page"><span>&#8659;</span></a>
         </div>
     </div>
 
@@ -35,8 +35,8 @@
             <h3 class="description description-subtitle">>= 5 Films</h3>
             <p class="description description-para">
                 Nothing incredibly striking or surprising about this graph if I'm honest. It is interesting to see War
-                being ranked as my clear number one. It's impressive to see Drama with a very high rating given that it
-                is my most watched genre (see next graph).
+                being ranked as my (as of writing this) clear number one. It's impressive to see Drama with a very high
+                rating given that it is my most watched genre (see next graph).
                 <br>
                 <br>
                 I expected Horror to be one of the lowest ranked. Yes, there are good horror films out there, but for
@@ -44,6 +44,10 @@
                 of surprises me, but not really in all honesty. I have watched a decent amount of musicals from the 60s
                 and I wasn't too impressed by them.
             </p>
+        </div>
+
+        <div class="center-bottom-other">
+            <a class="down-button" href="#quant-genre-page"><span>&#8659;</span></a>
         </div>
     </div>
 
@@ -63,6 +67,10 @@
                 are probably also Family or Animated films that get classed as Comedies (films can have more than one type
                 of genre associated with it).
             </p>
+        </div>
+
+        <div class="center-bottom-doughnut">
+            <a class="down-button" href="#directors-page"><span>&#8659;</span></a>
         </div>
     </div>
 
@@ -291,19 +299,6 @@
       </div>
   </div>
 
-  <div id ="quant-runtime-page" class="home-image background-image">
-      <div class="doughnut-div canvas-description-div canvas-div">
-          <canvas id="quant-runtime"></canvas>
-      </div>
-
-      <div class="doughnut-description-div description-div canvas-description-div">
-          <h2 class="description description-title">NUMBER OF FILMS PER RUNTIME INTERVAL</h2>
-          <p class="description description-para">
-              Nothing too shocking here in all honesty. Pretty expected.
-          </p>
-      </div>
-  </div>
-
   <div id="rating-eng-int-page" class="home-image background-image">
       <div class="canvas-div canvas-description-div">
           <canvas id="rating-eng-int"></canvas>
@@ -331,19 +326,6 @@
       </div>
   </div>
 
-  <div id ="quant-eng-int-page" class="home-image background-image">
-      <div class="doughnut-div canvas-description-div canvas-div">
-          <canvas id="quant-eng-int"></canvas>
-      </div>
-
-      <div class="doughnut-description-div description-div canvas-description-div">
-          <h2 class="description description-title">NUMBER OF ENGLISH & INTERNATION FILMS</h2>
-          <p class="description description-para">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-          </p>
-      </div>
-  </div>
-
   <div id="rating-cinema-page" class="home-image background-image">
       <div class="canvas-div canvas-description-div">
           <canvas id="rating-cinema"></canvas>
@@ -352,20 +334,18 @@
       <div class="description-div canvas-description-div">
           <h2 class="description description-title">MEAN RATING OF FILMS WATCHED IN & OUT OF CINEMA</h2>
           <p class="description description-para">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-          </p>
-      </div>
-  </div>
-
-  <div id ="quant-cinema-page" class="home-image background-image">
-      <div class="doughnut-div canvas-description-div canvas-div">
-          <canvas id="quant-cinema"></canvas>
-      </div>
-
-      <div class="doughnut-description-div description-div canvas-description-div">
-          <h2 class="description description-title">NUMBER OF FILMS WATCHED IN & OUT OF CINEMA</h2>
-          <p class="description description-para">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              Okay this was very surprising. Before seeing this graph, rationally I expected the ratings of films
+              watched in cinema to be higher - frankly because I am paying money for a ticket. Seeing a film at home is
+              also much more convenient than going out to a cinema, and from memory there have been times when I have
+              knowingly watched a film at home knowing the reviews were average, so I thought that would have brought
+              the mean rating down.
+              <br>
+              <br>
+              Surprise, surprise. The opposite is true. My rationale for this is that sometimes I will watch a film in
+              cinema for social reasons, not because I think the film is good but just because others are going to see
+              it. This would bring the rating down. Furthermore, sometimes I will be anticipating watching a film in
+              cinema, for example from a director I like, so I will go in blind. The film may be a flop or poor, for
+              example Babylon (dir. Damien Chazelle) or Napolean (dir. Ridley Scott). Still a surprising result.
           </p>
       </div>
   </div>
@@ -378,20 +358,14 @@
       <div class="description-div canvas-description-div">
           <h2 class="description description-title">MEAN RATING OF EACH CONTENT RATING</h2>
           <p class="description description-para">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-          </p>
-      </div>
-  </div>
-
-  <div id ="quant-content-rating-page" class="home-image background-image">
-      <div class="doughnut-div canvas-description-div canvas-div">
-          <canvas id="quant-content-rating"></canvas>
-      </div>
-
-      <div class="doughnut-description-div description-div canvas-description-div">
-          <h2 class="description description-title">NUMBER OF FILMS WATCHED PER CONTENT RATING</h2>
-          <p class="description description-para">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              Not a clear correlation here but I still think it's interesting to analyse. I would guess G films are
+              ranked higher because a lot of animated films (Pixar, Disney, Ghibli) fall into that. Those are highly
+              rated for me, so that would naturally bring it up.
+              <br>
+              <br>
+              I don't have too much to say regarding the rest of them. I would assume 15A and 18 are one of the highest
+              because many of the IMDB top films are in that category (Shawshank Redemption, Godfather, etc.). As we
+              saw previously, the top-rated IMDB films are generally rated very highly by me.
           </p>
       </div>
   </div>
@@ -404,7 +378,7 @@
       <div class="description-div canvas-description-div">
           <h2 class="description description-title">MCU FILMS</h2>
           <p class="description description-para">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                Nothing too much to comment on. The graph tells a sort-of story.
           </p>
       </div>
   </div>
@@ -417,7 +391,8 @@
       <div class="description-div canvas-description-div">
           <h2 class="description description-title">JAMES BOND FILMS</h2>
           <p class="description description-para">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              As the graph tells the story: I wasn't a huge fan of the earlier Bond Films, but the later films I am
+              quite fond of.
           </p>
       </div>
   </div>
@@ -430,7 +405,7 @@
       <div class="description-div canvas-description-div">
           <h2 class="description description-title">LORD OF THE RINGS & THE HOBBIT FILMS</h2>
           <p class="description description-para">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              Quite a simple pattern here: I love The Lord of the Rings, and the Hobbit was above average.
           </p>
       </div>
   </div>
@@ -443,7 +418,8 @@
       <div class="description-div canvas-description-div">
           <h2 class="description description-title">HARRY POTTER & FANTASTIC BEASTS FILMS</h2>
           <p class="description description-para">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              The Harry Potter films themselves have their own ups and downs, but once it hits Fantastic Beasts, the
+              ratings plummet.
           </p>
       </div>
   </div>
@@ -456,7 +432,8 @@
       <div class="description-div canvas-description-div">
           <h2 class="description description-title">STAR WARS FILMS</h2>
           <p class="description description-para">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              A cool shape on this one. Big fan of the original trilogy, and then it drops as it hits the prequels, but
+              climbs up again for the sequels.
           </p>
       </div>
   </div>
@@ -469,7 +446,17 @@
       <div class="description-div canvas-description-div">
           <h2 class="description description-title">MY RATING DISTRIBUTION</h2>
           <p class="description description-para">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+              My standard for 10/10 films is very high. The best way to describe it is that I give it to films that I
+              have experienced a special awe after watching them.
+              <br>
+              <br>
+              It's natural to see a normal distribution emerging here - more interestingly however is that the vast
+              majority of films are 6-8. There is a relatively big step from 5 to 6, and from 8 to 9. I would say this
+              is because when rating films I can often be on the conservative side, for both good and bad films.
+              <br>
+              <br>
+              Obviously there is going to be a skew towards the higher-rated films, because generally I make an effort
+              to watch films that are well-rated, or that I think I will enjoy.
           </p>
       </div>
   </div>

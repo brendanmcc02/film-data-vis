@@ -102,15 +102,20 @@ body, html {
 
 .center-bottom-home {
     text-align: center;
-    /*position: relative; */
-    position: fixed;
-    /*transform: translate(0%, 1150%);*/
+    margin: auto;
 }
 
 .center-bottom-other {
     text-align: center;
     position: relative;
-    transform: translate(0%, -115%);
+    /*transform: translate(49%, -175%);*/
+    top: 0%;
+}
+
+.center-bottom-doughnut {
+    text-align: center;
+    position: relative;
+    top: -17%;
 }
 
 .down-button {
