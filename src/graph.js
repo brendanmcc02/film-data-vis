@@ -57,6 +57,8 @@ async function graph() {
     const base_decade = getDecades(filmData);
     const labels_decade = getDecadeLabels(base_decade, 10);
     const data_decade = getDecadeRatings(base_decade, 10);
+    const labels_decade_quant = getDecadeLabels(base_decade, 1);
+    const quant_decade = getDecadeQuantities(base_decade);
 
     // mean year rating
     const base_year = getYears(filmData, 5);
@@ -69,26 +71,21 @@ async function graph() {
     const base_runtime = getRuntimes(filmData);
     const labels_runtime_ratings = getRuntimeLabels(base_runtime, 5);
     const data_runtime_ratings = getRuntimeRatings(base_runtime, 5);
-    // const labels_runtime_quant = getRuntimeLabels(base_runtime, 1);
-    // const data_runtime_quant = getRuntimeQuantities(base_runtime);
 
     // english-spoken vs international films
     const base_engint = getEnglishInternationalFilms(filmData);
     const labels_engint = getEnglishInternationalLabels(base_engint);
     const data_engint = getEnglishInternationalRatings(base_engint);
-    // const quant_engint = getEnglishInternationalQuantities(base_engint);
 
     // watched in cinema
     const base_cinema = getCinemaFilms(filmData);
     const labels_cinema = getCinemaLabels(base_cinema);
     const ratings_cinema = getCinemaRatings(base_cinema);
-    // const quant_cinema = getCinemaQuantities(base_cinema);
 
     // content rating
     const base_content = getContentRatings(filmData);
     const labels_content = getContentRatingLabels(base_content, 5);
     const ratings_content = getContentRatingRatings(base_content, 5);
-    // const quant_content = getContentRatingQuantities(base_content);
 
     // mcu
     const base_mcu = getFranchise(filmData, ["MCU"]);
@@ -967,6 +964,62 @@ async function graph() {
                     }
                 }
             },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+
+    const ctx_115 = document.getElementById('quant-decade');
+    new Chart(ctx_115, {
+        type: 'doughnut',
+        data: {
+            labels: labels_decade_quant,
+            datasets: [{
+                data: quant_decade,
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.3)',
+                    'rgba(255, 99, 132, 0.3)',
+                    'rgba(75, 192, 192, 0.3)',
+                    'rgba(255, 159, 64, 0.3)',
+                    'rgba(175, 125, 255, 0.3)',
+                    'rgba(255, 205, 86, 0.3)',
+                    'rgba(20, 20, 235, 0.3)'
+                ],
+                hoverBackgroundColor: [
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(75, 192, 192, 0.5)',
+                    'rgba(255, 159, 64, 0.5)',
+                    'rgba(175, 125, 255, 0.5)',
+                    'rgba(255, 205, 86, 0.5)',
+                    'rgba(20, 20, 235, 0.5)'
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 0.8)',
+                    'rgba(255, 99, 132, 0.8)',
+                    'rgba(75, 192, 192, 0.8)',
+                    'rgba(255, 159, 64, 0.8)',
+                    'rgba(175, 125, 255, 0.8)',
+                    'rgba(255, 205, 86, 0.8)',
+                    'rgba(20, 20, 235, 0.8)'
+                ],
+                hoverBorderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(175, 125, 255, 1)',
+                    'rgba(255, 205, 86, 1)',
+                    'rgba(20, 20, 235, 1)'
+                ],
+                borderWidth: 2,
+                hoverBorderWidth: 3
+            }]
+        },
+        options: {
             plugins: {
                 legend: {
                     display: false
@@ -1964,7 +2017,9 @@ function getGenreQuantities(genres) {
     let genreQuantities = [];
 
     genres.forEach(genre => {
-        genreQuantities.push(genre.ratingQuantity);
+        if (genre.ratingQuantity > 0) {
+            genreQuantities.push(genre.ratingQuantity);
+        }
     });
 
     return genreQuantities;
@@ -2507,6 +2562,20 @@ function getDecadeRatings(decades, n) {
     return decadeRatings;
 }
 
+// returns array of decade ratingQuantity
+// (sorted earliest->latest decade)
+function getDecadeQuantities(decades) {
+    let decadeQuantites = [];
+
+    decades.forEach(decade => {
+        if (decade.ratingQuantity > 0) {
+            decadeQuantites.push(decade.ratingQuantity);
+        }
+    });
+
+    return decadeQuantites;
+}
+
 // returns an array of year objects {"year", "ratingMean", "ratingSum", "ratingQuantity"}.
 // if a year has < n films, it's ratingMean is set to null.
 // if a there is a year with no rated films (e.g. 1961),
@@ -2720,7 +2789,7 @@ function getRuntimeLabels(runtimes, n) {
             if (runtime.runtime === Infinity) {
                 runtimeLabels.push("∞");
             } else {
-                runtimeLabels.push("<"+ runtime.runtime);
+                runtimeLabels.push("<" + convertMinsToHoursMins(runtime.runtime));
             }
         }
     });
@@ -2740,6 +2809,15 @@ function getRuntimeRatings(runtimes, n) {
     });
 
     return runtimeRatings;
+}
+
+// converts runtime in minutes to hours & minutes
+// e.g. 90 => 1h30m, 120 => 2h
+function convertMinsToHoursMins(runtime) {
+    let h = Math.floor(runtime / 60);
+    let m = runtime % 60;
+
+    return h.toString() + "h" + (m > 0 ? m.toString() + "m" : "");
 }
 
 // returns array of {"label" : "English-Spoken/International", "ratingSum", "ratingQuantity", "ratingMean"}.

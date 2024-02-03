@@ -7,11 +7,14 @@
 - [x] home down arrow
 - [x] scale graphs and divs to work with different screen sizes
 - [x] Down arrow on all pages
-- [ ] change runtime labels from mins to hhmm (e.g. instead of <150 do <2h30m)
-- [ ] decade quant
+- [x] change runtime labels from mins to hhmm (e.g. instead of <150 do <2h30m)
+- [x] decade quant
+- [x] hover effects
 - [ ] wallpapers for each page
-- [ ] home page
-- [ ] Final Page (How it works)
+- [x] home page
+- [ ] final page
+- [ ] readme (how it works)
+- [ ] website video preview
 
 ## General
 - [x] finish initDB.js
@@ -25,7 +28,7 @@
 - [ ] design the website
 
 ### graph.js
-- [ ] decade quantity {doughnut}
+- [x] decade quantity {doughnut}
 - [x] Mean Genre Rating {bar}
 - [x] Quantity of films watched per genre {doughnut}
 - [x] Top k Directors (>= n films) {bar}
