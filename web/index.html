@@ -1,540 +1,668 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>filmDataVis</title>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <link rel="stylesheet" href="style.css">
-    </head>
-
-    <body>
-      <script type="module" src="../src/graph.js"></script>
-        <div id="home-page" class="home-image background-image">
-            <div class="center">
-                <h1 class="title-text">FILM DATA VIS</h1>
-                <p class="para-text">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                </p>
-            </div>
-
-            <div class="center-bottom">
-                <a class="down-button" href="#rating-genre-page"><span>&#8659;</span></a>
-            </div>
-        </div>
-
-        <div id="rating-genre-page" class="home-image background-image">
-            <div class="canvas-div canvas-description-div">
-                <canvas id="mean-genre-rating"></canvas>
-            </div>
-
-            <div class="description-div canvas-description-div">
-                <h2 class="description description-title">MEAN GENRE RATING</h2>
-                <h3 class="description description-subtitle">>= 5 Films</h3>
-                <p class="description description-para">
-                    Nothing incredibly striking or surprising about this graph if I'm honest. It is interesting to see War
-                    being ranked as my (as of writing this) clear number one. It's impressive to see Drama with a very high
-                    rating given that it is my most watched genre (see next graph).
-                    <br>
-                    <br>
-                    I expected Horror to be one of the lowest ranked. Yes, there are good horror films out there, but for
-                    the most part it is a cheap and awful genre. Not surprised by that at all. Musical being my lowest sort
-                    of surprises me, but not really in all honesty. I have watched a decent amount of musicals from the 60s,
-                    and I wasn't too impressed by them.
-                </p>
-            </div>
-
-            <div class="center-bottom">
-                <a class="down-button" href="#quant-genre-page"><span>&#8659;</span></a>
-            </div>
-        </div>
-
-        <div id ="quant-genre-page" class="home-image background-image">
-            <div class="doughnut-div canvas-description-div canvas-div">
-                <canvas id="quant-genre"></canvas>
-            </div>
-
-            <div class="doughnut-description-div description-div canvas-description-div">
-                <h2 class="description description-title">NUMBER OF FILMS PER GENRE</h2>
-                <p class="description description-para">
-                    Similarly, nothing too surprising here. Drama of course takes the number one spot; the vast majority of
-                    films are classed as a Drama.
-                    <br>
-                    <br>
-                    A lot more comedy films than I was expecting, but they are all definitely not solely Comedy films, they
-                    are probably also Family or Animated films that get classed as Comedies (films can have more than one type
-                    of genre associated with it).
-                </p>
-            </div>
-
-            <div class="center-bottom">
-                <a class="down-button" href="#directors-page"><span>&#8659;</span></a>
-            </div>
-        </div>
-
-        <div id="directors-page" class="home-image background-image">
-            <div class="canvas-div canvas-description-div">
-                <canvas id="directors"></canvas>
-            </div>
-
-            <div class="description-div canvas-description-div">
-                <h2 class="description description-title">TOP 5 DIRECTORS</h2>
-                <h3 class="description description-subtitle">>= 5 Films</h3>
-                <p class="description description-para">
-                    Definitely some surprises here. Before seeing this graph, my three favourite directors have always been
-                    Nolan, Chazelle, Villeneuve. Nice to see them here.
-                    <br>
-                    <br>
-                    Linklater has also been a favourite of mine, so wasn't surprised to see him here. The reason his rating
-                    is so high is the Before Trilogy is highly rating by me Respectively I gave the three films a 10,
-                    9, and a 9. I also gave Boyhood a 9, but School of Rock brings it down with a 7.
-                    <br>
-                    <br>
-                    Very surprised to see Unkrich here. The reason why he is here is he directed many of the Pixar Films.
-                    So it's not necessarily that I love Unkrich as a director, more so that he
-                    happened to direct a lot of my favourite Pixar Films (Coco, Toy Story 2 & 3, Finding Nemo,
-                    Monsters Inc.).
-                </p>
-            </div>
-
-            <div class="center-bottom">
-                <a class="down-button" href="#nolan-page"><span>&#8659;</span></a>
-            </div>
-        </div>
-
-        <div id="nolan-page" class="home-image background-image">
-            <div class="canvas-div canvas-description-div">
-                <canvas id="nolan"></canvas>
-            </div>
-
-            <div class="description-div canvas-description-div">
-                <h2 class="description description-title">CHRISTOPHER NOLAN FILMS</h2>
-                <p class="description description-para">
-                    My all-time favourite director. Seeing this graph now really emphasises how impressive it is that I
-                    love so many of his films. We can kind of see a pattern where his earlier filmography floats between
-                    9's and 7's, then peaks at The Dark Knight and Inception, then levels out at 9's and 8's.
-                </p>
-            </div>
-
-            <div class="center-bottom">
-                <a class="down-button" href="#villeneuve-page"><span>&#8659;</span></a>
-            </div>
-        </div>
-
-      <div id="villeneuve-page" class="home-image background-image">
-          <div class="canvas-div canvas-description-div">
-              <canvas id="villeneuve"></canvas>
-          </div>
-
-          <div class="description-div canvas-description-div">
-              <h2 class="description description-title">DENIS VILLENEUVE FILMS</h2>
-              <p class="description description-para">
-                  (For context, at the time I am writing this I have given all six of his films an 8).
-                  <br>
-                  <br>
-                  This graph is unexpectedly interesting - it's very 'boring', but that itself is fascinating given that I
-                  have given all six of a Director's films an 8. I'm writing this before Dune Part 2 comes out so this may
-                  change.
-                  <br>
-                  <br>
-                  Initially, I had given Blade Runner 2049, Incendies, and Arrival 9's, but over time the impact a film has
-                  on you can either be forgotten or wear off, and that is exactly what happened with those films.
-              </p>
-          </div>
-
-          <div class="center-bottom">
-              <a class="down-button" href="#actors-page"><span>&#8659;</span></a>
-          </div>
-      </div>
-
-      <div id="actors-page" class="home-image background-image">
-          <div class="canvas-div canvas-description-div">
-              <canvas id="actors"></canvas>
-          </div>
-
-          <div class="description-div canvas-description-div">
-              <h2 class="description description-title">TOP 5 ACTORS</h2>
-              <h3 class="description description-subtitle">>= 5 Films</h3>
-              <p class="description description-para">
-                  (This may become outdated as time goes on)
-                  <br>
-                  <br>
-                  Okay here is an interesting one. Morgan Freeman, Cillian Murphy, and Michael Caine are all up there
-                  because they are all frequent collaborators with Nolan, who as we have already seen is my favourite
-                  director, and has a high mean rating.
-                  <br>
-                  <br>
-                  Wallace Shawn voices in 6 Pixar Films, and as we have already seen, those are highly rated.
-                  He then features in Marriage Story, which is a film I loved (it got a 9).
-                  <br>
-                  <br>
-                  Ethan Hawke is there because he is in four of my highly rated Linklater films (Before Trilogy & Boyhood).
-                  First Reformed and Dead Poets Society were given an 8. The mean drops due to his appearance in Glass
-                  Onion - a film I wasn't fond of, receiving a 6.
-              </p>
-          </div>
-
-          <div class="center-bottom">
-              <a class="down-button" href="#gosling-page"><span>&#8659;</span></a>
-          </div>
-      </div>
-
-      <div id="gosling-page" class="home-image background-image">
-          <div class="canvas-div canvas-description-div">
-              <canvas id="gosling"></canvas>
-          </div>
-
-          <div class="description-div canvas-description-div">
-              <h2 class="description description-title">RYAN GOSLING FILMS</h2>
-              <p class="description description-para">
-                  My favourite actor. I honestly didn't expect his films to be so highly rated across the board. Not much
-                  else to add in all honesty.
-              </p>
-          </div>
-
-          <div class="center-bottom">
-              <a class="down-button" href="#imdb-top-25-page"><span>&#8659;</span></a>
-          </div>
-      </div>
-
-      <div id="imdb-top-25-page" class="home-image background-image">
-          <div class="canvas-div canvas-description-div">
-              <canvas id="imdb-top-25"></canvas>
-          </div>
-
-          <div class="description-div canvas-description-div">
-              <h2 class="description description-title">MY RATING OF IMDB TOP 25</h2>
-              <p class="description description-para">
-                  The 25 Highest Rated films on IMDB. You can clearly see some were not my cup of tea (some 6's and 7's
-                  here and there). For the most part, it is very highly rated, sporting three 10's and a handful of 9's and 8's.
-              </p>
-          </div>
-
-          <div class="center-bottom">
-              <a class="down-button" href="#imdb-top-10-page"><span>&#8659;</span></a>
-          </div>
-      </div>
-
-      <div id="imdb-top-10-page" class="home-image background-image">
-          <div class="canvas-div canvas-description-div">
-              <canvas id="imdb-top-10"></canvas>
-          </div>
-
-          <div class="description-div canvas-description-div">
-              <h2 class="description description-title">IMDB RATING OF MY TOP 10 FILMS</h2>
-              <p class="description description-para">
-                  If there's one thing to learn from this graph is that IMDB loves my favourite films. Not one films drops
-                  below a mean IMDB Rating of 8.0. Very impressive across the board.
-              </p>
-          </div>
-
-          <div class="center-bottom">
-              <a class="down-button" href="#meta-top-10-page"><span>&#8659;</span></a>
-          </div>
-      </div>
-
-      <div id="meta-top-10-page" class="home-image background-image">
-          <div class="canvas-div canvas-description-div">
-              <canvas id="meta-top-10"></canvas>
-          </div>
-
-          <div class="description-div canvas-description-div">
-              <h2 class="description description-title">METASCORE OF MY TOP 10 FILMS</h2>
-              <p class="description description-para">
-                  Metascore is an aggregate rating of critic's opinions of a film.
-                  Like the IMDB Rating graph previously, we learn that critics also love my favourite films. Two of my
-                  films even scored the perfect 100.
-              </p>
-          </div>
-
-          <div class="center-bottom">
-              <a class="down-button" href="#decade-page"><span>&#8659;</span></a>
-          </div>
-      </div>
-
-      <div id="decade-page" class="home-image background-image">
-          <div class="canvas-div canvas-description-div">
-              <canvas id="decade"></canvas>
-          </div>
-
-        <div class="description-div canvas-description-div">
-            <h2 class="description description-title">MEAN DECADE RATING</h2>
-            <h3 class="description description-subtitle">>= 10 Films</h3>
-            <p class="description description-para">
-                This graph needs a description. Data visualisation can tell stories and patterns, but it can often be
-                misleading if context is not known. Obviously I did my best to filter out the extreme cases by only
-                featuring decades with >= 10 films - for example, 1930 only has 3 films, so it can be skewed. However,
-                you can't manipulate data too much to get the results you want.
-                <br>
-                <br>
-                In fairness, I thought films before the 70s and 80s would be much higher. If there is a film from the 2020s
-                that has let's say a 7.0 IMDB rating and 65 metascore, I (and many others I would argue) would be much less
-                likely to watch that film if it was made in the 60s or 70s. We'll see this later with the cinema graphs, but
-                I will sometimes watch modern films that I know are poor, but watch it anyway for social reasons or if
-                people are going to watch it in the cinema. Another reason is survivorship bias - an old, average film is
-                less likely going to be watched by modern audiences because it gets lost in time. So, most older films are
-                watched because they stood the test of time, the fact that they are remembered to this day is a testament to
-                their quality or cultural impact.
-                <br>
-                <br>
-                These are things I have thought before seeing this graph, so in all honesty I thought the older films would
-                have higher ratings. I think this is also because there are quite a few films deemed as 'classics' or 'must
-                watches', but then I watch them and am not impressed. I'd say that balances it out.
-                <br>
-                <br>
-                It's eye-catching as well to see 2020 being the lowest. I would say it's because I started watching more
-                'bad' films either in cinema or for social reasons, like I mentioned before.
-            </p>
-        </div>
-
-          <div class="center-bottom">
-              <a class="down-button" href="#year-page"><span>&#8659;</span></a>
-          </div>
-      </div>
-
-      <div id="year-page" class="home-image background-image">
-          <div class="canvas-div canvas-description-div">
-              <canvas id="year"></canvas>
-          </div>
-
-          <div class="description-div canvas-description-div">
-              <h2 class="description description-title">MEAN YEAR RATING</h2>
-              <h3 class="description description-subtitle">>= 5 Films</h3>
-              <p class="description description-para">
-                  Any year with <5 films is shown as null to prevent misleading skew, hence the gaps.
-                  <br>
-                  <br>
-                  We can sort of see a trend here, there is a little climb in the mid 90s, and there seems to be a
-                  relatively good period from 2009-2012. We then see a drop in ratings from 2020 onwards which explains the
-                  low 2020 decade rating from the mean decade rating bar chart that we saw two graphs ago..
-              </p>
-          </div>
-
-          <div class="center-bottom">
-              <a class="down-button" href="#rating-runtime-page"><span>&#8659;</span></a>
-          </div>
-      </div>
-
-      <div id="rating-runtime-page" class="home-image background-image">
-          <div class="canvas-div canvas-description-div">
-              <canvas id="rating-runtime"></canvas>
-          </div>
-
-          <div class="description-div canvas-description-div">
-              <h2 class="description description-title">MEAN RATING OF EACH RUNTIME INTERVAL</h2>
-              <h3 class="description description-subtitle">>= 5 Films</h3>
-              <p class="description description-para">
-                  In concept, I thought this graph could yield eye-opening results, but not really in all honest. However,
-                  like we saw with the Villeneuve film graph, 'boring' graphs can still have their own insights. The
-                  takeaway from this is that there is no clear correlation between film runtime and my liking of them.
-                  <br>
-                  <br>
-                  Now obviously I'm not ignorant to the clear lead of <3h and <3h30m, but I would argue that this is mainly
-                  for one reason: if a film has a very long runtime, and the reviews are average, I am much less likely to
-                  watch the longer film, as opposed to a film with let's say a normal 2hr runtime. This creates a bias for
-                  the longer films, hence the higher mean rating.
-              </p>
-          </div>
-
-          <div class="center-bottom">
-              <a class="down-button" href="#rating-eng-int-page"><span>&#8659;</span></a>
-          </div>
-      </div>
-
-      <div id="rating-eng-int-page" class="home-image background-image">
-          <div class="canvas-div canvas-description-div">
-              <canvas id="rating-eng-int"></canvas>
-          </div>
-
-          <div class="description-div canvas-description-div">
-              <h2 class="description description-title">MEAN RATING OF ENGLISH & INTERNATIONAL FILMS</h2>
-              <p class="description description-para">
-                  Following the Academy Award definition of an International Film: The Film is produced outside the USA
-                  and has a >50% non-English dialogue track. So, I check if a film is produced outside the US (and the UK
-                  because realistically if a film is produced in the UK it will obviously have English be primarily spoken),
-                  and then I check if the first language in the film's language list is English. Unfortunately it's not
-                  perfect because, for example, Roma and All Quiet on the Western Front are international films, but because
-                  they are Netflix films, USA is included in its list of countries making it a non-international film.
-                  <br>
-                  <br>
-                  I expected International Films to have a higher mean, mostly because (similar reasoning as before) I am
-                  less likely to watch an average international film as opposed to an average American film. I think that
-                  is just a result of human nature: we tend towards the familiar.
-                  <br>
-                  <br>
-                  I am quite surprised by this result. I guess the takeaway here is that there is no clear correlation
-                  between my liking of a film, and whether it is international or not.
-              </p>
-          </div>
-
-          <div class="center-bottom">
-              <a class="down-button" href="#rating-cinema-page"><span>&#8659;</span></a>
-          </div>
-      </div>
-
-      <div id="rating-cinema-page" class="home-image background-image">
-          <div class="canvas-div canvas-description-div">
-              <canvas id="rating-cinema"></canvas>
-          </div>
-
-          <div class="description-div canvas-description-div">
-              <h2 class="description description-title">MEAN RATING OF FILMS WATCHED IN & OUT OF CINEMA</h2>
-              <p class="description description-para">
-                  Okay this was very surprising. Before seeing this graph, rationally I expected the ratings of films
-                  watched in cinema to be higher - frankly because I am paying money for a ticket. Seeing a film at home is
-                  also much more convenient than going out to a cinema, and from memory there have been times when I have
-                  knowingly watched a film at home knowing the reviews were average, so I thought that would have brought
-                  the mean rating down.
-                  <br>
-                  <br>
-                  Surprise, surprise. The opposite is true. My rationale for this is that sometimes I will watch a film in
-                  cinema for social reasons, not because I think the film is good but just because others are going to see
-                  it. This would bring the rating down. Furthermore, sometimes I will be anticipating watching a film in
-                  cinema, for example from a director I like, so I will go in blind. The film may be a flop or poor, for
-                  example Babylon (dir. Damien Chazelle) or Napolean (dir. Ridley Scott). Still a surprising result.
-              </p>
-          </div>
-
-          <div class="center-bottom">
-              <a class="down-button" href="#rating-content-rating-page"><span>&#8659;</span></a>
-          </div>
-      </div>
-
-      <div id="rating-content-rating-page" class="home-image background-image">
-          <div class="canvas-div canvas-description-div">
-              <canvas id="rating-content-rating"></canvas>
-          </div>
-
-          <div class="description-div canvas-description-div">
-              <h2 class="description description-title">MEAN RATING OF EACH CONTENT RATING</h2>
-              <p class="description description-para">
-                  Not a clear correlation here but I still think it's interesting to analyse. I would guess G films are
-                  ranked higher because a lot of animated films (Pixar, Disney, Ghibli) fall into that. Those are highly
-                  rated for me, so that would naturally bring it up.
-                  <br>
-                  <br>
-                  I don't have too much to say regarding the rest of them. I would assume 15A and 18 are one of the highest
-                  because many of the IMDB top films are in that category (Shawshank Redemption, Godfather, etc.). As we
-                  saw previously, the top-rated IMDB films are generally rated very highly by me.
-              </p>
-          </div>
-
-          <div class="center-bottom">
-              <a class="down-button" href="#mcu-page"><span>&#8659;</span></a>
-          </div>
-      </div>
-
-      <div id="mcu-page" class="home-image background-image">
-          <div class="canvas-div canvas-description-div">
-              <canvas id="mcu"></canvas>
-          </div>
-
-          <div class="description-div canvas-description-div">
-              <h2 class="description description-title">MCU FILMS</h2>
-              <p class="description description-para">
-                    Nothing too much to comment on. The graph tells a sort-of story.
-              </p>
-          </div>
-
-          <div class="center-bottom">
-              <a class="down-button" href="#bond-page"><span>&#8659;</span></a>
-          </div>
-      </div>
-
-      <div id="bond-page" class="home-image background-image">
-          <div class="canvas-div canvas-description-div">
-              <canvas id="bond"></canvas>
-          </div>
-
-          <div class="description-div canvas-description-div">
-              <h2 class="description description-title">JAMES BOND FILMS</h2>
-              <p class="description description-para">
-                  As the graph tells the story: I wasn't a huge fan of the earlier Bond Films, but the later films I am
-                  quite fond of.
-              </p>
-          </div>
-
-          <div class="center-bottom">
-              <a class="down-button" href="#lotr-page"><span>&#8659;</span></a>
-          </div>
-      </div>
-
-      <div id="lotr-page" class="home-image background-image">
-          <div class="canvas-div canvas-description-div">
-              <canvas id="lotr"></canvas>
-          </div>
-
-          <div class="description-div canvas-description-div">
-              <h2 class="description description-title">LORD OF THE RINGS & THE HOBBIT FILMS</h2>
-              <p class="description description-para">
-                  Quite a simple pattern here: I love The Lord of the Rings, and the Hobbit was above average.
-              </p>
-          </div>
-
-          <div class="center-bottom">
-              <a class="down-button" href="#hp-page"><span>&#8659;</span></a>
-          </div>
-      </div>
-
-      <div id="hp-page" class="home-image background-image">
-          <div class="canvas-div canvas-description-div">
-              <canvas id="hp"></canvas>
-          </div>
-
-          <div class="description-div canvas-description-div">
-              <h2 class="description description-title">HARRY POTTER & FANTASTIC BEASTS FILMS</h2>
-              <p class="description description-para">
-                  The Harry Potter films themselves have their own ups and downs, but once it hits Fantastic Beasts, the
-                  ratings plummet.
-              </p>
-          </div>
-
-          <div class="center-bottom">
-              <a class="down-button" href="#sw-page"><span>&#8659;</span></a>
-          </div>
-      </div>
-
-      <div id="sw-page" class="home-image background-image">
-          <div class="canvas-div canvas-description-div">
-              <canvas id="sw"></canvas>
-          </div>
-
-          <div class="description-div canvas-description-div">
-              <h2 class="description description-title">STAR WARS FILMS</h2>
-              <p class="description description-para">
-                  A cool shape on this one. Big fan of the original trilogy, and then it drops as it hits the prequels, but
-                  climbs up again for the sequels.
-              </p>
-          </div>
-
-          <div class="center-bottom">
-              <a class="down-button" href="#dist-page"><span>&#8659;</span></a>
-          </div>
-      </div>
-
-      <div id="dist-page" class="home-image background-image">
-          <div class="canvas-div canvas-description-div">
-              <canvas id="dist"></canvas>
-          </div>
-
-          <div class="description-div canvas-description-div">
-              <h2 class="description description-title">MY RATING DISTRIBUTION</h2>
-              <p class="description description-para">
-                  My standard for 10/10 films is very high. The best way to describe it is that I give it to films that I
-                  have experienced a special awe after watching them.
-                  <br>
-                  <br>
-                  It's natural to see a normal distribution emerging here - more interestingly however is that the vast
-                  majority of films are 6-8. There is a relatively big step from 5 to 6, and from 8 to 9. I would say this
-                  is because when rating films I can often be on the conservative side, for both good and bad films.
-                  <br>
-                  <br>
-                  Obviously there is going to be a skew towards the higher-rated films, because generally I make an effort
-                  to watch films that are well-rated, or that I think I will enjoy.
-              </p>
-          </div>
-      </div>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>filmDataVis</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<script type="module" src="../src/graph.js"></script>
+<div id="home-page" class="home-image background-image">
+    <div class="center">
+        <h1 class="title-text">FILM DATA VIS</h1>
+        <p class="para-text">
+            Welcome. This is a solo project I developed in order to visualise the data on my IMDB account.
+            <br>
+            <br>
+            You will find various graphs accompanied by textual descriptions. To begin your voyage, click the
+            down arrow below.
+        </p>
+    </div>
+
+    <div class="center-bottom">
+        <a class="scroll-button" href="#rating-genre-page"><span>&#8659;</span></a>
+    </div>
+</div>
+
+<div id="rating-genre-page" class="home-image background-image">
+    <div class="canvas-div canvas-description-div">
+        <canvas id="mean-genre-rating"></canvas>
+    </div>
+
+    <div class="description-div canvas-description-div">
+        <h2 class="description description-title">MEAN GENRE RATING</h2>
+        <h3 class="description description-subtitle">>= 5 Films</h3>
+        <p class="description description-para">
+            Nothing incredibly striking or surprising about this graph if I'm honest. It is interesting to see War
+            being ranked as my (as of writing this) clear number one. It's impressive to see Drama with a very high
+            rating given that it is my most watched genre (see next graph).
+            <br>
+            <br>
+            I expected Horror to be one of the lowest ranked. Yes, there are good horror films out there, but for
+            the most part it is a cheap and awful genre. Not surprised by that at all. Musical being my lowest sort
+            of surprises me, but not really in all honesty. I have watched a decent amount of musicals from the 60s,
+            and I wasn't too impressed by them.
+        </p>
+    </div>
+
+    <div class="center-bottom">
+        <a class="scroll-button" href="#quant-genre-page"><span>&#8659;</span></a>
+    </div>
+
+    <div class="center-top">
+        <a class="scroll-button" href="#home-page"><span>&#8657;</span></a>
+    </div>
+</div>
+
+<div id ="quant-genre-page" class="home-image background-image">
+    <div class="doughnut-div canvas-description-div canvas-div">
+        <canvas id="quant-genre"></canvas>
+    </div>
+
+    <div class="doughnut-description-div description-div canvas-description-div">
+        <h2 class="description description-title">NUMBER OF FILMS PER GENRE</h2>
+        <p class="description description-para">
+            Similarly, nothing too surprising here. Drama of course takes the number one spot; the vast majority of
+            films are classed as a Drama.
+            <br>
+            <br>
+            A lot more comedy films than I was expecting, but they are all definitely not solely Comedy films, they
+            are probably also Family or Animated films that get classed as Comedies (films can have more than one type
+            of genre associated with it).
+        </p>
+    </div>
+
+    <div class="center-bottom">
+        <a class="scroll-button" href="#directors-page"><span>&#8659;</span></a>
+    </div>
+
+    <div class="center-top">
+        <a class="scroll-button" href="#rating-genre-page"><span>&#8657;</span></a>
+    </div>
+</div>
+
+<div id="directors-page" class="home-image background-image">
+    <div class="canvas-div canvas-description-div">
+        <canvas id="directors"></canvas>
+    </div>
+
+    <div class="description-div canvas-description-div">
+        <h2 class="description description-title">TOP 5 DIRECTORS</h2>
+        <h3 class="description description-subtitle">>= 5 Films</h3>
+        <p class="description description-para">
+            Definitely some surprises here. Before seeing this graph, my three favourite directors have always been
+            Nolan, Chazelle, Villeneuve. Nice to see them here.
+            <br>
+            <br>
+            Linklater has also been a favourite of mine, so wasn't surprised to see him here. The reason his rating
+            is so high is the Before Trilogy is highly rating by me Respectively I gave the three films a 10,
+            9, and a 9. I also gave Boyhood a 9, but School of Rock brings it down with a 7.
+            <br>
+            <br>
+            Very surprised to see Unkrich here. The reason why he is here is he directed many of the Pixar Films.
+            So it's not necessarily that I love Unkrich as a director, more so that he
+            happened to direct a lot of my favourite Pixar Films (Coco, Toy Story 2 & 3, Finding Nemo,
+            Monsters Inc.).
+        </p>
+    </div>
+
+    <div class="center-bottom">
+        <a class="scroll-button" href="#nolan-page"><span>&#8659;</span></a>
+    </div>
+
+    <div class="center-top">
+        <a class="scroll-button" href="#quant-genre-page"><span>&#8657;</span></a>
+    </div>
+</div>
+
+<div id="nolan-page" class="home-image background-image">
+    <div class="canvas-div canvas-description-div">
+        <canvas id="nolan"></canvas>
+    </div>
+
+    <div class="description-div canvas-description-div">
+        <h2 class="description description-title">CHRISTOPHER NOLAN FILMS</h2>
+        <p class="description description-para">
+            My all-time favourite director. Seeing this graph now really emphasises how impressive it is that I
+            love so many of his films. We can kind of see a pattern where his earlier filmography floats between
+            9's and 7's, then peaks at The Dark Knight and Inception, then levels out at 9's and 8's.
+        </p>
+    </div>
+
+    <div class="center-bottom">
+        <a class="scroll-button" href="#villeneuve-page"><span>&#8659;</span></a>
+    </div>
+
+    <div class="center-top">
+        <a class="scroll-button" href="#directors-page"><span>&#8657;</span></a>
+    </div>
+</div>
+
+<div id="villeneuve-page" class="home-image background-image">
+    <div class="canvas-div canvas-description-div">
+        <canvas id="villeneuve"></canvas>
+    </div>
+
+    <div class="description-div canvas-description-div">
+        <h2 class="description description-title">DENIS VILLENEUVE FILMS</h2>
+        <p class="description description-para">
+            (For context, at the time I am writing this I have given all six of his films an 8).
+            <br>
+            <br>
+            This graph is unexpectedly interesting - it's very 'boring', but that itself is fascinating given that I
+            have given all six of a Director's films an 8. I'm writing this before Dune Part 2 comes out so this may
+            change.
+            <br>
+            <br>
+            Initially, I had given Blade Runner 2049, Incendies, and Arrival 9's, but over time the impact a film has
+            on you can either be forgotten or wear off, and that is exactly what happened with those films.
+        </p>
+    </div>
+
+    <div class="center-bottom">
+        <a class="scroll-button" href="#actors-page"><span>&#8659;</span></a>
+    </div>
+
+    <div class="center-top">
+        <a class="scroll-button" href="#nolan-page"><span>&#8657;</span></a>
+    </div>
+</div>
+
+<div id="actors-page" class="home-image background-image">
+    <div class="canvas-div canvas-description-div">
+        <canvas id="actors"></canvas>
+    </div>
+
+    <div class="description-div canvas-description-div">
+        <h2 class="description description-title">TOP 5 ACTORS</h2>
+        <h3 class="description description-subtitle">>= 5 Films</h3>
+        <p class="description description-para">
+            (This may become outdated as time goes on)
+            <br>
+            <br>
+            Okay here is an interesting one. Morgan Freeman, Cillian Murphy, and Michael Caine are all up there
+            because they are all frequent collaborators with Nolan, who as we have already seen is my favourite
+            director, and has a high mean rating.
+            <br>
+            <br>
+            Wallace Shawn voices in 6 Pixar Films, and as we have already seen, those are highly rated.
+            He then features in Marriage Story, which is a film I loved (it got a 9).
+            <br>
+            <br>
+            Ethan Hawke is there because he is in four of my highly rated Linklater films (Before Trilogy & Boyhood).
+            First Reformed and Dead Poets Society were given an 8. The mean drops due to his appearance in Glass
+            Onion - a film I wasn't fond of, receiving a 6.
+        </p>
+    </div>
+
+    <div class="center-bottom">
+        <a class="scroll-button" href="#gosling-page"><span>&#8659;</span></a>
+    </div>
+
+    <div class="center-top">
+        <a class="scroll-button" href="#villeneuve-page"><span>&#8657;</span></a>
+    </div>
+</div>
+
+<div id="gosling-page" class="home-image background-image">
+    <div class="canvas-div canvas-description-div">
+        <canvas id="gosling"></canvas>
+    </div>
+
+    <div class="description-div canvas-description-div">
+        <h2 class="description description-title">RYAN GOSLING FILMS</h2>
+        <p class="description description-para">
+            My favourite actor. I honestly didn't expect his films to be so highly rated across the board. Not much
+            else to add in all honesty.
+        </p>
+    </div>
+
+    <div class="center-bottom">
+        <a class="scroll-button" href="#imdb-top-25-page"><span>&#8659;</span></a>
+    </div>
+
+    <div class="center-top">
+        <a class="scroll-button" href="#actors-page"><span>&#8657;</span></a>
+    </div>
+</div>
+
+<div id="imdb-top-25-page" class="home-image background-image">
+    <div class="canvas-div canvas-description-div">
+        <canvas id="imdb-top-25"></canvas>
+    </div>
+
+    <div class="description-div canvas-description-div">
+        <h2 class="description description-title">MY RATING OF IMDB TOP 25</h2>
+        <p class="description description-para">
+            The 25 Highest Rated films on IMDB. You can clearly see some were not my cup of tea (some 6's and 7's
+            here and there). For the most part, it is very highly rated, sporting three 10's and a handful of 9's and 8's.
+        </p>
+    </div>
+
+    <div class="center-bottom">
+        <a class="scroll-button" href="#imdb-top-10-page"><span>&#8659;</span></a>
+    </div>
+
+    <div class="center-top">
+        <a class="scroll-button" href="#gosling-page"><span>&#8657;</span></a>
+    </div>
+</div>
+
+<div id="imdb-top-10-page" class="home-image background-image">
+    <div class="canvas-div canvas-description-div">
+        <canvas id="imdb-top-10"></canvas>
+    </div>
+
+    <div class="description-div canvas-description-div">
+        <h2 class="description description-title">IMDB RATING OF MY TOP 10 FILMS</h2>
+        <p class="description description-para">
+            If there's one thing to learn from this graph is that IMDB loves my favourite films. Not one films drops
+            below a mean IMDB Rating of 8.0. Very impressive across the board.
+        </p>
+    </div>
+
+    <div class="center-bottom">
+        <a class="scroll-button" href="#meta-top-10-page"><span>&#8659;</span></a>
+    </div>
+
+    <div class="center-top">
+        <a class="scroll-button" href="#imdb-top-25-page"><span>&#8657;</span></a>
+    </div>
+</div>
+
+<div id="meta-top-10-page" class="home-image background-image">
+    <div class="canvas-div canvas-description-div">
+        <canvas id="meta-top-10"></canvas>
+    </div>
+
+    <div class="description-div canvas-description-div">
+        <h2 class="description description-title">METASCORE OF MY TOP 10 FILMS</h2>
+        <p class="description description-para">
+            Metascore is an aggregate rating of critic's opinions of a film.
+            Like the IMDB Rating graph previously, we learn that critics also love my favourite films. Two of my
+            films even scored the perfect 100.
+        </p>
+    </div>
+
+    <div class="center-bottom">
+        <a class="scroll-button" href="#decade-page"><span>&#8659;</span></a>
+    </div>
+
+    <div class="center-top">
+        <a class="scroll-button" href="#imdb-top-10-page"><span>&#8657;</span></a>
+    </div>
+</div>
+
+<div id="decade-page" class="home-image background-image">
+    <div class="canvas-div canvas-description-div">
+        <canvas id="decade"></canvas>
+    </div>
+
+    <div class="description-div canvas-description-div">
+        <h2 class="description description-title">MEAN DECADE RATING</h2>
+        <h3 class="description description-subtitle">>= 10 Films</h3>
+        <p class="description description-para">
+            This graph needs a description. Data visualisation can tell stories and patterns, but it can often be
+            misleading if context is not known. Obviously I did my best to filter out the extreme cases by only
+            featuring decades with >= 10 films - for example, 1930 only has 3 films, so it can be skewed. However,
+            you can't manipulate data too much to get the results you want.
+            <br>
+            <br>
+            In fairness, I thought films before the 70s and 80s would be much higher. If there is a film from the 2020s
+            that has let's say a 7.0 IMDB rating and 65 metascore, I (and many others I would argue) would be much less
+            likely to watch that film if it was made in the 60s or 70s. We'll see this later with the cinema graphs, but
+            I will sometimes watch modern films that I know are poor, but watch it anyway for social reasons or if
+            people are going to watch it in the cinema. Another reason is survivorship bias - an old, average film is
+            less likely going to be watched by modern audiences because it gets lost in time. So, most older films are
+            watched because they stood the test of time, the fact that they are remembered to this day is a testament to
+            their quality or cultural impact.
+            <br>
+            <br>
+            These are things I have thought before seeing this graph, so in all honesty I thought the older films would
+            have higher ratings. I think this is also because there are quite a few films deemed as 'classics' or 'must
+            watches', but then I watch them and am not impressed. I'd say that balances it out.
+            <br>
+            <br>
+            It's eye-catching as well to see 2020 being the lowest. I would say it's because I started watching more
+            'bad' films either in cinema or for social reasons, like I mentioned before.
+        </p>
+    </div>
+
+    <div class="center-bottom">
+        <a class="scroll-button" href="#quant-decade-page"><span>&#8659;</span></a>
+    </div>
+
+    <div class="center-top">
+        <a class="scroll-button" href="#meta-top-10-page"><span>&#8657;</span></a>
+    </div>
+</div>
+
+<div id="quant-decade-page" class="home-image background-image">
+    <div class="doughnut-div canvas-div canvas-description-div">
+        <canvas id="quant-decade"></canvas>
+    </div>
+
+    <div class="doughnut-description-div description-div canvas-description-div">
+        <h2 class="description description-title">NUMBER OF FILMS WATCHED PER DECADE</h2>
+        <p class="description description-para">
+            Nothing too striking here, as we can see about one quarter of all my films watched were released
+            before 2000, so you can see a clear preference for modern films. Quite shocking also that almost 50%
+            of films watched were in the 2010s.
+        </p>
+    </div>
+
+    <div class="center-bottom">
+        <a class="scroll-button" href="#year-page"><span>&#8659;</span></a>
+    </div>
+
+    <div class="center-top">
+        <a class="scroll-button" href="#decade-page"><span>&#8657;</span></a>
+    </div>
+</div>
+
+<div id="year-page" class="home-image background-image">
+    <div class="canvas-div canvas-description-div">
+        <canvas id="year"></canvas>
+    </div>
+
+    <div class="description-div canvas-description-div">
+        <h2 class="description description-title">MEAN YEAR RATING</h2>
+        <h3 class="description description-subtitle">>= 5 Films</h3>
+        <p class="description description-para">
+            Any year with <5 films is shown as null to prevent misleading skew, hence the gaps.
+            <br>
+            <br>
+            We can sort of see a trend here, there is a little climb in the mid 90s, and there seems to be a
+            relatively good period from 2009-2012. We then see a drop in ratings from 2020 onwards which explains the
+            low 2020 decade rating from the mean decade rating bar chart that we saw two graphs ago..
+        </p>
+    </div>
+
+    <div class="center-bottom">
+        <a class="scroll-button" href="#rating-runtime-page"><span>&#8659;</span></a>
+    </div>
+
+    <div class="center-top">
+        <a class="scroll-button" href="#quant-decade-page"><span>&#8657;</span></a>
+    </div>
+</div>
+
+<div id="rating-runtime-page" class="home-image background-image">
+    <div class="canvas-div canvas-description-div">
+        <canvas id="rating-runtime"></canvas>
+    </div>
+
+    <div class="description-div canvas-description-div">
+        <h2 class="description description-title">MEAN RATING OF EACH RUNTIME INTERVAL</h2>
+        <h3 class="description description-subtitle">>= 5 Films</h3>
+        <p class="description description-para">
+            In concept, I thought this graph could yield eye-opening results, but not really in all honest. However,
+            like we saw with the Villeneuve film graph, 'boring' graphs can still have their own insights. The
+            takeaway from this is that there is no clear correlation between film runtime and my liking of them.
+            <br>
+            <br>
+            Now obviously I'm not ignorant to the clear lead of <3h and <3h30m, but I would argue that this is mainly
+            for one reason: if a film has a very long runtime, and the reviews are average, I am much less likely to
+            watch the longer film, as opposed to a film with let's say a normal 2hr runtime. This creates a bias for
+            the longer films, hence the higher mean rating.
+        </p>
+    </div>
+
+    <div class="center-bottom">
+        <a class="scroll-button" href="#rating-eng-int-page"><span>&#8659;</span></a>
+    </div>
+
+    <div class="center-top">
+        <a class="scroll-button" href="#year-page"><span>&#8657;</span></a>
+    </div>
+</div>
+
+<div id="rating-eng-int-page" class="home-image background-image">
+    <div class="canvas-div canvas-description-div">
+        <canvas id="rating-eng-int"></canvas>
+    </div>
+
+    <div class="description-div canvas-description-div">
+        <h2 class="description description-title">MEAN RATING OF ENGLISH & INTERNATIONAL FILMS</h2>
+        <p class="description description-para">
+            Following the Academy Award definition of an International Film: The Film is produced outside the USA
+            and has a >50% non-English dialogue track. So, I check if a film is produced outside the US (and the UK
+            because realistically if a film is produced in the UK it will obviously have English be primarily spoken),
+            and then I check if the first language in the film's language list is English. Unfortunately it's not
+            perfect because, for example, Roma and All Quiet on the Western Front are international films, but because
+            they are Netflix films, USA is included in its list of countries making it a non-international film.
+            <br>
+            <br>
+            I expected International Films to have a higher mean, mostly because (similar reasoning as before) I am
+            less likely to watch an average international film as opposed to an average American film. I think that
+            is just a result of human nature: we tend towards the familiar.
+            <br>
+            <br>
+            I am quite surprised by this result. I guess the takeaway here is that there is no clear correlation
+            between my liking of a film, and whether it is international or not.
+        </p>
+    </div>
+
+    <div class="center-bottom">
+        <a class="scroll-button" href="#rating-cinema-page"><span>&#8659;</span></a>
+    </div>
+
+    <div class="center-top">
+        <a class="scroll-button" href="#rating-runtime-page"><span>&#8657;</span></a>
+    </div>
+</div>
+
+<div id="rating-cinema-page" class="home-image background-image">
+    <div class="canvas-div canvas-description-div">
+        <canvas id="rating-cinema"></canvas>
+    </div>
+
+    <div class="description-div canvas-description-div">
+        <h2 class="description description-title">MEAN RATING OF FILMS WATCHED IN & OUT OF CINEMA</h2>
+        <p class="description description-para">
+            Okay this was very surprising. Before seeing this graph, rationally I expected the ratings of films
+            watched in cinema to be higher - frankly because I am paying money for a ticket. Seeing a film at home is
+            also much more convenient than going out to a cinema, and from memory there have been times when I have
+            knowingly watched a film at home knowing the reviews were average, so I thought that would have brought
+            the mean rating down.
+            <br>
+            <br>
+            Surprise, surprise. The opposite is true. My rationale for this is that sometimes I will watch a film in
+            cinema for social reasons, not because I think the film is good but just because others are going to see
+            it. This would bring the rating down. Furthermore, sometimes I will be anticipating watching a film in
+            cinema, for example from a director I like, so I will go in blind. The film may be a flop or poor, for
+            example Babylon (dir. Damien Chazelle) or Napolean (dir. Ridley Scott). Still a surprising result.
+        </p>
+    </div>
+
+    <div class="center-bottom">
+        <a class="scroll-button" href="#rating-content-rating-page"><span>&#8659;</span></a>
+    </div>
+
+    <div class="center-top">
+        <a class="scroll-button" href="#rating-eng-int-page"><span>&#8657;</span></a>
+    </div>
+</div>
+
+<div id="rating-content-rating-page" class="home-image background-image">
+    <div class="canvas-div canvas-description-div">
+        <canvas id="rating-content-rating"></canvas>
+    </div>
+
+    <div class="description-div canvas-description-div">
+        <h2 class="description description-title">MEAN RATING OF EACH CONTENT RATING</h2>
+        <p class="description description-para">
+            Not a clear correlation here but I still think it's interesting to analyse. I would guess G films are
+            ranked higher because a lot of animated films (Pixar, Disney, Ghibli) fall into that. Those are highly
+            rated for me, so that would naturally bring it up.
+            <br>
+            <br>
+            I don't have too much to say regarding the rest of them. I would assume 15A and 18 are one of the highest
+            because many of the IMDB top films are in that category (Shawshank Redemption, Godfather, etc.). As we
+            saw previously, the top-rated IMDB films are generally rated very highly by me.
+        </p>
+    </div>
+
+    <div class="center-bottom">
+        <a class="scroll-button" href="#mcu-page"><span>&#8659;</span></a>
+    </div>
+
+    <div class="center-top">
+        <a class="scroll-button" href="#rating-cinema-page"><span>&#8657;</span></a>
+    </div>
+</div>
+
+<div id="mcu-page" class="home-image background-image">
+    <div class="canvas-div canvas-description-div">
+        <canvas id="mcu"></canvas>
+    </div>
+
+    <div class="description-div canvas-description-div">
+        <h2 class="description description-title">MCU FILMS</h2>
+        <p class="description description-para">
+            Nothing too much to comment on. The graph tells a sort-of story.
+        </p>
+    </div>
+
+    <div class="center-bottom">
+        <a class="scroll-button" href="#bond-page"><span>&#8659;</span></a>
+    </div>
+
+    <div class="center-top">
+        <a class="scroll-button" href="#rating-content-rating-page"><span>&#8657;</span></a>
+    </div>
+</div>
+
+<div id="bond-page" class="home-image background-image">
+    <div class="canvas-div canvas-description-div">
+        <canvas id="bond"></canvas>
+    </div>
+
+    <div class="description-div canvas-description-div">
+        <h2 class="description description-title">JAMES BOND FILMS</h2>
+        <p class="description description-para">
+            As the graph tells the story: I wasn't a huge fan of the earlier Bond Films, but the later films I am
+            quite fond of.
+        </p>
+    </div>
+
+    <div class="center-bottom">
+        <a class="scroll-button" href="#lotr-page"><span>&#8659;</span></a>
+    </div>
+
+    <div class="center-top">
+        <a class="scroll-button" href="#mcu-page"><span>&#8657;</span></a>
+    </div>
+</div>
+
+<div id="lotr-page" class="home-image background-image">
+    <div class="canvas-div canvas-description-div">
+        <canvas id="lotr"></canvas>
+    </div>
+
+    <div class="description-div canvas-description-div">
+        <h2 class="description description-title">LORD OF THE RINGS & THE HOBBIT FILMS</h2>
+        <p class="description description-para">
+            Quite a simple pattern here: I love The Lord of the Rings, and the Hobbit was above average.
+        </p>
+    </div>
+
+    <div class="center-bottom">
+        <a class="scroll-button" href="#hp-page"><span>&#8659;</span></a>
+    </div>
+
+    <div class="center-top">
+        <a class="scroll-button" href="#bond-page"><span>&#8657;</span></a>
+    </div>
+</div>
+
+<div id="hp-page" class="home-image background-image">
+    <div class="canvas-div canvas-description-div">
+        <canvas id="hp"></canvas>
+    </div>
+
+    <div class="description-div canvas-description-div">
+        <h2 class="description description-title">HARRY POTTER & FANTASTIC BEASTS FILMS</h2>
+        <p class="description description-para">
+            The Harry Potter films themselves have their own ups and downs, but once it hits Fantastic Beasts, the
+            ratings plummet.
+        </p>
+    </div>
+
+    <div class="center-bottom">
+        <a class="scroll-button" href="#sw-page"><span>&#8659;</span></a>
+    </div>
+
+    <div class="center-top">
+        <a class="scroll-button" href="#lotr-page"><span>&#8657;</span></a>
+    </div>
+</div>
+
+<div id="sw-page" class="home-image background-image">
+    <div class="canvas-div canvas-description-div">
+        <canvas id="sw"></canvas>
+    </div>
+
+    <div class="description-div canvas-description-div">
+        <h2 class="description description-title">STAR WARS FILMS</h2>
+        <p class="description description-para">
+            A cool shape on this one. Big fan of the original trilogy, and then it drops as it hits the prequels, but
+            climbs up again for the sequels.
+        </p>
+    </div>
+
+    <div class="center-bottom">
+        <a class="scroll-button" href="#dist-page"><span>&#8659;</span></a>
+    </div>
+
+    <div class="center-top">
+        <a class="scroll-button" href="#hp-page"><span>&#8657;</span></a>
+    </div>
+</div>
+
+<div id="dist-page" class="home-image background-image">
+    <div class="canvas-div canvas-description-div">
+        <canvas id="dist"></canvas>
+    </div>
+
+    <div class="description-div canvas-description-div">
+        <h2 class="description description-title">MY RATING DISTRIBUTION</h2>
+        <p class="description description-para">
+            My standard for 10/10 films is very high. The best way to describe it is that I give it to films that I
+            have experienced a special awe after watching them.
+            <br>
+            <br>
+            It's natural to see a normal distribution emerging here - more interestingly however is that the vast
+            majority of films are 6-8. There is a relatively big step from 5 to 6, and from 8 to 9. I would say this
+            is because when rating films I can often be on the conservative side, for both good and bad films.
+            <br>
+            <br>
+            Obviously there is going to be a skew towards the higher-rated films, because generally I make an effort
+            to watch films that are well-rated, or that I think I will enjoy.
+        </p>
+    </div>
+
+    <div class="center-top">
+        <a class="scroll-button" href="#sw-page"><span>&#8657;</span></a>
+    </div>
+</div>
+
+<div id="final-page" class="home-image background-image">
+    <div class="center">
+        <h1 class="title-text">THE END</h1>
+        <p class="para-text">
+            Thank you for your time.
+        </p>
+    </div>
+
+    <div class="center-bottom">
+        <a class="scroll-button" href="#rating-genre-page"><span>&#8659;</span></a>
+    </div>
+</div>
+</body>
 </html>
