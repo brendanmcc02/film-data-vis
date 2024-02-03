@@ -2,6 +2,7 @@ body, html {
     height: 100%;
     margin: 0;
     scroll-behavior: smooth;
+    overflow: hidden; /* hide scroll bars & disable scrolling */
 }
 
 @font-face {
@@ -25,7 +26,7 @@ body, html {
 }
 
 .canvas-description-div {
-    position: relative;
+    position: absolute;
     opacity: 0.95;
     background-color: floralwhite;
     border: 2px solid rgba(0, 0, 0, 0.3);
@@ -35,25 +36,30 @@ body, html {
 
 .canvas-div {
     width: 60%;
-    top: 18%;
+    top: 50%;
+    transform: translateY(-50%);
     left: 0.5%;
 }
 
 .description-div {
     width: 35%;
-    /*height: 59.3%;*/
-    top: -44.5%;
-    left: 62.7%;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 62.75%;
 }
 
 .doughnut-div {
-    width: 40%;
+    width: 39%;
     padding: 1.5% 1% 1%;
-    transform: translate(25%, -13%);
+    top: 50%;
+    transform: translateY(-50%);
+    left: 8%;
 }
 
 .doughnut-description-div {
-    transform: translate(-24%, -30%);
+    top: 50%;
+    transform: translateY(-50%);
+    left: 56%;
 }
 
 .description {
@@ -100,22 +106,12 @@ body, html {
     transform: translate(-50%, -50%);
 }
 
-.center-bottom-home {
+.center-bottom {
     text-align: center;
-    margin: auto;
-}
-
-.center-bottom-other {
-    text-align: center;
-    position: relative;
-    /*transform: translate(49%, -175%);*/
-    top: 0%;
-}
-
-.center-bottom-doughnut {
-    text-align: center;
-    position: relative;
-    top: -17%;
+    position: absolute;
+    left: 50%;
+    top: 95%;
+    transform: translate(-50%, -50%);
 }
 
 .down-button {
@@ -129,8 +125,9 @@ body, html {
 }
 
 .background-image {
+    position: relative;
     height: 100%;
-    background-position: center;
+    background-position: center ;
     background-repeat: no-repeat;
     background-size: cover;
 }

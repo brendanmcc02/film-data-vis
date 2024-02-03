@@ -3,9 +3,10 @@
 ### Website
 - [x] Position all graphs and descriptions
 - [x] Descriptions of each graph
-- [x] if metascore is not -1, update it 
-- [ ] Down arrow on all pages
-- [ ] scale graphs and divs to work with different screen sizes
+- [x] if metascore is not -1, update it
+- [x] home down arrow
+- [x] scale graphs and divs to work with different screen sizes
+- [x] Down arrow on all pages
 - [ ] change runtime labels from mins to hhmm (e.g. instead of <150 do <2h30m)
 - [ ] decade quant
 - [ ] wallpapers for each page
