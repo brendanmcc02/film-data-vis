@@ -235,12 +235,12 @@ async function getFilms(myRatedFilms) {
 
 // returns a film object:
 // {title, id, year, myRating, imdbRating, metascore, image, runtime, directors, actors, genres, countries,
-// languages, contentRating, watchedInCinema, myTop10Position, franchise}
+// languages, watchedInCinema, myTop10Position, franchise}
 async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
     // initialise film object
     let film = {"title": "", "id": myRatedFilm.id, "year": 0,  "myRating": myRatedFilm.myRating,
         "imdbRating": -1.0, "metascore": -1, "image": "", "runtime": -1, "directors": [], "actors": [],
-        "genres": [], "countries": [], "languages": [], "contentRating": "",
+        "genres": [], "countries": [], "languages": [],
         "watchedInCinema": myRatedFilm.watchedInCinema,
         "myTop10Position": myRatedFilm.myTop10Position, "franchise": ""
     };
@@ -308,60 +308,6 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
         }
 
         film.year = year;
-
-        // get content rating
-
-        if (c(selector).length === 3) {
-            film.contentRating = c(selector).eq(1).text();
-        }
-        // error handling - film content rating
-        else if (c(selector).length === 0) {
-            throwErrorMessage("film content rating not recognised. css class name possibly updated. " + film.id);
-        }
-        // edge case for when a film has no content rating
-        else {
-            film.contentRating = "Not Rated";
-        }
-
-        // simplify edge cases for content ratings
-        switch (film.contentRating) {
-            case "12":
-                film.contentRating = "12A";
-                break;
-            case "15":
-                film.contentRating = "15A";
-                break;
-            case "PG-13":
-                film.contentRating = "PG";
-                break;
-            case "Approved":
-                film.contentRating = "Not Rated";
-                break;
-            case "Passed":
-                film.contentRating = "Not Rated";
-                break;
-            case "TV-G":
-                film.contentRating = "G";
-                break;
-            case "TV-PG":
-                film.contentRating = "PG";
-                break;
-            case "TV-14":
-                film.contentRating = "15A";
-                break;
-            case "TV-MA":
-                film.contentRating = "18";
-                break;
-            case "R":
-                film.contentRating = "18";
-                break;
-        }
-
-        // if the content rating still dodges edge cases, set it as "Not Rated"
-        const irishRatings = ["Not Rated", "G", "PG", "12A", "15A", "16", "18"];
-        if (!irishRatings.includes(film.contentRating)) {
-            film.contentRating = "Not Rated";
-        }
 
         // get runtime
         let runtime;
