@@ -234,12 +234,12 @@ async function getFilms(myRatedFilms) {
 }
 
 // returns a film object:
-// {title, id, year, myRating, imdbRating, metascore, image, runtime, directors, actors, genres, countries,
+// {title, id, year, myRating, imdbRating, metascore, runtime, directors, actors, genres, countries,
 // languages, watchedInCinema, myTop10Position, franchise}
 async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
     // initialise film object
     let film = {"title": "", "id": myRatedFilm.id, "year": 0,  "myRating": myRatedFilm.myRating,
-        "imdbRating": -1.0, "metascore": -1, "image": "", "runtime": -1, "directors": [], "actors": [],
+        "imdbRating": -1.0, "metascore": -1, "runtime": -1, "directors": [], "actors": [],
         "genres": [], "countries": [], "languages": [],
         "watchedInCinema": myRatedFilm.watchedInCinema,
         "myTop10Position": myRatedFilm.myTop10Position, "franchise": ""
@@ -340,17 +340,6 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
             film.runtime = (runtimes[0] * 60) + runtimes[1];
         }
 
-        // get film image
-        selector = '.ipc-media.ipc-media--baseAlt.ipc-media--poster-l.ipc-poster__poster-image.ipc-media__img';
-
-        let image = c(selector + ' img').attr('src');
-
-        if (image === undefined) {
-            throwErrorMessage("film image not recognised. css class name possibly updated. " + film.id);
-        }
-
-        film.image = image;
-
         // get actors
 
         // error handling - actors
@@ -366,14 +355,7 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
                     throwErrorMessage("actor name not recognised. css class name possibly updated.")
                 }
 
-                let actorImage = c(this).find('div:nth-child(1) img').attr('src');
-
-                // it's possible the actor has no image, not an error.
-                if (actorImage === undefined) {
-                    actorImage = "";
-                }
-
-                film.actors.push({"name" : actorName, "image" : actorImage});
+                film.actors.push(actorName);
             });
         }
 
