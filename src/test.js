@@ -1,52 +1,45 @@
-// // this file is intended to run in node.js
-// // as opposed to a web browser
+// // returns an array of the titles of bond films
+// // (web scrapes from wikipedia page)
+// import nodeFetch from "node-fetch";
+// import * as cheerio from "cheerio";
 //
-// // module imports
-// import * as fs from "fs";
-// import {writeMetadata} from "./initDB.js";
+// const bondURL = "https://en.wikipedia.org/wiki/List_of_James_Bond_films";
 //
 // main();
 //
-// // initialises a database of all my rated films on imdb
 // async function main() {
-//     let filmdata = readFromJson("../data/filmData.json");
-//     let actors = [];
-//
-//     filmdata.forEach(film => {
-//         actors = [];
-//
-//         film.actors.forEach(actor => {
-//            actors.push(actor.name);
-//         });
-//
-//         film.actors = actors;
-//     });
-//
-//     writeToJson(filmdata, "../data/filmData.json");
+//     const res = await getBondFilmTitles();
+//     console.log(res);
 // }
 //
-// // writes data to a .json file
-// function writeToJson(data, filepath) {
-//     const stringData = JSON.stringify(data, null, 4);
+// async function getBondFilmTitles() {
 //
-//     fs.writeFileSync(filepath, stringData, (error) => {
-//         if (error) {
-//             writeMetadata("error", startTime, error.name, error.message);
-//             throw error;
-//         }
-//     });
-// }
-//
-// // reads .json file into a variable
-// function readFromJson(filepath) {
-//     let filmData;
+//     let bondFilmTitles = [];
 //
 //     try {
-//         filmData = fs.readFileSync(filepath);
+//         // get the html
+//         const response = await nodeFetch(bondURL);
+//         const body = await response.text();
+//         const c = cheerio.load(body);
+//
+//         // initial error handling
+//         if (c('table:first th[scope="row"]').length === 0) {
+//             // throwErrorMessage("James Bond films wiki html possibly changed. check wiki html.");
+//             console.log("oh nein")
+//         }
+//
+//         c('table:first th[scope="row"]').each(function () {
+//             // get the title of the bond film
+//             let title = c(this).text();
+//             title = title.replace("\n", "");
+//
+//             bondFilmTitles.push(title);
+//         });
+//
+//         return bondFilmTitles;
 //     } catch (error) {
-//         writeMetadata("error", startTime, error.name, error.message);
+//         // writeMetadata("error", startTime, error.name, error.message);
 //         throw error;
 //     }
 //
-//     return JSON.parse(filmData);
 // }

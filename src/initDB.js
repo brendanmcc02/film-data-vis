@@ -408,7 +408,7 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
         // james bond
         const bondLen = bondFilmTitles.length;
         for (let i = 0; i < bondLen && film.franchise === ""; i++) {
-            if (bondFilmTitles[i] === film.title) {
+            if (bondFilmTitles[i].toLowerCase() === film.title.toLowerCase()) {
                 film.franchise = "James Bond";
             }
         }
@@ -416,7 +416,7 @@ async function getFilm(myRatedFilm, bondFilmTitles, mcuFilmTitles) {
         // mcu
         const mcuLen = mcuFilmTitles.length;
         for (let i = 0; i < mcuLen && film.franchise === ""; i++) {
-            if (mcuFilmTitles[i] === film.title) {
+            if (mcuFilmTitles[i].toLowerCase() === film.title.toLowerCase()) {
                 film.franchise = "MCU";
             }
         }
@@ -487,7 +487,6 @@ async function getBondFilmTitles() {
         writeMetadata("error", startTime, error.name, error.message);
         throw error;
     }
-
 }
 
 // returns an array of the titles of mcu films
