@@ -9,12 +9,100 @@ body, html {
     background-image: url("media/la-la-land.jpg");
 }
 
-.final-image {
-    background-image: url("media/br-2049.jpg")
+.rating-genre-image {
+    background-image: url("media/Star Wars TFA.jpg");
 }
 
-.rating-genre-image {
-    /*background-image: url("media/");*/
+.quant-genre-image {
+    background-image: url("media/Spider-Verse.jpg");
+}
+
+.directors-image {
+    background-image: url("media/before-sunrise.jpg");
+}
+
+.nolan-image {
+    background-image: url("media/tdk2.jpg");
+}
+
+.villeneuve-image {
+    background-image: url("media/br-2049.jpg");
+}
+
+.actors-image {
+    background-image: url("media/Oppenheimer.jpg");
+}
+
+.gosling-image {
+    background-image: url("media/gosling.jpg");
+}
+
+.godfather-image {
+    background-image: url("media/godfather.jpg");
+}
+
+.loa-image {
+    background-image: url("media/loa.jpg");
+}
+
+.chinatown-image {
+    background-image: url("media/chinatown.jpg");
+}
+
+.decade-image {
+    background-image: url("media/int.jpg");
+}
+
+.quant-decade-image {
+    background-image: url("media/dune.webp");
+}
+
+.year-image {
+    background-image: url("media/memento.jpg");
+}
+
+.runtime-image {
+    background-image: url("media/brooklyn.jpg");
+}
+
+.rating-eng-int-image {
+    background-image: url("media/past-lives.webp");
+}
+
+.cinema-image {
+    background-image: url("media/cinema.jpg");
+}
+
+.rating-content-image {
+    background-image: url("media/i-tonya.jpg");
+}
+
+.mcu-image {
+    background-image: url("media/ca.jpg");
+}
+
+.bond-image {
+    background-image: url("media/Spectre.jpg");
+}
+
+.lotr-image {
+    background-image: url("media/lotr.jpg");
+}
+
+.hp-image {
+    background-image: url("media/hp.jpg");
+}
+
+.sw-image {
+    background-image: url("media/Star Wars TLJ.jpg");
+}
+
+.dist-image {
+    background-image: url("media/holdovers.jpg");
+}
+
+.final-image {
+    background-image: url("media/br-2049-stairs.jpg")
 }
 
 .background-image {
@@ -47,7 +135,7 @@ body, html {
 
 .canvas-description-div {
     position: absolute;
-    opacity: 0.9;
+    opacity: 0.6;
     background-color: floralwhite;
     border: 2px solid rgba(0, 0, 0, 0.3);
     padding: 13px;
@@ -56,7 +144,7 @@ body, html {
 }
 
 .canvas-description-div:hover {
-    opacity: 0.94;
+    opacity: 0.95;
     transition: 0.1s ease-in;
     -webkit-transition: opacity 0.3s;
 }

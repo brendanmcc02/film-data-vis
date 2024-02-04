@@ -10,9 +10,9 @@
 - [x] change runtime labels from mins to hhmm (e.g. instead of <150 do <2h30m)
 - [x] decade quant
 - [x] hover effects
-- [ ] wallpapers for each page
+- [x] wallpapers for each page
 - [x] home page
-- [ ] final page
+- [x] final page
 - [ ] readme (how it works)
 - [ ] website video preview
 
