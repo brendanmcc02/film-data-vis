@@ -34,6 +34,7 @@ async function graph() {
 
     // actors
     const base_actors = getActors(filmData);
+    // console.log(base_actors);
     const labels_actors = getTopKActorLabels(base_actors, 5, 5);
     const data_actors = getTopKActorRatings(base_actors, 5, 5);
 
@@ -2102,14 +2103,15 @@ function getActors(filmData) {
 
     filmData.forEach(film => {
         film.actors.forEach(actor => {
-            let actorIndex = getActorIndex(actors, actor.name);
+            let actorIndex = getActorIndex(actors, actor);
             // actor not in array
             if (actorIndex === -1) {
-                actors.push({"actorName" : actor.name, "ratingMean" : film.myRating,
+                actors.push({"actorName" : actor, "ratingMean" : film.myRating,
                     "ratingSum" : film.myRating, "ratingQuantity" : 1});
             }
             // actor is in array
             else {
+                console.log("hi")
                 modifyMean(film, actors, actorIndex);
             }
         });
@@ -2198,7 +2200,7 @@ function getActorFilms(filmData, actorName) {
 
     filmData.forEach(film => {
         film.actors.forEach(actor => {
-            if(actor.name === actorName) {
+            if(actor === actorName) {
                 actorFilms.push(film);
             }
         });
