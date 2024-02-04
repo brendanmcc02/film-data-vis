@@ -10,11 +10,11 @@ body, html {
 }
 
 .rating-genre-image {
-    background-image: url("media/Star Wars TFA.jpg");
+    background-image: url("media/social-network.jpg");
 }
 
 .quant-genre-image {
-    background-image: url("media/Spider-Verse.jpg");
+    background-image: url("media/whiplash.jpg");
 }
 
 .directors-image {
@@ -22,15 +22,15 @@ body, html {
 }
 
 .nolan-image {
-    background-image: url("media/tdk2.jpg");
+    background-image: url("media/dunkirk.jpg");
 }
 
 .villeneuve-image {
-    background-image: url("media/br-2049.jpg");
+    background-image: url("media/dune.webp");
 }
 
 .actors-image {
-    background-image: url("media/Oppenheimer.jpg");
+    background-image: url("media/cillian.jpg");
 }
 
 .gosling-image {
@@ -38,7 +38,7 @@ body, html {
 }
 
 .godfather-image {
-    background-image: url("media/godfather.jpg");
+    background-image: url("media/12-angry-men-2.jpg");
 }
 
 .loa-image {
@@ -54,7 +54,7 @@ body, html {
 }
 
 .quant-decade-image {
-    background-image: url("media/dune.webp");
+    background-image: url("media/i-tonya.jpg");
 }
 
 .year-image {
@@ -78,15 +78,15 @@ body, html {
 }
 
 .mcu-image {
-    background-image: url("media/ca.jpg");
+    background-image: url("media/mcu.webp");
 }
 
 .bond-image {
-    background-image: url("media/Spectre.jpg");
+    background-image: url("media/bond.jpg");
 }
 
 .lotr-image {
-    background-image: url("media/lotr.jpg");
+    background-image: url("media/lotr.webp");
 }
 
 .hp-image {
