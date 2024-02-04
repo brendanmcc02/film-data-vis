@@ -32,7 +32,7 @@ If there was an error, it will write the error to this file.
 For the graphs I used chart.js, mainly for it's ease of use. All of my graphs 
 were presented on a simple yet slick website developed with HTML & CSS. To view 
 the website, either clone the repository then navigate to web/index.html, or view the 
-demonstration here: [INSERT-YT-LINK].
+demonstration here: https://youtu.be/rDdA2xyiqk8.
 
 <img src="misc/chartjs.png" width="274x" alt=""></img>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
