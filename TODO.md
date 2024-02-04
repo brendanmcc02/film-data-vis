@@ -13,8 +13,8 @@
 - [x] wallpapers for each page
 - [x] home page
 - [x] final page
-- [ ] readme (how it works)
-- [ ] website video preview
+- [x] readme (how it works)
+- [x] website video preview
 
 ## General
 - [x] finish initDB.js
@@ -25,7 +25,7 @@
 - [x] finish initDB.js
 - [x] finish updateDB.js
 - [x] finish graph.js
-- [ ] design the website
+- [x] design the website
 
 ### graph.js
 - [x] decade quantity {doughnut}
