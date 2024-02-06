@@ -1,5 +1,54 @@
 [
     {
+        "title": "Rush Hour",
+        "id": "tt0120812",
+        "year": 1998,
+        "myRating": 6,
+        "imdbRating": 7,
+        "metascore": 61,
+        "runtime": 98,
+        "directors": [
+            "Brett Ratner"
+        ],
+        "actors": [
+            "Jackie Chan",
+            "Chris Tucker",
+            "Ken Leung",
+            "Tom Wilkinson",
+            "Tzi Ma",
+            "Robert Littman",
+            "Michael Chow",
+            "Julia Hsu",
+            "Chris Penn",
+            "Kai Lennox",
+            "Larry Sullivan",
+            "Yang Lin",
+            "Roger Fan",
+            "George Cheung",
+            "Lucy Lin",
+            "Rex Linn",
+            "Mark Rolston",
+            "Elizabeth Peña"
+        ],
+        "genres": [
+            "Action",
+            "Comedy",
+            "Crime"
+        ],
+        "countries": [
+            "United States"
+        ],
+        "languages": [
+            "English",
+            "Cantonese",
+            "Mandarin",
+            "Japanese"
+        ],
+        "watchedInCinema": false,
+        "myTop10Position": -1,
+        "franchise": ""
+    },
+    {
         "title": "Minari",
         "id": "tt10633456",
         "year": 2020,
@@ -844,7 +893,7 @@
         "id": "tt13287846",
         "year": 2023,
         "myRating": 5,
-        "imdbRating": 6.5,
+        "imdbRating": 6.4,
         "metascore": 64,
         "runtime": 158,
         "directors": [

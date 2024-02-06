@@ -1,7 +1,7 @@
 {
-    "status": "error",
-    "lastWrite": "15:59 Monday 5/2/2024",
-    "runtime": "0 minutes 47 seconds",
-    "errorName": "FetchError",
-    "errorMessage": "request to https://www.imdb.com/title/tt0335266 failed, reason: getaddrinfo EAI_AGAIN www.imdb.com"
+    "status": "ok",
+    "lastWrite": "10:03 Tuesday 6/2/2024",
+    "runtime": "21 minutes 17 seconds",
+    "errorName": "",
+    "errorMessage": ""
 }
