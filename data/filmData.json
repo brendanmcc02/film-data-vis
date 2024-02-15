@@ -614,7 +614,7 @@
         "id": "tt26047818",
         "year": 2023,
         "myRating": 3,
-        "imdbRating": 6.7,
+        "imdbRating": 6.4,
         "metascore": 52,
         "runtime": 103,
         "directors": [
@@ -1410,7 +1410,7 @@
         "year": 2001,
         "myRating": 6,
         "imdbRating": 8.3,
-        "metascore": 69,
+        "metascore": 70,
         "runtime": 122,
         "directors": [
             "Jean-Pierre Jeunet"
@@ -1800,7 +1800,7 @@
         "year": 2023,
         "myRating": 9,
         "imdbRating": 8.4,
-        "metascore": 89,
+        "metascore": 90,
         "runtime": 180,
         "directors": [
             "Christopher Nolan"
@@ -3186,7 +3186,7 @@
         "year": 2022,
         "myRating": 5,
         "imdbRating": 7.4,
-        "metascore": 92,
+        "metascore": 93,
         "runtime": 158,
         "directors": [
             "Todd Field"
@@ -3481,7 +3481,7 @@
         "title": "Thor: Love and Thunder",
         "id": "tt10648342",
         "year": 2022,
-        "myRating": 6,
+        "myRating": 5,
         "imdbRating": 6.2,
         "metascore": 57,
         "runtime": 118,
@@ -3662,7 +3662,7 @@
         "year": 2022,
         "myRating": 8,
         "imdbRating": 7.5,
-        "metascore": 84,
+        "metascore": 85,
         "runtime": 151,
         "directors": [
             "Steven Spielberg"
@@ -13607,7 +13607,7 @@
         "year": 1988,
         "myRating": 6,
         "imdbRating": 8,
-        "metascore": 67,
+        "metascore": 68,
         "runtime": 124,
         "directors": [
             "Katsuhiro Ôtomo"
@@ -16294,7 +16294,7 @@
         "id": "tt4686844",
         "year": 2017,
         "myRating": 7,
-        "imdbRating": 7.2,
+        "imdbRating": 7.3,
         "metascore": 88,
         "runtime": 107,
         "directors": [
@@ -17736,7 +17736,7 @@
         "year": 2018,
         "myRating": 7,
         "imdbRating": 7.4,
-        "metascore": 87,
+        "metascore": 86,
         "runtime": 93,
         "directors": [
             "Bo Burnham"
@@ -19705,7 +19705,7 @@
         "title": "Captain Marvel",
         "id": "tt4154664",
         "year": 2019,
-        "myRating": 5,
+        "myRating": 4,
         "imdbRating": 6.8,
         "metascore": 64,
         "runtime": 123,
@@ -21514,7 +21514,7 @@
         "title": "Guardians of the Galaxy Vol. 2",
         "id": "tt3896198",
         "year": 2017,
-        "myRating": 7,
+        "myRating": 8,
         "imdbRating": 7.6,
         "metascore": 67,
         "runtime": 136,
