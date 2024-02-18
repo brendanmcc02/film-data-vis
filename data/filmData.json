@@ -1,5 +1,52 @@
 [
     {
+        "title": "The Silence of the Lambs",
+        "id": "tt0102926",
+        "year": 1991,
+        "myRating": 9,
+        "imdbRating": 8.6,
+        "metascore": 86,
+        "runtime": 118,
+        "directors": [
+            "Jonathan Demme"
+        ],
+        "actors": [
+            "Jodie Foster",
+            "Anthony Hopkins",
+            "Scott Glenn",
+            "Ted Levine",
+            "Anthony Heald",
+            "Brooke Smith",
+            "Diane Baker",
+            "Kasi Lemmons",
+            "Charles Napier",
+            "Tracey Walter",
+            "Roger Corman",
+            "Ron Vawter",
+            "Danny Darst",
+            "Jeffrie Lane",
+            "Frankie Faison",
+            "Paul Lazar",
+            "Dan Butler",
+            "Chris Isaak"
+        ],
+        "genres": [
+            "Crime",
+            "Drama",
+            "Thriller"
+        ],
+        "countries": [
+            "United States"
+        ],
+        "languages": [
+            "English",
+            "Latin"
+        ],
+        "watchedInCinema": false,
+        "myTop10Position": -1,
+        "franchise": ""
+    },
+    {
         "title": "Rush Hour",
         "id": "tt0120812",
         "year": 1998,
@@ -13895,7 +13942,7 @@
         "id": "tt3606756",
         "year": 2018,
         "myRating": 8,
-        "imdbRating": 7.6,
+        "imdbRating": 7.5,
         "metascore": 80,
         "runtime": 118,
         "directors": [
