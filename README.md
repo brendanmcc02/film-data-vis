@@ -1,6 +1,10 @@
 # *FILM DATA VIS*
 *A project to fetch and visualise the film data on my IMDB account.*
 
+### Usage
+
+To see the website, navigate to web/index.html
+
 ### Project motivation
 
 I love films, so it was clear to me that if I was going to do a programming project, 
