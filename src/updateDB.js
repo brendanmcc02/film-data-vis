@@ -19,16 +19,16 @@ const startTime = Date.now();
 
 main();
 
-// 1. reads filmData.json into a variable,
-// 2. updates filmData
+// 1. reads film-data.json into a variable,
+// 2. updates film-data
 // 3. writes to json
 async function main() {
-    console.log("Reading filmData.json into a variable.");
-    let filmData = readFromJson("../data/filmData.json");
-    console.log("Updating filmData.json:")
+    console.log("Reading film-data.json into a variable.");
+    let filmData = readFromJson("../data/film-data.json");
+    console.log("Updating film-data.json:")
     await updateFilmData(filmData);
-    console.log("Writing filmData to .json file.")
-    writeToJson(filmData, "../data/filmData.json");
+    console.log("Writing film-data to .json file.")
+    writeToJson(filmData, "../data/film-data.json");
 
     console.log("Writing to metadata.json.");
     writeMetadata("ok", startTime, "", "");
@@ -48,11 +48,11 @@ function readFromJson(filepath) {
     return JSON.parse(filmData);
 }
 
-// iterates through filmData.json and compares it to myRatedFilms
-// if a rated film is already in filmData.json, it will update:
+// iterates through film-data.json and compares it to myRatedFilms
+// if a rated film is already in film-data.json, it will update:
 // myRating, imdbRating, metascore, watchedInCinema, myTop10Position
-// else, if the film is not in filmData.json, it will add full film data
-// to filmData.json
+// else, if the film is not in film-data.json, it will add full film data
+// to film-data.json
 async function updateFilmData(filmData) {
 
     // web scrape all my rated films
@@ -98,16 +98,16 @@ async function updateFilmData(filmData) {
     }
 
     // the following code covers the edge case:
-    // 1. rate a film -> it gets added to filmData.json
+    // 1. rate a film -> it gets added to film-data.json
     // 2. unrate the film on my account
-    // 3. the film will stay in filmData.json, when it should be removed
+    // 3. the film will stay in film-data.json, when it should be removed
 
-    // iterate through all films in filmData.json, if there is a film there that is
-    // not in myRatedFilms, remove this film from filmData.json
+    // iterate through all films in film-data.json, if there is a film there that is
+    // not in myRatedFilms, remove this film from film-data.json
     for (let i = 0; i < filmData.length; i++) {
         let filmIndex = getIndexOfFilm(myRatedFilms, filmData[i].id);
 
-        // if the filmData film is not in myRatedFilms, remove it
+        // if the film-data film is not in myRatedFilms, remove it
         if (filmIndex === -1) {
             filmData.splice(i, 1);
             i--; // don't forget to decrement after removing array entry!
@@ -159,7 +159,7 @@ async function getFilmRatingData(id) {
 
 }
 
-// gets the index of a film in either filmData or myRatedFilms array.
+// gets the index of a film in either film-data or myRatedFilms array.
 // if the film is not in the array, it returns -1
 function getIndexOfFilm(filmArray, id) {
     const len = filmArray.length;

@@ -31,8 +31,8 @@ async function main() {
     const myRatedFilms = await getMyRatedFilms();
     console.log("Web scraping full data for each rated film:");
     const films = await getFilms(myRatedFilms);
-    console.log("Writing to filmData.json.");
-    writeToJson(films, "../data/filmData.json");
+    console.log("Writing to film-data.json.");
+    writeToJson(films, "../data/film-data.json");
 
     console.log("Writing to metadata.json.");
     writeMetadata("ok", startTime, "", "");
