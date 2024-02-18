@@ -3,7 +3,7 @@
 
 ### Usage
 
-To see the website, navigate to web/index.html
+To see the website, clone the repository and navigate to web/index.html
 
 ### Project motivation
 
