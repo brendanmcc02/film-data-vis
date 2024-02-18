@@ -6,7 +6,6 @@
         "myRating": 9,
         "imdbRating": 8.6,
         "metascore": 86,
-        "runtime": 118,
         "directors": [
             "Jonathan Demme"
         ],
@@ -53,7 +52,6 @@
         "myRating": 6,
         "imdbRating": 7,
         "metascore": 61,
-        "runtime": 98,
         "directors": [
             "Brett Ratner"
         ],
@@ -102,7 +100,6 @@
         "myRating": 9,
         "imdbRating": 7.4,
         "metascore": 89,
-        "runtime": 115,
         "directors": [
             "Lee Isaac Chung"
         ],
@@ -147,7 +144,6 @@
         "myRating": 8,
         "imdbRating": 8.1,
         "metascore": 83,
-        "runtime": 100,
         "directors": [
             "Jimmy Chin",
             "Elizabeth Chai Vasarhelyi"
@@ -189,7 +185,6 @@
         "myRating": 8,
         "imdbRating": 8,
         "metascore": 79,
-        "runtime": 90,
         "directors": [
             "Frank Pavich"
         ],
@@ -237,7 +232,6 @@
         "myRating": 7,
         "imdbRating": 8.2,
         "metascore": 91,
-        "runtime": 99,
         "directors": [
             "Peter Jackson"
         ],
@@ -284,7 +278,6 @@
         "myRating": 7,
         "imdbRating": 7.5,
         "metascore": -1,
-        "runtime": 87,
         "directors": [
             "Jake Scott"
         ],
@@ -313,7 +306,6 @@
         "myRating": 8,
         "imdbRating": 8.1,
         "metascore": 81,
-        "runtime": 100,
         "directors": [
             "Josh Lowell",
             "Peter Mortimer"
@@ -346,7 +338,6 @@
         "myRating": 7,
         "imdbRating": 7.6,
         "metascore": 78,
-        "runtime": 94,
         "directors": [
             "Jeff Orlowski-Yang"
         ],
@@ -391,7 +382,6 @@
         "myRating": 8,
         "imdbRating": 7.5,
         "metascore": 73,
-        "runtime": 92,
         "directors": [
             "Chris Smith"
         ],
@@ -437,7 +427,6 @@
         "myRating": 5,
         "imdbRating": 5.8,
         "metascore": 48,
-        "runtime": 88,
         "directors": [
             "Alison Klayman"
         ],
@@ -481,7 +470,6 @@
         "myRating": 8,
         "imdbRating": 7.2,
         "metascore": 75,
-        "runtime": 97,
         "directors": [
             "Chris Smith"
         ],
@@ -527,7 +515,6 @@
         "myRating": 8,
         "imdbRating": 8.1,
         "metascore": 83,
-        "runtime": 83,
         "directors": [
             "Gabriela Cowperthwaite"
         ],
@@ -572,7 +559,6 @@
         "myRating": 7,
         "imdbRating": 8,
         "metascore": 83,
-        "runtime": 106,
         "directors": [
             "Mike Nichols"
         ],
@@ -618,7 +604,6 @@
         "myRating": 9,
         "imdbRating": 8,
         "metascore": 82,
-        "runtime": 133,
         "directors": [
             "Alexander Payne"
         ],
@@ -663,7 +648,6 @@
         "myRating": 3,
         "imdbRating": 6.4,
         "metascore": 52,
-        "runtime": 103,
         "directors": [
             "Will Gluck"
         ],
@@ -708,7 +692,6 @@
         "myRating": 7,
         "imdbRating": 6.9,
         "metascore": 80,
-        "runtime": 114,
         "directors": [
             "Greta Gerwig"
         ],
@@ -756,7 +739,6 @@
         "myRating": 5,
         "imdbRating": 7.6,
         "metascore": 91,
-        "runtime": 124,
         "directors": [
             "Hayao Miyazaki"
         ],
@@ -802,7 +784,6 @@
         "myRating": 5,
         "imdbRating": 7.3,
         "metascore": 59,
-        "runtime": 120,
         "directors": [
             "George Nolfi"
         ],
@@ -847,7 +828,6 @@
         "myRating": 9,
         "imdbRating": 7.9,
         "metascore": 94,
-        "runtime": 105,
         "directors": [
             "Celine Song"
         ],
@@ -896,7 +876,6 @@
         "myRating": 8,
         "imdbRating": 7.2,
         "metascore": 75,
-        "runtime": 98,
         "directors": [
             "Kenneth Branagh"
         ],
@@ -942,7 +921,6 @@
         "myRating": 5,
         "imdbRating": 6.4,
         "metascore": 64,
-        "runtime": 158,
         "directors": [
             "Ridley Scott"
         ],
@@ -988,7 +966,6 @@
         "myRating": 6,
         "imdbRating": 7.8,
         "metascore": 85,
-        "runtime": 123,
         "directors": [
             "Joe Wright"
         ],
@@ -1037,7 +1014,6 @@
         "myRating": 6,
         "imdbRating": 7.1,
         "metascore": 81,
-        "runtime": 117,
         "directors": [
             "Mike Newell"
         ],
@@ -1084,7 +1060,6 @@
         "myRating": 3,
         "imdbRating": 5.5,
         "metascore": 33,
-        "runtime": 109,
         "directors": [
             "Emma Tammi"
         ],
@@ -1130,7 +1105,6 @@
         "myRating": 8,
         "imdbRating": 7.7,
         "metascore": 76,
-        "runtime": 95,
         "directors": [
             "Rob Reiner"
         ],
@@ -1176,7 +1150,6 @@
         "myRating": 6,
         "imdbRating": 7.2,
         "metascore": 68,
-        "runtime": 124,
         "directors": [
             "Roger Michell"
         ],
@@ -1225,7 +1198,6 @@
         "myRating": 9,
         "imdbRating": 7.4,
         "metascore": 68,
-        "runtime": 118,
         "directors": [
             "Glenn Ficarra",
             "John Requa"
@@ -1272,7 +1244,6 @@
         "myRating": 6,
         "imdbRating": 7.7,
         "metascore": 89,
-        "runtime": 206,
         "directors": [
             "Martin Scorsese"
         ],
@@ -1321,7 +1292,6 @@
         "myRating": 7,
         "imdbRating": 7.7,
         "metascore": 73,
-        "runtime": 100,
         "directors": [
             "Todd Phillips"
         ],
@@ -1366,7 +1336,6 @@
         "myRating": 7,
         "imdbRating": 7.3,
         "metascore": 81,
-        "runtime": 112,
         "directors": [
             "Derek Cianfrance"
         ],
@@ -1411,7 +1380,6 @@
         "myRating": 7,
         "imdbRating": 7.3,
         "metascore": 76,
-        "runtime": 97,
         "directors": [
             "Richard Ayoade"
         ],
@@ -1458,7 +1426,6 @@
         "myRating": 6,
         "imdbRating": 8.3,
         "metascore": 70,
-        "runtime": 122,
         "directors": [
             "Jean-Pierre Jeunet"
         ],
@@ -1506,7 +1473,6 @@
         "myRating": 8,
         "imdbRating": 7.3,
         "metascore": 49,
-        "runtime": 127,
         "directors": [
             "David Leitch"
         ],
@@ -1556,7 +1522,6 @@
         "myRating": 7,
         "imdbRating": 7.3,
         "metascore": 81,
-        "runtime": 85,
         "directors": [
             "Mark Burton",
             "Richard Starzak"
@@ -1604,7 +1569,6 @@
         "myRating": 6,
         "imdbRating": 7.3,
         "metascore": 75,
-        "runtime": 93,
         "directors": [
             "Andrew Adamson",
             "Kelly Asbury",
@@ -1653,7 +1617,6 @@
         "myRating": 7,
         "imdbRating": 7.9,
         "metascore": 84,
-        "runtime": 90,
         "directors": [
             "Andrew Adamson",
             "Vicky Jenson"
@@ -1702,7 +1665,6 @@
         "myRating": 7,
         "imdbRating": 7.7,
         "metascore": 91,
-        "runtime": 102,
         "directors": [
             "Sofia Coppola"
         ],
@@ -1751,7 +1713,6 @@
         "myRating": 6,
         "imdbRating": 7.1,
         "metascore": 66,
-        "runtime": 95,
         "directors": [
             "Alessandro Carloni",
             "Jennifer Yuh Nelson"
@@ -1800,7 +1761,6 @@
         "myRating": 8,
         "imdbRating": 7.2,
         "metascore": 67,
-        "runtime": 90,
         "directors": [
             "Jennifer Yuh Nelson"
         ],
@@ -1848,7 +1808,6 @@
         "myRating": 9,
         "imdbRating": 8.4,
         "metascore": 90,
-        "runtime": 180,
         "directors": [
             "Christopher Nolan"
         ],
@@ -1897,7 +1856,6 @@
         "myRating": 7,
         "imdbRating": 8.6,
         "metascore": 61,
-        "runtime": 189,
         "directors": [
             "Frank Darabont"
         ],
@@ -1944,7 +1902,6 @@
         "myRating": 6,
         "imdbRating": 7.7,
         "metascore": 81,
-        "runtime": 163,
         "directors": [
             "Christopher McQuarrie"
         ],
@@ -1993,7 +1950,6 @@
         "myRating": 7,
         "imdbRating": 7.7,
         "metascore": 84,
-        "runtime": 136,
         "directors": [
             "Ang Lee"
         ],
@@ -2040,7 +1996,6 @@
         "myRating": 8,
         "imdbRating": 7.8,
         "metascore": 88,
-        "runtime": 103,
         "directors": [
             "Paul King"
         ],
@@ -2090,7 +2045,6 @@
         "myRating": 8,
         "imdbRating": 7.3,
         "metascore": 77,
-        "runtime": 95,
         "directors": [
             "Paul King"
         ],
@@ -2141,7 +2095,6 @@
         "myRating": 6,
         "imdbRating": 6.5,
         "metascore": 75,
-        "runtime": 105,
         "directors": [
             "Wes Anderson"
         ],
@@ -2188,7 +2141,6 @@
         "myRating": 8,
         "imdbRating": 7.9,
         "metascore": 77,
-        "runtime": 117,
         "directors": [
             "Jean-Marc Vallée"
         ],
@@ -2234,7 +2186,6 @@
         "myRating": 7,
         "imdbRating": 7,
         "metascore": 82,
-        "runtime": 95,
         "directors": [
             "James Ponsoldt"
         ],
@@ -2279,7 +2230,6 @@
         "myRating": 9,
         "imdbRating": 8.6,
         "metascore": 86,
-        "runtime": 140,
         "directors": [
             "Joaquim Dos Santos",
             "Kemp Powers",
@@ -2327,7 +2277,6 @@
         "myRating": 9,
         "imdbRating": 8.1,
         "metascore": 91,
-        "runtime": 80,
         "directors": [
             "Richard Linklater"
         ],
@@ -2366,7 +2315,6 @@
         "myRating": 9,
         "imdbRating": 7.9,
         "metascore": 94,
-        "runtime": 109,
         "directors": [
             "Richard Linklater"
         ],
@@ -2414,7 +2362,6 @@
         "myRating": 10,
         "imdbRating": 8.1,
         "metascore": 77,
-        "runtime": 101,
         "directors": [
             "Richard Linklater"
         ],
@@ -2462,7 +2409,6 @@
         "myRating": 6,
         "imdbRating": 7.4,
         "metascore": 84,
-        "runtime": 106,
         "directors": [
             "Kelly Fremon Craig"
         ],
@@ -2509,7 +2455,6 @@
         "myRating": 7,
         "imdbRating": 7.3,
         "metascore": 60,
-        "runtime": 126,
         "directors": [
             "John G. Avildsen"
         ],
@@ -2556,7 +2501,6 @@
         "myRating": 6,
         "imdbRating": 7.1,
         "metascore": 81,
-        "runtime": 139,
         "directors": [
             "Rian Johnson"
         ],
@@ -2603,7 +2547,6 @@
         "myRating": 8,
         "imdbRating": 7.3,
         "metascore": 77,
-        "runtime": 104,
         "directors": [
             "Kelly Fremon Craig"
         ],
@@ -2649,7 +2592,6 @@
         "myRating": 8,
         "imdbRating": 7.6,
         "metascore": 78,
-        "runtime": 170,
         "directors": [
             "Terrence Malick"
         ],
@@ -2698,7 +2640,6 @@
         "myRating": 8,
         "imdbRating": 7.7,
         "metascore": 96,
-        "runtime": 135,
         "directors": [
             "Alfonso Cuarón"
         ],
@@ -2749,7 +2690,6 @@
         "myRating": 8,
         "imdbRating": 8.2,
         "metascore": 90,
-        "runtime": 100,
         "directors": [
             "Andrew Stanton",
             "Lee Unkrich"
@@ -2799,7 +2739,6 @@
         "myRating": 8,
         "imdbRating": 8.4,
         "metascore": 86,
-        "runtime": 115,
         "directors": [
             "Steven Spielberg"
         ],
@@ -2849,7 +2788,6 @@
         "myRating": 9,
         "imdbRating": 8,
         "metascore": 81,
-        "runtime": 164,
         "directors": [
             "Denis Villeneuve"
         ],
@@ -2904,7 +2842,6 @@
         "myRating": 8,
         "imdbRating": 8.1,
         "metascore": 90,
-        "runtime": 120,
         "directors": [
             "George Miller"
         ],
@@ -2951,7 +2888,6 @@
         "myRating": 8,
         "imdbRating": 7.4,
         "metascore": 90,
-        "runtime": 130,
         "directors": [
             "Paul Thomas Anderson"
         ],
@@ -3000,7 +2936,6 @@
         "myRating": 8,
         "imdbRating": 7.5,
         "metascore": 87,
-        "runtime": 113,
         "directors": [
             "Pedro Almodóvar"
         ],
@@ -3045,7 +2980,6 @@
         "myRating": 8,
         "imdbRating": 7.8,
         "metascore": 80,
-        "runtime": 101,
         "directors": [
             "Jonathan Dayton",
             "Valerie Faris"
@@ -3091,7 +3025,6 @@
         "myRating": 6,
         "imdbRating": 7.9,
         "metascore": 64,
-        "runtime": 150,
         "directors": [
             "James Gunn"
         ],
@@ -3140,7 +3073,6 @@
         "myRating": 5,
         "imdbRating": 6.9,
         "metascore": 60,
-        "runtime": 126,
         "directors": [
             "Sam Raimi"
         ],
@@ -3188,7 +3120,6 @@
         "myRating": 6,
         "imdbRating": 7.1,
         "metascore": 86,
-        "runtime": 138,
         "directors": [
             "Paul Thomas Anderson"
         ],
@@ -3234,7 +3165,6 @@
         "myRating": 5,
         "imdbRating": 7.4,
         "metascore": 93,
-        "runtime": 158,
         "directors": [
             "Todd Field"
         ],
@@ -3282,7 +3212,6 @@
         "myRating": 7,
         "imdbRating": 7.8,
         "metascore": 72,
-        "runtime": 118,
         "directors": [
             "Matt Ross"
         ],
@@ -3330,7 +3259,6 @@
         "myRating": 6,
         "imdbRating": 7,
         "metascore": 46,
-        "runtime": 92,
         "directors": [
             "Aaron Horvath",
             "Michael Jelenic",
@@ -3380,7 +3308,6 @@
         "myRating": 6,
         "imdbRating": 7.7,
         "metascore": 78,
-        "runtime": 169,
         "directors": [
             "Chad Stahelski"
         ],
@@ -3434,7 +3361,6 @@
         "myRating": 7,
         "imdbRating": 7.8,
         "metascore": 73,
-        "runtime": 102,
         "directors": [
             "Joel Crawford",
             "Januel Mercado"
@@ -3483,7 +3409,6 @@
         "myRating": 4,
         "imdbRating": 6.5,
         "metascore": 61,
-        "runtime": 122,
         "directors": [
             "Matt Bettinelli-Olpin",
             "Tyler Gillett"
@@ -3531,7 +3456,6 @@
         "myRating": 5,
         "imdbRating": 6.2,
         "metascore": 57,
-        "runtime": 118,
         "directors": [
             "Taika Waititi"
         ],
@@ -3578,7 +3502,6 @@
         "myRating": 7,
         "imdbRating": 7.7,
         "metascore": 60,
-        "runtime": 117,
         "directors": [
             "Darren Aronofsky"
         ],
@@ -3614,7 +3537,6 @@
         "myRating": 8,
         "imdbRating": 7.8,
         "metascore": 81,
-        "runtime": 139,
         "directors": [
             "Daniel Kwan",
             "Daniel Scheinert"
@@ -3663,7 +3585,6 @@
         "myRating": 7,
         "imdbRating": 7.8,
         "metascore": 55,
-        "runtime": 123,
         "directors": [
             "Richard Curtis"
         ],
@@ -3710,7 +3631,6 @@
         "myRating": 8,
         "imdbRating": 7.5,
         "metascore": 85,
-        "runtime": 151,
         "directors": [
             "Steven Spielberg"
         ],
@@ -3755,7 +3675,6 @@
         "myRating": 8,
         "imdbRating": 7.5,
         "metascore": 73,
-        "runtime": 92,
         "directors": [
             "Philip Barantini"
         ],
@@ -3800,7 +3719,6 @@
         "myRating": 7,
         "imdbRating": 7.6,
         "metascore": 95,
-        "runtime": 102,
         "directors": [
             "Charlotte Wells"
         ],
@@ -3847,7 +3765,6 @@
         "myRating": 5,
         "imdbRating": 6.8,
         "metascore": 79,
-        "runtime": 131,
         "directors": [
             "David Fincher"
         ],
@@ -3895,7 +3812,6 @@
         "myRating": 8,
         "imdbRating": 7.6,
         "metascore": 67,
-        "runtime": 192,
         "directors": [
             "James Cameron"
         ],
@@ -3941,7 +3857,6 @@
         "myRating": 8,
         "imdbRating": 7.7,
         "metascore": 79,
-        "runtime": 117,
         "directors": [
             "Thomas Vinterberg"
         ],
@@ -3991,7 +3906,6 @@
         "myRating": 6,
         "imdbRating": 7.1,
         "metascore": 61,
-        "runtime": 189,
         "directors": [
             "Damien Chazelle"
         ],
@@ -4042,7 +3956,6 @@
         "myRating": 7,
         "imdbRating": 6.8,
         "metascore": 64,
-        "runtime": 100,
         "directors": [
             "Pierre Perifel"
         ],
@@ -4089,7 +4002,6 @@
         "myRating": 7,
         "imdbRating": 6.9,
         "metascore": 61,
-        "runtime": 103,
         "directors": [
             "André Øvredal"
         ],
@@ -4135,7 +4047,6 @@
         "myRating": 7,
         "imdbRating": 7.3,
         "metascore": 54,
-        "runtime": 114,
         "directors": [
             "Ben Stiller"
         ],
@@ -4184,7 +4095,6 @@
         "myRating": 6,
         "imdbRating": 7.5,
         "metascore": 71,
-        "runtime": 138,
         "directors": [
             "David Yates"
         ],
@@ -4232,7 +4142,6 @@
         "myRating": 9,
         "imdbRating": 7.7,
         "metascore": 81,
-        "runtime": 157,
         "directors": [
             "Mike Newell"
         ],
@@ -4281,7 +4190,6 @@
         "myRating": 9,
         "imdbRating": 7.8,
         "metascore": 76,
-        "runtime": 148,
         "directors": [
             "Edward Berger"
         ],
@@ -4330,7 +4238,6 @@
         "myRating": 6,
         "imdbRating": 6.7,
         "metascore": 67,
-        "runtime": 161,
         "directors": [
             "Ryan Coogler"
         ],
@@ -4381,7 +4288,6 @@
         "myRating": 5,
         "imdbRating": 6.8,
         "metascore": 52,
-        "runtime": 103,
         "directors": [
             "James Wan"
         ],
@@ -4428,7 +4334,6 @@
         "myRating": 9,
         "imdbRating": 7.7,
         "metascore": 87,
-        "runtime": 114,
         "directors": [
             "Martin McDonagh"
         ],
@@ -4475,7 +4380,6 @@
         "myRating": 7,
         "imdbRating": 8.7,
         "metascore": 84,
-        "runtime": 133,
         "directors": [
             "Milos Forman"
         ],
@@ -4519,7 +4423,6 @@
         "myRating": 5,
         "imdbRating": 6.2,
         "metascore": 41,
-        "runtime": 125,
         "directors": [
             "Jaume Collet-Serra"
         ],
@@ -4568,7 +4471,6 @@
         "myRating": 7,
         "imdbRating": 8.4,
         "metascore": 68,
-        "runtime": 146,
         "directors": [
             "Stanley Kubrick"
         ],
@@ -4614,7 +4516,6 @@
         "myRating": 6,
         "imdbRating": 6.9,
         "metascore": 58,
-        "runtime": 119,
         "directors": [
             "Jake Kasdan"
         ],
@@ -4660,7 +4561,6 @@
         "myRating": 9,
         "imdbRating": 7.9,
         "metascore": 94,
-        "runtime": 137,
         "directors": [
             "Noah Baumbach"
         ],
@@ -4707,7 +4607,6 @@
         "myRating": 9,
         "imdbRating": 8.5,
         "metascore": 57,
-        "runtime": 112,
         "directors": [
             "Olivier Nakache",
             "Éric Toledano"
@@ -4755,7 +4654,6 @@
         "myRating": 6,
         "imdbRating": 8.3,
         "metascore": 89,
-        "runtime": 108,
         "directors": [
             "Michel Gondry"
         ],
@@ -4801,7 +4699,6 @@
         "myRating": 8,
         "imdbRating": 7.7,
         "metascore": 76,
-        "runtime": 95,
         "directors": [
             "Marc Webb"
         ],
@@ -4849,7 +4746,6 @@
         "myRating": 9,
         "imdbRating": 8.2,
         "metascore": 92,
-        "runtime": 122,
         "directors": [
             "Ethan Coen",
             "Joel Coen"
@@ -4897,7 +4793,6 @@
         "myRating": 7,
         "imdbRating": 8,
         "metascore": 91,
-        "runtime": 126,
         "directors": [
             "Spike Jonze"
         ],
@@ -4943,7 +4838,6 @@
         "myRating": 6,
         "imdbRating": 6.7,
         "metascore": 73,
-        "runtime": 121,
         "directors": [
             "Jonathan Dayton",
             "Valerie Faris"
@@ -4991,7 +4885,6 @@
         "myRating": 7,
         "imdbRating": 7.2,
         "metascore": 56,
-        "runtime": 116,
         "directors": [
             "Guy Ritchie"
         ],
@@ -5041,7 +4934,6 @@
         "myRating": 5,
         "imdbRating": 7.8,
         "metascore": 51,
-        "runtime": 113,
         "directors": [
             "Guy Ritchie"
         ],
@@ -5090,7 +4982,6 @@
         "myRating": 7,
         "imdbRating": 8.4,
         "metascore": -1,
-        "runtime": 142,
         "directors": [
             "Elem Klimov"
         ],
@@ -5138,7 +5029,6 @@
         "myRating": 9,
         "imdbRating": 8.3,
         "metascore": 78,
-        "runtime": 130,
         "directors": [
             "Joseph Kosinski"
         ],
@@ -5183,7 +5073,6 @@
         "myRating": 8,
         "imdbRating": 8.2,
         "metascore": 71,
-        "runtime": 148,
         "directors": [
             "Jon Watts"
         ],
@@ -5229,7 +5118,6 @@
         "myRating": 7,
         "imdbRating": 7.2,
         "metascore": 66,
-        "runtime": 132,
         "directors": [
             "David Yates"
         ],
@@ -5277,7 +5165,6 @@
         "myRating": 4,
         "imdbRating": 6.2,
         "metascore": 47,
-        "runtime": 142,
         "directors": [
             "David Yates"
         ],
@@ -5326,7 +5213,6 @@
         "myRating": 9,
         "imdbRating": 8.3,
         "metascore": 71,
-        "runtime": 126,
         "directors": [
             "Gus Van Sant"
         ],
@@ -5371,7 +5257,6 @@
         "myRating": 7,
         "imdbRating": 7.2,
         "metascore": 69,
-        "runtime": 109,
         "directors": [
             "Phil Lord",
             "Christopher Miller"
@@ -5418,7 +5303,6 @@
         "myRating": 8,
         "imdbRating": 7.9,
         "metascore": 84,
-        "runtime": 138,
         "directors": [
             "Alan J. Pakula"
         ],
@@ -5465,7 +5349,6 @@
         "myRating": 6,
         "imdbRating": 6.8,
         "metascore": 64,
-        "runtime": 103,
         "directors": [
             "Chris Buck",
             "Jennifer Lee"
@@ -5513,7 +5396,6 @@
         "myRating": 6,
         "imdbRating": 7.5,
         "metascore": 69,
-        "runtime": 126,
         "directors": [
             "Tim Burton"
         ],
@@ -5561,7 +5443,6 @@
         "myRating": 6,
         "imdbRating": 7.6,
         "metascore": 89,
-        "runtime": 111,
         "directors": [
             "Nicholas Ray"
         ],
@@ -5605,7 +5486,6 @@
         "myRating": 7,
         "imdbRating": 6.3,
         "metascore": 59,
-        "runtime": 139,
         "directors": [
             "Sam Raimi"
         ],
@@ -5652,7 +5532,6 @@
         "myRating": 7,
         "imdbRating": 7.7,
         "metascore": 83,
-        "runtime": 94,
         "directors": [
             "Hayao Miyazaki"
         ],
@@ -5698,7 +5577,6 @@
         "myRating": 7,
         "imdbRating": 7.6,
         "metascore": 76,
-        "runtime": 113,
         "directors": [
             "Greg Mottola"
         ],
@@ -5742,7 +5620,6 @@
         "myRating": 7,
         "imdbRating": 8.3,
         "metascore": 58,
-        "runtime": 131,
         "directors": [
             "Richard Marquand"
         ],
@@ -5793,7 +5670,6 @@
         "myRating": 6,
         "imdbRating": 7.2,
         "metascore": 61,
-        "runtime": 132,
         "directors": [
             "Adam McKay"
         ],
@@ -5840,7 +5716,6 @@
         "myRating": 6,
         "imdbRating": 7.5,
         "metascore": 82,
-        "runtime": 127,
         "directors": [
             "Ken Loach"
         ],
@@ -5893,7 +5768,6 @@
         "myRating": 6,
         "imdbRating": 7.6,
         "metascore": 87,
-        "runtime": 93,
         "directors": [
             "Wes Anderson"
         ],
@@ -5942,7 +5816,6 @@
         "myRating": 6,
         "imdbRating": 7.6,
         "metascore": 91,
-        "runtime": 92,
         "directors": [
             "Krzysztof Kieslowski"
         ],
@@ -5992,7 +5865,6 @@
         "myRating": 8,
         "imdbRating": 8,
         "metascore": 80,
-        "runtime": 144,
         "directors": [
             "Martin Campbell"
         ],
@@ -6046,7 +5918,6 @@
         "myRating": 6,
         "imdbRating": 7,
         "metascore": 78,
-        "runtime": 118,
         "directors": [
             "Steven Soderbergh"
         ],
@@ -6093,7 +5964,6 @@
         "myRating": 6,
         "imdbRating": 7.2,
         "metascore": 78,
-        "runtime": 95,
         "directors": [
             "John Lasseter",
             "Andrew Stanton"
@@ -6141,7 +6011,6 @@
         "myRating": 8,
         "imdbRating": 8.9,
         "metascore": 95,
-        "runtime": 154,
         "directors": [
             "Quentin Tarantino"
         ],
@@ -6188,7 +6057,6 @@
         "myRating": 6,
         "imdbRating": 8.2,
         "metascore": 69,
-        "runtime": 111,
         "directors": [
             "Quentin Tarantino"
         ],
@@ -6236,7 +6104,6 @@
         "myRating": 6,
         "imdbRating": 7.3,
         "metascore": 88,
-        "runtime": 114,
         "directors": [
             "Bennett Miller"
         ],
@@ -6283,7 +6150,6 @@
         "myRating": 6,
         "imdbRating": 6.9,
         "metascore": 76,
-        "runtime": 111,
         "directors": [
             "Julian Schnabel"
         ],
@@ -6334,7 +6200,6 @@
         "myRating": 6,
         "imdbRating": 8.1,
         "metascore": 74,
-        "runtime": 123,
         "directors": [
             "Ron Howard"
         ],
@@ -6385,7 +6250,6 @@
         "myRating": 7,
         "imdbRating": 8.1,
         "metascore": 100,
-        "runtime": 99,
         "directors": [
             "Krzysztof Kieslowski"
         ],
@@ -6433,7 +6297,6 @@
         "myRating": 7,
         "imdbRating": 7.8,
         "metascore": 88,
-        "runtime": 139,
         "directors": [
             "Robert Stevenson"
         ],
@@ -6479,7 +6342,6 @@
         "myRating": 8,
         "imdbRating": 8.1,
         "metascore": 84,
-        "runtime": 117,
         "directors": [
             "Ridley Scott"
         ],
@@ -6532,7 +6394,6 @@
         "myRating": 7,
         "imdbRating": 8.2,
         "metascore": 98,
-        "runtime": 118,
         "directors": [
             "Guillermo del Toro"
         ],
@@ -6579,7 +6440,6 @@
         "myRating": 7,
         "imdbRating": 7.2,
         "metascore": 82,
-        "runtime": 122,
         "directors": [
             "Danny Boyle"
         ],
@@ -6626,7 +6486,6 @@
         "myRating": 7,
         "imdbRating": 7.8,
         "metascore": 90,
-        "runtime": 86,
         "directors": [
             "John Carney"
         ],
@@ -6674,7 +6533,6 @@
         "myRating": 7,
         "imdbRating": 8.5,
         "metascore": 82,
-        "runtime": 166,
         "directors": [
             "Sergio Leone"
         ],
@@ -6721,7 +6579,6 @@
         "myRating": 7,
         "imdbRating": 7.9,
         "metascore": 93,
-        "runtime": 121,
         "directors": [
             "Kore-eda Hirokazu"
         ],
@@ -6767,7 +6624,6 @@
         "myRating": 7,
         "imdbRating": 8.2,
         "metascore": 90,
-        "runtime": 62,
         "directors": [
             "Don Hertzfeldt"
         ],
@@ -6794,7 +6650,6 @@
         "myRating": 7,
         "imdbRating": 7.7,
         "metascore": 73,
-        "runtime": 107,
         "directors": [
             "Taylor Sheridan"
         ],
@@ -6842,7 +6697,6 @@
         "myRating": 7,
         "imdbRating": 7.7,
         "metascore": 71,
-        "runtime": 123,
         "directors": [
             "James Marsh"
         ],
@@ -6891,7 +6745,6 @@
         "myRating": 7,
         "imdbRating": 7.1,
         "metascore": 72,
-        "runtime": 124,
         "directors": [
             "Leigh Whannell"
         ],
@@ -6938,7 +6791,6 @@
         "myRating": 7,
         "imdbRating": 7.7,
         "metascore": 78,
-        "runtime": 88,
         "directors": [
             "Jim Abrahams",
             "David Zucker",
@@ -6984,7 +6836,6 @@
         "myRating": 7,
         "imdbRating": 7.8,
         "metascore": 81,
-        "runtime": 121,
         "directors": [
             "Edgar Wright"
         ],
@@ -7032,7 +6883,6 @@
         "myRating": 6,
         "imdbRating": 6.7,
         "metascore": 84,
-        "runtime": 89,
         "directors": [
             "Lynne Ramsay"
         ],
@@ -7080,7 +6930,6 @@
         "myRating": 8,
         "imdbRating": 7.7,
         "metascore": 87,
-        "runtime": 119,
         "directors": [
             "Alejandro G. Iñárritu"
         ],
@@ -7125,7 +6974,6 @@
         "myRating": 10,
         "imdbRating": 8.1,
         "metascore": 92,
-        "runtime": 130,
         "directors": [
             "Roman Polanski"
         ],
@@ -7173,7 +7021,6 @@
         "myRating": 8,
         "imdbRating": 7.6,
         "metascore": 82,
-        "runtime": 154,
         "directors": [
             "Laurence Olivier"
         ],
@@ -7217,7 +7064,6 @@
         "myRating": 6,
         "imdbRating": 8.5,
         "metascore": 85,
-        "runtime": 150,
         "directors": [
             "Roman Polanski"
         ],
@@ -7269,7 +7115,6 @@
         "myRating": 7,
         "imdbRating": 8.6,
         "metascore": 98,
-        "runtime": 207,
         "directors": [
             "Akira Kurosawa"
         ],
@@ -7314,7 +7159,6 @@
         "myRating": 6,
         "imdbRating": 8,
         "metascore": 97,
-        "runtime": 100,
         "directors": [
             "John Huston"
         ],
@@ -7360,7 +7204,6 @@
         "myRating": 9,
         "imdbRating": 8.3,
         "metascore": 92,
-        "runtime": 103,
         "directors": [
             "Lee Unkrich"
         ],
@@ -7408,7 +7251,6 @@
         "myRating": 8,
         "imdbRating": 7.7,
         "metascore": 96,
-        "runtime": 91,
         "directors": [
             "Alfonso Cuarón"
         ],
@@ -7445,7 +7287,6 @@
         "myRating": 6,
         "imdbRating": 8.1,
         "metascore": 87,
-        "runtime": 161,
         "directors": [
             "David Lean"
         ],
@@ -7494,7 +7335,6 @@
         "myRating": 7,
         "imdbRating": 8.1,
         "metascore": 85,
-        "runtime": 86,
         "directors": [
             "Brad Bird"
         ],
@@ -7541,7 +7381,6 @@
         "myRating": 8,
         "imdbRating": 8.5,
         "metascore": 66,
-        "runtime": 130,
         "directors": [
             "Christopher Nolan"
         ],
@@ -7588,7 +7427,6 @@
         "myRating": 8,
         "imdbRating": 8.7,
         "metascore": 74,
-        "runtime": 169,
         "directors": [
             "Christopher Nolan"
         ],
@@ -7636,7 +7474,6 @@
         "myRating": 8,
         "imdbRating": 7.9,
         "metascore": 81,
-        "runtime": 116,
         "directors": [
             "Denis Villeneuve"
         ],
@@ -7685,7 +7522,6 @@
         "myRating": 8,
         "imdbRating": 8.3,
         "metascore": 80,
-        "runtime": 131,
         "directors": [
             "Denis Villeneuve"
         ],
@@ -7734,7 +7570,6 @@
         "myRating": 7,
         "imdbRating": 7.5,
         "metascore": 74,
-        "runtime": 115,
         "directors": [
             "Lin-Manuel Miranda"
         ],
@@ -7780,7 +7615,6 @@
         "myRating": 7,
         "imdbRating": 7,
         "metascore": 83,
-        "runtime": 100,
         "directors": [
             "Domee Shi"
         ],
@@ -7829,7 +7663,6 @@
         "myRating": 7,
         "imdbRating": 7.4,
         "metascore": 71,
-        "runtime": 95,
         "directors": [
             "Enrico Casarosa"
         ],
@@ -7878,7 +7711,6 @@
         "myRating": 7,
         "imdbRating": 7.6,
         "metascore": 80,
-        "runtime": 110,
         "directors": [
             "Ethan Coen",
             "Joel Coen"
@@ -7924,7 +7756,6 @@
         "myRating": 6,
         "imdbRating": 7.7,
         "metascore": 94,
-        "runtime": 104,
         "directors": [
             "William Friedkin"
         ],
@@ -7971,7 +7802,6 @@
         "myRating": 6,
         "imdbRating": 7.3,
         "metascore": 74,
-        "runtime": 107,
         "directors": [
             "Don Hall",
             "Carlos López Estrada",
@@ -8020,7 +7850,6 @@
         "myRating": 8,
         "imdbRating": 7.8,
         "metascore": 72,
-        "runtime": 176,
         "directors": [
             "Matt Reeves"
         ],
@@ -8069,7 +7898,6 @@
         "myRating": 6,
         "imdbRating": 7,
         "metascore": 73,
-        "runtime": 94,
         "directors": [
             "Galder Gaztelu-Urrutia"
         ],
@@ -8116,7 +7944,6 @@
         "myRating": 8,
         "imdbRating": 7.2,
         "metascore": 75,
-        "runtime": 102,
         "directors": [
             "Jared Bush",
             "Byron Howard",
@@ -8165,7 +7992,6 @@
         "myRating": 7,
         "imdbRating": 7.7,
         "metascore": 86,
-        "runtime": 120,
         "directors": [
             "Ben Affleck"
         ],
@@ -8215,7 +8041,6 @@
         "myRating": 8,
         "imdbRating": 7.2,
         "metascore": 49,
-        "runtime": 138,
         "directors": [
             "Adam McKay"
         ],
@@ -8261,7 +8086,6 @@
         "myRating": 8,
         "imdbRating": 8.1,
         "metascore": 83,
-        "runtime": 93,
         "directors": [
             "Danny Boyle"
         ],
@@ -8306,7 +8130,6 @@
         "myRating": 6,
         "imdbRating": 7.5,
         "metascore": 76,
-        "runtime": 144,
         "directors": [
             "Reinaldo Marcus Green"
         ],
@@ -8354,7 +8177,6 @@
         "myRating": 6,
         "imdbRating": 6.7,
         "metascore": 81,
-        "runtime": 100,
         "directors": [
             "Pablo Larraín"
         ],
@@ -8405,7 +8227,6 @@
         "myRating": 7,
         "imdbRating": 7.8,
         "metascore": 94,
-        "runtime": 132,
         "directors": [
             "Luca Guadagnino"
         ],
@@ -8453,7 +8274,6 @@
         "myRating": 7,
         "imdbRating": 7.8,
         "metascore": 85,
-        "runtime": 103,
         "directors": [
             "Hayao Miyazaki"
         ],
@@ -8499,7 +8319,6 @@
         "myRating": 7,
         "imdbRating": 8.1,
         "metascore": 87,
-        "runtime": 98,
         "directors": [
             "Joel Coen",
             "Ethan Coen"
@@ -8546,7 +8365,6 @@
         "myRating": 8,
         "imdbRating": 8.2,
         "metascore": 65,
-        "runtime": 96,
         "directors": [
             "Sergio Pablos",
             "Carlos Martínez López"
@@ -8596,7 +8414,6 @@
         "myRating": 7,
         "imdbRating": 7.4,
         "metascore": 71,
-        "runtime": 132,
         "directors": [
             "Destin Daniel Cretton"
         ],
@@ -8643,7 +8460,6 @@
         "myRating": 7,
         "imdbRating": 6.8,
         "metascore": 55,
-        "runtime": 116,
         "directors": [
             "Danny Boyle"
         ],
@@ -8694,7 +8510,6 @@
         "myRating": 5,
         "imdbRating": 6.3,
         "metascore": 52,
-        "runtime": 156,
         "directors": [
             "Chloé Zhao"
         ],
@@ -8749,7 +8564,6 @@
         "myRating": 8,
         "imdbRating": 8.1,
         "metascore": 63,
-        "runtime": 172,
         "directors": [
             "Robert Wise"
         ],
@@ -8796,7 +8610,6 @@
         "myRating": 7,
         "imdbRating": 8.2,
         "metascore": 69,
-        "runtime": 130,
         "directors": [
             "Peter Farrelly"
         ],
@@ -8846,7 +8659,6 @@
         "myRating": 8,
         "imdbRating": 8,
         "metascore": 74,
-        "runtime": 155,
         "directors": [
             "Denis Villeneuve"
         ],
@@ -8894,7 +8706,6 @@
         "myRating": 8,
         "imdbRating": 8.5,
         "metascore": 87,
-        "runtime": 116,
         "directors": [
             "Robert Zemeckis"
         ],
@@ -8940,7 +8751,6 @@
         "myRating": 5,
         "imdbRating": 5.9,
         "metascore": 57,
-        "runtime": 99,
         "directors": [
             "Scott Cooper"
         ],
@@ -8988,7 +8798,6 @@
         "myRating": 7,
         "imdbRating": 7.3,
         "metascore": 68,
-        "runtime": 163,
         "directors": [
             "Cary Joji Fukunaga"
         ],
@@ -9041,7 +8850,6 @@
         "myRating": 6,
         "imdbRating": 6.8,
         "metascore": 60,
-        "runtime": 148,
         "directors": [
             "Sam Mendes"
         ],
@@ -9093,7 +8901,6 @@
         "myRating": 8,
         "imdbRating": 7.8,
         "metascore": 81,
-        "runtime": 143,
         "directors": [
             "Sam Mendes"
         ],
@@ -9145,7 +8952,6 @@
         "myRating": 6,
         "imdbRating": 8.1,
         "metascore": 73,
-        "runtime": 148,
         "directors": [
             "Sean Penn"
         ],
@@ -9192,7 +8998,6 @@
         "myRating": 6,
         "imdbRating": 7.7,
         "metascore": 87,
-        "runtime": 110,
         "directors": [
             "Guy Hamilton"
         ],
@@ -9241,7 +9046,6 @@
         "myRating": 8,
         "imdbRating": 7.2,
         "metascore": 72,
-        "runtime": 132,
         "directors": [
             "James Gunn"
         ],
@@ -9290,7 +9094,6 @@
         "myRating": 6,
         "imdbRating": 7.2,
         "metascore": 78,
-        "runtime": 110,
         "directors": [
             "Terence Young"
         ],
@@ -9339,7 +9142,6 @@
         "myRating": 6,
         "imdbRating": 6.7,
         "metascore": 68,
-        "runtime": 134,
         "directors": [
             "Cate Shortland"
         ],
@@ -9390,7 +9192,6 @@
         "myRating": 7,
         "imdbRating": 7.9,
         "metascore": 87,
-        "runtime": 94,
         "directors": [
             "Krzysztof Kieslowski"
         ],
@@ -9440,7 +9241,6 @@
         "myRating": 7,
         "imdbRating": 7.3,
         "metascore": 59,
-        "runtime": 134,
         "directors": [
             "Craig Gillespie"
         ],
@@ -9490,7 +9290,6 @@
         "myRating": 5,
         "imdbRating": 6.4,
         "metascore": 49,
-        "runtime": 92,
         "directors": [
             "Peter Berg"
         ],
@@ -9538,7 +9337,6 @@
         "myRating": 7,
         "imdbRating": 7.6,
         "metascore": 53,
-        "runtime": 129,
         "directors": [
             "John Lee Hancock"
         ],
@@ -9584,7 +9382,6 @@
         "myRating": 7,
         "imdbRating": 7.4,
         "metascore": 60,
-        "runtime": 129,
         "directors": [
             "Niki Caro"
         ],
@@ -9631,7 +9428,6 @@
         "myRating": 7,
         "imdbRating": 7.2,
         "metascore": 82,
-        "runtime": 109,
         "directors": [
             "Richard Linklater"
         ],
@@ -9677,7 +9473,6 @@
         "myRating": 7,
         "imdbRating": 8.2,
         "metascore": 65,
-        "runtime": 127,
         "directors": [
             "Steven Spielberg"
         ],
@@ -9726,7 +9521,6 @@
         "myRating": 7,
         "imdbRating": 8.1,
         "metascore": 75,
-        "runtime": 89,
         "directors": [
             "Rob Reiner"
         ],
@@ -9772,7 +9566,6 @@
         "myRating": 8,
         "imdbRating": 8.5,
         "metascore": 67,
-        "runtime": 155,
         "directors": [
             "Ridley Scott"
         ],
@@ -9821,7 +9614,6 @@
         "myRating": 7,
         "imdbRating": 7.5,
         "metascore": 57,
-        "runtime": 118,
         "directors": [
             "Steven Spielberg"
         ],
@@ -9868,7 +9660,6 @@
         "myRating": 6,
         "imdbRating": 8.1,
         "metascore": 97,
-        "runtime": 104,
         "directors": [
             "Carol Reed"
         ],
@@ -9917,7 +9708,6 @@
         "myRating": 8,
         "imdbRating": 8.4,
         "metascore": 59,
-        "runtime": 122,
         "directors": [
             "Todd Phillips"
         ],
@@ -9965,7 +9755,6 @@
         "myRating": 6,
         "imdbRating": 7.3,
         "metascore": 80,
-        "runtime": 88,
         "directors": [
             "Chris Buck",
             "Kevin Lima"
@@ -10013,7 +9802,6 @@
         "myRating": 8,
         "imdbRating": 8.1,
         "metascore": 81,
-        "runtime": 152,
         "directors": [
             "James Mangold"
         ],
@@ -10062,7 +9850,6 @@
         "myRating": 8,
         "imdbRating": 7.6,
         "metascore": 84,
-        "runtime": 161,
         "directors": [
             "Quentin Tarantino"
         ],
@@ -10112,7 +9899,6 @@
         "myRating": 7,
         "imdbRating": 7.8,
         "metascore": 94,
-        "runtime": 209,
         "directors": [
             "Martin Scorsese"
         ],
@@ -10162,7 +9948,6 @@
         "myRating": 8,
         "imdbRating": 8.1,
         "metascore": 79,
-        "runtime": 128,
         "directors": [
             "Peter Weir"
         ],
@@ -10208,7 +9993,6 @@
         "myRating": 8,
         "imdbRating": 8.5,
         "metascore": 81,
-        "runtime": 165,
         "directors": [
             "Quentin Tarantino"
         ],
@@ -10256,7 +10040,6 @@
         "myRating": 8,
         "imdbRating": 8.4,
         "metascore": 69,
-        "runtime": 153,
         "directors": [
             "Quentin Tarantino"
         ],
@@ -10306,7 +10089,6 @@
         "myRating": 6,
         "imdbRating": 8,
         "metascore": 83,
-        "runtime": 137,
         "directors": [
             "Quentin Tarantino"
         ],
@@ -10355,7 +10137,6 @@
         "myRating": 9,
         "imdbRating": 8.3,
         "metascore": 81,
-        "runtime": 99,
         "directors": [
             "Quentin Tarantino"
         ],
@@ -10400,7 +10181,6 @@
         "myRating": 6,
         "imdbRating": 8.2,
         "metascore": 63,
-        "runtime": 138,
         "directors": [
             "Martin Scorsese"
         ],
@@ -10446,7 +10226,6 @@
         "myRating": 8,
         "imdbRating": 7.4,
         "metascore": 84,
-        "runtime": 119,
         "directors": [
             "Rian Johnson"
         ],
@@ -10494,7 +10273,6 @@
         "myRating": 8,
         "imdbRating": 8.5,
         "metascore": 100,
-        "runtime": 102,
         "directors": [
             "Michael Curtiz"
         ],
@@ -10544,7 +10322,6 @@
         "myRating": 9,
         "imdbRating": 7.5,
         "metascore": 77,
-        "runtime": 119,
         "directors": [
             "Craig Gillespie"
         ],
@@ -10591,7 +10368,6 @@
         "myRating": 7,
         "imdbRating": 7.2,
         "metascore": 79,
-        "runtime": 161,
         "directors": [
             "Martin Scorsese"
         ],
@@ -10642,7 +10418,6 @@
         "myRating": 8,
         "imdbRating": 7.3,
         "metascore": 68,
-        "runtime": 140,
         "directors": [
             "Derek Cianfrance"
         ],
@@ -10689,7 +10464,6 @@
         "myRating": 8,
         "imdbRating": 8.2,
         "metascore": 75,
-        "runtime": 180,
         "directors": [
             "Martin Scorsese"
         ],
@@ -10736,7 +10510,6 @@
         "myRating": 7,
         "imdbRating": 7.2,
         "metascore": 85,
-        "runtime": 75,
         "directors": [
             "Les Clark",
             "Clyde Geronimi",
@@ -10786,7 +10559,6 @@
         "myRating": 6,
         "imdbRating": 7.4,
         "metascore": 59,
-        "runtime": 144,
         "directors": [
             "Peter Jackson"
         ],
@@ -10832,7 +10604,6 @@
         "myRating": 9,
         "imdbRating": 8.5,
         "metascore": 85,
-        "runtime": 151,
         "directors": [
             "Martin Scorsese"
         ],
@@ -10880,7 +10651,6 @@
         "myRating": 7,
         "imdbRating": 7.5,
         "metascore": 77,
-        "runtime": 170,
         "directors": [
             "Martin Scorsese"
         ],
@@ -10927,7 +10697,6 @@
         "myRating": 8,
         "imdbRating": 7.9,
         "metascore": 60,
-        "runtime": 133,
         "directors": [
             "John Landis"
         ],
@@ -10973,7 +10742,6 @@
         "myRating": 8,
         "imdbRating": 7.8,
         "metascore": 71,
-        "runtime": 158,
         "directors": [
             "David Fincher"
         ],
@@ -11022,7 +10790,6 @@
         "myRating": 8,
         "imdbRating": 8.2,
         "metascore": 94,
-        "runtime": 114,
         "directors": [
             "Martin Scorsese"
         ],
@@ -11068,7 +10835,6 @@
         "myRating": 6,
         "imdbRating": 8.1,
         "metascore": 90,
-        "runtime": 129,
         "directors": [
             "Martin Scorsese"
         ],
@@ -11114,7 +10880,6 @@
         "myRating": 6,
         "imdbRating": 8.3,
         "metascore": 83,
-        "runtime": 129,
         "directors": [
             "George Roy Hill"
         ],
@@ -11160,7 +10925,6 @@
         "myRating": 8,
         "imdbRating": 8.1,
         "metascore": 96,
-        "runtime": 134,
         "directors": [
             "Steve McQueen"
         ],
@@ -11207,7 +10971,6 @@
         "myRating": 8,
         "imdbRating": 8.4,
         "metascore": 94,
-        "runtime": 147,
         "directors": [
             "Francis Ford Coppola"
         ],
@@ -11255,7 +11018,6 @@
         "myRating": 7,
         "imdbRating": 7.7,
         "metascore": 87,
-        "runtime": 113,
         "directors": [
             "Francis Ford Coppola"
         ],
@@ -11301,7 +11063,6 @@
         "myRating": 8,
         "imdbRating": 8,
         "metascore": 83,
-        "runtime": 100,
         "directors": [
             "Pete Docter",
             "Kemp Powers"
@@ -11350,7 +11111,6 @@
         "myRating": 9,
         "imdbRating": 8.1,
         "metascore": 85,
-        "runtime": 130,
         "directors": [
             "David Yates"
         ],
@@ -11398,7 +11158,6 @@
         "myRating": 9,
         "imdbRating": 7.7,
         "metascore": 65,
-        "runtime": 146,
         "directors": [
             "David Yates"
         ],
@@ -11446,7 +11205,6 @@
         "myRating": 6,
         "imdbRating": 7.6,
         "metascore": 60,
-        "runtime": 162,
         "directors": [
             "Francis Ford Coppola"
         ],
@@ -11495,7 +11253,6 @@
         "myRating": 8,
         "imdbRating": 7.6,
         "metascore": 78,
-        "runtime": 153,
         "directors": [
             "David Yates"
         ],
@@ -11543,7 +11300,6 @@
         "myRating": 10,
         "imdbRating": 9.2,
         "metascore": 100,
-        "runtime": 175,
         "directors": [
             "Francis Ford Coppola"
         ],
@@ -11590,7 +11346,6 @@
         "myRating": 7,
         "imdbRating": 9,
         "metascore": 90,
-        "runtime": 202,
         "directors": [
             "Francis Ford Coppola"
         ],
@@ -11639,7 +11394,6 @@
         "myRating": 6,
         "imdbRating": 8,
         "metascore": 66,
-        "runtime": 110,
         "directors": [
             "George Roy Hill"
         ],
@@ -11687,7 +11441,6 @@
         "myRating": 8,
         "imdbRating": 8.6,
         "metascore": 89,
-        "runtime": 130,
         "directors": [
             "Frank Capra"
         ],
@@ -11734,7 +11487,6 @@
         "myRating": 7,
         "imdbRating": 7.6,
         "metascore": 65,
-        "runtime": 152,
         "directors": [
             "Chris Columbus"
         ],
@@ -11782,7 +11534,6 @@
         "myRating": 8,
         "imdbRating": 7.2,
         "metascore": 72,
-        "runtime": 101,
         "directors": [
             "Steve McQueen"
         ],
@@ -11828,7 +11579,6 @@
         "myRating": 8,
         "imdbRating": 8.3,
         "metascore": 100,
-        "runtime": 119,
         "directors": [
             "Orson Welles"
         ],
@@ -11874,7 +11624,6 @@
         "myRating": 7,
         "imdbRating": 7.5,
         "metascore": 82,
-        "runtime": 96,
         "directors": [
             "Steve McQueen"
         ],
@@ -11922,7 +11671,6 @@
         "myRating": 8,
         "imdbRating": 8.1,
         "metascore": 86,
-        "runtime": 86,
         "directors": [
             "Hayao Miyazaki"
         ],
@@ -11968,7 +11716,6 @@
         "myRating": 8,
         "imdbRating": 7.4,
         "metascore": 97,
-        "runtime": 110,
         "directors": [
             "George Lucas"
         ],
@@ -12013,7 +11760,6 @@
         "myRating": 8,
         "imdbRating": 8.1,
         "metascore": 79,
-        "runtime": 149,
         "directors": [
             "David Fincher"
         ],
@@ -12059,7 +11805,6 @@
         "myRating": 7,
         "imdbRating": 8.8,
         "metascore": 67,
-        "runtime": 139,
         "directors": [
             "David Fincher"
         ],
@@ -12104,7 +11849,6 @@
         "myRating": 8,
         "imdbRating": 7.6,
         "metascore": 88,
-        "runtime": 136,
         "directors": [
             "Bradley Cooper"
         ],
@@ -12151,7 +11895,6 @@
         "myRating": 6,
         "imdbRating": 8.1,
         "metascore": 70,
-        "runtime": 120,
         "directors": [
             "John G. Avildsen"
         ],
@@ -12196,7 +11939,6 @@
         "myRating": 7,
         "imdbRating": 8.1,
         "metascore": 75,
-        "runtime": 141,
         "directors": [
             "Steven Spielberg"
         ],
@@ -12244,7 +11986,6 @@
         "myRating": 5,
         "imdbRating": 7.2,
         "metascore": 59,
-        "runtime": 137,
         "directors": [
             "Angelina Jolie"
         ],
@@ -12293,7 +12034,6 @@
         "myRating": 8,
         "imdbRating": 7.9,
         "metascore": 76,
-        "runtime": 99,
         "directors": [
             "Edgar Wright"
         ],
@@ -12340,7 +12080,6 @@
         "myRating": 7,
         "imdbRating": 7.6,
         "metascore": 90,
-        "runtime": 138,
         "directors": [
             "Steven Spielberg"
         ],
@@ -12390,7 +12129,6 @@
         "myRating": 9,
         "imdbRating": 8.4,
         "metascore": 83,
-        "runtime": 113,
         "directors": [
             "Christopher Nolan"
         ],
@@ -12432,7 +12170,6 @@
         "myRating": 9,
         "imdbRating": 6.9,
         "metascore": 84,
-        "runtime": 152,
         "directors": [
             "Rian Johnson"
         ],
@@ -12478,7 +12215,6 @@
         "myRating": 8,
         "imdbRating": 7.4,
         "metascore": 93,
-        "runtime": 94,
         "directors": [
             "Greta Gerwig"
         ],
@@ -12524,7 +12260,6 @@
         "myRating": 9,
         "imdbRating": 9,
         "metascore": 95,
-        "runtime": 195,
         "directors": [
             "Steven Spielberg"
         ],
@@ -12574,7 +12309,6 @@
         "myRating": 7,
         "imdbRating": 8.3,
         "metascore": 76,
-        "runtime": 170,
         "directors": [
             "Michael Mann"
         ],
@@ -12621,7 +12355,6 @@
         "myRating": 9,
         "imdbRating": 8.6,
         "metascore": 91,
-        "runtime": 169,
         "directors": [
             "Steven Spielberg"
         ],
@@ -12669,7 +12402,6 @@
         "myRating": 9,
         "imdbRating": 8.1,
         "metascore": 87,
-        "runtime": 124,
         "directors": [
             "Steven Spielberg"
         ],
@@ -12715,7 +12447,6 @@
         "myRating": 7,
         "imdbRating": 7,
         "metascore": 81,
-        "runtime": 134,
         "directors": [
             "Bennett Miller"
         ],
@@ -12762,7 +12493,6 @@
         "myRating": 7,
         "imdbRating": 7.6,
         "metascore": 70,
-        "runtime": 97,
         "directors": [
             "Tyler Nilson",
             "Michael Schwartz"
@@ -12809,7 +12539,6 @@
         "myRating": 6,
         "imdbRating": 6.1,
         "metascore": 60,
-        "runtime": 109,
         "directors": [
             "Cathy Yan"
         ],
@@ -12856,7 +12585,6 @@
         "myRating": 9,
         "imdbRating": 8.7,
         "metascore": 82,
-        "runtime": 124,
         "directors": [
             "Irvin Kershner"
         ],
@@ -12902,7 +12630,6 @@
         "myRating": 8,
         "imdbRating": 8.6,
         "metascore": 90,
-        "runtime": 121,
         "directors": [
             "George Lucas"
         ],
@@ -12948,7 +12675,6 @@
         "myRating": 8,
         "imdbRating": 7.3,
         "metascore": 69,
-        "runtime": 150,
         "directors": [
             "Christopher Nolan"
         ],
@@ -13000,7 +12726,6 @@
         "myRating": 10,
         "imdbRating": 8.8,
         "metascore": 74,
-        "runtime": 148,
         "directors": [
             "Christopher Nolan"
         ],
@@ -13049,7 +12774,6 @@
         "myRating": 3,
         "imdbRating": 5.8,
         "metascore": -1,
-        "runtime": 103,
         "directors": [
             "Assaf Bernstein"
         ],
@@ -13095,7 +12819,6 @@
         "myRating": 8,
         "imdbRating": 7.4,
         "metascore": 70,
-        "runtime": 116,
         "directors": [
             "Shane Black"
         ],
@@ -13142,7 +12865,6 @@
         "myRating": 6,
         "imdbRating": 7.2,
         "metascore": -1,
-        "runtime": 83,
         "directors": [
             "John Huston"
         ],
@@ -13188,7 +12910,6 @@
         "myRating": 8,
         "imdbRating": 7.9,
         "metascore": 79,
-        "runtime": 106,
         "directors": [
             "John Carney"
         ],
@@ -13237,7 +12958,6 @@
         "myRating": 6,
         "imdbRating": 7.8,
         "metascore": 97,
-        "runtime": 103,
         "directors": [
             "Jim Sheridan"
         ],
@@ -13283,7 +13003,6 @@
         "myRating": 8,
         "imdbRating": 8,
         "metascore": 90,
-        "runtime": 115,
         "directors": [
             "Brad Bird"
         ],
@@ -13335,7 +13054,6 @@
         "myRating": 9,
         "imdbRating": 8,
         "metascore": 92,
-        "runtime": 86,
         "directors": [
             "David Lean"
         ],
@@ -13381,7 +13099,6 @@
         "myRating": 5,
         "imdbRating": 7.7,
         "metascore": 84,
-        "runtime": 101,
         "directors": [
             "Travis Knight"
         ],
@@ -13428,7 +13145,6 @@
         "myRating": 7,
         "imdbRating": 7.4,
         "metascore": -1,
-        "runtime": 200,
         "directors": [
             "David Lean"
         ],
@@ -13474,7 +13190,6 @@
         "myRating": 7,
         "imdbRating": 6.8,
         "metascore": 51,
-        "runtime": 93,
         "directors": [
             "Steve Barron"
         ],
@@ -13522,7 +13237,6 @@
         "myRating": 6,
         "imdbRating": 8,
         "metascore": 85,
-        "runtime": 93,
         "directors": [
             "Tomm Moore"
         ],
@@ -13566,7 +13280,6 @@
         "myRating": 8,
         "imdbRating": 7.1,
         "metascore": 88,
-        "runtime": 84,
         "directors": [
             "Peter Lord",
             "Nick Park"
@@ -13609,7 +13322,6 @@
         "myRating": 7,
         "imdbRating": 8.4,
         "metascore": 81,
-        "runtime": 106,
         "directors": [
             "Makoto Shinkai"
         ],
@@ -13655,7 +13367,6 @@
         "myRating": 6,
         "imdbRating": 8,
         "metascore": 68,
-        "runtime": 124,
         "directors": [
             "Katsuhiro Ôtomo"
         ],
@@ -13701,7 +13412,6 @@
         "myRating": 9,
         "imdbRating": 8.1,
         "metascore": 94,
-        "runtime": 95,
         "directors": [
             "Pete Docter",
             "Ronnie Del Carmen"
@@ -13751,7 +13461,6 @@
         "myRating": 9,
         "imdbRating": 8.4,
         "metascore": 81,
-        "runtime": 105,
         "directors": [
             "Lee Unkrich",
             "Adrian Molina"
@@ -13801,7 +13510,6 @@
         "myRating": 7,
         "imdbRating": 6.7,
         "metascore": 66,
-        "runtime": 93,
         "directors": [
             "Peter Sohn"
         ],
@@ -13848,7 +13556,6 @@
         "myRating": 6,
         "imdbRating": 7.1,
         "metascore": 69,
-        "runtime": 93,
         "directors": [
             "Mark Andrews",
             "Brenda Chapman",
@@ -13894,7 +13601,6 @@
         "myRating": 7,
         "imdbRating": 7.2,
         "metascore": 73,
-        "runtime": 117,
         "directors": [
             "John Lasseter",
             "Joe Ranft"
@@ -13944,7 +13650,6 @@
         "myRating": 8,
         "imdbRating": 7.5,
         "metascore": 80,
-        "runtime": 118,
         "directors": [
             "Brad Bird"
         ],
@@ -13991,7 +13696,6 @@
         "myRating": 7,
         "imdbRating": 7.2,
         "metascore": 77,
-        "runtime": 97,
         "directors": [
             "Andrew Stanton",
             "Angus MacLane"
@@ -14040,7 +13744,6 @@
         "myRating": 7,
         "imdbRating": 8.1,
         "metascore": 79,
-        "runtime": 92,
         "directors": [
             "Pete Docter",
             "David Silverman",
@@ -14088,7 +13791,6 @@
         "myRating": 7,
         "imdbRating": 7.1,
         "metascore": 88,
-        "runtime": 109,
         "directors": [
             "Debra Granik"
         ],
@@ -14134,7 +13836,6 @@
         "myRating": 9,
         "imdbRating": 8.1,
         "metascore": 93,
-        "runtime": 129,
         "directors": [
             "Tom McCarthy"
         ],
@@ -14180,7 +13881,6 @@
         "myRating": 7,
         "imdbRating": 7.9,
         "metascore": 67,
-        "runtime": 103,
         "directors": [
             "Stephen Chbosky"
         ],
@@ -14224,7 +13924,6 @@
         "myRating": 6,
         "imdbRating": 7,
         "metascore": 79,
-        "runtime": 92,
         "directors": [
             "Jim Cummings"
         ],
@@ -14269,7 +13968,6 @@
         "myRating": 7,
         "imdbRating": 7.7,
         "metascore": 74,
-        "runtime": 105,
         "directors": [
             "Alfonso Gomez-Rejon"
         ],
@@ -14315,7 +14013,6 @@
         "myRating": 6,
         "imdbRating": 7.8,
         "metascore": 65,
-        "runtime": 76,
         "directors": [
             "Kevin Altieri",
             "Boyd Kirkland",
@@ -14368,7 +14065,6 @@
         "myRating": 4,
         "imdbRating": 7.1,
         "metascore": 68,
-        "runtime": 126,
         "directors": [
             "Tim Burton"
         ],
@@ -14415,7 +14111,6 @@
         "myRating": 6,
         "imdbRating": 7,
         "metascore": 61,
-        "runtime": 93,
         "directors": [
             "John Hughes"
         ],
@@ -14460,7 +14155,6 @@
         "myRating": 7,
         "imdbRating": 7.6,
         "metascore": 72,
-        "runtime": 93,
         "directors": [
             "John Hughes"
         ],
@@ -14505,7 +14199,6 @@
         "myRating": 7,
         "imdbRating": 7.8,
         "metascore": 61,
-        "runtime": 103,
         "directors": [
             "John Hughes"
         ],
@@ -14550,7 +14243,6 @@
         "myRating": 9,
         "imdbRating": 7.5,
         "metascore": 88,
-        "runtime": 117,
         "directors": [
             "John Crowley"
         ],
@@ -14599,7 +14291,6 @@
         "myRating": 7,
         "imdbRating": 7.7,
         "metascore": 59,
-        "runtime": 104,
         "directors": [
             "Damien O'Donnell"
         ],
@@ -14646,7 +14337,6 @@
         "myRating": 6,
         "imdbRating": 8.1,
         "metascore": 92,
-        "runtime": 102,
         "directors": [
             "Victor Fleming",
             "King Vidor"
@@ -14693,7 +14383,6 @@
         "myRating": 6,
         "imdbRating": 8.3,
         "metascore": 99,
-        "runtime": 103,
         "directors": [
             "Stanley Donen",
             "Gene Kelly"
@@ -14740,7 +14429,6 @@
         "myRating": 6,
         "imdbRating": 7.6,
         "metascore": 86,
-        "runtime": 153,
         "directors": [
             "Jerome Robbins",
             "Robert Wise"
@@ -14788,7 +14476,6 @@
         "myRating": 6,
         "imdbRating": 7.5,
         "metascore": 65,
-        "runtime": 125,
         "directors": [
             "John Lee Hancock"
         ],
@@ -14836,7 +14523,6 @@
         "myRating": 6,
         "imdbRating": 8,
         "metascore": 80,
-        "runtime": 144,
         "directors": [
             "Ridley Scott"
         ],
@@ -14886,7 +14572,6 @@
         "myRating": 6,
         "imdbRating": 6.7,
         "metascore": 66,
-        "runtime": 130,
         "directors": [
             "Rob Marshall"
         ],
@@ -14937,7 +14622,6 @@
         "myRating": 7,
         "imdbRating": 7.6,
         "metascore": 81,
-        "runtime": 107,
         "directors": [
             "Ron Clements",
             "John Musker",
@@ -14983,7 +14667,6 @@
         "myRating": 6,
         "imdbRating": 7.4,
         "metascore": 75,
-        "runtime": 102,
         "directors": [
             "Chris Buck",
             "Jennifer Lee"
@@ -15031,7 +14714,6 @@
         "myRating": 7,
         "imdbRating": 7.7,
         "metascore": 71,
-        "runtime": 100,
         "directors": [
             "Nathan Greno",
             "Byron Howard"
@@ -15080,7 +14762,6 @@
         "myRating": 7,
         "imdbRating": 7.1,
         "metascore": 73,
-        "runtime": 97,
         "directors": [
             "Ron Clements",
             "John Musker"
@@ -15129,7 +14810,6 @@
         "myRating": 7,
         "imdbRating": 7.7,
         "metascore": 72,
-        "runtime": 87,
         "directors": [
             "Tony Bancroft",
             "Barry Cook"
@@ -15179,7 +14859,6 @@
         "myRating": 7,
         "imdbRating": 6.7,
         "metascore": 59,
-        "runtime": 81,
         "directors": [
             "Mike Gabriel",
             "Eric Goldberg"
@@ -15229,7 +14908,6 @@
         "myRating": 6,
         "imdbRating": 6.9,
         "metascore": 46,
-        "runtime": 120,
         "directors": [
             "Chris Columbus"
         ],
@@ -15278,7 +14956,6 @@
         "myRating": 7,
         "imdbRating": 7.7,
         "metascore": 63,
-        "runtime": 103,
         "directors": [
             "Chris Columbus"
         ],
@@ -15324,7 +15001,6 @@
         "myRating": 6,
         "imdbRating": 7.6,
         "metascore": 65,
-        "runtime": 78,
         "directors": [
             "Wolfgang Reitherman"
         ],
@@ -15371,7 +15047,6 @@
         "myRating": 6,
         "imdbRating": 7.6,
         "metascore": 86,
-        "runtime": 147,
         "directors": [
             "Steven Soderbergh"
         ],
@@ -15419,7 +15094,6 @@
         "myRating": 7,
         "imdbRating": 7.4,
         "metascore": 73,
-        "runtime": 131,
         "directors": [
             "Steven Soderbergh"
         ],
@@ -15464,7 +15138,6 @@
         "myRating": 6,
         "imdbRating": 6.9,
         "metascore": 62,
-        "runtime": 122,
         "directors": [
             "Steven Soderbergh"
         ],
@@ -15512,7 +15185,6 @@
         "myRating": 6,
         "imdbRating": 6.5,
         "metascore": 58,
-        "runtime": 125,
         "directors": [
             "Steven Soderbergh"
         ],
@@ -15561,7 +15233,6 @@
         "myRating": 8,
         "imdbRating": 7.7,
         "metascore": 74,
-        "runtime": 116,
         "directors": [
             "Steven Soderbergh"
         ],
@@ -15608,7 +15279,6 @@
         "myRating": 7,
         "imdbRating": 7.2,
         "metascore": 96,
-        "runtime": 64,
         "directors": [
             "Samuel Armstrong",
             "Norman Ferguson",
@@ -15660,7 +15330,6 @@
         "myRating": 7,
         "imdbRating": 7.3,
         "metascore": 78,
-        "runtime": 76,
         "directors": [
             "Clyde Geronimi",
             "Wilfred Jackson",
@@ -15710,7 +15379,6 @@
         "myRating": 3,
         "imdbRating": 5.6,
         "metascore": 52,
-        "runtime": 89,
         "directors": [
             "Johannes Roberts"
         ],
@@ -15750,7 +15418,6 @@
         "myRating": 6,
         "imdbRating": 7.7,
         "metascore": 96,
-        "runtime": 124,
         "directors": [
             "James Algar",
             "Samuel Armstrong",
@@ -15799,7 +15466,6 @@
         "myRating": 6,
         "imdbRating": 7.6,
         "metascore": 96,
-        "runtime": 83,
         "directors": [
             "William Cottrell",
             "David Hand",
@@ -15848,7 +15514,6 @@
         "myRating": 7,
         "imdbRating": 7.3,
         "metascore": 74,
-        "runtime": 85,
         "directors": [
             "Dean DeBlois",
             "Chris Sanders"
@@ -15897,7 +15562,6 @@
         "myRating": 6,
         "imdbRating": 7.3,
         "metascore": 83,
-        "runtime": 79,
         "directors": [
             "Clyde Geronimi",
             "Hamilton Luske",
@@ -15947,7 +15611,6 @@
         "myRating": 8,
         "imdbRating": 8.5,
         "metascore": 88,
-        "runtime": 88,
         "directors": [
             "Roger Allers",
             "Rob Minkoff"
@@ -15997,7 +15660,6 @@
         "myRating": 7,
         "imdbRating": 8,
         "metascore": 86,
-        "runtime": 90,
         "directors": [
             "Ron Clements",
             "John Musker"
@@ -16046,7 +15708,6 @@
         "myRating": 7,
         "imdbRating": 7.8,
         "metascore": 66,
-        "runtime": 97,
         "directors": [
             "John Hughes"
         ],
@@ -16088,7 +15749,6 @@
         "myRating": 8,
         "imdbRating": 8,
         "metascore": 95,
-        "runtime": 84,
         "directors": [
             "Gary Trousdale",
             "Kirk Wise"
@@ -16137,7 +15797,6 @@
         "myRating": 6,
         "imdbRating": 7.5,
         "metascore": 99,
-        "runtime": 88,
         "directors": [
             "Norman Ferguson",
             "T. Hee",
@@ -16189,7 +15848,6 @@
         "myRating": 7,
         "imdbRating": 7.3,
         "metascore": 85,
-        "runtime": 74,
         "directors": [
             "Clyde Geronimi",
             "Wilfred Jackson",
@@ -16239,7 +15897,6 @@
         "myRating": 8,
         "imdbRating": 7.3,
         "metascore": 91,
-        "runtime": 69,
         "directors": [
             "James Algar",
             "Samuel Armstrong",
@@ -16294,7 +15951,6 @@
         "myRating": 7,
         "imdbRating": 7.6,
         "metascore": 88,
-        "runtime": 83,
         "directors": [
             "Ron Clements",
             "John Musker"
@@ -16343,7 +15999,6 @@
         "myRating": 7,
         "imdbRating": 7.3,
         "metascore": 88,
-        "runtime": 107,
         "directors": [
             "Armando Iannucci"
         ],
@@ -16393,7 +16048,6 @@
         "myRating": 7,
         "imdbRating": 7.3,
         "metascore": 80,
-        "runtime": 102,
         "directors": [
             "Benny Safdie",
             "Josh Safdie"
@@ -16440,7 +16094,6 @@
         "myRating": 8,
         "imdbRating": 8.6,
         "metascore": 96,
-        "runtime": 125,
         "directors": [
             "Hayao Miyazaki"
         ],
@@ -16486,7 +16139,6 @@
         "myRating": 6,
         "imdbRating": 7.4,
         "metascore": 71,
-        "runtime": 91,
         "directors": [
             "Gorô Miyazaki"
         ],
@@ -16532,7 +16184,6 @@
         "myRating": 8,
         "imdbRating": 7.8,
         "metascore": 75,
-        "runtime": 111,
         "directors": [
             "Yoshifumi Kondô"
         ],
@@ -16578,7 +16229,6 @@
         "myRating": 6,
         "imdbRating": 7.6,
         "metascore": 86,
-        "runtime": 101,
         "directors": [
             "Hayao Miyazaki"
         ],
@@ -16625,7 +16275,6 @@
         "myRating": 7,
         "imdbRating": 8,
         "metascore": 89,
-        "runtime": 137,
         "directors": [
             "Isao Takahata"
         ],
@@ -16671,7 +16320,6 @@
         "myRating": 8,
         "imdbRating": 8,
         "metascore": 86,
-        "runtime": 117,
         "directors": [
             "Hayao Miyazaki"
         ],
@@ -16717,7 +16365,6 @@
         "myRating": 9,
         "imdbRating": 8.5,
         "metascore": 94,
-        "runtime": 89,
         "directors": [
             "Isao Takahata"
         ],
@@ -16763,7 +16410,6 @@
         "myRating": 7,
         "imdbRating": 7.6,
         "metascore": 90,
-        "runtime": 119,
         "directors": [
             "Isao Takahata"
         ],
@@ -16810,7 +16456,6 @@
         "myRating": 6,
         "imdbRating": 8,
         "metascore": 78,
-        "runtime": 125,
         "directors": [
             "Hayao Miyazaki"
         ],
@@ -16856,7 +16501,6 @@
         "myRating": 6,
         "imdbRating": 7.1,
         "metascore": 72,
-        "runtime": 110,
         "directors": [
             "Rian Johnson"
         ],
@@ -16902,7 +16546,6 @@
         "myRating": 7,
         "imdbRating": 7.9,
         "metascore": -1,
-        "runtime": 111,
         "directors": [
             "Ken Loach"
         ],
@@ -16947,7 +16590,6 @@
         "myRating": 8,
         "imdbRating": 7.6,
         "metascore": 82,
-        "runtime": 101,
         "directors": [
             "Ken Loach"
         ],
@@ -16993,7 +16635,6 @@
         "myRating": 4,
         "imdbRating": 6.7,
         "metascore": 41,
-        "runtime": 126,
         "directors": [
             "Guy Ritchie"
         ],
@@ -17041,7 +16682,6 @@
         "myRating": 7,
         "imdbRating": 8.1,
         "metascore": 95,
-        "runtime": 122,
         "directors": [
             "Céline Sciamma"
         ],
@@ -17079,7 +16719,6 @@
         "myRating": 7,
         "imdbRating": 7.5,
         "metascore": 89,
-        "runtime": 100,
         "directors": [
             "Lulu Wang"
         ],
@@ -17128,7 +16767,6 @@
         "myRating": 6,
         "imdbRating": 8.1,
         "metascore": 84,
-        "runtime": 107,
         "directors": [
             "James Cameron"
         ],
@@ -17175,7 +16813,6 @@
         "myRating": 7,
         "imdbRating": 7.5,
         "metascore": 95,
-        "runtime": 131,
         "directors": [
             "Kathryn Bigelow"
         ],
@@ -17222,7 +16859,6 @@
         "myRating": 8,
         "imdbRating": 8.4,
         "metascore": 95,
-        "runtime": 98,
         "directors": [
             "Andrew Stanton"
         ],
@@ -17267,7 +16903,6 @@
         "myRating": 8,
         "imdbRating": 8.1,
         "metascore": 92,
-        "runtime": 120,
         "directors": [
             "Oliver Stone"
         ],
@@ -17314,7 +16949,6 @@
         "myRating": 8,
         "imdbRating": 8,
         "metascore": 79,
-        "runtime": 108,
         "directors": [
             "Darren Aronofsky"
         ],
@@ -17361,7 +16995,6 @@
         "myRating": 4,
         "imdbRating": 6.1,
         "metascore": 45,
-        "runtime": 120,
         "directors": [
             "Zack Snyder"
         ],
@@ -17412,7 +17045,6 @@
         "myRating": 6,
         "imdbRating": 7.3,
         "metascore": 68,
-        "runtime": 107,
         "directors": [
             "Steven Spielberg"
         ],
@@ -17463,7 +17095,6 @@
         "myRating": 7,
         "imdbRating": 8.7,
         "metascore": 92,
-        "runtime": 145,
         "directors": [
             "Martin Scorsese"
         ],
@@ -17510,7 +17141,6 @@
         "myRating": 6,
         "imdbRating": 6.6,
         "metascore": 61,
-        "runtime": 112,
         "directors": [
             "Louis Leterrier"
         ],
@@ -17559,7 +17189,6 @@
         "myRating": 8,
         "imdbRating": 7.4,
         "metascore": 83,
-        "runtime": 109,
         "directors": [
             "Robert Eggers"
         ],
@@ -17598,7 +17227,6 @@
         "myRating": 6,
         "imdbRating": 7.9,
         "metascore": 67,
-        "runtime": 107,
         "directors": [
             "Martin McDonagh"
         ],
@@ -17645,7 +17273,6 @@
         "myRating": 9,
         "imdbRating": 7.8,
         "metascore": 79,
-        "runtime": 100,
         "directors": [
             "Nicolas Winding Refn"
         ],
@@ -17691,7 +17318,6 @@
         "myRating": 6,
         "imdbRating": 7.1,
         "metascore": 55,
-        "runtime": 143,
         "directors": [
             "Zack Snyder"
         ],
@@ -17738,7 +17364,6 @@
         "myRating": 7,
         "imdbRating": 7.1,
         "metascore": 87,
-        "runtime": 119,
         "directors": [
             "Barry Jenkins"
         ],
@@ -17784,7 +17409,6 @@
         "myRating": 7,
         "imdbRating": 7.4,
         "metascore": 86,
-        "runtime": 93,
         "directors": [
             "Bo Burnham"
         ],
@@ -17829,7 +17453,6 @@
         "myRating": 8,
         "imdbRating": 7.4,
         "metascore": 79,
-        "runtime": 174,
         "directors": [
             "Terrence Malick"
         ],
@@ -17879,7 +17502,6 @@
         "myRating": 8,
         "imdbRating": 6.8,
         "metascore": 85,
-        "runtime": 139,
         "directors": [
             "Terrence Malick"
         ],
@@ -17924,7 +17546,6 @@
         "myRating": 6,
         "imdbRating": 7.7,
         "metascore": 94,
-        "runtime": 94,
         "directors": [
             "Terrence Malick"
         ],
@@ -17970,7 +17591,6 @@
         "myRating": 7,
         "imdbRating": 7.7,
         "metascore": 93,
-        "runtime": 94,
         "directors": [
             "Terrence Malick"
         ],
@@ -18017,7 +17637,6 @@
         "myRating": 6,
         "imdbRating": 6.4,
         "metascore": 92,
-        "runtime": 120,
         "directors": [
             "Joanna Hogg"
         ],
@@ -18063,7 +17682,6 @@
         "myRating": 7,
         "imdbRating": 6.8,
         "metascore": 71,
-        "runtime": 98,
         "directors": [
             "Joe Penna"
         ],
@@ -18095,7 +17713,6 @@
         "myRating": 9,
         "imdbRating": 8.5,
         "metascore": 96,
-        "runtime": 132,
         "directors": [
             "Bong Joon Ho"
         ],
@@ -18141,7 +17758,6 @@
         "myRating": 6,
         "imdbRating": 7.2,
         "metascore": 79,
-        "runtime": 133,
         "directors": [
             "Ethan Coen",
             "Joel Coen"
@@ -18189,7 +17805,6 @@
         "myRating": 9,
         "imdbRating": 8.3,
         "metascore": 78,
-        "runtime": 116,
         "directors": [
             "Stanley Kubrick"
         ],
@@ -18236,7 +17851,6 @@
         "myRating": 7,
         "imdbRating": 8.3,
         "metascore": 84,
-        "runtime": 149,
         "directors": [
             "Stanley Kubrick"
         ],
@@ -18284,7 +17898,6 @@
         "myRating": 8,
         "imdbRating": 7.1,
         "metascore": 86,
-        "runtime": 113,
         "directors": [
             "Paul Schrader"
         ],
@@ -18332,7 +17945,6 @@
         "myRating": 8,
         "imdbRating": 8.8,
         "metascore": 90,
-        "runtime": 161,
         "directors": [
             "Sergio Leone"
         ],
@@ -18379,7 +17991,6 @@
         "myRating": 7,
         "imdbRating": 7.9,
         "metascore": 69,
-        "runtime": 197,
         "directors": [
             "David Lean"
         ],
@@ -18429,7 +18040,6 @@
         "myRating": 7,
         "imdbRating": 8.4,
         "metascore": 97,
-        "runtime": 95,
         "directors": [
             "Stanley Kubrick"
         ],
@@ -18476,7 +18086,6 @@
         "myRating": 6,
         "imdbRating": 7.6,
         "metascore": 92,
-        "runtime": 111,
         "directors": [
             "Sean Baker"
         ],
@@ -18522,7 +18131,6 @@
         "myRating": 10,
         "imdbRating": 8.3,
         "metascore": 100,
-        "runtime": 218,
         "directors": [
             "David Lean"
         ],
@@ -18570,7 +18178,6 @@
         "myRating": 8,
         "imdbRating": 7.3,
         "metascore": 87,
-        "runtime": 123,
         "directors": [
             "Guillermo del Toro"
         ],
@@ -18620,7 +18227,6 @@
         "myRating": 7,
         "imdbRating": 7.8,
         "metascore": 83,
-        "runtime": 126,
         "directors": [
             "Hayao Miyazaki"
         ],
@@ -18669,7 +18275,6 @@
         "myRating": 7,
         "imdbRating": 8.1,
         "metascore": 90,
-        "runtime": 212,
         "directors": [
             "William Wyler"
         ],
@@ -18714,7 +18319,6 @@
         "myRating": 7,
         "imdbRating": 8.3,
         "metascore": 100,
-        "runtime": 128,
         "directors": [
             "Alfred Hitchcock"
         ],
@@ -18760,7 +18364,6 @@
         "myRating": 8,
         "imdbRating": 7.8,
         "metascore": 78,
-        "runtime": 100,
         "directors": [
             "Ken Loach"
         ],
@@ -18806,7 +18409,6 @@
         "myRating": 8,
         "imdbRating": 7.9,
         "metascore": 83,
-        "runtime": 162,
         "directors": [
             "James Cameron"
         ],
@@ -18853,7 +18455,6 @@
         "myRating": 9,
         "imdbRating": 9,
         "metascore": 97,
-        "runtime": 96,
         "directors": [
             "Sidney Lumet"
         ],
@@ -18898,7 +18499,6 @@
         "myRating": 9,
         "imdbRating": 8.1,
         "metascore": 88,
-        "runtime": 115,
         "directors": [
             "Martin McDonagh"
         ],
@@ -18945,7 +18545,6 @@
         "myRating": 8,
         "imdbRating": 7.8,
         "metascore": 85,
-        "runtime": 104,
         "directors": [
             "Jordan Peele"
         ],
@@ -18993,7 +18592,6 @@
         "myRating": 7,
         "imdbRating": 6.8,
         "metascore": 81,
-        "runtime": 116,
         "directors": [
             "Jordan Peele"
         ],
@@ -19041,7 +18639,6 @@
         "myRating": 8,
         "imdbRating": 7.5,
         "metascore": 91,
-        "runtime": 119,
         "directors": [
             "Yorgos Lanthimos"
         ],
@@ -19089,7 +18686,6 @@
         "myRating": 8,
         "imdbRating": 7.4,
         "metascore": 99,
-        "runtime": 111,
         "directors": [
             "Barry Jenkins"
         ],
@@ -19133,7 +18729,6 @@
         "myRating": 8,
         "imdbRating": 7.7,
         "metascore": 87,
-        "runtime": 147,
         "directors": [
             "Christopher McQuarrie"
         ],
@@ -19184,7 +18779,6 @@
         "myRating": 6,
         "imdbRating": 7,
         "metascore": 70,
-        "runtime": 118,
         "directors": [
             "Peyton Reed"
         ],
@@ -19233,7 +18827,6 @@
         "myRating": 6,
         "imdbRating": 7.2,
         "metascore": 64,
-        "runtime": 117,
         "directors": [
             "Peyton Reed"
         ],
@@ -19279,7 +18872,6 @@
         "myRating": 7,
         "imdbRating": 7.7,
         "metascore": 78,
-        "runtime": 108,
         "directors": [
             "Alex Garland"
         ],
@@ -19321,7 +18913,6 @@
         "myRating": 6,
         "imdbRating": 6.7,
         "metascore": 66,
-        "runtime": 114,
         "directors": [
             "Travis Knight"
         ],
@@ -19368,7 +18959,6 @@
         "myRating": 8,
         "imdbRating": 7.6,
         "metascore": 76,
-        "runtime": 86,
         "directors": [
             "Jemaine Clement",
             "Taika Waititi"
@@ -19417,7 +19007,6 @@
         "myRating": 6,
         "imdbRating": 7.8,
         "metascore": 81,
-        "runtime": 101,
         "directors": [
             "Taika Waititi"
         ],
@@ -19463,7 +19052,6 @@
         "myRating": 6,
         "imdbRating": 8.2,
         "metascore": 93,
-        "runtime": 158,
         "directors": [
             "Paul Thomas Anderson"
         ],
@@ -19508,7 +19096,6 @@
         "myRating": 9,
         "imdbRating": 8.4,
         "metascore": 87,
-        "runtime": 117,
         "directors": [
             "Bob Persichetti",
             "Peter Ramsey",
@@ -19558,7 +19145,6 @@
         "myRating": 7,
         "imdbRating": 7.3,
         "metascore": 76,
-        "runtime": 141,
         "directors": [
             "Patty Jenkins"
         ],
@@ -19613,7 +19199,6 @@
         "myRating": 3,
         "imdbRating": 5.1,
         "metascore": 38,
-        "runtime": 104,
         "directors": [
             "Stefen Fangmeier"
         ],
@@ -19661,7 +19246,6 @@
         "myRating": 8,
         "imdbRating": 7.7,
         "metascore": 79,
-        "runtime": 157,
         "directors": [
             "David Fincher"
         ],
@@ -19707,7 +19291,6 @@
         "myRating": 8,
         "imdbRating": 7.9,
         "metascore": 83,
-        "runtime": 87,
         "directors": [
             "Wes Anderson"
         ],
@@ -19755,7 +19338,6 @@
         "myRating": 4,
         "imdbRating": 6.8,
         "metascore": 64,
-        "runtime": 123,
         "directors": [
             "Anna Boden",
             "Ryan Fleck"
@@ -19803,7 +19385,6 @@
         "myRating": 6,
         "imdbRating": 7.3,
         "metascore": 75,
-        "runtime": 104,
         "directors": [
             "Chris McKay"
         ],
@@ -19851,7 +19432,6 @@
         "myRating": 8,
         "imdbRating": 7.8,
         "metascore": 96,
-        "runtime": 137,
         "directors": [
             "Kenneth Lonergan"
         ],
@@ -19895,7 +19475,6 @@
         "myRating": 8,
         "imdbRating": 7.5,
         "metascore": 86,
-        "runtime": 113,
         "directors": [
             "Edgar Wright"
         ],
@@ -19943,7 +19522,6 @@
         "myRating": 9,
         "imdbRating": 8.1,
         "metascore": 96,
-        "runtime": 111,
         "directors": [
             "Brad Bird",
             "Jan Pinkava"
@@ -19991,7 +19569,6 @@
         "myRating": 6,
         "imdbRating": 7,
         "metascore": 64,
-        "runtime": 96,
         "directors": [
             "Jared Hess"
         ],
@@ -20035,7 +19612,6 @@
         "myRating": 4,
         "imdbRating": 6.3,
         "metascore": 53,
-        "runtime": 113,
         "directors": [
             "Michael Apted"
         ],
@@ -20082,7 +19658,6 @@
         "myRating": 6,
         "imdbRating": 6.5,
         "metascore": 62,
-        "runtime": 150,
         "directors": [
             "Andrew Adamson"
         ],
@@ -20132,7 +19707,6 @@
         "myRating": 6,
         "imdbRating": 6.9,
         "metascore": 75,
-        "runtime": 143,
         "directors": [
             "Andrew Adamson"
         ],
@@ -20181,7 +19755,6 @@
         "myRating": 7,
         "imdbRating": 8.1,
         "metascore": 82,
-        "runtime": 131,
         "directors": [
             "Bong Joon Ho"
         ],
@@ -20228,7 +19801,6 @@
         "myRating": 7,
         "imdbRating": 7.3,
         "metascore": 76,
-        "runtime": 104,
         "directors": [
             "James Franco"
         ],
@@ -20274,7 +19846,6 @@
         "myRating": 6,
         "imdbRating": 6.9,
         "metascore": 66,
-        "runtime": 124,
         "directors": [
             "Joe Johnston"
         ],
@@ -20322,7 +19893,6 @@
         "myRating": 8,
         "imdbRating": 7.8,
         "metascore": 75,
-        "runtime": 147,
         "directors": [
             "Anthony Russo",
             "Joe Russo"
@@ -20372,7 +19942,6 @@
         "myRating": 7,
         "imdbRating": 8.2,
         "metascore": 82,
-        "runtime": 119,
         "directors": [
             "Hayao Miyazaki"
         ],
@@ -20418,7 +19987,6 @@
         "myRating": 5,
         "imdbRating": 6.8,
         "metascore": 48,
-        "runtime": 112,
         "directors": [
             "Dome Karukoski"
         ],
@@ -20468,7 +20036,6 @@
         "myRating": 4,
         "imdbRating": 6.5,
         "metascore": 52,
-        "runtime": 134,
         "directors": [
             "David Yates"
         ],
@@ -20516,7 +20083,6 @@
         "myRating": 7,
         "imdbRating": 8.2,
         "metascore": 97,
-        "runtime": 238,
         "directors": [
             "Victor Fleming",
             "George Cukor",
@@ -20564,7 +20130,6 @@
         "myRating": 7,
         "imdbRating": 7.1,
         "metascore": 66,
-        "runtime": 130,
         "directors": [
             "Steven Caple Jr."
         ],
@@ -20612,7 +20177,6 @@
         "myRating": 8,
         "imdbRating": 7.6,
         "metascore": 82,
-        "runtime": 133,
         "directors": [
             "Ryan Coogler"
         ],
@@ -20659,7 +20223,6 @@
         "myRating": 7,
         "imdbRating": 7.2,
         "metascore": 77,
-        "runtime": 110,
         "directors": [
             "Curtis Hanson"
         ],
@@ -20705,7 +20268,6 @@
         "myRating": 6,
         "imdbRating": 6.5,
         "metascore": 44,
-        "runtime": 151,
         "directors": [
             "Zack Snyder"
         ],
@@ -20751,7 +20313,6 @@
         "myRating": 8,
         "imdbRating": 8,
         "metascore": 78,
-        "runtime": 108,
         "directors": [
             "Byron Howard",
             "Rich Moore",
@@ -20799,7 +20360,6 @@
         "myRating": 6,
         "imdbRating": 7.4,
         "metascore": 68,
-        "runtime": 101,
         "directors": [
             "Chad Stahelski",
             "David Leitch"
@@ -20850,7 +20410,6 @@
         "myRating": 9,
         "imdbRating": 7.8,
         "metascore": 76,
-        "runtime": 117,
         "directors": [
             "Dan Gilroy"
         ],
@@ -20896,7 +20455,6 @@
         "myRating": 8,
         "imdbRating": 6.8,
         "metascore": 79,
-        "runtime": 115,
         "directors": [
             "Alex Garland"
         ],
@@ -20943,7 +20501,6 @@
         "myRating": 3,
         "imdbRating": 6.5,
         "metascore": 52,
-        "runtime": 112,
         "directors": [
             "Evan Goldberg",
             "Seth Rogen"
@@ -20992,7 +20549,6 @@
         "myRating": 6,
         "imdbRating": 7.7,
         "metascore": 74,
-        "runtime": 144,
         "directors": [
             "Ridley Scott"
         ],
@@ -21041,7 +20597,6 @@
         "myRating": 7,
         "imdbRating": 7.6,
         "metascore": 88,
-        "runtime": 102,
         "directors": [
             "David Mackenzie"
         ],
@@ -21087,7 +20642,6 @@
         "myRating": 7,
         "imdbRating": 8,
         "metascore": 88,
-        "runtime": 113,
         "directors": [
             "Richard Kelly"
         ],
@@ -21133,7 +20687,6 @@
         "myRating": 7,
         "imdbRating": 8,
         "metascore": 69,
-        "runtime": 143,
         "directors": [
             "Joss Whedon"
         ],
@@ -21179,7 +20732,6 @@
         "myRating": 7,
         "imdbRating": 8.4,
         "metascore": 68,
-        "runtime": 149,
         "directors": [
             "Anthony Russo",
             "Joe Russo"
@@ -21227,7 +20779,6 @@
         "myRating": 8,
         "imdbRating": 8.4,
         "metascore": 78,
-        "runtime": 181,
         "directors": [
             "Anthony Russo",
             "Joe Russo"
@@ -21277,7 +20828,6 @@
         "myRating": 6,
         "imdbRating": 7.3,
         "metascore": 66,
-        "runtime": 141,
         "directors": [
             "Joss Whedon"
         ],
@@ -21324,7 +20874,6 @@
         "myRating": 7,
         "imdbRating": 7.5,
         "metascore": 85,
-        "runtime": 85,
         "directors": [
             "Ryan Coogler"
         ],
@@ -21371,7 +20920,6 @@
         "myRating": 6,
         "imdbRating": 7.4,
         "metascore": 69,
-        "runtime": 129,
         "directors": [
             "Jon Watts"
         ],
@@ -21419,7 +20967,6 @@
         "myRating": 7,
         "imdbRating": 7.4,
         "metascore": 73,
-        "runtime": 133,
         "directors": [
             "Jon Watts"
         ],
@@ -21466,7 +21013,6 @@
         "myRating": 8,
         "imdbRating": 8.1,
         "metascore": 71,
-        "runtime": 139,
         "directors": [
             "Mel Gibson"
         ],
@@ -21516,7 +21062,6 @@
         "myRating": 7,
         "imdbRating": 8,
         "metascore": 71,
-        "runtime": 114,
         "directors": [
             "Morten Tyldum"
         ],
@@ -21564,7 +21109,6 @@
         "myRating": 8,
         "imdbRating": 7.6,
         "metascore": 67,
-        "runtime": 136,
         "directors": [
             "James Gunn"
         ],
@@ -21610,7 +21154,6 @@
         "myRating": 7,
         "imdbRating": 8,
         "metascore": 76,
-        "runtime": 121,
         "directors": [
             "James Gunn"
         ],
@@ -21656,7 +21199,6 @@
         "myRating": 6,
         "imdbRating": 7.1,
         "metascore": 57,
-        "runtime": 114,
         "directors": [
             "Todd Phillips"
         ],
@@ -21706,7 +21248,6 @@
         "myRating": 7,
         "imdbRating": 7.9,
         "metascore": 74,
-        "runtime": 130,
         "directors": [
             "Taika Waititi"
         ],
@@ -21752,7 +21293,6 @@
         "myRating": 4,
         "imdbRating": 6.8,
         "metascore": 54,
-        "runtime": 112,
         "directors": [
             "Alan Taylor"
         ],
@@ -21798,7 +21338,6 @@
         "myRating": 5,
         "imdbRating": 7,
         "metascore": 57,
-        "runtime": 115,
         "directors": [
             "Kenneth Branagh"
         ],
@@ -21843,7 +21382,6 @@
         "myRating": 4,
         "imdbRating": 6.6,
         "metascore": 53,
-        "runtime": 142,
         "directors": [
             "Marc Webb"
         ],
@@ -21889,7 +21427,6 @@
         "myRating": 7,
         "imdbRating": 6.9,
         "metascore": 66,
-        "runtime": 136,
         "directors": [
             "Marc Webb"
         ],
@@ -21935,7 +21472,6 @@
         "myRating": 8,
         "imdbRating": 7.7,
         "metascore": 70,
-        "runtime": 136,
         "directors": [
             "Anthony Russo",
             "Joe Russo"
@@ -21983,7 +21519,6 @@
         "myRating": 8,
         "imdbRating": 7.3,
         "metascore": 88,
-        "runtime": 134,
         "directors": [
             "Ryan Coogler"
         ],
@@ -22033,7 +21568,6 @@
         "myRating": 8,
         "imdbRating": 7.4,
         "metascore": 95,
-        "runtime": 157,
         "directors": [
             "Kathryn Bigelow"
         ],
@@ -22084,7 +21618,6 @@
         "myRating": 7,
         "imdbRating": 7.6,
         "metascore": 76,
-        "runtime": 110,
         "directors": [
             "Wes Anderson"
         ],
@@ -22130,7 +21663,6 @@
         "myRating": 7,
         "imdbRating": 7.8,
         "metascore": 82,
-        "runtime": 101,
         "directors": [
             "Wes Anderson"
         ],
@@ -22180,7 +21712,6 @@
         "myRating": 8,
         "imdbRating": 8.1,
         "metascore": 88,
-        "runtime": 99,
         "directors": [
             "Wes Anderson"
         ],
@@ -22229,7 +21760,6 @@
         "myRating": 8,
         "imdbRating": 7.8,
         "metascore": 84,
-        "runtime": 94,
         "directors": [
             "Wes Anderson"
         ],
@@ -22275,7 +21805,6 @@
         "myRating": 6,
         "imdbRating": 7.5,
         "metascore": 63,
-        "runtime": 158,
         "directors": [
             "Tom Hooper"
         ],
@@ -22322,7 +21851,6 @@
         "myRating": 7,
         "imdbRating": 7.1,
         "metascore": 84,
-        "runtime": 126,
         "directors": [
             "Bong Joon Ho"
         ],
@@ -22374,7 +21902,6 @@
         "myRating": 4,
         "imdbRating": 6.9,
         "metascore": 65,
-        "runtime": 131,
         "directors": [
             "Guillermo del Toro"
         ],
@@ -22424,7 +21951,6 @@
         "myRating": 8,
         "imdbRating": 8,
         "metascore": 76,
-        "runtime": 156,
         "directors": [
             "Alejandro G. Iñárritu"
         ],
@@ -22474,7 +22000,6 @@
         "myRating": 8,
         "imdbRating": 7.8,
         "metascore": 81,
-        "runtime": 130,
         "directors": [
             "Adam McKay"
         ],
@@ -22520,7 +22045,6 @@
         "myRating": 8,
         "imdbRating": 7.5,
         "metascore": 82,
-        "runtime": 94,
         "directors": [
             "Danny Boyle"
         ],
@@ -22568,7 +22092,6 @@
         "myRating": 9,
         "imdbRating": 8,
         "metascore": 88,
-        "runtime": 118,
         "directors": [
             "Tom Hooper"
         ],
@@ -22615,7 +22138,6 @@
         "myRating": 8,
         "imdbRating": 7.7,
         "metascore": 83,
-        "runtime": 100,
         "directors": [
             "Phil Lord",
             "Christopher Miller"
@@ -22666,7 +22188,6 @@
         "myRating": 8,
         "imdbRating": 7.1,
         "metascore": 84,
-        "runtime": 102,
         "directors": [
             "Olivia Wilde"
         ],
@@ -22712,7 +22233,6 @@
         "myRating": 4,
         "imdbRating": 6.8,
         "metascore": 55,
-        "runtime": 143,
         "directors": [
             "James Wan"
         ],
@@ -22762,7 +22282,6 @@
         "myRating": 9,
         "imdbRating": 7.5,
         "metascore": 83,
-        "runtime": 127,
         "directors": [
             "Sam Raimi"
         ],
@@ -22810,7 +22329,6 @@
         "myRating": 7,
         "imdbRating": 7.4,
         "metascore": 73,
-        "runtime": 121,
         "directors": [
             "Sam Raimi"
         ],
@@ -22856,7 +22374,6 @@
         "myRating": 7,
         "imdbRating": 7.9,
         "metascore": 84,
-        "runtime": 109,
         "directors": [
             "Alfonso Cuarón"
         ],
@@ -22912,7 +22429,6 @@
         "myRating": 8,
         "imdbRating": 7.7,
         "metascore": 82,
-        "runtime": 121,
         "directors": [
             "Denis Villeneuve"
         ],
@@ -22962,7 +22478,6 @@
         "myRating": 8,
         "imdbRating": 8.1,
         "metascore": 70,
-        "runtime": 153,
         "directors": [
             "Denis Villeneuve"
         ],
@@ -23008,7 +22523,6 @@
         "myRating": 6,
         "imdbRating": 6.5,
         "metascore": 65,
-        "runtime": 137,
         "directors": [
             "Francis Lawrence"
         ],
@@ -23057,7 +22571,6 @@
         "myRating": 6,
         "imdbRating": 6.6,
         "metascore": 64,
-        "runtime": 123,
         "directors": [
             "Francis Lawrence"
         ],
@@ -23105,7 +22618,6 @@
         "myRating": 7,
         "imdbRating": 7.5,
         "metascore": 76,
-        "runtime": 146,
         "directors": [
             "Francis Lawrence"
         ],
@@ -23151,7 +22663,6 @@
         "myRating": 6,
         "imdbRating": 7.2,
         "metascore": 68,
-        "runtime": 142,
         "directors": [
             "Gary Ross"
         ],
@@ -23197,7 +22708,6 @@
         "myRating": 7,
         "imdbRating": 7.2,
         "metascore": 78,
-        "runtime": 118,
         "directors": [
             "Christopher Nolan"
         ],
@@ -23244,7 +22754,6 @@
         "myRating": 7,
         "imdbRating": 7.5,
         "metascore": 60,
-        "runtime": 69,
         "directors": [
             "Christopher Nolan"
         ],
@@ -23290,7 +22799,6 @@
         "myRating": 8,
         "imdbRating": 7.8,
         "metascore": 94,
-        "runtime": 106,
         "directors": [
             "Christopher Nolan"
         ],
@@ -23341,7 +22849,6 @@
         "myRating": 9,
         "imdbRating": 8.4,
         "metascore": 78,
-        "runtime": 164,
         "directors": [
             "Christopher Nolan"
         ],
@@ -23389,7 +22896,6 @@
         "myRating": 10,
         "imdbRating": 9,
         "metascore": 84,
-        "runtime": 152,
         "directors": [
             "Christopher Nolan"
         ],
@@ -23437,7 +22943,6 @@
         "myRating": 9,
         "imdbRating": 8.2,
         "metascore": 70,
-        "runtime": 140,
         "directors": [
             "Christopher Nolan"
         ],
@@ -23485,7 +22990,6 @@
         "myRating": 6,
         "imdbRating": 6,
         "metascore": 83,
-        "runtime": 82,
         "directors": [
             "Damien Chazelle"
         ],
@@ -23531,7 +23035,6 @@
         "myRating": 7,
         "imdbRating": 8.7,
         "metascore": 73,
-        "runtime": 136,
         "directors": [
             "Lana Wachowski",
             "Lilly Wachowski"
@@ -23578,7 +23081,6 @@
         "myRating": 9,
         "imdbRating": 7.8,
         "metascore": 95,
-        "runtime": 120,
         "directors": [
             "David Fincher"
         ],
@@ -23624,7 +23126,6 @@
         "myRating": 4,
         "imdbRating": 6.6,
         "metascore": 35,
-        "runtime": 112,
         "directors": [
             "Ruben Fleischer"
         ],
@@ -23673,7 +23174,6 @@
         "myRating": 5,
         "imdbRating": 6.9,
         "metascore": 57,
-        "runtime": 124,
         "directors": [
             "Jon Favreau"
         ],
@@ -23720,7 +23220,6 @@
         "myRating": 6,
         "imdbRating": 7.1,
         "metascore": 62,
-        "runtime": 130,
         "directors": [
             "Shane Black"
         ],
@@ -23766,7 +23265,6 @@
         "myRating": 7,
         "imdbRating": 7.9,
         "metascore": 79,
-        "runtime": 126,
         "directors": [
             "Jon Favreau"
         ],
@@ -23819,7 +23317,6 @@
         "myRating": 7,
         "imdbRating": 7.6,
         "metascore": 68,
-        "runtime": 140,
         "directors": [
             "George Lucas"
         ],
@@ -23868,7 +23365,6 @@
         "myRating": 5,
         "imdbRating": 6.6,
         "metascore": 54,
-        "runtime": 142,
         "directors": [
             "George Lucas"
         ],
@@ -23914,7 +23410,6 @@
         "myRating": 8,
         "imdbRating": 7.8,
         "metascore": 80,
-        "runtime": 138,
         "directors": [
             "J.J. Abrams"
         ],
@@ -23960,7 +23455,6 @@
         "myRating": 7,
         "imdbRating": 7.8,
         "metascore": 65,
-        "runtime": 133,
         "directors": [
             "Gareth Edwards"
         ],
@@ -24006,7 +23500,6 @@
         "myRating": 4,
         "imdbRating": 6.5,
         "metascore": 51,
-        "runtime": 136,
         "directors": [
             "George Lucas"
         ],
@@ -24053,7 +23546,6 @@
         "myRating": 6,
         "imdbRating": 6.9,
         "metascore": 62,
-        "runtime": 135,
         "directors": [
             "Ron Howard"
         ],
@@ -24099,7 +23591,6 @@
         "myRating": 7,
         "imdbRating": 6.9,
         "metascore": 81,
-        "runtime": 109,
         "directors": [
             "Edgar Wright"
         ],
@@ -24147,7 +23638,6 @@
         "myRating": 10,
         "imdbRating": 8,
         "metascore": 94,
-        "runtime": 128,
         "directors": [
             "Damien Chazelle"
         ],
@@ -24195,7 +23685,6 @@
         "myRating": 10,
         "imdbRating": 8.5,
         "metascore": 89,
-        "runtime": 106,
         "directors": [
             "Damien Chazelle"
         ],
@@ -24240,7 +23729,6 @@
         "myRating": 8,
         "imdbRating": 7.3,
         "metascore": 84,
-        "runtime": 141,
         "directors": [
             "Damien Chazelle"
         ],
@@ -24288,7 +23776,6 @@
         "myRating": 6,
         "imdbRating": 7.5,
         "metascore": 72,
-        "runtime": 115,
         "directors": [
             "Scott Derrickson"
         ],
@@ -24334,7 +23821,6 @@
         "myRating": 9,
         "imdbRating": 7.6,
         "metascore": 87,
-        "runtime": 133,
         "directors": [
             "Bennett Miller"
         ],
@@ -24380,7 +23866,6 @@
         "myRating": 9,
         "imdbRating": 9,
         "metascore": 94,
-        "runtime": 201,
         "directors": [
             "Peter Jackson"
         ],
@@ -24430,7 +23915,6 @@
         "myRating": 9,
         "imdbRating": 8.8,
         "metascore": 87,
-        "runtime": 179,
         "directors": [
             "Peter Jackson"
         ],
@@ -24479,7 +23963,6 @@
         "myRating": 9,
         "imdbRating": 8.9,
         "metascore": 92,
-        "runtime": 178,
         "directors": [
             "Peter Jackson"
         ],
@@ -24527,7 +24010,6 @@
         "myRating": 8,
         "imdbRating": 7.9,
         "metascore": 75,
-        "runtime": 194,
         "directors": [
             "James Cameron"
         ],
@@ -24576,7 +24058,6 @@
         "myRating": 8,
         "imdbRating": 7.9,
         "metascore": 82,
-        "runtime": 142,
         "directors": [
             "Alfonso Cuarón"
         ],
@@ -24625,7 +24106,6 @@
         "myRating": 6,
         "imdbRating": 7.4,
         "metascore": 63,
-        "runtime": 161,
         "directors": [
             "Chris Columbus"
         ],
@@ -24673,7 +24153,6 @@
         "myRating": 7,
         "imdbRating": 8.3,
         "metascore": 76,
-        "runtime": 134,
         "directors": [
             "Hayao Miyazaki"
         ],
@@ -24719,7 +24198,6 @@
         "myRating": 7,
         "imdbRating": 7.8,
         "metascore": 66,
-        "runtime": 161,
         "directors": [
             "Peter Jackson"
         ],
@@ -24766,7 +24244,6 @@
         "myRating": 7,
         "imdbRating": 7.8,
         "metascore": 58,
-        "runtime": 169,
         "directors": [
             "Peter Jackson"
         ],
@@ -24812,7 +24289,6 @@
         "myRating": 8,
         "imdbRating": 7.7,
         "metascore": 84,
-        "runtime": 100,
         "directors": [
             "Josh Cooley"
         ],
@@ -24858,7 +24334,6 @@
         "myRating": 8,
         "imdbRating": 7.9,
         "metascore": 88,
-        "runtime": 92,
         "directors": [
             "John Lasseter",
             "Ash Brannon",
@@ -24907,7 +24382,6 @@
         "myRating": 9,
         "imdbRating": 8.3,
         "metascore": 96,
-        "runtime": 81,
         "directors": [
             "John Lasseter"
         ],
@@ -24954,7 +24428,6 @@
         "myRating": 8,
         "imdbRating": 8.6,
         "metascore": 65,
-        "runtime": 127,
         "directors": [
             "David Fincher"
         ],
@@ -25000,7 +24473,6 @@
         "myRating": 8,
         "imdbRating": 7.9,
         "metascore": 81,
-        "runtime": 112,
         "directors": [
             "Neill Blomkamp"
         ],
@@ -25054,7 +24526,6 @@
         "myRating": 9,
         "imdbRating": 9.3,
         "metascore": 82,
-        "runtime": 142,
         "directors": [
             "Frank Darabont"
         ],
@@ -25098,7 +24569,6 @@
         "myRating": 8,
         "imdbRating": 8.8,
         "metascore": 82,
-        "runtime": 142,
         "directors": [
             "Robert Zemeckis"
         ],
@@ -25143,7 +24613,6 @@
         "myRating": 7,
         "imdbRating": 8.2,
         "metascore": 68,
-        "runtime": 127,
         "directors": [
             "Steven Spielberg"
         ],
@@ -25190,7 +24659,6 @@
         "myRating": 6,
         "imdbRating": 7.8,
         "metascore": 87,
-        "runtime": 130,
         "directors": [
             "Andrew Davis"
         ],
@@ -25238,7 +24706,6 @@
         "myRating": 9,
         "imdbRating": 7.9,
         "metascore": 100,
-        "runtime": 165,
         "directors": [
             "Richard Linklater"
         ],
@@ -25285,7 +24752,6 @@
         "myRating": 8,
         "imdbRating": 8.3,
         "metascore": 88,
-        "runtime": 96,
         "directors": [
             "Pete Docter",
             "Bob Peterson"
@@ -25333,7 +24799,6 @@
         "myRating": 8,
         "imdbRating": 8.6,
         "metascore": 75,
-        "runtime": 137,
         "directors": [
             "James Cameron"
         ],
@@ -25379,7 +24844,6 @@
         "myRating": 7,
         "imdbRating": 8,
         "metascore": 84,
-        "runtime": 120,
         "directors": [
             "Danny Boyle",
             "Loveleen Tandan"
@@ -25431,7 +24895,6 @@
         "myRating": 5,
         "imdbRating": 6.5,
         "metascore": 60,
-        "runtime": 137,
         "directors": [
             "David Leitch"
         ],
@@ -25480,7 +24943,6 @@
         "myRating": 8,
         "imdbRating": 6.5,
         "metascore": 80,
-        "runtime": 123,
         "directors": [
             "James Gray"
         ],
@@ -25529,7 +24991,6 @@
         "myRating": 8,
         "imdbRating": 7.4,
         "metascore": 92,
-        "runtime": 135,
         "directors": [
             "Benny Safdie",
             "Josh Safdie"
@@ -25577,7 +25038,6 @@
         "myRating": 8,
         "imdbRating": 7.6,
         "metascore": 75,
-        "runtime": 125,
         "directors": [
             "Fernando Meirelles"
         ],
@@ -25631,7 +25091,6 @@
         "myRating": 8,
         "imdbRating": 7.9,
         "metascore": 82,
-        "runtime": 130,
         "directors": [
             "Rian Johnson"
         ],
@@ -25679,7 +25138,6 @@
         "myRating": 9,
         "imdbRating": 7.9,
         "metascore": 58,
-        "runtime": 108,
         "directors": [
             "Taika Waititi"
         ],
@@ -25728,7 +25186,6 @@
         "myRating": 9,
         "imdbRating": 8.2,
         "metascore": 78,
-        "runtime": 119,
         "directors": [
             "Sam Mendes"
         ],
@@ -25779,7 +25236,6 @@
         "myRating": 9,
         "imdbRating": 7.8,
         "metascore": 91,
-        "runtime": 135,
         "directors": [
             "Greta Gerwig"
         ],
@@ -25825,7 +25281,6 @@
         "myRating": 5,
         "imdbRating": 6.4,
         "metascore": 53,
-        "runtime": 141,
         "directors": [
             "J.J. Abrams"
         ],
@@ -25871,7 +25326,6 @@
         "myRating": 7,
         "imdbRating": 7.4,
         "metascore": 61,
-        "runtime": 102,
         "directors": [
             "Dan Scanlon"
         ],
@@ -25913,7 +25367,6 @@
         "myRating": 6,
         "imdbRating": 6.6,
         "metascore": 65,
-        "runtime": 91,
         "directors": [
             "Alan Yang"
         ],

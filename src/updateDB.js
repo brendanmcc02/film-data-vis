@@ -7,7 +7,7 @@ import * as cheerio from "cheerio";
 import * as fs from "fs";
 
 // function imports
-import {writeToJson, getMyRatedFilms, getFilm, getBondFilmTitles, getMcuFilmTitles, writeMetadata, throwErrorMessage} from './initDB.js';
+import {writeToJson, getMyRatedFilms, getFilm, getMcuFilmTitles, writeMetadata} from './initDB.js';
 
 // constant imports
 import {imdbBaseTitleUrl} from './initDB.js';
@@ -58,8 +58,7 @@ async function updateFilmData(filmData) {
     // web scrape all my rated films
     console.log("Web scraping my rated films.");
     const myRatedFilms = await getMyRatedFilms();
-    // get bond and mcu films for 'franchise' attribute of film object
-    const bondFilmTitles = await getBondFilmTitles();
+    // get mcu films for 'franchise' attribute of film object
     const mcuFilmTitles = await getMcuFilmTitles();
     let len = myRatedFilms.length;
 
@@ -90,7 +89,7 @@ async function updateFilmData(filmData) {
         // else, get the full film data and add it to the database
         // (only if it's not a tv series, episode, special, short or documentary)
         else {
-            let film = await getFilm(myRatedFilms[i], bondFilmTitles, mcuFilmTitles);
+            let film = await getFilm(myRatedFilms[i], mcuFilmTitles);
 
             if (film !== "not a feature film") {
                 filmData.unshift(film);
