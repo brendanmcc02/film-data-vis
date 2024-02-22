@@ -1,5 +1,9 @@
 # TODO
 
+### git
+- [ ] make it possible to open index.html and graphs work
+- [ ] redo demo video (outdated)
+
 ### Website
 - [x] Position all graphs and descriptions
 - [x] Descriptions of each graph
