@@ -3,7 +3,10 @@
 
 ### Usage
 
-To see the website, clone the repository and navigate to web/index.html
+1. Clone the repository
+2. ```cd scripts/```
+3. ```./run.sh```
+4. In your browser, go to ```localhost:8080/web/index.html```
 
 ### Project motivation
 
