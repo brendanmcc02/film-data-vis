@@ -1,0 +1,26 @@
+{
+  "name": "film-data-vis",
+  "version": "1.0.0",
+  "description": "A project to visualise the film data on my IMDB account.",
+  "main": "updateDB.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brendanmcc02/film-data-vis.git"
+  },
+  "author": "Brendan McCann",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brendanmcc02/film-data-vis/issues"
+  },
+  "homepage": "https://github.com/brendanmcc02/film-data-vis#readme",
+  "dependencies": {
+    "chart.js": "^4.4.1",
+    "cheerio": "^1.0.0-rc.12",
+    "fs": "^0.0.1-security",
+    "node-fetch": "^3.3.1"
+  }
+}
