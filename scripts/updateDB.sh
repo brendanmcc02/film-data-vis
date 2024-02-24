@@ -1,5 +1,5 @@
 # 1. runs updateDB.js
-# 2. commits & pushes changes to filmData.json & metadata.json
+# 2. commits & pushes changes to film-data.json & metadata.json
 cd /home/brendanmcc02/Desktop/projects/film-data-vis/ || exit
 git pull
 cd src/ || exit
