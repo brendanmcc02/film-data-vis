@@ -1,8 +1,7 @@
 # TODO
 
 ### git
-- [ ] make it possible to open index.html and graphs work
-- [ ] redo demo video (outdated)
+- [x] get github pages working
 
 ### Website
 - [x] Position all graphs and descriptions
