@@ -2,11 +2,7 @@
 *A project to fetch and visualise the film data on my IMDB account.*
 
 ### Usage
-
-1. Clone the repository
-2. ```cd scripts/```
-3. ```./run.sh```
-4. In your browser, go to ```localhost:8080/web/index.html```
+https://brendanmcc02.github.io/film-data-vis/web/index.html
 
 ### Project motivation
 
