@@ -1,5 +1,55 @@
 [
     {
+        "title": "The English Patient",
+        "id": "tt0116209",
+        "year": 1996,
+        "myRating": 5,
+        "imdbRating": 7.4,
+        "metascore": 86,
+        "directors": [
+            "Anthony Minghella"
+        ],
+        "actors": [
+            "Ralph Fiennes",
+            "Juliette Binoche",
+            "Willem Dafoe",
+            "Kristin Scott Thomas",
+            "Naveen Andrews",
+            "Colin Firth",
+            "Julian Wadham",
+            "Jürgen Prochnow",
+            "Kevin Whately",
+            "Clive Merrison",
+            "Nino Castelnuovo",
+            "Hichem Rostom",
+            "Peter Rühring",
+            "Geordie Johnson",
+            "Torri Higginson",
+            "Liisa Repo-Martell",
+            "Raymond Coulthard",
+            "Philip Whitchurch"
+        ],
+        "genres": [
+            "Drama",
+            "Romance",
+            "War"
+        ],
+        "countries": [
+            "United States",
+            "United Kingdom",
+            "Italy"
+        ],
+        "languages": [
+            "English",
+            "German",
+            "Italian",
+            "Arabic"
+        ],
+        "watchedInCinema": false,
+        "myTop10Position": -1,
+        "franchise": ""
+    },
+    {
         "title": "Ta'm e guilass",
         "id": "tt0120265",
         "year": 1997,
@@ -2819,7 +2869,7 @@
         "title": "Blade Runner 2049",
         "id": "tt1856101",
         "year": 2017,
-        "myRating": 9,
+        "myRating": 8,
         "imdbRating": 8,
         "metascore": 81,
         "directors": [
@@ -22509,7 +22559,7 @@
         "title": "Prisoners",
         "id": "tt1392214",
         "year": 2013,
-        "myRating": 9,
+        "myRating": 8,
         "imdbRating": 8.1,
         "metascore": 70,
         "directors": [
