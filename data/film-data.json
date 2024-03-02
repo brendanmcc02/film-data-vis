@@ -1,5 +1,51 @@
 [
     {
+        "title": "The Iron Claw",
+        "id": "tt21064584",
+        "year": 2023,
+        "myRating": 7,
+        "imdbRating": 7.8,
+        "metascore": 73,
+        "directors": [
+            "Sean Durkin"
+        ],
+        "actors": [
+            "Zac Efron",
+            "Jeremy Allen White",
+            "Harris Dickinson",
+            "Maura Tierney",
+            "Holt McCallany",
+            "Grady Wilson",
+            "Valentine Newcomer",
+            "Scott Innes",
+            "Chavo Guerrero Jr.",
+            "Garrett Hammond",
+            "Stanley Simons",
+            "Michael Harney",
+            "Jullian Dulce Vida",
+            "Cazzey Louis Cereghino",
+            "Ryan Nemeth",
+            "Lily James",
+            "Kevin Anton",
+            "Michael Papajohn"
+        ],
+        "genres": [
+            "Biography",
+            "Drama",
+            "Sport"
+        ],
+        "countries": [
+            "United States",
+            "United Kingdom"
+        ],
+        "languages": [
+            "English"
+        ],
+        "watchedInCinema": true,
+        "myTop10Position": -1,
+        "franchise": ""
+    },
+    {
         "title": "The English Patient",
         "id": "tt0116209",
         "year": 1996,
@@ -2915,7 +2961,7 @@
             "Somali",
             "Spanish"
         ],
-        "watchedInCinema": false,
+        "watchedInCinema": true,
         "myTop10Position": -1,
         "franchise": ""
     },
