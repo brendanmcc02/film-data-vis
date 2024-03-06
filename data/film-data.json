@@ -1,5 +1,51 @@
 [
     {
+        "title": "The Talented Mr. Ripley",
+        "id": "tt0134119",
+        "year": 1999,
+        "myRating": 8,
+        "imdbRating": 7.4,
+        "metascore": 76,
+        "directors": [
+            "Anthony Minghella"
+        ],
+        "actors": [
+            "Matt Damon",
+            "Gwyneth Paltrow",
+            "Jude Law",
+            "Cate Blanchett",
+            "Philip Seymour Hoffman",
+            "Jack Davenport",
+            "James Rebhorn",
+            "Sergio Rubini",
+            "Philip Baker Hall",
+            "Celia Weston",
+            "Fiorello",
+            "Stefania Rocca",
+            "Ivano Marescotti",
+            "Anna Longhi",
+            "Alessandro Fabrizi",
+            "Lisa Eichhorn",
+            "Gretchen Egolf",
+            "Jack Willis"
+        ],
+        "genres": [
+            "Crime",
+            "Drama",
+            "Thriller"
+        ],
+        "countries": [
+            "United States"
+        ],
+        "languages": [
+            "English",
+            "Italian"
+        ],
+        "watchedInCinema": false,
+        "myTop10Position": -1,
+        "franchise": ""
+    },
+    {
         "title": "The Iron Claw",
         "id": "tt21064584",
         "year": 2023,
@@ -776,7 +822,7 @@
         "id": "tt26047818",
         "year": 2023,
         "myRating": 3,
-        "imdbRating": 6.3,
+        "imdbRating": 6.2,
         "metascore": 52,
         "directors": [
             "Will Gluck"
@@ -17842,7 +17888,7 @@
         "year": 2019,
         "myRating": 9,
         "imdbRating": 8.5,
-        "metascore": 96,
+        "metascore": 97,
         "directors": [
             "Bong Joon Ho"
         ],
