@@ -1,5 +1,10 @@
 # TODO
 
+### review
+- [ ] get rid of franchise attribute, will have to change MCU graph to cater to this change
+- [ ] add line graph on top of myRating dist graph
+- [ ] add ability for other people to input their own imdb data?
+
 ### git
 - [x] get github pages working
 
