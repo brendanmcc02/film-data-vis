@@ -237,7 +237,7 @@ async function getFilms(myRatedFilms) {
 async function getFilm(myRatedFilm, mcuFilmTitles) {
     // initialise film object
     let film = {"title": "", "id": myRatedFilm.id, "year": 0,  "myRating": myRatedFilm.myRating,
-        "imdbRating": -1.0, "metascore": -1, "directors": [], "actors": [],
+        "imdbRating": null, "metascore": null, "directors": [], "actors": [],
         "genres": [], "countries": [], "languages": [],
         "watchedInCinema": myRatedFilm.watchedInCinema,
         "myFavFilmPosition": myRatedFilm.myFavFilmPosition, "franchise": ""

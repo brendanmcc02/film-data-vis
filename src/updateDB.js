@@ -73,13 +73,13 @@ async function updateFilmData(filmData) {
             filmData[filmIndex].myRating = myRatedFilms[i].myRating;
             const filmRatingData = await getFilmRatingData(filmData[filmIndex].id);
 
-            // update only if new imdb rating is not -1
-            if (filmRatingData.imdbRating !== -1.0) {
+            // update only if new imdb rating is not null
+            if (filmRatingData.imdbRating !== null) {
                 filmData[filmIndex].imdbRating = filmRatingData.imdbRating;
             }
 
-            // update only if: new meta is not -1
-            if (filmRatingData.metascore !== -1) {
+            // update only if: new meta is not null
+            if (filmRatingData.metascore !== null) {
                 filmData[filmIndex].metascore = filmRatingData.metascore;
             }
 
@@ -119,7 +119,7 @@ async function updateFilmData(filmData) {
 async function getFilmRatingData(id) {
 
     // initialise the object
-    let filmRatingData = {"imdbRating": 0.0, "metascore": -1};
+    let filmRatingData = {"imdbRating": null, "metascore": null};
 
     // get the web page URL for the film specified by id
     const url = imdbBaseTitleUrl.concat(id);
@@ -140,7 +140,7 @@ async function getFilmRatingData(id) {
             // for now if the bug occurs, i won't bother updating the imdb rating for that film. the imdb rating really only changes on new movies,
         // and if the bug occurs on one film, most likely the next time the update script is run it'll update it's imdb rating on the next round.
         else {
-            filmRatingData.imdbRating = -1.0;
+            filmRatingData.imdbRating = null;
         }
 
         // get metascore
