@@ -223,7 +223,7 @@ async function getFilms(myRatedFilms) {
                 films.push(film);
             }
         }
-        
+
         return films;
     } catch (error) {
         writeMetadata("error", startTime, error.name, error.message);

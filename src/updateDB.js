@@ -86,7 +86,7 @@ async function updateFilmData(filmData) {
             filmData[filmIndex].watchedInCinema = myRatedFilms[i].watchedInCinema;
             filmData[filmIndex].myTop10Position = myRatedFilms[i].myTop10Position;
         }
-        // else, get the full film data and add it to the database
+            // else, get the full film data and add it to the database
         // (only if it's not a tv series, episode, special, short or documentary)
         else {
             let film = await getFilm(myRatedFilms[i], mcuFilmTitles);
@@ -136,8 +136,8 @@ async function getFilmRatingData(id) {
         if (imdbRating !== '') {
             filmRatingData.imdbRating = parseFloat(imdbRating);
         }
-        // there is a rare (~1/100) bug where it simply won't read the imdb rating. it is not replicable, don't know what the problem is but idc.
-        // for now if the bug occurs, i won't bother updating the imdb rating for that film. the imdb rating really only changes on new movies,
+            // there is a rare (~1/100) bug where it simply won't read the imdb rating. it is not replicable, don't know what the problem is but idc.
+            // for now if the bug occurs, i won't bother updating the imdb rating for that film. the imdb rating really only changes on new movies,
         // and if the bug occurs on one film, most likely the next time the update script is run it'll update it's imdb rating on the next round.
         else {
             filmRatingData.imdbRating = -1.0;

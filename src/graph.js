@@ -1767,7 +1767,6 @@ function getActors(filmData) {
             }
             // actor is in array
             else {
-                console.log("hi")
                 modifyMean(film, actors, actorIndex);
             }
         });
@@ -1926,7 +1925,7 @@ function getImdbTop25Films(filmData) {
         }
         for (let i = 0; i < len; i++) {
             if (filmData[i].imdbRating > maxFilm.imdbRating
-                    && !arrayContainsTitle(imdbTop25Films, filmData[i].title)) {
+                && !arrayContainsTitle(imdbTop25Films, filmData[i].title)) {
                 maxFilm = filmData[i];
             }
         }
