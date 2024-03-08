@@ -6,9 +6,7 @@
 //     let filmData = readFromJson("../data/filmData.json");
 //
 //     filmData.forEach(film => {
-//        if (film.franchise === "James Bond") {
-//            film.franchise = "";
-//        }
+//        delete film.myTop10Position;
 //     });
 //
 //     writeToJson(filmData, "../data/filmData.json");

@@ -1,10 +1,9 @@
 # TODO
 
 ### review
-- [ ] get rid of franchise attribute, will have to change MCU graph to cater to this change
-- [ ] myTop10Position => favouriteFilmPosition
-- [ ] myTop10 graphs now have n films, where n = len(favFilmList)
-- [ ] add line graph on top of myRating dist graph
+- [x] myTop10Position => favouriteFilmPosition
+- [x] myTop10 graphs now have n films, where n = len(favFilmList)
+- [x] add line graph on top of myRating dist graph
 - [ ] add ability for other people to input their own imdb data?
 
 ### git

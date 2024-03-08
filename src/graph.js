@@ -48,11 +48,11 @@ async function main() {
     const labels_imdbtop25 = getImdbTop25Titles(base_imdbtop25);
     const data_imdbtop25 = getImdbTop25Ratings(base_imdbtop25);
 
-    // imdb rating & metascore of my top 10
-    const base_mytop10 = getMyTop10Films(filmData);
-    const labels_mytop10 = getMyTop10Titles(base_mytop10);
-    const data_mytop10imdb = getMyTop10Ratings(base_mytop10);
-    const data_mytop10meta = getMyTop10Metascores(base_mytop10);
+    // imdb rating & metascore of my favourite films
+    const base_myfav = getMyFavFilms(filmData);
+    const labels_myfav = getMyFavTitles(base_myfav);
+    const data_myfavimdb = getMyFavRatings(base_myfav);
+    const data_myfavmeta = getMyFavMetascores(base_myfav);
 
     // mean decade rating
     const base_decade = getDecades(filmData);
@@ -709,13 +709,13 @@ async function main() {
         }
     });
 
-    const ctx_9 = document.getElementById('imdb-top-10');
+    const ctx_9 = document.getElementById('imdb-fav');
     new Chart(ctx_9, {
         type: 'bar',
         data: {
-            labels: labels_mytop10,
+            labels: labels_myfav,
             datasets: [{
-                data: data_mytop10imdb,
+                data: data_myfavimdb,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
@@ -762,7 +762,7 @@ async function main() {
                 x: {
                     title: {
                         display: true,
-                        text: 'My Top 10 Films',
+                        text: 'My Favourite Films',
                         font: {
                             size: 20
                         }
@@ -788,13 +788,13 @@ async function main() {
         }
     });
 
-    const ctx_10 = document.getElementById('meta-top-10');
+    const ctx_10 = document.getElementById('meta-fav');
     new Chart(ctx_10, {
         type: 'bar',
         data: {
-            labels: labels_mytop10,
+            labels: labels_myfav,
             datasets: [{
-                data: data_mytop10meta,
+                data: data_myfavmeta,
                 backgroundColor: [
                     'rgba(54, 162, 235, 0.3)',
                     'rgba(255, 99, 132, 0.3)',
@@ -841,7 +841,7 @@ async function main() {
                 x: {
                     title: {
                         display: true,
-                        text: 'My Top 10 Films',
+                        text: 'My Favourite Films',
                         font: {
                             size: 20
                         }
@@ -1405,51 +1405,97 @@ async function main() {
 
     const ctx_26 = document.getElementById('dist');
     new Chart(ctx_26, {
-        type: 'bar',
         data: {
             labels: labels_myRating,
-            datasets: [{
-                data: data_myRating,
-                backgroundColor: [
-                    'rgba(54, 162, 235, 0.3)',
-                    'rgba(255, 99, 132, 0.3)',
-                    'rgba(75, 192, 192, 0.3)',
-                    'rgba(255, 159, 64, 0.3)',
-                    'rgba(175, 125, 255, 0.3)',
-                    'rgba(255, 205, 86, 0.3)',
-                    'rgba(20, 20, 235, 0.3)'
-                ],
-                hoverBackgroundColor: [
-                    'rgba(54, 162, 235, 0.5)',
-                    'rgba(255, 99, 132, 0.5)',
-                    'rgba(75, 192, 192, 0.5)',
-                    'rgba(255, 159, 64, 0.5)',
-                    'rgba(175, 125, 255, 0.5)',
-                    'rgba(255, 205, 86, 0.5)',
-                    'rgba(20, 20, 235, 0.5)'
-                ],
-                borderColor: [
-                    'rgba(54, 162, 235, 0.8)',
-                    'rgba(255, 99, 132, 0.8)',
-                    'rgba(75, 192, 192, 0.8)',
-                    'rgba(255, 159, 64, 0.8)',
-                    'rgba(175, 125, 255, 0.8)',
-                    'rgba(255, 205, 86, 0.8)',
-                    'rgba(20, 20, 235, 0.8)'
-                ],
-                hoverBorderColor: [
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(255, 159, 64, 1)',
-                    'rgba(175, 125, 255, 1)',
-                    'rgba(255, 205, 86, 1)',
-                    'rgba(20, 20, 235, 1)'
-                ],
-                borderWidth: 2,
-                hoverBorderWidth: 3,
-                borderRadius: 5
-            }]
+            datasets: [
+                {
+                    data: data_myRating,
+                    type: 'line',
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.3)',
+                        'rgba(255, 99, 132, 0.3)',
+                        'rgba(75, 192, 192, 0.3)',
+                        'rgba(255, 159, 64, 0.3)',
+                        'rgba(175, 125, 255, 0.3)',
+                        'rgba(255, 205, 86, 0.3)',
+                        'rgba(20, 20, 235, 0.3)'
+                    ],
+                    hoverBackgroundColor: [
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(75, 192, 192, 0.5)',
+                        'rgba(255, 159, 64, 0.5)',
+                        'rgba(175, 125, 255, 0.5)',
+                        'rgba(255, 205, 86, 0.5)',
+                        'rgba(20, 20, 235, 0.5)'
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 0.8)',
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(75, 192, 192, 0.8)',
+                        'rgba(255, 159, 64, 0.8)',
+                        'rgba(175, 125, 255, 0.8)',
+                        'rgba(255, 205, 86, 0.8)',
+                        'rgba(20, 20, 235, 0.8)'
+                    ],
+                    hoverBorderColor: [
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(175, 125, 255, 1)',
+                        'rgba(255, 205, 86, 1)',
+                        'rgba(20, 20, 235, 1)'
+                    ],
+                    borderWidth: 2,
+                    hoverBorderWidth: 3,
+                    borderRadius: 5,
+                    tension: 0.35
+                }
+                ,{
+                    data: data_myRating,
+                    type: 'bar',
+                    backgroundColor: [
+                        'rgba(54, 162, 235, 0.3)',
+                        'rgba(255, 99, 132, 0.3)',
+                        'rgba(75, 192, 192, 0.3)',
+                        'rgba(255, 159, 64, 0.3)',
+                        'rgba(175, 125, 255, 0.3)',
+                        'rgba(255, 205, 86, 0.3)',
+                        'rgba(20, 20, 235, 0.3)'
+                    ],
+                    hoverBackgroundColor: [
+                        'rgba(54, 162, 235, 0.5)',
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(75, 192, 192, 0.5)',
+                        'rgba(255, 159, 64, 0.5)',
+                        'rgba(175, 125, 255, 0.5)',
+                        'rgba(255, 205, 86, 0.5)',
+                        'rgba(20, 20, 235, 0.5)'
+                    ],
+                    borderColor: [
+                        'rgba(54, 162, 235, 0.8)',
+                        'rgba(255, 99, 132, 0.8)',
+                        'rgba(75, 192, 192, 0.8)',
+                        'rgba(255, 159, 64, 0.8)',
+                        'rgba(175, 125, 255, 0.8)',
+                        'rgba(255, 205, 86, 0.8)',
+                        'rgba(20, 20, 235, 0.8)'
+                    ],
+                    hoverBorderColor: [
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(175, 125, 255, 1)',
+                        'rgba(255, 205, 86, 1)',
+                        'rgba(20, 20, 235, 1)'
+                    ],
+                    borderWidth: 2,
+                    hoverBorderWidth: 3,
+                    borderRadius: 5
+                }
+            ]
         },
         options: {
             scales: {
@@ -1973,74 +2019,74 @@ function getImdbTop25Ratings(imdbTop25Films) {
     return imdbTop25Ratings;
 }
 
-// gets array of my top 10 films,
-// sorted by position (1st -> 10th)
-function getMyTop10Films(filmData) {
-    let myTop10Films = [];
+// gets array of my favourite films,
+// sorted by position (1st, 2nd, ...)
+function getMyFavFilms(filmData) {
+    let myFavFilms = [];
 
     filmData.forEach(film => {
-        if (film.myTop10Position !== -1) {
-            myTop10Films.push(film);
+        if (film.myFavFilmPosition !== -1) {
+            myFavFilms.push(film);
         }
     });
 
-    // sort by position (1st -> 10th)
+    // sort by position (1st, 2nd, ...)
     // bubble sort is used for its algorithmic simplicity.
     // also because the array is not large,
     // so time complexity is not an issue
 
     let swapped = true; // flag
-    const len = myTop10Films.length - 1;
+    const len = myFavFilms.length - 1;
 
     // continually make passes until the array is sorted
     while (swapped) {
         swapped = false;
 
         for (let i = 0; i < len; i++) {
-            if (myTop10Films[i].myTop10Position > myTop10Films[i+1].myTop10Position) {
-                [myTop10Films[i], myTop10Films[i+1]] = [myTop10Films[i+1], myTop10Films[i]] // swap
+            if (myFavFilms[i].myFavFilmPosition > myFavFilms[i+1].myFavFilmPosition) {
+                [myFavFilms[i], myFavFilms[i+1]] = [myFavFilms[i+1], myFavFilms[i]] // swap
                 swapped = true; // signal flag
             }
         }
     }
 
-    return myTop10Films;
+    return myFavFilms;
 }
 
-// given array of my top 10 films,
+// given array of my favourite films,
 // return an array of the titles of those films
-function getMyTop10Titles(myTop10Films) {
-    let myTop10Titles = [];
+function getMyFavTitles(myFavFilms) {
+    let myFavTitles = [];
 
-    myTop10Films.forEach(film => {
-        myTop10Titles.push(film.title);
+    myFavFilms.forEach(film => {
+        myFavTitles.push(film.title);
     });
 
-    return myTop10Titles;
+    return myFavTitles;
 }
 
-// given array of my top 10 films,
+// given array of my favourite films,
 // return an array of the imdb rating of those films
-function getMyTop10Ratings(myTop10Films) {
-    let myTop10Ratings = [];
+function getMyFavRatings(myFavFilms) {
+    let myFavRatings = [];
 
-    myTop10Films.forEach(film => {
-        myTop10Ratings.push(film.imdbRating);
+    myFavFilms.forEach(film => {
+        myFavRatings.push(film.imdbRating);
     });
 
-    return myTop10Ratings;
+    return myFavRatings;
 }
 
 // given array of my top 25 films,
 // return an array of the metascore of those films
-function getMyTop10Metascores(myTop10Films) {
-    let myTop10Metascores = [];
+function getMyFavMetascores(myFavFilms) {
+    let myFavMetascores = [];
 
-    myTop10Films.forEach(film => {
-        myTop10Metascores.push(film.metascore);
+    myFavFilms.forEach(film => {
+        myFavMetascores.push(film.metascore);
     });
 
-    return myTop10Metascores;
+    return myFavMetascores;
 }
 
 // returns an array of decade objects

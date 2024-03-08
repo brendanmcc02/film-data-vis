@@ -16,7 +16,7 @@ export {imdbBaseTitleUrl};
 const myRatingsURL = "https://www.imdb.com/user/ur95934592/ratings";
 const watchedInCinemaURL = "https://www.imdb.com/list/ls081360952/";
 const imdbBaseTitleUrl = "https://www.imdb.com/title/";
-const myTop10URL = "https://www.imdb.com/list/ls048298278/";
+const favFilmsURL = "https://www.imdb.com/list/ls048298278/";
 const marvelURL = "https://en.wikipedia.org/wiki/List_of_Marvel_Cinematic_Universe_films";
 
 const startTime = Date.now();
@@ -27,7 +27,7 @@ const startTime = Date.now();
 // initialises a database of all my rated films on imdb
 async function main() {
     console.log("Web scraping my rated films.");
-    // const myRatedFilms = [{"id" : "tt1935156", "myRating" : 8, "watchedInCinema" : false, "myTop10Position" : -1}]; // for testing
+    // const myRatedFilms = [{"id" : "tt1935156", "myRating" : 8, "watchedInCinema" : false, "myFavFilmPosition" : -1}]; // for testing
     const myRatedFilms = await getMyRatedFilms();
     console.log("Web scraping full data for each rated film:");
     const films = await getFilms(myRatedFilms);
@@ -39,7 +39,7 @@ async function main() {
 }
 
 // web scrapes my ratings page and returns an array of film objects:
-// {id, myRating, watchedInCinema, myTop10Position}
+// {id, myRating, watchedInCinema, myFavFilmPosition}
 // ~30 sec runtime
 async function getMyRatedFilms() {
     let myRatedFilms = [];
@@ -72,7 +72,7 @@ async function getMyRatedFilms() {
                 }
 
                 myRatedFilms.push({"id" : id, "myRating" : myRating,
-                    "watchedInCinema" : false, "myTop10Position" : -1});
+                    "watchedInCinema" : false, "myFavFilmPosition" : -1});
             });
 
             // get url for next iteration.
@@ -122,14 +122,14 @@ async function getMyRatedFilms() {
         }
     });
 
-    // iterate through my top 10 films and change the
-    // 'myTop10Position' attribute of the corresponding films
+    // iterate through my fav films and change the
+    // 'myFavFilmPosition' attribute of the corresponding films
 
-    let myTop10Films = [];
+    let favFilms = [];
 
     try {
         // get the html
-        let response = await nodeFetch(myTop10URL);
+        let response = await nodeFetch(favFilmsURL);
         let body = await response.text();
         let c = cheerio.load(body);
 
@@ -138,18 +138,18 @@ async function getMyRatedFilms() {
             let id = c(this).attr('data-tconst');
 
             if (id !== undefined) {
-                myTop10Films.push(id);
+                favFilms.push(id);
             } else {
-                throwErrorMessage("ID of myTop10 film is undefined.");
+                throwErrorMessage("ID of favFilm is undefined.");
             }
         });
 
-        // for each film, modify the 'myTop10Position' to the corresponding value
-        const len = myTop10Films.length;
+        // for each film, modify the 'myFavFilmPosition' to the corresponding value
+        const len = favFilms.length;
         for (let i = 0; i < len; i++) {
-            let id = myTop10Films[i];
+            let id = favFilms[i];
             let index = getIndexOfId(myRatedFilms, id);
-            myRatedFilms[index].myTop10Position = i + 1;
+            myRatedFilms[index].myFavFilmPosition = i + 1;
         }
 
         return myRatedFilms;
@@ -233,14 +233,14 @@ async function getFilms(myRatedFilms) {
 
 // returns a film object:
 // {title, id, year, myRating, imdbRating, metascore, directors, actors, genres, countries,
-// languages, watchedInCinema, myTop10Position, franchise}
+// languages, watchedInCinema, myFavFilmPosition, franchise}
 async function getFilm(myRatedFilm, mcuFilmTitles) {
     // initialise film object
     let film = {"title": "", "id": myRatedFilm.id, "year": 0,  "myRating": myRatedFilm.myRating,
         "imdbRating": -1.0, "metascore": -1, "directors": [], "actors": [],
         "genres": [], "countries": [], "languages": [],
         "watchedInCinema": myRatedFilm.watchedInCinema,
-        "myTop10Position": myRatedFilm.myTop10Position, "franchise": ""
+        "myFavFilmPosition": myRatedFilm.myFavFilmPosition, "franchise": ""
     };
 
     try {

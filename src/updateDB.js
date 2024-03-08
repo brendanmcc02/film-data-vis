@@ -50,7 +50,7 @@ function readFromJson(filepath) {
 
 // iterates through film-data.json and compares it to myRatedFilms
 // if a rated film is already in film-data.json, it will update:
-// myRating, imdbRating, metascore, watchedInCinema, myTop10Position
+// myRating, imdbRating, metascore, watchedInCinema, myFavFilmPosition
 // else, if the film is not in film-data.json, it will add full film data
 // to film-data.json
 async function updateFilmData(filmData) {
@@ -69,7 +69,7 @@ async function updateFilmData(filmData) {
 
         // if the film is already in the database
         if (filmIndex !== -1) {
-            // update myRating, imdbRating, metascore, watchedInCinema, myTop10Position
+            // update myRating, imdbRating, metascore, watchedInCinema, myFavFilmPosition
             filmData[filmIndex].myRating = myRatedFilms[i].myRating;
             const filmRatingData = await getFilmRatingData(filmData[filmIndex].id);
 
@@ -84,7 +84,7 @@ async function updateFilmData(filmData) {
             }
 
             filmData[filmIndex].watchedInCinema = myRatedFilms[i].watchedInCinema;
-            filmData[filmIndex].myTop10Position = myRatedFilms[i].myTop10Position;
+            filmData[filmIndex].myFavFilmPosition = myRatedFilms[i].myFavFilmPosition;
         }
             // else, get the full film data and add it to the database
         // (only if it's not a tv series, episode, special, short or documentary)
