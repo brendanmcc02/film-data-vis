@@ -4,8 +4,9 @@
 - [x] myTop10Position => myFavFilmPosition
 - [x] myTop10 graphs now have n films, where n = len(favFilmList)
 - [x] add line graph on top of myRating dist graph
-- [ ] add ability for other people to input their own imdb data?
 - [ ] take from ratings.csv and augment extra needed data (e.g. metascore), export cinema lists etc. look into multithreading for speeding up task
+- [ ] when hovering over a film, actor, or director show the image
+- [ ] add ability for other people to input their own imdb data?
 
 ### git
 - [x] get github pages working
