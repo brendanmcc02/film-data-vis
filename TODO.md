@@ -4,7 +4,9 @@
 - [x] myTop10Position => favouriteFilmPosition
 - [x] myTop10 graphs now have n films, where n = len(favFilmList)
 - [x] add line graph on top of myRating dist graph
-- [ ] add ability for other people to input their own imdb data?
+- [x] change default value of imdbRating & metascore from -1 to null
+- [ ] instead of updateDB.js, download ratings.csv and augment that data by webscraping additional features (metascore, directors, actors, countries, languages, watchedInCinema myFavFilmPosition, etc.)
+- [ ] add ability for other people to input their own imdb data (ratings.csv)?
 
 ### git
 - [x] get github pages working
