@@ -261,6 +261,10 @@ async function getFilm(myRatedFilm, mcuFilmTitles) {
         else if (c(selector).eq(0).text().includes("Episode")) {
             return "not a feature film";
         }
+        // else if it's a tv series, also return "not a feature film"
+        else if (c(selector).eq(0).text().includes("TV")) {
+            return "not a feature film";
+        }
         // else if the html tag is not being read, throw an error
         else if (c(selector).length === 0) {
             selector = 'ul.ipc-inline-list.ipc-inline-list--show-dividers.baseAlt[role=presentation]:nth-child(3) li.ipc-inline-list__item';
