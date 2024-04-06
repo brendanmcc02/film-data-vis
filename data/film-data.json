@@ -1,5 +1,141 @@
 [
     {
+        "title": "A Beautiful Mind",
+        "id": "tt0268978",
+        "year": 2001,
+        "myRating": 6,
+        "imdbRating": 8.2,
+        "metascore": 72,
+        "directors": [
+            "Ron Howard"
+        ],
+        "actors": [
+            "Russell Crowe",
+            "Ed Harris",
+            "Jennifer Connelly",
+            "Christopher Plummer",
+            "Paul Bettany",
+            "Adam Goldberg",
+            "Josh Lucas",
+            "Anthony Rapp",
+            "Jason Gray-Stanford",
+            "Judd Hirsch",
+            "Austin Pendleton",
+            "Vivien Cardone",
+            "Jillie Simon",
+            "Victor Steinbach",
+            "Tanya Clarke",
+            "Thomas F. Walsh",
+            "Jesse Doran",
+            "Kent Cassella"
+        ],
+        "genres": [
+            "Biography",
+            "Drama",
+            "Mystery"
+        ],
+        "countries": [
+            "United States"
+        ],
+        "languages": [
+            "English"
+        ],
+        "watchedInCinema": false,
+        "myFavFilmPosition": -1,
+        "franchise": ""
+    },
+    {
+        "title": "Priscilla",
+        "id": "tt22041854",
+        "year": 2023,
+        "myRating": 7,
+        "imdbRating": 6.6,
+        "metascore": 79,
+        "directors": [
+            "Sofia Coppola"
+        ],
+        "actors": [
+            "Cailee Spaeny",
+            "Jacob Elordi",
+            "Ari Cohen",
+            "Dagmara Dominczyk",
+            "Tim Post",
+            "Lynne Griffin",
+            "Dan Beirne",
+            "Rodrigo Fernandez-Stoll",
+            "Dan Abramovici",
+            "Matthew Shaw",
+            "Tim Dowler-Coltman",
+            "R Austin Ball",
+            "Olivia Barrett",
+            "Stephanie Moore",
+            "Luke Humphrey",
+            "Deanna Jarvis",
+            "Jorja Cadence",
+            "Josette Halpert"
+        ],
+        "genres": [
+            "Biography",
+            "Drama",
+            "Music"
+        ],
+        "countries": [
+            "Italy",
+            "United States"
+        ],
+        "languages": [
+            "English"
+        ],
+        "watchedInCinema": false,
+        "myFavFilmPosition": -1,
+        "franchise": ""
+    },
+    {
+        "title": "Jodaeiye Nader az Simin",
+        "id": "tt1832382",
+        "year": 2011,
+        "myRating": 7,
+        "imdbRating": 8.3,
+        "metascore": 95,
+        "directors": [
+            "Asghar Farhadi"
+        ],
+        "actors": [
+            "Payman Maadi",
+            "Leila Hatami",
+            "Sareh Bayat",
+            "Shahab Hosseini",
+            "Sarina Farhadi",
+            "Babak Karimi",
+            "Ali-Asghar Shahbazi",
+            "Kimia Hosseini",
+            "Shirin Yazdanbakhsh",
+            "Merila Zare'i",
+            "Mohammadhasan Asghari",
+            "Shirin Azimiyannezhad",
+            "Hamid Dadju",
+            "Mohammad Ebrahimian",
+            "Samad Farhang",
+            "Ali Fattahi",
+            "Nafise Ghodrati",
+            "Roya Hosseini"
+        ],
+        "genres": [
+            "Drama"
+        ],
+        "countries": [
+            "Iran",
+            "France",
+            "Australia"
+        ],
+        "languages": [
+            "Persian"
+        ],
+        "watchedInCinema": false,
+        "myFavFilmPosition": -1,
+        "franchise": ""
+    },
+    {
         "title": "Amadeus",
         "id": "tt0086879",
         "year": 1984,
@@ -53,8 +189,8 @@
         "title": "Dune: Part II",
         "id": "tt15239678",
         "year": 2024,
-        "myRating": 9,
-        "imdbRating": 8.9,
+        "myRating": 10,
+        "imdbRating": 8.8,
         "metascore": 79,
         "directors": [
             "Denis Villeneuve"
@@ -98,7 +234,7 @@
             "English"
         ],
         "watchedInCinema": true,
-        "myFavFilmPosition": -1,
+        "myFavFilmPosition": 11,
         "franchise": ""
     },
     {
@@ -1021,7 +1157,7 @@
         "id": "tt14849194",
         "year": 2023,
         "myRating": 10,
-        "imdbRating": 8,
+        "imdbRating": 7.9,
         "metascore": 82,
         "directors": [
             "Alexander Payne"
@@ -1057,7 +1193,7 @@
             "English"
         ],
         "watchedInCinema": false,
-        "myFavFilmPosition": 11,
+        "myFavFilmPosition": 13,
         "franchise": ""
     },
     {
@@ -1109,7 +1245,7 @@
         "id": "tt1517268",
         "year": 2023,
         "myRating": 7,
-        "imdbRating": 6.9,
+        "imdbRating": 6.8,
         "metascore": 80,
         "directors": [
             "Greta Gerwig"
@@ -5115,7 +5251,7 @@
         "title": "(500) Days of Summer",
         "id": "tt1022603",
         "year": 2009,
-        "myRating": 9,
+        "myRating": 10,
         "imdbRating": 7.7,
         "metascore": 76,
         "directors": [
@@ -5155,7 +5291,7 @@
             "Swedish"
         ],
         "watchedInCinema": false,
-        "myFavFilmPosition": -1,
+        "myFavFilmPosition": 12,
         "franchise": ""
     },
     {
@@ -17871,7 +18007,7 @@
         "year": 2019,
         "myRating": 8,
         "imdbRating": 7.4,
-        "metascore": 79,
+        "metascore": 80,
         "directors": [
             "Terrence Malick"
         ],
@@ -25409,7 +25545,7 @@
         "year": 2019,
         "myRating": 8,
         "imdbRating": 7.4,
-        "metascore": 92,
+        "metascore": 93,
         "directors": [
             "Benny Safdie",
             "Josh Safdie"
